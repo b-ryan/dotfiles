@@ -53,6 +53,9 @@ inoremap <C-Space> <C-x><C-o>
 nnoremap + zo
 nnoremap - zc
 
+nmap <F5> :tabm<CR>
+nmap <C-S-PageUp> :tabm tabpagenr()-1<CR>
+nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
 " mappings for a.vim

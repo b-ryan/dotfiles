@@ -24,11 +24,23 @@ snippet cl
 	{
 	public:
 		$1(${2:arguments});
-		virtual ~$1();
+		~$1();
 	
 	private:
 		${3:/* data */}
 	};
+# QObject class
+snippet qcl
+	class ${1:`Filename('$1_t', 'name')`} : public ${2:QObject}
+	{
+	    Q_OBJECT
+	public:
+		$1(${3:QObject* parent = 0});
+	
+	private:
+		${4:/* data */}
+	};
+	
 # C++ For Loop
 snippet for
 	for(${1}; ${2}; ${3}) {
@@ -47,3 +59,38 @@ snippet case
 	case ${1:/* case */}:
 	    ${2:/* code */}
 	    break;${3}
+snippet qtestclass
+	#ifndef ${1:`toupper(Filename('', 'UNTITLED'))`}_H
+	#define $1_H
+
+	#include <QObject>
+	#include <QtTest>
+
+	class ${2:`Filename()`} : public QObject
+	{
+	    Q_OBJECT
+	public:
+	    $2(QObject* parent = 0) : QObject(parent) {}
+
+	private slots:
+	    void init();
+	    void cleanup();
+
+	private:
+	    
+	};
+
+	#endif /* $1_H */
+snippet qtestclassdef
+	#include "${1:`Filename()`.h}"
+
+	void ${2:TestClass}::init()
+	{
+	    
+	}
+
+	void $2::cleanup()
+	{
+	    
+	}
+
