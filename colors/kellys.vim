@@ -14,7 +14,7 @@ highlight CTagsGlobalVariable guifg=#eeeeee ctermfg=255                         
 highlight CTagsImport         guifg=#eeeeee ctermfg=255                           gui=none cterm=none
 highlight CTagsMember         guifg=#eeeeee ctermfg=255                           gui=none cterm=none
 highlight Character           guifg=#d1c79e ctermfg=187 guibg=#2a2b2f ctermbg=60  gui=none cterm=none
-highlight Comment             guifg=#67686b ctermfg=60  guibg=#2a2b2f ctermbg=60  gui=none cterm=none
+highlight Comment             guifg=#F2B1CB ctermfg=60  guibg=#2a2b2f ctermbg=60  gui=none cterm=none
 highlight Conditional         guifg=#62acce ctermfg=74  guibg=#2a2b2f ctermbg=60  gui=bold cterm=bold
 highlight Constant            guifg=#d1c79e ctermfg=187 guibg=#2a2b2f ctermbg=60  gui=none cterm=none
 highlight Cursor              guifg=#2a2b2f ctermfg=60  guibg=#e1e0e5 ctermbg=146 gui=none cterm=none
