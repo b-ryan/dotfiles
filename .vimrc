@@ -24,6 +24,8 @@ set shiftwidth=4
 set softtabstop=4
 " <-
 
+set visualbell
+
 " searching
 set incsearch " incremental search (i.e. search while typing)
 set hlsearch  " highlight searched text
@@ -35,25 +37,68 @@ filetype on " enables filetype detection
 filetype plugin on
 au BufNewFile,BufRead *.nsh set filetype=nsis " sets filetype for NSH scripts
 
-" general key mappings --------------------------------------------------------
 let mapleader = ","
 
+" jump to last position on previous close
+if has("autocmd")
+    autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+endif
+
+" Brackets & paretheses
+" bracket completion
+inoremap {<CR> {<CR>}<Esc>O<Tab>
+
+" other stuff -----------------------------------------------------------------
+" From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
+highlight OverLength ctermbg=red ctermfg=white guibg=#DE7676
+let g:OverLengthOn = 0
+function OverLengthToggle()
+    if g:OverLengthOn == 1
+        match none
+        let g:OverLengthOn = 0
+    else
+        match OverLength /.\%>81v/
+        let g:OverLengthOn = 1
+    endif
+endfunction
+nnoremap <C-h> :call OverLengthToggle()<CR>
+
+" set cursorline
+" highlight CursorLine guibg=#FFE0F7
+" highlight CursorColumn guibg=#FFE0F7
+nnoremap <Leader>l :set cursorline!<CR>
+nnoremap <Leader>c :set cursorcolumn!<CR>
+
+" general key mappings --------------------------------------------------------
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
 map :a<CR> :wa<CR>
 
-" Proper Ctrl+C -> Esc map
-inoremap <C-c> <Esc>
-nnoremap <C-c> <Esc>
+" line movement mappings from
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+nnoremap <A-j> :m+<CR>==
+inoremap <A-j> <Esc>:m+<CR>==gi
+vnoremap <A-j> :m'>+<CR>gv=gv
+nnoremap <A-k> :m-2<CR>==
+inoremap <A-k> <Esc>:m-2<CR>==gi
+vnoremap <A-k> :m-2<CR>gv=gv
 
-" autocomplete mapping
-inoremap <C-Space> <C-x><C-o>
+" Map Ctrl+Del in insert mode to delete back a word
+inoremap <C-BS> <C-w>
+
+" Proper Ctrl+C -> Esc map
+imap <C-c> <Esc>
+nmap <C-c> <Esc>
 
 " fold mapping
 nnoremap + zo
 nnoremap - zc
 
-nmap <F5> :tabm<CR>
+" plugin mappings ------------------------------------------------------------
+nnoremap <F5> :tabm<CR>
 nmap <C-S-PageUp> :tabm tabpagenr()-1<CR>
 nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
 " Tips for getting header/source switch came from
@@ -70,16 +115,6 @@ let NERDTreeIgnore=['\.swp$', '\.orig$']
 nnoremap  <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR> " open NERDTree and close split
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
 
-nnoremap <F5> :tabm<CR>
-
-" jump to last position on previous close
-if has("autocmd")
-    autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-endif
-
 " auto complete ---------------------------------------------------------------
 " Cpp auto complete tag files
 set tags+=~/vimfiles/tags/cpp
@@ -91,27 +126,15 @@ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 
+" Fuzzy Finder ---------------------------------------------------------------
+nnoremap <F6> :FufDir<CR>
+nnoremap <F7> :FufFile<CR>
+
+let g:SuperTabLongestEnhanced=1 " Fills in the longest common text found
+let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
+
 " automatically open and close the popup menu / preview window
 " FROM: http://vim.wikia.com/wiki/C%2B%2B_code_completion
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
-
-" Brackets & paretheses
-" bracket completion
-inoremap {<CR> {<CR>}<Esc>O<Tab>
-
-" other stuff -----------------------------------------------------------------
-" From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
-highlight OverLength ctermbg=red ctermfg=white guibg=#DE7676
-match OverLength /\%81v.\+/
-
-" set cursorline
-" highlight CursorLine guibg=#FFE0F7
-" highlight CursorColumn guibg=#FFE0F7
-nnoremap <Leader>l :set cursorline!<CR>
-nnoremap <Leader>c :set cursorcolumn!<CR>
-
-" plugins ---------------------------------------------------------------------
-let g:SuperTabLongestEnhanced=1 " Fills in the longest common text found
-let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
 
