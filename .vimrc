@@ -2,7 +2,6 @@
 set nocompatible " not vi-compatible
 set number " shows line numbers
 set guifont=Consolas:h11:cANSI
-au GUIEnter * simalt ~x " starts gvim in maximized mode
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -11,6 +10,7 @@ if has("gui_running")
     if has("gui_gtk2")
         set guifont=Inconsolata\ 12
     elseif has("gui_win32")
+        au GUIEnter * simalt ~x " starts gvim in maximized mode
         set guifont=Inconsolata:h12:cANSI
     endif
 endif
