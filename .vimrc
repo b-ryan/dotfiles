@@ -5,8 +5,8 @@ set guifont=Consolas:h11:cANSI
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
-colorscheme kellys
 if has("gui_running")
+    colorscheme kellys
     if has("gui_gtk2")
         set guifont=Inconsolata\ 12
     elseif has("gui_win32")
@@ -111,7 +111,7 @@ inoremap <F4> <Esc>:AT<CR>
 " map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " NERDTree settings and mappings
-let NERDTreeIgnore=['\.swp$', '\.orig$']
+let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$']
 nnoremap  <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR> " open NERDTree and close split
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
 
