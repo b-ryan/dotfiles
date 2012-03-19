@@ -111,7 +111,7 @@ inoremap <F4> <Esc>:AT<CR>
 " map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " NERDTree settings and mappings
-let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$']
+let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$']
 nnoremap  <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR> " open NERDTree and close split
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
 
@@ -138,3 +138,6 @@ let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
+" Mapping to auto-format the entire document and return
+" to original position
+nnoremap <F8> mzgggqG`z
