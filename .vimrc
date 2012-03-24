@@ -1,6 +1,7 @@
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
-set number " shows line numbers
+" set number " shows line numbers
+set rnu " shows relative line numbers
 set guifont=Consolas:h11:cANSI
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
