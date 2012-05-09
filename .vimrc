@@ -1,31 +1,49 @@
+" Buck's vimrc
+" ------------
+"
+" Installed plugins:
+"
+"    plugin name      short description
+"    --------------------------------------------------------------------------
+"   * NERDTree        Provides a way to peruse directories
+"   * rename.vim      Allows renaming of files by doing :rename <file>
+"   * a.vim           Easy switching between header and source files
+"   * Fuzzy Finder    Provides 'fuzzy' searching for files and folders
+"   * l9              needed by Fuzzy Finder
+"   * MRU             Remembers recently visited files to open quickly
+"   * protodef        Creates skeleton C++ source files based on header files
+"   * snipMate        Snippets!
+"   * supertab        Allows the tab key to be fully used for omnicomplete
+"   * surround        Surround text with tags, quotes, etc.
+"   * tcomment        Quickly comment out lines or selections
+"   * OmniCppComplete C++ Omni-Complete
+
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
-" set number " shows line numbers
 set rnu " shows relative line numbers
-set guifont=Consolas:h11:cANSI
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=r  "remove right-hand scroll bar
 if has("gui_running")
     colorscheme kellys
-    if has("gui_gtk2")
+    set guioptions-=m  "remove menu bar
+    set guioptions-=T  "remove toolbar
+    set guioptions-=r  "remove right-hand scroll bar
+    if has("gui_gtk2") " Running on Linux
         set guifont=Inconsolata\ 12
-    elseif has("gui_win32")
-        au GUIEnter * simalt ~x " starts gvim in maximized mode
+    elseif has("gui_win32") " Running on Windows
         set guifont=Inconsolata:h12:cANSI
+        au GUIEnter * simalt ~x " starts gvim in maximized mode
     endif
 endif
 set bs=2 " needed on Windows for backspace to work properly
 
 " tab settings ->
-set autoindent
-set expandtab
-set smarttab
+set autoindent " Uses indent from current line as indent for new line
+set expandtab " Expands tab into spaces
+set smarttab " Allows deleting of full tab at beginning of lines when it's turned into spaces
 set shiftwidth=4
 set softtabstop=4
 " <-
 
-set visualbell
+set visualbell " Stops the 'ding' heard all the time
 
 " searching
 set incsearch " incremental search (i.e. search while typing)
@@ -36,17 +54,14 @@ set mouse=a " enables mouse use in all modes
 syntax enable " enables syntax highlighting
 filetype on " enables filetype detection
 filetype plugin on
-au BufNewFile,BufRead *.nsh set filetype=nsis " sets filetype for NSH scripts
 
 let mapleader = ","
 
 " jump to last position on previous close
-if has("autocmd")
-    autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \   exe "normal! g`\"" |
-        \ endif
-endif
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 
 " Brackets & paretheses
 " bracket completion
@@ -76,10 +91,12 @@ nnoremap <Leader>c :set cursorcolumn!<CR>
 " general key mappings --------------------------------------------------------
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
+
+" Fix mistake I often make -> typing :a instead of :wa
 map :a<CR> :wa<CR>
 
-" line movement mappings from
-" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+" line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
+" Use Alt-j or Alt-k to move lines up or down, respectively
 nnoremap <A-j> :m+<CR>==
 inoremap <A-j> <Esc>:m+<CR>==gi
 vnoremap <A-j> :m'>+<CR>gv=gv
@@ -98,31 +115,32 @@ nmap <C-c> <Esc>
 nnoremap + zo
 nnoremap - zc
 
-" plugin mappings ------------------------------------------------------------
+" Tab movements
 nnoremap <F5> :tabm<CR>
 nmap <C-S-PageUp> :tabm tabpagenr()-1<CR>
 nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
+
+" Mapping to auto-format the entire document and return
+" to original position
+nnoremap <F8> mzgggqG`z
+
+" -----------------------------------------------------------------------------
+" Plugin settings and mappings
+" -----------------------------------------------------------------------------
+
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
 " mappings for a.vim
-" nnoremap <F4> :AT<CR>
-nnoremap  <F4> :AT<CR>
+nnoremap <F4> :AT<CR>
 inoremap <F4> <Esc>:AT<CR>
-" map <F4> :FSRight<CR>
-" map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$']
-nnoremap  <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR> " open NERDTree and close split
+" mapping to open NERDTree and close the split it creates
+nnoremap <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR>
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
 
-" auto complete ---------------------------------------------------------------
-" Cpp auto complete tag files
-set tags+=~/vimfiles/tags/cpp
-set tags+=~/vimfiles/tags/qt4
-set tags+=~/vimfiles/tags/gridmule
-
-" let OmniCpp_SelectFirstItem = 1 " selects the first item in the complete box
+" OmniCppComplete settings ---------------------------------------------------
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
@@ -135,10 +153,7 @@ let g:SuperTabLongestEnhanced=1 " Fills in the longest common text found
 let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
 
 " automatically open and close the popup menu / preview window
-" FROM: http://vim.wikia.com/wiki/C%2B%2B_code_completion
+" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
+" TODO check for conflicts with supertab
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
-
-" Mapping to auto-format the entire document and return
-" to original position
-nnoremap <F8> mzgggqG`z
