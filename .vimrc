@@ -124,6 +124,12 @@ nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
 " to original position
 nnoremap <F8> mzgggqG`z
 
+" automatically open and close the popup menu / preview window
+" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
+" TODO check for conflicts with supertab
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menu,menuone,longest,preview
+
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
@@ -149,11 +155,6 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 nnoremap <F6> :FufDir<CR>
 nnoremap <F7> :FufFile<CR>
 
-let g:SuperTabLongestEnhanced=1 " Fills in the longest common text found
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+let g:SuperTabLongestEnhanced=1 " Enhances 'longest' in 'completeopt' setting
 let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
-
-" automatically open and close the popup menu / preview window
-" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
-" TODO check for conflicts with supertab
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,longest,preview
