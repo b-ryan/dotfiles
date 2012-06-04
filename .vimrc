@@ -8,7 +8,6 @@
 "   * NERDTree        Provides a way to peruse directories
 "   * rename.vim      Allows renaming of files by doing :rename <file>
 "   * a.vim           Easy switching between header and source files
-"   * Fuzzy Finder    Provides 'fuzzy' searching for files and folders
 "   * l9              needed by Fuzzy Finder
 "   * MRU             Remembers recently visited files to open quickly
 "   * protodef        Creates skeleton C++ source files based on header files
@@ -17,6 +16,8 @@
 "   * surround        Surround text with tags, quotes, etc.
 "   * tcomment        Quickly comment out lines or selections
 "   * OmniCppComplete C++ Omni-Complete
+"   * CtrlP           Fuzzy Finder
+"   * MiniBufExplorer Buffer explorer
 
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
@@ -143,7 +144,7 @@ inoremap <F4> <Esc>:AT<CR>
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$']
 " mapping to open NERDTree and close the split it creates
-nnoremap <F3> :NERDTreeToggle<CR><C-w><C-w>:q<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
 
 " OmniCppComplete settings ---------------------------------------------------
@@ -152,9 +153,11 @@ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 
 " Fuzzy Finder ---------------------------------------------------------------
-nnoremap <F6> :FufDir<CR>
-nnoremap <F7> :FufFile<CR>
-
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:SuperTabLongestEnhanced=1 " Enhances 'longest' in 'completeopt' setting
 let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
+
+" MiniBufExplorer ------------------------------------------------------------
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplUseSingleClick = 1
