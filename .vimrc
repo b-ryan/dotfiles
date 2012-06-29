@@ -8,7 +8,6 @@
 "   * NERDTree        Provides a way to peruse directories
 "   * rename.vim      Allows renaming of files by doing :rename <file>
 "   * a.vim           Easy switching between header and source files
-"   * l9              needed by Fuzzy Finder
 "   * MRU             Remembers recently visited files to open quickly
 "   * protodef        Creates skeleton C++ source files based on header files
 "   * snipMate        Snippets!
@@ -17,7 +16,6 @@
 "   * tcomment        Quickly comment out lines or selections
 "   * OmniCppComplete C++ Omni-Complete
 "   * CtrlP           Fuzzy Finder
-"   * MiniBufExplorer Buffer explorer
 
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
