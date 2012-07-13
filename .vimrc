@@ -21,7 +21,8 @@
 set nocompatible " not vi-compatible
 set rnu " shows relative line numbers
 if has("gui_running")
-    colorscheme kellys
+    set background=dark
+    colorscheme solarized
     set guioptions-=m  "remove menu bar
     set guioptions-=T  "remove toolbar
     set guioptions-=r  "remove right-hand scroll bar
