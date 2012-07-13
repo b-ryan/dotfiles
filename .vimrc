@@ -43,6 +43,10 @@ set shiftwidth=4
 set softtabstop=4
 " <-
 
+" Visual whitespace
+set list
+set listchars=tab:>\ ,trail:. 
+
 set visualbell " Stops the 'ding' heard all the time
 
 " searching
