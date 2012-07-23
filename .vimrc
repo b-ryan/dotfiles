@@ -16,6 +16,7 @@
 "   * tcomment        Quickly comment out lines or selections
 "   * OmniCppComplete C++ Omni-Complete
 "   * CtrlP           Fuzzy Finder
+"   * delimitMate     Auto complete brackets, etc.
 
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
@@ -59,6 +60,7 @@ syntax enable " enables syntax highlighting
 filetype on " enables filetype detection
 filetype plugin on
 
+" change <leader> to a comma
 let mapleader = ","
 
 " jump to last position on previous close
@@ -67,12 +69,9 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
-" Brackets & paretheses
-" bracket completion
-inoremap {<CR> {<CR>}<Esc>O<Tab>
-
 " other stuff -----------------------------------------------------------------
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
+set colorcolumn=80
 highlight OverLength ctermbg=red ctermfg=white guibg=#DE7676
 let g:OverLengthOn = 0
 function OverLengthToggle()
@@ -99,6 +98,10 @@ nnoremap Y y$
 " Fix mistake I often make -> typing :a instead of :wa
 map :a<CR> :wa<CR>
 
+" Keys for more efficient saving
+nnoremap <F11> :w<CR>
+nnoremap <F12> :wa<CR>
+
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
 " Use Alt-j or Alt-k to move lines up or down, respectively
 nnoremap <A-j> :m+<CR>==
@@ -112,8 +115,7 @@ vnoremap <A-k> :m-2<CR>gv=gv
 inoremap <C-BS> <C-w>
 
 " Proper Ctrl+C -> Esc map
-imap <C-c> <Esc>
-nmap <C-c> <Esc>
+map <C-c> <Esc>
 
 " fold mapping
 nnoremap + zo
@@ -141,56 +143,31 @@ set completeopt=menu,menuone,longest,preview
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
 " mappings for a.vim
-nnoremap <F4> :AT<CR>
-inoremap <F4> <Esc>:AT<CR>
+nnoremap <F4> :A<CR>
+inoremap <F4> <Esc>:A<CR>
 
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$']
-" mapping to open NERDTree and close the split it creates
+let NERDTreeChDirMode=2 " set the CWD whenever NERDTree root changes
+let NERDTreeShowHidden=1 " show hidden files
+" mappings to open NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
 inoremap <F3> <Esc>:NERDTreeToggle<TR>a
+" open current file in NerdTree
+map <leader>r :NERDTreeFind<cr>
 
 " OmniCppComplete settings ---------------------------------------------------
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 
-" Fuzzy Finder ---------------------------------------------------------------
+" Super Tab ------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 let g:SuperTabLongestEnhanced=1 " Enhances 'longest' in 'completeopt' setting
 let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
 
-" MiniBufExplorer ------------------------------------------------------------
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplUseSingleClick = 1
-
-" XML Pretty formatting
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
+" delimitMate ----------------------------------------------------------------
+let delimitMate_expand_cr=1 " Expand carriage return
+let delimitMate_expand_space=1 " Expand spaces
+silent! imap <unique> <buffer> <C-Tab> <Plug>delimitMateS-Tab
+silent! imap <unique> <buffer> <C-S-Tab> <Plug>delimitMateJumpMany
