@@ -147,7 +147,8 @@ nnoremap <F4> :A<CR>
 inoremap <F4> <Esc>:A<CR>
 
 " NERDTree settings and mappings
-let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$']
+let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
+                \   '\.swo$']
 let NERDTreeChDirMode=2 " set the CWD whenever NERDTree root changes
 let NERDTreeShowHidden=1 " show hidden files
 " mappings to open NERDTree
