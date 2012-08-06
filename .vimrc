@@ -163,5 +163,5 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 " delimitMate ----------------------------------------------------------------
 let delimitMate_expand_cr=1 " Expand carriage return
 let delimitMate_expand_space=1 " Expand spaces
-silent! imap <unique> <buffer> <C-Tab> <Plug>delimitMateS-Tab
-silent! imap <unique> <buffer> <C-S-Tab> <Plug>delimitMateJumpMany
+silent! imap <unique> <buffer> <Tab> <Plug>delimitMateS-Tab
+silent! imap <unique> <buffer> <C-Tab> <Plug>delimitMateJumpMany
