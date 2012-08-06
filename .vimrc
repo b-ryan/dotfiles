@@ -11,7 +11,6 @@
 "   * MRU             Remembers recently visited files to open quickly
 "   * protodef        Creates skeleton C++ source files based on header files
 "   * snipMate        Snippets!
-"   * supertab        Allows the tab key to be fully used for omnicomplete
 "   * surround        Surround text with tags, quotes, etc.
 "   * tcomment        Quickly comment out lines or selections
 "   * OmniCppComplete C++ Omni-Complete
@@ -132,7 +131,6 @@ nnoremap <F8> mzgggqG`z
 
 " automatically open and close the popup menu / preview window
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
-" TODO check for conflicts with supertab
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menu,menuone,longest,preview
 
@@ -160,11 +158,6 @@ map <leader>r :NERDTreeFind<cr>
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
-
-" Super Tab ------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-let g:SuperTabLongestEnhanced=1 " Enhances 'longest' in 'completeopt' setting
-let g:SuperTabLongestHighlight=1 " automatically highlights the first entry
 
 " delimitMate ----------------------------------------------------------------
 let delimitMate_expand_cr=1 " Expand carriage return
