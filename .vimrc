@@ -43,6 +43,8 @@ set shiftwidth=4
 set softtabstop=4
 " <-
 
+set hidden " only hide buffers when switching
+
 " Visual whitespace
 set list
 set listchars=tab:>\ ,trail:. 
