@@ -15,6 +15,7 @@
 "   * tcomment        Quickly comment out lines or selections
 "   * OmniCppComplete C++ Omni-Complete
 "   * CtrlP           Fuzzy Finder
+"   * supertab
 "   * delimitMate     Auto complete brackets, etc.
 
 " basic settings --------------------------------------------------------------
@@ -43,11 +44,11 @@ set shiftwidth=4
 set softtabstop=4
 " <-
 
-set hidden " only hide buffers when switching
+set hidden " only hide buffers when switching (don't close them which erases undo)
 
 " Visual whitespace
 set list
-set listchars=tab:>\ ,trail:. 
+set listchars=tab:>\ ,trail:.
 
 set visualbell " Stops the 'ding' heard all the time
 
@@ -70,20 +71,27 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+" ensure visual whitespace is being shown
+autocmd BufEnter * set list
+
 " other stuff -----------------------------------------------------------------
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
 set colorcolumn=80
 highlight OverLength ctermbg=red ctermfg=white guibg=#DE7676
-let g:OverLengthOn = 0
-function OverLengthToggle()
-    if g:OverLengthOn == 1
-        match none
-        let g:OverLengthOn = 0
-    else
-        match OverLength /.\%>81v/
-        let g:OverLengthOn = 1
-    endif
-endfunction
+
+" Make sure this isn't defined twice (sourcing .vimrc complains)
+if !exists("*OverLengthToggle")
+    let g:OverLengthOn = 0
+    function OverLengthToggle()
+        if g:OverLengthOn == 1
+            match none
+            let g:OverLengthOn = 0
+        else
+            match OverLength /.\%>81v/
+            let g:OverLengthOn = 1
+        endif
+    endfunction
+endif
 nnoremap <C-h> :call OverLengthToggle()<CR>
 
 " set cursorline
@@ -95,9 +103,6 @@ nnoremap <Leader>c :set cursorcolumn!<CR>
 " general key mappings --------------------------------------------------------
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
-
-" Fix mistake I often make -> typing :a instead of :wa
-map :a<CR> :wa<CR>
 
 " Keys for more efficient saving
 nnoremap <F11> :w<CR>
@@ -133,8 +138,8 @@ nnoremap <F8> mzgggqG`z
 
 " automatically open and close the popup menu / preview window
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menu,menuone,longest,preview
+" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+" set completeopt=menu,menuone,longest,preview
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
@@ -144,7 +149,6 @@ set completeopt=menu,menuone,longest,preview
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
 " mappings for a.vim
 nnoremap <F4> :A<CR>
-inoremap <F4> <Esc>:A<CR>
 
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
@@ -153,9 +157,15 @@ let NERDTreeChDirMode=2 " set the CWD whenever NERDTree root changes
 let NERDTreeShowHidden=1 " show hidden files
 " mappings to open NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
-inoremap <F3> <Esc>:NERDTreeToggle<TR>a
-" open current file in NerdTree
+" find the current file in NerdTree
 map <leader>r :NERDTreeFind<cr>
+
+" supertab -------------------------------------------------------------------
+" kick off supertab with space
+" leave tab controls to delimitMate
+let g:SuperTabMappingForward = '<C-Space>'
+let g:SuperTabMappingBackward = '<S-C-Space>'
+
 
 " OmniCppComplete settings ---------------------------------------------------
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
@@ -165,5 +175,5 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 " delimitMate ----------------------------------------------------------------
 let delimitMate_expand_cr=1 " Expand carriage return
 let delimitMate_expand_space=1 " Expand spaces
-silent! imap <unique> <buffer> <Tab> <Plug>delimitMateS-Tab
-silent! imap <unique> <buffer> <C-Tab> <Plug>delimitMateJumpMany
+imap <Tab> <Plug>delimitMateS-Tab
+imap <S-Tab> <Plug>delimitMateJumpMany
