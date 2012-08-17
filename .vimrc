@@ -158,14 +158,15 @@ let NERDTreeShowHidden=1 " show hidden files
 " mappings to open NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
 " find the current file in NerdTree
-map <leader>r :NERDTreeFind<cr>
+map <leader>r :NERDTreeFind<CR>
 
 " supertab -------------------------------------------------------------------
 " kick off supertab with space
 " leave tab controls to delimitMate
 let g:SuperTabMappingForward = '<C-Space>'
 let g:SuperTabMappingBackward = '<S-C-Space>'
-
+" don't map <CR> as it's causing conflicts with delimitMate's expand CR
+let g:SuperTabCrMapping = 0
 
 " OmniCppComplete settings ---------------------------------------------------
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
