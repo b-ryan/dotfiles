@@ -5,19 +5,34 @@
 "
 "    plugin name      short description
 "    --------------------------------------------------------------------------
-"   * pathogen        Plugin path manager (for bundling plugins)
-"   * NERDTree        Provides a way to peruse directories
-"   * rename.vim      Allows renaming of files by doing :rename <file>
+"
+"   Simple plugins (one script in the plugin/ dir)
 "   * a.vim           Easy switching between header and source files
 "   * MRU             Remembers recently visited files to open quickly
-"   * protodef        Creates skeleton C++ source files based on header files
-"   * snipMate        Snippets!
-"   * surround        Surround text with tags, quotes, etc.
-"   * tcomment        Quickly comment out lines or selections
-"   * OmniCppComplete C++ Omni-Complete
+"   * rename          Allows renaming of files by doing :rename <file>
+"   * pathogen        Plugin path manager (for bundling plugins)
+"   * visualmark      Visualize marks (type 'mm')
+"
+"   Simple ftplugins (one script in the ftplugin/ dir)
+"   * nsh
+"   * phpfolding
+"   * xml             Contains function for pretty XML printing
+"
+"   Bundled plugins
+"   * bufexplorer     Buffer explorer
+"   * clojure         Clojure highlighting, indenting, etc.
 "   * CtrlP           Fuzzy Finder
-"   * supertab
 "   * delimitMate     Auto complete brackets, etc.
+"   * fugitive        Git wrapper
+"   * NERDTree        Provides a way to peruse directories
+"   * OmniCppComplete C++ Omni-Complete
+"   * protodef        Creates skeleton C++ source files based on header files
+"   * racket          Highlight, indenting, etc. for Racket language
+"   * snipMate        Snippets!
+"   * supertab
+"   * surround        Surround text with tags, quotes, etc.
+"   * taglist         CTags explorer for viewing all tags in open files
+"   * tcomment        Quickly comment out lines or selections
 
 call pathogen#infect()
 
