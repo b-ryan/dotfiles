@@ -5,6 +5,7 @@
 "
 "    plugin name      short description
 "    --------------------------------------------------------------------------
+"   * pathogen        Plugin path manager (for bundling plugins)
 "   * NERDTree        Provides a way to peruse directories
 "   * rename.vim      Allows renaming of files by doing :rename <file>
 "   * a.vim           Easy switching between header and source files
@@ -17,6 +18,8 @@
 "   * CtrlP           Fuzzy Finder
 "   * supertab
 "   * delimitMate     Auto complete brackets, etc.
+
+call pathogen#infect()
 
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
