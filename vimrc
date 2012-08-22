@@ -39,19 +39,6 @@ call pathogen#infect()
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
 set rnu " shows relative line numbers
-if has("gui_running")
-    set background=dark
-    colorscheme solarized
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    if has("gui_gtk2") " Running on Linux
-        set guifont=Inconsolata\ 12
-    elseif has("gui_win32") " Running on Windows
-        set guifont=Inconsolata:h12:cANSI
-        au GUIEnter * simalt ~x " starts gvim in maximized mode
-    endif
-endif
 set bs=2 " needed on Windows for backspace to work properly
 
 " tab settings ->
@@ -95,22 +82,6 @@ autocmd BufEnter * set list
 " other stuff -----------------------------------------------------------------
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
 set colorcolumn=80
-highlight OverLength ctermbg=red ctermfg=white guibg=#DE7676
-
-" Make sure this isn't defined twice (sourcing .vimrc complains)
-if !exists("*OverLengthToggle")
-    let g:OverLengthOn = 0
-    function OverLengthToggle()
-        if g:OverLengthOn == 1
-            match none
-            let g:OverLengthOn = 0
-        else
-            match OverLength /.\%>81v/
-            let g:OverLengthOn = 1
-        endif
-    endfunction
-endif
-nnoremap <C-h> :call OverLengthToggle()<CR>
 
 " set cursorline
 " highlight CursorLine guibg=#FFE0F7
