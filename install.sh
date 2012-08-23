@@ -1,13 +1,19 @@
 #!/bin/bash
-FLAGS="sf"
+FLAGS="-sf"
 if [ "$1" = "--no-force" ]
 then
-    FLAGS="s"
+    FLAGS="-s"
 fi
-ln -${FLAGS}n `pwd`/vim ~/.vim
-ln -${FLAGS} `pwd`/vimrc ~/.vimrc
-ln -${FLAGS} `pwd`/gvimrc ~/.gvimrc
-ln -${FLAGS} `pwd`/bashrc ~/.bashrc
-ln -${FLAGS} `pwd`/gitconfig ~/.gitconfig
+DIR_FLAGS="${FLAGS}n"
+symlink() {
+    ln $FLAGS `pwd`/$1 ~/$2
+}
+dirlink() {
+    ln $DIR_FLAGS `pwd`/$1 ~/$2
+}
+symlink vimrc .vimrc
+symlink gvimrc .gvimrc
+symlink bashrc .bashrc
+symlink gitconfig .gitconfig
 mkdir ~/bin 2> /dev/null || true
-ln -${FLAGS} `pwd`/bin/colordiff.pl ~/bin/colordiff.pl
+dirlink bin/colordiff.pl bin/colordiff.pl
