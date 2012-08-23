@@ -9,3 +9,5 @@ elseif has("gui_win32") " Running on Windows
     set guifont=Inconsolata:h12:cANSI
     au GUIEnter * simalt ~x " starts gvim in maximized mode
 endif
+" visualmark highlight
+highlight SignColor ctermfg=white ctermbg=blue guifg=#333 guibg=#999
