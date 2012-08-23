@@ -11,9 +11,10 @@ symlink() {
 dirlink() {
     ln $DIR_FLAGS `pwd`/$1 ~/$2
 }
+dirlink vim .vim
 symlink vimrc .vimrc
 symlink gvimrc .gvimrc
 symlink bashrc .bashrc
 symlink gitconfig .gitconfig
 mkdir ~/bin 2> /dev/null || true
-dirlink bin/colordiff.pl bin/colordiff.pl
+symlink bin/colordiff.pl bin/colordiff.pl
