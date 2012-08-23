@@ -8,10 +8,10 @@ they do not start with a '.'. This is to make them non-hidden files.
 
 Just run
 
-    ./install
+    ./install.sh
 
 It will create symlinks for all the dot-files in your home directory. If you
 don't want it to force the links to be created (in case those files already
 exist in your home directory), you can instead run
 
-    ./install --no-force
+    ./install.sh --no-force
