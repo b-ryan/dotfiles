@@ -1,5 +1,4 @@
-colorscheme solarized
-set background=dark
+colorscheme pyte
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
