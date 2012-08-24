@@ -65,7 +65,7 @@ unset color_prompt force_color_prompt
 #     ;;
 # esac
 
-PS1="\[\e[0;34m\]\u@\h\[\e[m\]:\[\e[1;35m\]\W\[\e[0m\]\$ "
+PS1='\[\e[0;34m\]\u@\h\[\e[m\]:\[\e[1;35m\]\W\[\e[0;33m\]$(__git_ps1 " (%s)")\[\e[0m\]\$ '
 # PS1 explanation:
 # \[ - beginning of non-printing sequence; ie. characters or sequences that are not shown (like colors)
 # \e[ - beginning of color sequence
@@ -79,6 +79,7 @@ PS1="\[\e[0;34m\]\u@\h\[\e[m\]:\[\e[1;35m\]\W\[\e[0m\]\$ "
 # 1;35m - dark purple
 # ...
 # \W - basename of the current working directory
+# $(__git_ps1 " (%s)") - print current branch if within git repository
 # 0m - no color
 # \$ - $ for regular users, # for root
 
