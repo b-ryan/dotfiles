@@ -129,6 +129,7 @@ nnoremap <F8> mzgggqG`z
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
 " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " set completeopt=menu,menuone,longest,preview
+set complete-=t,i
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
