@@ -167,3 +167,8 @@ let delimitMate_expand_cr=1 " Expand carriage return
 let delimitMate_expand_space=1 " Expand spaces
 imap <Tab> <Plug>delimitMateS-Tab
 imap <S-Tab> <Plug>delimitMateJumpMany
+
+" ctrlp ----------------------------------------------------------------------
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$\|build$',
+    \ }
