@@ -49,6 +49,8 @@ set shiftwidth=4
 set softtabstop=4
 " <-
 
+set laststatus=2
+
 set hidden " only hide buffers when switching (don't close them which erases undo)
 
 " Visual whitespace
