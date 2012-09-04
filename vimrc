@@ -148,7 +148,7 @@ let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
                 \   '\.swo$']
 let NERDTreeChDirMode=2 " set the CWD whenever NERDTree root changes
 let NERDTreeShowHidden=1 " show hidden files
-" mappings to open NERDTree
+" mapping to open NERDTree
 nnoremap <F3> :NERDTreeToggle<CR>
 " find the current file in NerdTree
 map <leader>r :NERDTreeFind<CR>
@@ -181,3 +181,5 @@ let g:ctrlp_by_filename = 1 " default to filename search instead of full path
 " taglist --------------------------------------------------------------------
 let Tlist_Use_Right_Window = 1 " place taglist window on the right
 let Tlist_Display_Prototype = 1 " show prototypes instead of tags
+" mapping to open taglist
+nmap <F6> :TlistToggle<CR>
