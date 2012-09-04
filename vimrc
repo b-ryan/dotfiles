@@ -121,10 +121,6 @@ inoremap <C-BS> <C-w>
 " Proper Ctrl+C -> Esc map
 map <C-c> <Esc>
 
-" fold mapping
-nnoremap + zo
-nnoremap - zc
-
 " Tab movements
 nnoremap <F5> :tabm<CR>
 nmap <C-S-PageUp> :tabm tabpagenr()-1<CR>
