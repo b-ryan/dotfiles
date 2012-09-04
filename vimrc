@@ -82,6 +82,12 @@ autocmd BufReadPost *
 " ensure visual whitespace is being shown
 autocmd BufEnter * set list
 
+" automatically open and close the popup menu / preview window
+" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
+" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+" set completeopt=menu,menuone,longest,preview
+set complete-=t,i
+
 " other stuff -----------------------------------------------------------------
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
 set colorcolumn=80
@@ -128,11 +134,8 @@ nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
 " to original position
 nnoremap <F8> mzgggqG`z
 
-" automatically open and close the popup menu / preview window
-" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
-" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-" set completeopt=menu,menuone,longest,preview
-set complete-=t,i
+" Remove trailing whitespace
+nmap <Leader>w :%s/\s\+$//<CR>
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
