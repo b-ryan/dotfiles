@@ -182,3 +182,17 @@ let Tlist_Use_Right_Window = 1 " place taglist window on the right
 let Tlist_Display_Prototype = 1 " show prototypes instead of tags
 " mapping to open taglist
 nmap <F6> :TlistToggle<CR>
+
+" snipMate--------------------------------------------------------------------
+" be able to reload snippets from:
+" http://code.google.com/p/snipmate/issues/detail?id=67
+function! ReloadSnippets(snippets_dir, ft)
+    if strlen(a:ft) == 0
+        let filetype = "_"
+    else
+        let filetype = a:ft
+    endif
+    call ResetSnippets()
+    call GetSnippets(a:snippets_dir, filetype)
+endfunction
+nmap ,m :call ReloadSnippets(snippets_dir, &filetype)<CR>
