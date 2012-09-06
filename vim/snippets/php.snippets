@@ -136,16 +136,8 @@ snippet doc_i
 	} // END interface $1
 # class ...
 snippet class
-	/**
-	 * ${1}
-	 **/
-	class ${2:ClassName}
-	{
-		${3}
-		function ${4:__construct}(${5:argument})
-		{
-			${6:// code...}
-		}
+	class ${1:`Filename()`} {
+		${2}
 	}
 # define(...)
 snippet def
