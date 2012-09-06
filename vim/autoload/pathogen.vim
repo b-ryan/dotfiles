@@ -218,13 +218,13 @@ function! s:Findcomplete(A,L,P) " {{{1
   return sort(keys(found))
 endfunction " }}}1
 
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Ve       :execute s:find(<count>,'edit<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vedit    :execute s:find(<count>,'edit<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vsplit   :execute s:find(<count>,'split<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vvsplit  :execute s:find(<count>,'vsplit<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vtabedit :execute s:find(<count>,'tabedit<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vpedit   :execute s:find(<count>,'pedit<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vread    :execute s:find(<count>,'read<bang>',<q-args>)
-command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete Vopen    :execute s:find(<count>,'edit<bang>',<q-args>,'lcd')
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRe       :execute s:find(<count>,'edit<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRedit    :execute s:find(<count>,'edit<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRsplit   :execute s:find(<count>,'split<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRvsplit  :execute s:find(<count>,'vsplit<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRtabedit :execute s:find(<count>,'tabedit<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRpedit   :execute s:find(<count>,'pedit<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRread    :execute s:find(<count>,'read<bang>',<q-args>)
+command! -bar -bang -count=1 -nargs=1 -complete=customlist,s:Findcomplete VRopen    :execute s:find(<count>,'edit<bang>',<q-args>,'lcd')
 
 " vim:set ft=vim ts=8 sw=2 sts=2:
