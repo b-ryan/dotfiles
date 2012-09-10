@@ -18,6 +18,7 @@
  added = yellow
  changed = green
  untracked = cyan
+
 [alias]
  log1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%cr)%C(reset) %C(white)%s%C(reset) %C(bold white)- %cn%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
  log2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cD%C(reset) %C(bold green)(%cr)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)- %cn%C(reset)' --abbrev-commit
@@ -26,3 +27,8 @@
  ci = commit -a
  dev = checkout develop
  mas = checkout master
+
+[difftool "kdiff3"]
+ path = /usr/bin/kdiff3
+[mergetool "kdiff3"]
+ path = /usr/bin/kdiff3
