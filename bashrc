@@ -65,23 +65,10 @@ unset color_prompt force_color_prompt
 #     ;;
 # esac
 
-PS1='\[\e[0;34m\]\u@\h\[\e[m\]:\[\e[1;35m\]\W\[\e[0;33m\]$(__git_ps1 " (%s)")\[\e[0m\]\$ '
-# PS1 explanation:
-# \[ - beginning of non-printing sequence; ie. characters or sequences that are not shown (like colors)
-# \e[ - beginning of color sequence
-# 0;34m - color code for blue
-# \] - end of non-printing sequence
-# \t - HH:MM:SS
-# \h - hostname
-# ...
-# \e[m - end of color sequence
-# ...
-# 1;35m - dark purple
-# ...
-# \W - basename of the current working directory
-# $(__git_ps1 " (%s)") - print current branch if within git repository
-# 0m - no color
-# \$ - $ for regular users, # for root
+function _update_ps1() {
+   export PS1="$(powerline-bash.py $?)"
+}
+export PROMPT_COMMAND="_update_ps1"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

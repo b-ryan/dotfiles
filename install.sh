@@ -19,3 +19,4 @@ symlink bashrc .bashrc
 symlink gitconfig .gitconfig
 mkdir ~/bin 2> /dev/null || true
 symlink bin/colordiff.pl bin/colordiff.pl
+symlink bin/powerline-bash.py bin/powerline-bash.py
