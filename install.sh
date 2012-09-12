@@ -1,15 +1,20 @@
 #!/bin/bash
-FLAGS="-sf"
-if [ "$1" = "--no-force" ]
+FLAGS="-s"
+if [ "$1" = "--force" ]
 then
-    FLAGS="-s"
+    FLAGS="-sf"
 fi
 DIR_FLAGS="${FLAGS}n"
+
+create_link() {
+    dest=`pwd`/$2
+    ln $1 $dest ~/$3 && echo "created link '$dest'"
+}
 symlink() {
-    ln $FLAGS `pwd`/$1 ~/$2
+    create_link $FLAGS $1 $2
 }
 dirlink() {
-    ln $DIR_FLAGS `pwd`/$1 ~/$2
+    create_link $DIR_FLAGS $1 $2
 }
 dirlink vim .vim
 symlink vimrc .vimrc
@@ -20,3 +25,4 @@ symlink gitconfig .gitconfig
 mkdir ~/bin 2> /dev/null || true
 symlink bin/colordiff.pl bin/colordiff.pl
 symlink bin/powerline-bash.py bin/powerline-bash.py
+true

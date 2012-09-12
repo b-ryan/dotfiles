@@ -10,8 +10,8 @@ Just run
 
     ./install.sh
 
-It will create symlinks for all the dot-files in your home directory. If you
-don't want it to force the links to be created (in case those files already
-exist in your home directory), you can instead run
+It will create symlinks for all the dot-files in your home directory (but won't
+overwrite any existing files/links). If you want it to force the links to be
+created, you can run
 
-    ./install.sh --no-force
+    ./install.sh --force
