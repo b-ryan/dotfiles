@@ -32,3 +32,5 @@
  path = /usr/bin/kdiff3
 [mergetool "kdiff3"]
  path = /usr/bin/kdiff3
+[core]
+ excludesfile = ~/.gitignore
