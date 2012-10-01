@@ -176,6 +176,7 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|build$',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
+let g:ctrlp_regexp = 0 " default to regexp search
 
 " taglist --------------------------------------------------------------------
 let Tlist_Use_Right_Window = 1 " place taglist window on the right
