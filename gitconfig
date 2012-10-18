@@ -28,9 +28,9 @@
  dev = checkout develop
  mas = checkout master
 
-[difftool "kdiff3"]
- path = /usr/bin/kdiff3
-[mergetool "kdiff3"]
- path = /usr/bin/kdiff3
+[difftool "meld"]
+ path = /usr/bin/meld
+[mergetool "meld"]
+ path = /usr/bin/meld
 [core]
  excludesfile = ~/.gitignore

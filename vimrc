@@ -137,6 +137,11 @@ nmap <Leader>w :%s/\s\+$//<CR>
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
 
+" phpfolding ------------------------------------------------------------------
+map <F5> <Esc>:EnableFastPHPFolds<Cr>
+map <F6> <Esc>:EnablePHPFolds<Cr>
+map <F7> <Esc>:DisablePHPFolds<Cr>
+
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
 " mappings for a.vim
