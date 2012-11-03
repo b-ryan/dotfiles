@@ -21,6 +21,7 @@ symlink vimrc .vimrc
 symlink gvimrc .gvimrc
 symlink git-completion.sh .git-completion.sh
 symlink bashrc .bashrc
+symlink bash_aliases .bash_aliases
 symlink gitconfig .gitconfig
 symlink gitignore .gitignore
 mkdir ~/bin 2> /dev/null || true
