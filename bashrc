@@ -29,6 +29,11 @@ export PROMPT_COMMAND="_update_ps1"
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
 eval "$(dircolors -b $DIRCOLORS)"
 
+# Allow the up/down arrows to search commands backward and forward
+# From http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -36,15 +41,3 @@ eval "$(dircolors -b $DIRCOLORS)"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
-# Allow the up/down arrows to search commands backward and forward
-# From http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
