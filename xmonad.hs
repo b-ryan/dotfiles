@@ -1,35 +1,25 @@
+-- required packages:
+-- xmonad
+-- xmonad-contrib
+-- xmobar
+
+-- https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad
+-- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Configuring_xmonad_to_use_xmobar
+
 import XMonad
-import XMonad.Config.Gnome
-import XMonad.Util.Run
-
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.FadeInactive
-
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
---http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Util-EZConfig.html
---http://thinkingeek.com/2011/11/21/simple-guide-configure-xmonad-dzen2-conky/
-
-myXmonadBar = "dzen2 -x 1920 -y 0 -h 24 -w 1920 -ta l -fg #FFFFFF -bg #1B1D1E"
-
 main = do
-    dzenLeftBar <- spawnPipe myXmonadBar
-    xmonad $ gnomeConfig
-        {
-            logHook = myLogHook dzenLeftBar >> fadeInactiveLogHook 0xdddddddd
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ defaultConfig
+        { manageHook = manageDocks <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , logHook = dynamicLogWithPP xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50
+                        }
         }
-
---Bar
-myLogHook :: Handle -> X ()
-myLogHook h = dynamicLogWithPP $ defaultPP
-    {
-        ppCurrent           =   dzenColor "#ebac54" "#1B1D1E" . pad
-      , ppVisible           =   dzenColor "white" "#1B1D1E" . pad
-      , ppHidden            =   dzenColor "white" "#1B1D1E" . pad
-      , ppHiddenNoWindows   =   dzenColor "#7b7b7b" "#1B1D1E" . pad
-      , ppUrgent            =   dzenColor "#ff0000" "#1B1D1E" . pad
-      , ppWsSep             =   " "
-      , ppSep               =   "  |  "
-      , ppTitle             =   (" " ++) . dzenColor "white" "#1B1D1E" . dzenEscape
-      , ppOutput            =   hPutStrLn h
-    }
