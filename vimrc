@@ -65,7 +65,7 @@ set hlsearch  " highlight searched text
 set ignorecase " ignore case on searches
 set smartcase " override ignorecase when search term has uppercase in it
 
-set mouse="" " disables mouse use in all modes
+set mouse=a " enables mouse use in all modes
 syntax enable " enables syntax highlighting
 filetype on " enables filetype detection
 filetype plugin on
