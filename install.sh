@@ -42,7 +42,6 @@ symlink bashrc
 symlink bash_aliases
 symlink gitconfig
 symlink gitignore
-symlink git-completion.sh
 symlink hgrc
 
 symlink bin/colordiff.pl bin/colordiff.pl
