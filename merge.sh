@@ -1,4 +1,4 @@
 #!/bin/bash
 git checkout work
-git merge master
+git merge master --commit
 git checkout -
