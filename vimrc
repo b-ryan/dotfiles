@@ -36,12 +36,15 @@
 
 call pathogen#infect()
 
+" change <leader> to a comma
+let mapleader = ","
+
 " basic settings --------------------------------------------------------------
 set nocompatible " not vi-compatible
 set rnu " shows relative line numbers
 set bs=2 " needed on Windows for backspace to work properly
 
-" tab settings ->
+" tab settings -------------------------------------------------------------->
 set autoindent " Uses indent from current line as indent for new line
 set expandtab " Inserts spaces instead of actual tabs
 set shiftwidth=4 " The number of columns to use when auto-indenting lines
@@ -66,9 +69,13 @@ set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
 " hitting tab will insert 4 columns for you (the value of softtabstop).
 " However, since this isn't enough to be a tab character, it will use spaces
 " to achieve those 4 columns.
-" <-
 
-set laststatus=2
+" mapping to toggle spaces/tabs. This should work fine, but I haven't figured
+" out under what circumstances behaviors will be exactly the same.
+nmap <Leader>t :set expandtab!<CR>
+" <---------------------------------------------------------------------------
+
+set laststatus=2 " Ensures that if only 1 window is visible, the status bar will show
 
 set hidden " only hide buffers when switching (don't close them which erases undo)
 
@@ -88,9 +95,6 @@ set mouse=a " enables mouse use in all modes
 syntax enable " enables syntax highlighting
 filetype on " enables filetype detection
 filetype plugin on
-
-" change <leader> to a comma
-let mapleader = ","
 
 " jump to last position on previous close
 autocmd BufReadPost *
