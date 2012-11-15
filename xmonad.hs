@@ -21,5 +21,7 @@ main = do
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppHidden = xmobarColor "lightgrey" ""
+                        , ppHiddenNoWindows = xmobarColor "grey" ""
                         }
         }
