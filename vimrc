@@ -56,6 +56,16 @@ set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
              " only when they are at the beginning of a line).
              " When using softtabstop and expand tab, smarttab doesn't need
              " to be used
+" From my understand, the fundamental difference between tabstop and
+" softtabstop is that tabstop determines the behavior of actual tab characters
+" (<Tab>). If neither expandtab nor softtabstop are set, then using the tab
+" key will just insert the <Tab> character and use the value of tabstop to
+" determine how wide the tab will be.
+" On the other hand, softtabstop takes over when the tab key on your keyboard
+" is pressed. If your softtabstop is set to 4 and tabstop is set to 8, then
+" hitting tab will insert 4 columns for you (the value of softtabstop).
+" However, since this isn't enough to be a tab character, it will use spaces
+" to achieve those 4 columns.
 " <-
 
 set laststatus=2
