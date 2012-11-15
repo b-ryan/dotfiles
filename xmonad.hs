@@ -13,15 +13,16 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
+xmobarPPOptions :: Handle -> PP
+xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
+                                  , ppTitle = xmobarColor "green" "" . shorten 50
+                                  , ppHidden = xmobarColor "lightgrey" ""
+                                  , ppHiddenNoWindows = xmobarColor "grey" ""
+                                  }
 main = do
-    xmproc <- spawnPipe "xmobar"
+    xmproc <- spawnPipe "xmobar --screen=0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
-        , logHook = dynamicLogWithPP xmobarPP
-                        { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
-                        , ppHidden = xmobarColor "lightgrey" ""
-                        , ppHiddenNoWindows = xmobarColor "grey" ""
-                        }
+        , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
         }
