@@ -43,10 +43,19 @@ set bs=2 " needed on Windows for backspace to work properly
 
 " tab settings ->
 set autoindent " Uses indent from current line as indent for new line
-set expandtab " Expands tab into spaces
-set smarttab " Allows deleting of full tab at beginning of lines when it's turned into spaces
-set shiftwidth=4
-set softtabstop=4
+set expandtab " Inserts spaces instead of actual tabs
+set shiftwidth=4 " The number of columns to use when auto-indenting lines
+set tabstop=4 " Determines the number of columns to use when showing actual
+              " tab characters
+" set softtabstop=4 " Determines the number of columns that will be inserted or
+                  " deleted when you hit the tab key. Will use a mixture of
+                  " spaces and tabs when expandtab is not set.
+set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
+             " at the beginnings of lines (in more practical terms, it allows
+             " you to treat tabs that were expanded into spaces as tabs, but
+             " only when they are at the beginning of a line).
+             " When using softtabstop and expand tab, smarttab doesn't need
+             " to be used
 " <-
 
 set laststatus=2
