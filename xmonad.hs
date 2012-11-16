@@ -33,4 +33,5 @@ main = do
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = layout
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
+        , focusFollowsMouse = False
         }
