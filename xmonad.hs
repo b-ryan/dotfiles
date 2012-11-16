@@ -10,6 +10,9 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
+import XMonad.Layout
+import XMonad.Layout.Fullscreen
+import XMonad.Layout.NoBorders
 import System.IO
 
 xmobarPPOptions :: Handle -> PP
@@ -18,10 +21,16 @@ xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppHidden = xmobarColor "lightgrey" ""
                                   , ppHiddenNoWindows = xmobarColor "grey" ""
                                   }
+
+layout = avoidStruts ( tallLayout ||| Mirror (tallLayout) ||| Full ) ||| fullLayout
+    where
+        tallLayout = Tall 1 (3/100) (1/2)
+        fullLayout = noBorders $ fullscreenFull Full
+
 main = do
     xmproc <- spawnPipe "xmobar --screen=0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , layoutHook = layout
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
         }
