@@ -3,3 +3,7 @@ username=Buck Ryan <buck.ryan@gmail.com>
 
 [extensions]
 color=
+pager=
+
+[pager]
+pager=LESS='FSRX' less
