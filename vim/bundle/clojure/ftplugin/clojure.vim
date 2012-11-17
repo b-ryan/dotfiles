@@ -14,7 +14,7 @@ set cpo&vim
 
 let b:undo_ftplugin = "setlocal fo< com< cms< cpt< isk< def<"
 
-setlocal iskeyword+=?,-,*,!,+,/,=,<,>,.,:
+setlocal iskeyword+=?,-,*,!,+,:
 
 setlocal define=^\\s*(def\\(-\\|n\\|n-\\|macro\\|struct\\|multi\\)?
 
