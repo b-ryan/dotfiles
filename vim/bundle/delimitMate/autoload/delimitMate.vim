@@ -33,16 +33,6 @@ function! delimitMate#ShouldJump() "{{{
 		endfor
 	endif
 
-	" Closing delimiter with CR expansion.
-	let uchar = getline(line('.') + 1)[0]
-	if b:_l_delimitMate_expand_cr && char == ""
-		for cdel in b:_l_delimitMate_right_delims + b:_l_delimitMate_quotes_list
-			if uchar == cdel
-				return 1
-			endif
-		endfor
-	endif
-
 	return 0
 endfunction "}}}
 
