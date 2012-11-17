@@ -31,16 +31,6 @@ function! delimitMate#ShouldJump(...) "{{{
 		return 3
 	endif
 
-	" Closing delimiter with CR expansion.
-	let uchar = matchstr(getline(line('.') + 1), '^\s*\zs\S')
-	if !a:0 && b:_l_delimitMate_expand_cr && char == ""
-		if index(list, uchar) > -1
-			return 4
-		endif
-	elseif a:0 && b:_l_delimitMate_expand_cr && uchar == a:1
-		return 5
-	endif
-
 	return 0
 endfunction "}}}
 
