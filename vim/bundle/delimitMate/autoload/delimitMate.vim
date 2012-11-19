@@ -410,7 +410,7 @@ function! delimitMate#ExpandReturn() "{{{
 		" me about it.
 		" XXX zv prevents breaking expansion with syntax folding enabled by
 		" InsertLeave.
-		return "\<Esc>a\<CR>\<Esc>zvO"
+		return "\<Esc>a\<CR>\<Esc>zvO\<Tab>"
 	else
 		return "\<CR>"
 	endif
