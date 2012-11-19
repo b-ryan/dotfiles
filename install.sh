@@ -44,8 +44,9 @@ symlink gitconfig
 symlink gitignore
 symlink hgrc
 
-symlink bin/colordiff.pl bin/colordiff.pl
-symlink bin/powerline-bash.py bin/powerline-bash.py
+for file in $(ls bin); do
+    symlink bin/$file bin/$file
+done
 
 symlink xmobarrc
 symlink xmonad.hs .xmonad/xmonad.hs
