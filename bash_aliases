@@ -45,7 +45,7 @@ alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that fo
 # use lh to ls *only* hidden files
 alias lh='ls -a | egrep "^\."'
 
-alias gist="git st"
+alias gist="git status"
 
 # custom function to create directory and immediately cd into it
 function mkcd() {
