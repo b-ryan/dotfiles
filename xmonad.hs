@@ -10,6 +10,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Layout
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
@@ -35,3 +36,6 @@ main = do
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
         , focusFollowsMouse = False
         }
+        `additionalKeysP`
+        [
+        ]
