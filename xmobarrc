@@ -7,9 +7,10 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %H:%M" "date" 10
+                    , Run Battery ["-L","50","-H","75","--high","green","--normal","yellow", "--low", "red"] 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap%    <fc=#ee9a00>%date%</fc>   "
+       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %battery%    <fc=#ee9a00>%date%</fc>   "
        }
