@@ -48,7 +48,7 @@ mode a little bit easier.
 
 Most of the features can be modified or disabled permanently, using global
 variables, or on a FileType basis, using autocommands. With a couple of
-exceptions and limitations, this features don't brake undo, redo or history.
+exceptions and limitations, this features don't break undo, redo or history.
 
 NOTE 1: If you have any trouble with this plugin, please run |:DelimitMateTest|
 in a new buffer to see what is not working.
@@ -103,6 +103,10 @@ specific file types, see |delimitMateOptionDetails| for examples.
 
 |'delimitMate_excluded_ft'|       Turns off the script for the given file types.
 
+|'delimitMate_eol_marker'|        Determines what to insert after the closing
+                                matchpair when typing an opening matchpair on
+                                the end of the line.
+
 |'delimitMate_apostrophes'|       Tells delimitMate how it should "fix"
                                 balancing of single quotes when used as
                                 apostrophes. NOTE: Not needed any more, kept
@@ -128,6 +132,15 @@ e.g.: >
         let loaded_delimitMate = 1
         au FileType mail let b:loaded_delimitMate = 1
 <
+------------------------------------------------------------------------------
+                                                  *'delimitMate_offByDefault'*
+Values: 0 or 1.~
+Default: 0~
+
+If this option is set to 1, delimitMate will load, but will not take
+effect in any buffer unless |:DelimitMateSwitch| is called in that
+buffer.
+
 ------------------------------------------------------------------------------
                                                      *'delimitMate_autoclose'*
                                                    *'b:delimitMate_autoclose'*
@@ -248,7 +261,7 @@ Default: Comment                                                             ~
 This options turns delimitMate off for the listed regions, read |group-name|
 for more info about what is a region.
 e.g.: >
-        let delimitMate_excluded_regions = "Comments,String"
+        let delimitMate_excluded_regions = "Comment,String"
 <
 ------------------------------------------------------------------------------
                                                    *'delimitMate_excluded_ft'*
@@ -259,6 +272,17 @@ This options turns delimitMate off for the listed file types, use this option
 only if you don't want any of the features it provides on those file types.
 e.g.: >
         let delimitMate_excluded_ft = "mail,txt"
+<
+------------------------------------------------------------------------------
+                                                    *'delimitMate_eol_marker'*
+Values: String.                                                              ~
+Default: Empty.                                                              ~
+
+The contents of this string will be inserted after the closing matchpair when
+the opening matchapair is inserted at the end of the line. This feature only
+works if the eol marker was inserted on the current insert session.
+e.g.: >
+        au FileType c,perl let b:delimitMate_eol_marker = ";"
 <
 ------------------------------------------------------------------------------
                                                    *'delimitMate_apostrophes'*
@@ -353,7 +377,7 @@ Expand <CR> to: >
                                     |    )
 <
 
-NOTE that the expansion of <CR> will brake the redo command.
+NOTE that the expansion of <CR> will break the redo command.
 
 Since <Space> and <CR> are used everywhere, I have made the functions involved
 in expansions global, so they can be used to make custom mappings. Read
@@ -364,7 +388,7 @@ in expansions global, so they can be used to make custom mappings. Read
 
 If you press backspace inside an empty pair, both delimiters are deleted. When
 expansions are enabled, <BS> will also delete the expansions. NOTE that
-deleting <CR> expansions will brake the redo command.
+deleting <CR> expansions will break the redo command.
 
 If you type <S-BS> (shift + backspace) instead, only the closing delimiter
 will be deleted. NOTE that this will not usually work when using Vim from the
@@ -725,7 +749,7 @@ This script was inspired by the auto-completion of delimiters on TextMate.
     2.3     2010-06-06 * - Syntax aware: Will turn off when editing comments
                            or other regions, customizable.
                          - Changed format of most mappings.
-                         - Fix: <CR> expansion doesn't brake automatic
+                         - Fix: <CR> expansion doesn't break automatic
                            indentation adjustments anymore.
                          - Fix: Arrow keys would insert A, B, C or D instead
                            of moving the cursor when using Vim on a terminal.
@@ -815,4 +839,4 @@ _____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|____ ~
 __|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_ ~
 _____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|____ ~
 
-vim:tw=78:et:ts=2:sw=2:ft=help:norl:formatoptions+=tcroqn:autoindent:
+vim:tw=78:et:ts=8:sw=2:ft=help:norl:formatoptions+=tcroqn:autoindent:
