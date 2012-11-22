@@ -14,6 +14,7 @@ import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Layout
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Renamed
 import System.IO
 
 xmobarPPOptions :: Handle -> PP
@@ -26,7 +27,7 @@ xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
 layout = avoidStruts
     (   tallLayout
     ||| Mirror (tallLayout)
-    ||| Full
+    ||| renamed [Replace "Maximized"] Full
     )
     ||| fullLayout
     where
