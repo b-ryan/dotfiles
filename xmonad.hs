@@ -23,7 +23,12 @@ xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppHiddenNoWindows = xmobarColor "grey" ""
                                   }
 
-layout = avoidStruts ( tallLayout ||| Mirror (tallLayout) ||| Full ) ||| fullLayout
+layout = avoidStruts
+    (   tallLayout
+    ||| Mirror (tallLayout)
+    ||| Full
+    )
+    ||| fullLayout
     where
         tallLayout = Tall 1 (3/100) (1/2)
         fullLayout = noBorders $ fullscreenFull Full
