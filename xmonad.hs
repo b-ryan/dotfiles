@@ -43,6 +43,6 @@ main = do
         , focusFollowsMouse = False
         }
         `additionalKeysP`
-        [
-          ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
+        [ ("M-S-s", spawn "gksudo shutdown -P now")
+        , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
         ]
