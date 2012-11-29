@@ -224,4 +224,4 @@ function! ReloadSnippets(snippets_dir, ft)
     call ResetSnippets()
     call GetSnippets(a:snippets_dir, filetype)
 endfunction
-nmap ,m :call ReloadSnippets(snippets_dir, &filetype)<CR>
+nmap <Leader>m :call ReloadSnippets(snippets_dir, &filetype)<CR>
