@@ -35,6 +35,7 @@ dirlink() {
 mkhomedir bin
 mkhomedir .xmonad
 mkhomedir .config/pianobar
+mkfifo ~/.config/pianobar/ctl
 
 dirlink vim
 symlink vimrc
