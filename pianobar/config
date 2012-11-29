@@ -1,3 +1,3 @@
 user = buck.ryan2@gmail.com
-password_command = cat ~/.pandora_password
+password_command = cat ~/.config/pianobar/password
 autostart_station = 92066614122314079
