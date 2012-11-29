@@ -20,8 +20,8 @@ import System.IO
 xmobarPPOptions :: Handle -> PP
 xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppTitle = xmobarColor "green" "" . shorten 50
-                                  , ppHidden = xmobarColor "lightgrey" ""
-                                  , ppHiddenNoWindows = xmobarColor "grey" ""
+                                  , ppHidden = xmobarColor "grey" ""
+                                  , ppHiddenNoWindows = xmobarColor "blue" ""
                                   }
 
 layout = avoidStruts
