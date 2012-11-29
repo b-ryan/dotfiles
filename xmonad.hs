@@ -35,6 +35,7 @@ layout = avoidStruts
         fullLayout = noBorders $ fullscreenFull Full
 
 main = do
+    dbproc <- spawnPipe "dropbox start"
     xmproc <- spawnPipe "xmobar --screen=0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
