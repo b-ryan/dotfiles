@@ -9,7 +9,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Date "%a %b %_d %H:%M" "date" 10
                     , Run Battery ["-L","50","-H","75","--high","green","--normal","yellow", "--low", "red"] 10
                     , Run StdinReader
-                    , Run Com "pianobar-info" [] "song" 1
+                    , Run Com "pianobar-info song" [] "song" 1
                     ]
        , sepChar = "%"
        , alignSep = "}{"

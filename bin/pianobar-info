@@ -4,7 +4,14 @@ if [ -z "$(ps ax -o command | grep '^pianobar')" ]; then
     exit
 fi
 
-echo -n i > ~/.config/pianobar/ctl
-tail -n 2 ~/.config/pianobar/output |\
-    head -n 1 |\
-    grep -o '"[^"]*" by "[^"]*"'
+case $1 in
+    song )
+        echo -n i > ~/.config/pianobar/ctl
+        tail -n 2 ~/.config/pianobar/output |\
+            head -n 1 |\
+            grep -o '"[^"]*" by "[^"]*"'
+        ;;
+    * )
+        exit 1
+        ;;
+esac
