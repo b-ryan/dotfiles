@@ -34,6 +34,9 @@ layout = avoidStruts
         tallLayout = Tall 1 (3/100) (1/2)
         fullLayout = noBorders $ fullscreenFull Full
 
+pianobarCmd :: String -> String
+pianobarCmd cmd = "echo -n " ++ cmd ++ " > ~/.config/pianobar/ctl"
+
 main = do
     dbproc <- spawnPipe "dropbox start"
     xmproc <- spawnPipe "xmobar --screen=0"
@@ -46,5 +49,8 @@ main = do
         `additionalKeysP`
         [ ("M-S-s", spawn "gksudo shutdown -P now")
         , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
-        , ("M-<D>", spawn "echo -n p > ~/.config/pianobar/ctl")
+        , ("M-S-p", spawn $ pianobarCmd "p") -- pause
+        , ("M-S-n", spawn $ pianobarCmd "n") -- next
+        , ("M-S-u", spawn $ pianobarCmd "+") -- thumbs up
+        , ("M-S-d", spawn $ pianobarCmd "-") -- thumbs down
         ]
