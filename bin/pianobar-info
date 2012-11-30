@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ -z "$(ps ax -o command | grep '^pianobar')" ]; then
+    echo
+    exit
+fi
+
 echo -n i > ~/.config/pianobar/ctl
 tail -n 2 ~/.config/pianobar/output |\
     head -n 1 |\
