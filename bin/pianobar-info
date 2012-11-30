@@ -1,0 +1,5 @@
+#!/bin/bash
+echo -n i > ~/.config/pianobar/ctl
+tail -n 2 ~/.config/pianobar/output |\
+    head -n 1 |\
+    grep -o '"[^"]*" by "[^"]*"'

@@ -9,8 +9,9 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Date "%a %b %_d %H:%M" "date" 10
                     , Run Battery ["-L","50","-H","75","--high","green","--normal","yellow", "--low", "red"] 10
                     , Run StdinReader
+                    , Run Com "pianobar-info" [] "song" 1000
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %battery%    <fc=#ee9a00>%date%</fc>   "
+       , template = "%StdinReader% %song% }{ %cpu% | %memory% * %swap% |    <fc=#ee9a00>%date%</fc>   "
        }
