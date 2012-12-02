@@ -4,3 +4,5 @@ autostart_station = 92066614122314079
 
 audio_quality = high
 tls_fingerprint = 2D0AFDAFA16F4B5C0A43F3CB1D4752F9535507C0
+
+event_command = /home/buck/bin/pianobar-events.sh
