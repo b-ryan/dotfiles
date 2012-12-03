@@ -8,7 +8,7 @@ Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
                     , Run Swap [] 10
                     , Run Date "%a %b %_d %H:%M" "date" 10
                     , Run StdinReader
-                    , Run Com "cat" ["~/.config/pianobar/output"] "song" 1
+                    , Run Com "cat" ["~/.config/pianobar/output"] "song" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
