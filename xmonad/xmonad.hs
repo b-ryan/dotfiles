@@ -17,11 +17,13 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import System.IO
 
+yellow = xmobarColor "#F7F383" ""
+
 xmobarPPOptions :: Handle -> PP
 xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
-                                  , ppTitle = xmobarColor "green" "" . shorten 50
+                                  , ppTitle = xmobarColor "#7DF58F" "" . shorten 50
                                   , ppHidden = xmobarColor "grey" ""
-                                  , ppHiddenNoWindows = xmobarColor "blue" ""
+                                  , ppHiddenNoWindows = xmobarColor "#65BBF7" ""
                                   }
 
 layout = avoidStruts
