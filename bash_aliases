@@ -49,6 +49,8 @@ alias gist="git status"
 alias dev="git checkout develop"
 alias mas="git checkout master"
 alias c-="git checkout -"
+pull() { git pull origin $(git br); }
+push() { git push origin $(git br); }
 
 # custom function to create directory and immediately cd into it
 function mkcd() {
