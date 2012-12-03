@@ -51,7 +51,7 @@ for file in $(ls bin); do
 done
 
 symlink xmobarrc
-symlink xmonad.hs .xmonad/xmonad.hs
+symlink xmonad/xmonad.hs .xmonad/xmonad.hs
 
 symlink pianobar/config .config/pianobar/config
 
