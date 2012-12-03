@@ -17,6 +17,9 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import System.IO
 
+surround :: String -> String -> String
+surround extra text = extra ++ text ++ extra
+
 yellow = xmobarColor "#F7F383" ""
 
 xmobarPPOptions :: Handle -> PP
