@@ -9,10 +9,15 @@ while read L; do
     export "$k=$v"
 done < <(grep -e '^\(title\|artist\|album\|stationName\|songStationName\|pRet\|pRetStr\|wRet\|wRetStr\|songDuration\|songPlayed\|rating\|coverArt\|stationCount\|station[0-9]*\)=' /dev/stdin) # don't overwrite $1...
 
+xmobar () {
+    echo -n $@ > $OUTFILE
+}
+
 case "$1" in
-    songstart | songlove)
-        [ "$rating" -eq 1 ] && extra=" <3"
-        echo -n \"$title\" by \"$artist\" $extra > $OUTFILE
+    songstart | songlove | playpause | playresume)
+        [ "$1" = "playpause" ] && pre="(Paused) "
+        [ "$rating" -eq 1 ] && post=" <3"
+        xmobar $pre\"$title\" by \"$artist\"$post
         ;;
 
     songfinish)
