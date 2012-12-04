@@ -22,7 +22,7 @@ export EDITOR=vim
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 function _update_ps1() {
-    export PS1="$(powerline-bash.py)"
+    export PS1="$(powerline-bash.py $?)"
 }
 export PROMPT_COMMAND="_update_ps1"
 
