@@ -37,7 +37,7 @@ layout = avoidStruts
         fullLayout = noBorders $ fullscreenFull Full
 
 pianobarCmd :: String -> String
-pianobarCmd cmd = "echo -n " ++ cmd ++ " > ~/.config/pianobar/ctl"
+pianobarCmd cmd = "echo -n '" ++ cmd ++ "' > ~/.config/pianobar/ctl"
 
 main = do
     dbproc <- spawnPipe "dropbox start"
