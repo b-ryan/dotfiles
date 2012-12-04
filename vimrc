@@ -8,24 +8,27 @@
 "
 "   Simple plugins (one script in the plugin/ dir)
 "   * a.vim           Easy switching between header and source files
+"   * grep
 "   * MRU             Remembers recently visited files to open quickly
-"   * rename          Allows renaming of files by doing :rename <file>
+"   * Rename          Allows renaming of files by doing :Rename <file>
 "   * pathogen        Plugin path manager (for bundling plugins)
-"   * visualmark      Visualize marks (type 'mm')
 "
 "   Simple ftplugins (one script in the ftplugin/ dir)
 "   * nsh
-"   * phpfolding
+"   * php_folding
 "   * xml             Contains function for pretty XML printing
+"   * php             TODO remove
 "
 "   Bundled plugins
 "   * bufexplorer     Buffer explorer
 "   * clojure         Clojure highlighting, indenting, etc.
+"   * coffee-script   Coffee highlight, indenting, etc.
 "   * CtrlP           Fuzzy Finder
 "   * delimitMate     Auto complete brackets, etc.
 "   * fugitive        Git wrapper
 "   * NERDTree        Provides a way to peruse directories
 "   * OmniCppComplete C++ Omni-Complete
+"   * powerline       Better status bar
 "   * protodef        Creates skeleton C++ source files based on header files
 "   * racket          Highlight, indenting, etc. for Racket language
 "   * snipMate        Snippets!
