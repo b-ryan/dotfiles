@@ -108,7 +108,7 @@ def add_cwd_segment(powerline, cwd, maxdepth, cwd_only = False):
     if not cwd_only:
         for n in names[:-1]:
             powerline.append(Segment(powerline, ' %s ' % n, Color.PATH_FG, Color.PATH_BG, powerline.separator_thin, Color.SEPARATOR_FG))
-        powerline.append(Segment(powerline, ' %s ' % names[-1], Color.CWD_FG, Color.PATH_BG))
+    powerline.append(Segment(powerline, ' %s ' % names[-1], Color.CWD_FG, Color.PATH_BG))
 
 def get_hg_status():
     has_modified_files = False
