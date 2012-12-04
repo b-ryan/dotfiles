@@ -76,6 +76,14 @@ nmap <Leader>t :set expandtab!<CR>
 " <---------------------------------------------------------------------------
 
 set laststatus=2 " Ensures that if only 1 window is visible, the status bar will show
+set statusline=%t\ %m%r " filename, modified flag, and readonly flag
+set statusline+=\ \|\ " a separator
+set statusline+=[%{strlen(&ft)?&ft:'none'}] " filetype
+set statusline+=[%{&ff}] " file format (ie. line endings)
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}] " encoding
+set statusline+=%=line\ %l\ of\ %L " line number
+" for more about customizing the status bar, see
+" http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 
 set hidden " only hide buffers when switching (don't close them which erases undo)
 
