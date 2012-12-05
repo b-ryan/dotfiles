@@ -78,7 +78,7 @@ nmap <Leader>t :set expandtab!<CR>
 " <---------------------------------------------------------------------------
 
 set laststatus=2 " Ensures that if only 1 window is visible, the status bar will show
-set statusline=%t\ %m%r " filename, modified flag, and readonly flag
+set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
 set statusline+=[%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=[%{&ff}] " file format (ie. line endings)
