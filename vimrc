@@ -213,6 +213,7 @@ imap <S-Tab> <Plug>delimitMateJumpMany
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|build$',
+    \ 'file': '\.swp$',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
 let g:ctrlp_regexp = 1 " default to regexp search
