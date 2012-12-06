@@ -51,6 +51,8 @@ alias mas="git checkout master"
 alias c-="git checkout -"
 pull() { git pull origin $(git br); }
 push() { git push origin $(git br); }
+short() { N=${1:-1}; git log -n $N --first-parent; }
+long() { git log --first-parent; }
 
 # custom function to create directory and immediately cd into it
 function mkcd() {
