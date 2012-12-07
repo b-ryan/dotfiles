@@ -17,8 +17,8 @@ fetchCoverArt() { wget -O $ARTFILE $coverArt; echo $ARTFILE; }
 
 case "$1" in
     songstart | songlove | playpause | playresume)
-        [ "$1" = "playpause" ] && pre="$PAUSED "
-        [ "$rating" -eq 1 ] && post=" $THUMBS_UP"
+        [ $1 = playpause ] && pre="$PAUSED "
+        [ $rating -eq 1 ] && post=" $THUMBS_UP"
         xmobar $pre\"$title\" by \"$artist\"$post
         notify-send --icon=$(fetchCoverArt) "$title" "by $artist"
         ;;
