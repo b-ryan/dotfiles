@@ -1,0 +1,10 @@
+#!/bin/bash
+case $1 in
+    start)
+        pianobar &
+        ;;
+    *)
+        echo -n "$1" > ~/.config/pianobar/ctl
+        [ $1 = q ] && > ~/.config/pianobar/output
+        ;;
+esac
