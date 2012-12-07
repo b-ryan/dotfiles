@@ -20,7 +20,7 @@ case "$1" in
         [ $1 = playpause ] && pre="$PAUSED "
         [ $rating -eq 1 ] && post=" $THUMBS_UP"
         xmobar $pre\"$title\" by \"$artist\"$post
-        notify-send --icon=$(fetchCoverArt) "$title" "by $artist"
+        [ $1 = songstart ] && notify-send --icon=$(fetchCoverArt) "$title" "by $artist"
         ;;
 
     songfinish)
