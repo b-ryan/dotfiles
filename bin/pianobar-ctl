@@ -1,10 +1,13 @@
 #!/bin/bash
+CTL=~/.config/pianobar/ctl
+XMOBAR=~/.config/pianobar/xmobar
 case $1 in
     start)
+        echo Starting pianobar... > $XMOBAR
         pianobar &
         ;;
     *)
-        echo -n "$1" > ~/.config/pianobar/ctl
-        [ $1 = q ] && > ~/.config/pianobar/output
+        echo -n "$1" > $CTL
+        [ $1 = q ] && > $XMOBAR
         ;;
 esac

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OUTFILE=~/.config/pianobar/output
+OUTFILE=~/.config/pianobar/xmobar
 ARTFILE=~/.config/pianobar/albumart
 PAUSED="(Paused)"
 THUMBS_UP="<3"
