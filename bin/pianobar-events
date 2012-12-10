@@ -1,18 +1,26 @@
 #!/bin/bash
 
-OUTFILE=~/.config/pianobar/xmobar
+XMOBAR=~/.config/pianobar/xmobar
 ARTFILE=~/.config/pianobar/albumart
+STATIONS=~/.config/pianobar/stations
 PAUSED="(Paused)"
 THUMBS_UP="<3"
 
-# create variables
-while read L; do
-    k="`echo "$L" | cut -d '=' -f 1`"
-    v="`echo "$L" | cut -d '=' -f 2`"
-    export "$k=$v"
-done < <(grep -e '^\(title\|artist\|album\|stationName\|songStationName\|pRet\|pRetStr\|wRet\|wRetStr\|songDuration\|songPlayed\|rating\|coverArt\|stationCount\|station[0-9]*\)=' /dev/stdin)
+> $XMOBAR
+> $STATIONS
 
-xmobar () { echo -n $@ > $OUTFILE; }
+# create variables
+while read line; do
+    k="`echo "$line" | cut -d '=' -f 1`"
+    v="`echo "$line" | cut -d '=' -f 2`"
+    if [ $(echo "$k" | grep '^station[0-9]') ]; then
+        echo "$v" >> $STATIONS
+    else
+        export "$k=$v"
+    fi
+done < /dev/stdin
+
+xmobar () { echo -n $@ > $XMOBAR; }
 fetchCoverArt() { wget -O $ARTFILE $coverArt; echo $ARTFILE; }
 
 case "$1" in
@@ -24,6 +32,6 @@ case "$1" in
         ;;
 
     songfinish)
-        > $OUTFILE
+        > $XMOBAR
         ;;
 esac
