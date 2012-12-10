@@ -50,11 +50,13 @@ main = do
         }
         `additionalKeysP`
         [ ("M-S-s", spawn "gksudo shutdown -P now")
+
+        -- BEGIN master branch shortcuts
         , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
-        , ("M-<KP_Enter>",    spawn $ pianobarCmd "start")
-        , ("M-<KP_Delete>",   spawn $ pianobarCmd "q")
         , ("M-S-p", spawn $ pianobarCmd "p") -- pause
         , ("M-S-n", spawn $ pianobarCmd "n") -- next
         , ("M-S-u", spawn $ pianobarCmd "+") -- thumbs up
         , ("M-S-d", spawn $ pianobarCmd "-") -- thumbs down
+        -- END master branch shortcuts
+
         ]
