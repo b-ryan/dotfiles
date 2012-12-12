@@ -49,19 +49,23 @@ main = do
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = layout
-        , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
         , focusFollowsMouse = False
         , startupHook = myStartupHook
+
+        -- BEGIN master-branch-specific config
+        , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
+        -- END master-branch-specific config
+
         }
         `additionalKeysP`
         [ ("M-S-s", spawn "gksudo shutdown -P now")
 
-        -- BEGIN master branch shortcuts
+        -- BEGIN master-branch shortcuts
         , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
         , ("M-S-p", spawn $ pianobarCmd "p") -- pause
         , ("M-S-n", spawn $ pianobarCmd "n") -- next
         , ("M-S-u", spawn $ pianobarCmd "+") -- thumbs up
         , ("M-S-d", spawn $ pianobarCmd "-") -- thumbs down
-        -- END master branch shortcuts
+        -- END master-branch shortcuts
 
         ]
