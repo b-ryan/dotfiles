@@ -15,6 +15,7 @@ import XMonad.Layout
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
+import XMonad.Actions.SpawnOn(spawnOn)
 import System.IO
 
 yellow = xmobarColor "#F7F383" ""
@@ -36,6 +37,9 @@ layout = avoidStruts
         tallLayout = Tall 1 (3/100) (1/2)
         fullLayout = noBorders $ fullscreenFull Full
 
+myStartupHook = do
+    spawnOn "1" "chromium-browser"
+
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
@@ -47,6 +51,7 @@ main = do
         , layoutHook = layout
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
         , focusFollowsMouse = False
+        , startupHook = myStartupHook
         }
         `additionalKeysP`
         [ ("M-S-s", spawn "gksudo shutdown -P now")
