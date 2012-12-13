@@ -37,9 +37,6 @@ layout = avoidStruts
         tallLayout = Tall 1 (3/100) (1/2)
         fullLayout = noBorders $ fullscreenFull Full
 
-myStartupHook = do
-    spawnOn "1" "chromium-browser"
-
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
@@ -50,7 +47,6 @@ main = do
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = layout
         , focusFollowsMouse = False
-        , startupHook = myStartupHook
 
         -- BEGIN master-branch-specific config
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
