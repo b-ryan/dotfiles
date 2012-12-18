@@ -27,15 +27,17 @@ xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppHiddenNoWindows = xmobarColor "#65BBF7" ""
                                   }
 
-layout = avoidStruts
-    (   tallLayout
-    ||| Mirror (tallLayout)
-    ||| renamed [Replace "Maximized"] Full
-    )
-    ||| fullLayout
-    where
-        tallLayout = Tall 1 (3/100) (1/2)
-        fullLayout = noBorders $ fullscreenFull Full
+tallLayout = Tall 1 (3/100) (1/2)
+
+tallNoStruts = avoidStruts $ tallLayout
+tallMirrorNoStruts = avoidStruts $ Mirror tallLayout
+maximized = avoidStruts $ renamed [Replace "Maximized"] Full
+fullscreen = noBorders $ fullscreenFull Full
+
+myLayoutHook = tallNoStruts
+           ||| tallMirrorNoStruts
+           ||| maximized
+           ||| fullscreen
 
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
@@ -45,7 +47,7 @@ main = do
     xmproc <- spawnPipe "xmobar --screen=0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = layout
+        , layoutHook = myLayoutHook
         , focusFollowsMouse = False
 
         -- BEGIN master-branch-specific config
