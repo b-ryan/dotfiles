@@ -1,13 +1,43 @@
 #!/bin/bash
 CTL=~/.config/pianobar/ctl
 XMOBAR=~/.config/pianobar/xmobar
+
+pianobar_running () {
+    [ -n "$(ps ax -o command | grep '^pianobar')" ]
+}
+
+pianobar_cmd () {
+    echo -n "$1" > $CTL
+}
+
+wait_for_pianobar_shutdown () {
+    for try in {1..30}; do
+        if ! pianobar_running; then
+            break
+        else
+            sleep 0.1
+        fi
+    done
+}
+
+xmobar () {
+    echo $@ > $XMOBAR
+}
+
 case $1 in
     start)
-        echo Starting pianobar... > $XMOBAR
-        pianobar &
+        if ! pianobar_running; then
+            xmobar "Starting pianobar..."
+            pianobar &
+        fi
+        ;;
+    q)
+        xmobar "Stopping pianobar..."
+        pianobar_cmd q
+        wait_for_pianobar_shutdown
+        xmobar ""
         ;;
     *)
-        echo -n "$1" > $CTL
-        [ $1 = q ] && > $XMOBAR
+        pianobar_cmd "$1"
         ;;
 esac

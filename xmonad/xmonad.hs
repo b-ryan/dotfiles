@@ -27,18 +27,17 @@ xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppHiddenNoWindows = xmobarColor "#65BBF7" ""
                                   }
 
-layout = avoidStruts
-    (   tallLayout
-    ||| Mirror (tallLayout)
-    ||| renamed [Replace "Maximized"] Full
-    )
-    ||| fullLayout
-    where
-        tallLayout = Tall 1 (3/100) (1/2)
-        fullLayout = noBorders $ fullscreenFull Full
+tallLayout = Tall 1 (3/100) (1/2)
 
-myStartupHook = do
-    spawnOn "1" "chromium-browser"
+tallNoStruts = avoidStruts $ tallLayout
+tallMirrorNoStruts = avoidStruts $ Mirror tallLayout
+maximized = avoidStruts $ renamed [Replace "Maximized"] Full
+fullscreen = noBorders $ fullscreenFull Full
+
+myLayoutHook = tallNoStruts
+           ||| tallMirrorNoStruts
+           ||| maximized
+           ||| fullscreen
 
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
@@ -49,21 +48,24 @@ main = do
     bgproc <- spawnPipe "xsetroot -solid \\#000000 -display :0.0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = layout
-        , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
+        , layoutHook = myLayoutHook
         , focusFollowsMouse = False
-        , startupHook = myStartupHook
+
+        -- BEGIN master-branch-specific config
+        , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
+        -- END master-branch-specific config
+
         }
         `additionalKeysP`
         [ ("M-S-s", spawn "gksudo shutdown -P now")
 
-        -- BEGIN master branch shortcuts
+        -- BEGIN master-branch shortcuts
         , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
         , ("M-S-e", spawn $ pianobarCmd "q") -- quit
         , ("M-S-p", spawn $ pianobarCmd "p") -- pause
         , ("M-S-n", spawn $ pianobarCmd "n") -- next
         , ("M-S-u", spawn $ pianobarCmd "+") -- thumbs up
         , ("M-S-d", spawn $ pianobarCmd "-") -- thumbs down
-        -- END master branch shortcuts
+        -- END master-branch shortcuts
 
         ]
