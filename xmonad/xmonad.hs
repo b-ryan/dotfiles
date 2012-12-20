@@ -46,6 +46,7 @@ pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 main = do
     dbproc <- spawnPipe "dropbox start"
     xmproc <- spawnPipe "xmobar --screen=0"
+    bgproc <- spawnPipe "xsetroot -solid \\#000000 -display :0.0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = layout
