@@ -21,9 +21,7 @@ export EDITOR=vim
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-function _update_ps1() {
-    export PS1="$(powerline-bash.py $?)"
-}
+_update_ps1 () { export PS1="$(powerline-bash.py --cwd-only $?)"; }
 export PROMPT_COMMAND="_update_ps1"
 
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
