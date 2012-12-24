@@ -22,7 +22,6 @@ HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-
 ####################################
 # Other options and configurations #
 ####################################
@@ -30,7 +29,7 @@ HISTFILESIZE=2000
 _update_ps1() { export PS1="$(powerline-bash.py --cwd-only $?)"; }
 PROMPT_COMMAND="_update_ps1"
 
-EDITOR=vim
+export EDITOR=vim
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
