@@ -28,7 +28,11 @@ case $1 in
     start)
         if ! pianobar_running; then
             xmobar "Starting pianobar..."
-            pianobar &
+            if [ -t 1 ]; then
+                pianobar
+            else
+                pianobar &
+            fi
         fi
         ;;
     q)

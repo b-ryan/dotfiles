@@ -35,7 +35,7 @@ function g() { gvim "$@" & }
 alias v="vim"
 
 # grep awesomeness
-alias perg="egrep --exclude-dir=\*.git --exclude=tags -r"
+alias perg="egrep -Ir --exclude=tags --exclude-dir=.git --exclude-dir=build --exclude-dir=Framework"
 
 # Goofing around
 alias dc="echo \"dc? I think you meant cd.  Here, let me take care of that for you.

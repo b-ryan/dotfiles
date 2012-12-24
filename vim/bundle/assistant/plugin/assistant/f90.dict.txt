@@ -1,0 +1,132 @@
+ABS=>(x)* 求x的绝对值∣x∣。x:I、R, 结果类型同x; x:C, 结果:R
+AIMAG=>(x) 求x的实部。x:C, 结果:R
+AINT=>(x[,kind])* 对x取整,并转换为实数(kind)。x:R, kind:I, 结果:R(kind)
+AMAX0=>(x1,x2,x3,…)* 求x1,x2,x3,…中最大值。xI:I, 结果:R
+AMIN0=>(x1,x2,x3,…)* 求x1,x2,x3,…中最小值。xI:I, 结果:R
+ANINT=>(x[,kind])* 对x四舍五入取整,并转换为实数(kind)。x:R, kind:I, 结果:R(kind)
+CEILING=>(x)* 求大于等于x的最小整数。x:R, 结果:I
+CMPLX=>(x[,y][,kind])) 将参数转换为x、(x,0.0)或(x,y)。x:I、R、C, y:I、R,kind:I, 结果:C(kind)
+CONJG=>(x) 求x的共轭复数。x:C, 结果:C
+DBLE=>(x)* 将x转换为双精度实数。x:I、R、C, 结果:R(8)
+DCMPLX=>(x[,y]) 将参数转换为x、(x,0.0)或(x,y)。x:I、R、C, y:I、R, 结果:C(8)
+DFLOAT=>(x) 将x转换为双精度实数。x:I, 结果:R(8)
+DIM=>(x,y)* 求x-y和0中最大值, 即MAX(x-y,0)。x:I、R, y的类型同x,结果类型同x
+DPROD=>(x,y) 求x和y的乘积,并转换为双精度实数。x:R, y:R, 结果:R(8)
+FLOAT=>(x)* 将x转换为单精度实数。x:I, 结果:R
+FLOOR=>(x)* 求小于等于x的最大整数。x:R, 结果:I
+IFIX=>(x)* 将x转换为整数(取整)。x:R, 结果:I
+IMAG=>(x) 同AIMAG(x)
+INT=>(x[,kind])* 将x转换为整数(取整)。x:I、R、C, kind:I, 结果:I(kind)
+LOGICAL=>(x[,kind])* 按kind值转换新逻辑值。x:L, 结果:L(kind)
+MAX=>(x1,x2,x3,…)* 求x1,x2,x3,…中最大值。xI为任意类型, 结果类型同xI
+MAX1=>(x1,x2,x3,…)* 求x1,x2,x3,…中最大值(取整)。xI:R, 结果:I
+MIN=>(x1,x2,x3,…)* 求x1,x2,x3,…中最小值。xI为任意类型, 结果类型同xI
+MIN1=>(x1,x2,x3,…)* 求x1,x2,x3…中最小值(取整)。xI:R, 结果:I
+MOD=>(x,y)* 求x/y的余数,值为x-INT(x/y)*y。x:I、R, y的类型同x, 结果类型同x
+MODULO=>(x,y) 求x/y余数,值为x-FLOOR(x/y)*y。x:I、R, y的类型同x, 结果类型同x
+NINT=>(x[,kind])* 将x转换为整数(四舍五入)。x:R, kind:I, 结果:I(kind)
+REAL=>(x[,kind])* 将x转换为实数。x:I、R、C, kind:I, 结果:R(kind)
+SIGN=>(x,y)* 求x的绝对值乘以y的符号。x:I、R, y的类型同x, 结果类型同x
+SNGL=>(x) 将双精度实数转换为单精度实数。x:R(8), 结果:R
+ZEXT=>(x) 用0向左侧扩展x。x:I、L, 结果:I
+ACOS=>(x)* 求x的反余弦arccos(x)。x:R,结果类型同x,结果值域:0~π
+ACOSD=>(x)* 求x的反余弦arccos(x)。x:R,结果类型同x,结果值域:0~180°
+ASIN=>(x)* 求x的反正弦arcsin(x)。x:R,结果类型同x,结果为弧度,值域:0~π
+ASIND=>(x)* 求x的反正弦arcsin(x)。x:R,结果类型同x,结果为度,值域:0~180°
+ATAN=>(x)* 求x的反正切arctg(x)。x:R,结果类型同x,结果为弧度,值域:-π/2~π/2
+ATAND=>(x)* 求x的反正切arctg(x)。x:R,结果类型同x,结果为度,值域:-90~90°
+ATAN2=>(y,x) 求x的反正切arctg(y/x)。y:R,x和结果类型同x,结果值域:-π~π
+ATAN2D=>(y,x) 求x的反正切arctg(y/x)。y:R,x和结果类型同x,结果值域:-180~180°
+COS=>(x)* 求x的余弦cos(x)。x:R、C,x取值弧度,结果类型同x
+COSD=>(x)* 求x的余弦cos(x)。x:R,x取值度,结果类型同x
+COSH=>(x) 求x的双曲余弦ch(x)。x:R,结果类型同x
+COTAN=>(x)* 求x的余切ctg(x)。x:R,x取值度,结果类型同x
+SIN=>(x)* 求x的正弦sin(x)。x:R、C,x取值弧度,结果类型同x
+SIND=>(x)* 求x的正弦sin(x)。x:R,x取值度,结果类型同x
+SINH=>(x) 求x的双曲正弦sh(x)。x:R,结果类型同x
+TAN=>(x)* 求x的正切tg(x)。x:R,x取值弧度,结果类型同x
+TAND=>(x)* 求x的正切tg(x)。x:R,x取值度,结果类型同x
+TANH=>(x) 求x的双曲正切th(x)。x:R,结果类型同x
+ALOG=>(x) 求x的自然对数ln(x)。x:R(4),结果:R(4)
+ALOG10=>(x) 求x以10为底一般对数log10(x)。x:R(4),结果:R(4)
+EXP=>(x)* 求指数,即ex。x:R、C,结果类型同x
+LOG=>(x)* 求自然对数,即ex。x:R、C,结果类型同x
+LOG10=>(x)* 求以10为底对数,即。x:R,结果类型同x
+SQRT=>(x)* 求x的平方根。x:R、C,结果类型同x
+ALLOCATED=>(a)* 判定动态数组a是否分配内存。a:A,结果:L,分配:.TRUE.,未分配:.FALSE.
+ASSOCIATED=>(p[,t])* 判定指针p是否指向目标t。p:P,t:AT,结果:L,指向:.TRUE.,未指向:.FALSE.
+DIGITS=>(x) 查询x的机内编码数值部分二进制位数(除符号位和指数位)。x:I、R,结果:I
+EPSILON=>(x)* 查询x类型可表示的最小正实数。x:R,结果类型同x。最小正实数:1.1920929E-07
+HUGE=>(x)* 查询x类型可表示的最大数。x:I、R,结果类型同x
+ILEN=>(x) 查询x的反码值。x:I,结果类型同x
+KIND=>(x)* 查询x的kind参数值。x:I、R、C、CH、L,结果:I
+MAXEXPONENT=>(x)* 查询x的最大正指数值。x:R,结果:I(4)
+MINEXPONENT=>(x)* 查询x的最大负指数值。x:R,结果:I(4)
+PRECISION=>(x)* 查询x类型有效数字位数。x:R、C,结果:I(4)
+PRESENT=>(x) 查询可选形参x是否有对应实参。x:AT,结果:L。有:.TRUE.,没有:.FALSE.
+RADIX=>(x) 查询x类型的基数。x:I、R,结果:L
+RANGE=>(x)* 查询x类型的指数范围。x:I、R、C,结果:I(4)
+SIZEOF=>(x)* 查询x的存储分配字节数。x:AT,结果:I(4)
+TINY=>(x)* 查询x的最小正值。x:R,结果类型同x
+EXPONENT=>(x)* 求实数x机内编码表示的指数值。x:R,结果:I
+FRACTION=>(x)* 求实数x机内编码表示的小数值。x:R,结果类型同x
+NEAREST=>(x,s) 根据s的正负号求最接近x的值。x:R,结果:R,且不为0
+RRSPACING=>(x) 求x与系统最大数之间的差值。x:R,结果类型同x
+SCALE=>(x,I)* 求x乘以2i。x:R,i:I,结果类型同x
+SET_EXPONENT=>(x,i) 求由x的机内编码小数值与指数i组成的实数。x:R,i:I,结果类型同x
+SPACING=>(x)* 求x与x最近值的差值绝对值。x:R,结果类型同x
+ACHAR=>(n) 将ASCII码n转换为对应字符。n:I,n值域:0~127,结果:CH(1)
+ADJUSTL=>(string)* 将字符串string左对齐,即去掉左端空格。string:CH(*),结果类型同string
+ADJUSTR=>(string)* 将字符串string右对齐,即去掉右端空格。string:CH(*),结果类型同string
+CHAR=>(n)* 将ASCII码n转换为对应字符。n:I,n值域:0~255,结果:CH(1)
+IACHAR=>(c)* 将字符c转换为对应的ASCII码。c:CH(1),结果:I
+ICHAR=>(c)* 将字符c转换为对应的ASCII码。c:CH(1),结果:I
+INDEX=>(s,ss[,b])* 求子串ss在串s中起始位置。s:CH(*),ss:CH(*),b:L,结果:I。b为真从右起
+LEN=>(s)* 求字符串s的长度。s:CH(*),结果:I
+LEN_TRIM=>(s)* 求字符串s去掉尾部空格后的字符数。s:CH(*),结果:I
+LGE=>(s1,s2)* 按ASCII码值判定字符串s1大于等于字符串s2。s1:CH(*),s1:CH(*),结果:L
+LGT=>(s1,s2)* 按ASCII码值判定字符串s1大于字符串s2。s1:CH(*),s1:CH(*),结果:L
+LLE=>(s1,s2)* 按ASCII码值判定字符串s1小于等于字符串s2。s1:CH(*),s1:CH(*),结果:L
+LLT=>(s1,s2)* 按ASCII码值判定字符串s1小于字符串s2。s1:CH(*),s1:CH(*),结果:L
+REPEAT=>(s,n)* 求字符串s重复n次的新字符串。s:CH(*),n:I,结果:CH(*)
+SCAN=>(s,st[,b]) 求串st中任一字符在串s中的位置。s:CH(*),ss:CH(*),b:L,结果:I
+TRIM=>(s)* 求字符串s去掉首尾部空格后的字符数。s:CH(*),结果:CH(*)
+VERIFY=>(s,st[,b]) 求不在串st中字符在s中位置。s:CH(*),ss:CH(*),b:L,结果:I。b为真右起
+BIT_SIZE=>(n)* 求n类型整数的最大二进制位数。n:I,结果类型同n
+BTEST=>(n,p) 判定整数n的二进制表示右起第p位是否为1。n:I,p:+I,p值域:0~64结果:L
+IAND=>(m,n)* 对m和n进行按位逻辑“与”运算。m:I,n:I,结果类型同m
+IBCHNG=>(n,p) 将整数n二进制表示右起第p位值取反。n:I,p:+I,p值域:0~64结果类型同n
+IBCLR=>(n,p) 将整数n二进制表示右起第p位置0。n:I,p:+I,p值域:0~64结果类型同n
+IBITS=>(i,p,l) 从整数n二进制表示右起第p位开始取l位。n:I,p:+I,l:+I,结果类型同n
+IBSET=>(n,p) 将整数n二进制表示右起第p位置1。n:I,p:+I,p值域:0~64结果类型同n
+IEOR=>(m,n)* 对m和n进行按位逻辑“异或”运算。m:I,n:I,结果类型同m
+IOR=>(m,n)* 对m和n进行按位逻辑“或”运算。m:I,n:I,结果类型同m
+ISHA=>(n,s)* 对n向左(s为正)或向右(s为负)移动s位(算术移位)。n:I,s:I,结果类型同n
+ISHC=>(n,s)* 对n向左(s为正)或向右(s为负)移动s位(循环移位)。n:I,s:I,结果类型同n
+ISHFT=>(n,s)* 对n向左(s为正)或向右(s为负)移动s位(逻辑移位)。n:I,s:I,结果类型同n
+ISHFTC=>(n,s[,size]) 对n最右边size位向左(s为正)或向右(s为负)移动s位(循环移位)
+ISHL=>(n,s) 对n向左(s为正)或向右(s为负)移动s位(逻辑移位)。n:I,s:I,结果类型同n
+NOT=>(n)* 对n进行按位逻辑“非”运算。n:I,结果类型同n
+ALL=>(m[,d])* 判定逻辑数组m各元素是否都为“真”。m;L-A,d:I,结果:L(缺省d)或L-A(d=维)
+ALLOCATED=>(a)* 判定动态数组a是否分配存储空间。a:A,结果:L。分配:.TRUE.,未分配.FALSE.
+ANY=>(m[,d])* 判定逻辑数组m是否有一元素为“真”。m;L-A,d:I,结果:L(缺省d)或L-A(d=维)
+COUNT=>(m[,d])* 计算逻辑数组m为“真”元素个数。m;L-A,d:I,结果:I(缺省d)或I-A(d=维)
+CSHIFT=>(a,s[,d])* 将数组a元素按行(d=1或缺省)或按列(d=2)且向左(d>0)或向右循环移动s次
+EOSHIFT=>(a,s[,b][,d]) 将数组a元素按行(d=1或缺省)或按列(d=2)且向左(d>0)或向右循环移动s次
+LBOUND=>(a[,d])* 求数组a某维d的下界。a;A,d:I,结果:I(d=1或缺省)或A(d=2)
+MATMUL=>(ma,mb)* 对二维数组(矩阵)ma和mb做乘积运算。ma:A,mb:A,结果:A
+MAXLOC=>(a[,m])* 求数组a中对应掩码m为“真”最大元素下标值。a:A,m:L-A,结果:A,大小=维数
+MAXVAL=>(a[,d][,m])* 求数组a中对应掩码m为“真”元素最大值。a:A,d:I,m:L-A,结果:A,大小=维数
+MERGE=>(ts,fs,m) 将数组ts和fs按对应m掩码数组元素合并,掩码为“真”取ts值,否则取fs值
+MINLOC=>(a[,m])* 求数组a中对应掩码m为“真”最小元素下标值。a:A,m:L-A,结果:A,大小=维数
+MINVAL=>(a[,d][,m])* 求数组a中对应掩码m为“真”元素最小值。a:A,d:I,m:L-A,结果:A,大小=维数
+PACK=>(a,m[,v]) 将数组a中对应m掩码数组元素为“真”元素组成一维数组并与一维数组v合并
+PRODUCT=>(a[,d][,m]) 数组a中对应掩码m为“真”元素乘积。a:A,d:I,m:L-A,结果:A,大小=维数
+RESHAPE=>(a,s)* 将数组a的形按数组s定义的形转换。数组形指数组维数、行数、列数、…
+SHAPE=>(a) 求数组a的形。a:A,结果:A(一维)
+SIZE=>(a[,d])* 求数组a的元素个数。a:A,d:I,结果:I
+SPREAD=>(a,d,n) 以某维d扩展数组a的元素n次。a:A,d:I,n:I,结果:A
+SUM=>(a[,d][,m])* 数组a中对应掩码m为“真”元素之和。a:A,d:I,m:L-A,结果:A,大小=维数
+TRANSPOSE=>(a).* 对数组a进行转置。a:A,结果:A
+LBOUND=>(a[,d])* 求数组a某维d的上界。a;A,d:I,结果:I(d=1或缺省)或A(d=2)
+UNPACK=>(a,m,f) 将一维数组a、掩码数组m值和f值组合生成新数组。a;A,m:L-A,f:同a,结果:A
