@@ -1,28 +1,39 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+################
+# Bash options #
+################
 
-# append to the history file, don't overwrite it
+# For an explanation of any of the following options, see
+# http://wiki.bash-hackers.org/internals/shell_options
+
+shopt -s autocd
+shopt -s checkwinsize
 shopt -s histappend
+shopt -s lithist
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+########################################################
+# History configuration (See bash(1) for more options) #
+########################################################
+
+# don't put duplicate lines in the history
+HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
-export EDITOR=vim
+####################################
+# Other options and configurations #
+####################################
+
+_update_ps1() { export PS1="$(powerline-bash.py --cwd-only $?)"; }
+PROMPT_COMMAND="_update_ps1"
+
+EDITOR=vim
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-_update_ps1 () { export PS1="$(powerline-bash.py --cwd-only $?)"; }
-export PROMPT_COMMAND="_update_ps1"
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
 eval "$(dircolors -b $DIRCOLORS)"
@@ -32,13 +43,9 @@ eval "$(dircolors -b $DIRCOLORS)"
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Alias definitions and local configuration options
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
