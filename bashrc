@@ -1,9 +1,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-################
-# Bash options #
-################
+#################
+# Shell options #
+#################
 
 # For an explanation of any of the following options, see
 # http://wiki.bash-hackers.org/internals/shell_options
@@ -37,8 +37,8 @@ export EDITOR=vim
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
 eval "$(dircolors -b $DIRCOLORS)"
 
-# Allow the up/down arrows to search commands backward and forward
-# From http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
+# Allow the up/down arrows to search commands backward and forward. See:
+# http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
