@@ -15,6 +15,11 @@ function! delimitMate#ShouldJump(...) "{{{
 	let char = delimitMate#GetCharFromCursor(0)
 	let list = b:_l_delimitMate_right_delims + b:_l_delimitMate_quotes_list
 
+	" Cursor is preceded by only whitespace
+	if match(getline('.')[: col('.')], '^\s*$')
+		return 0
+	endif
+
 	" Closing delimiter on the right.
 	if (!a:0 && index(list, char) > -1)
 				\ || (a:0 && char == a:1)
