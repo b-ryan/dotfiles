@@ -45,6 +45,7 @@ pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 main = do
     dbproc <- spawnPipe "dropbox start"
     xmproc <- spawnPipe "xmobar --screen=0"
+    bgproc <- spawnPipe "xsetroot -solid \\#000000 -display :0.0"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
@@ -60,6 +61,7 @@ main = do
 
         -- BEGIN master-branch shortcuts
         , ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
+        , ("M-S-e", spawn $ pianobarCmd "q") -- quit
         , ("M-S-p", spawn $ pianobarCmd "p") -- pause
         , ("M-S-n", spawn $ pianobarCmd "n") -- next
         , ("M-S-u", spawn $ pianobarCmd "+") -- thumbs up

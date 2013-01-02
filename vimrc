@@ -93,8 +93,7 @@ set hidden " only hide buffers when switching (don't close them which erases und
 " Visual whitespace
 set list
 set listchars=tab:>\ ,trail:.
-
-set visualbell " Stops the 'ding' heard all the time
+autocmd BufEnter * set list " make sure visual whitespace is always shown
 
 " searching
 set incsearch " incremental search (i.e. search while typing)
@@ -103,6 +102,7 @@ set ignorecase " ignore case on searches
 set smartcase " override ignorecase when search term has uppercase in it
 
 set mouse=a " enables mouse use in all modes
+
 syntax enable " enables syntax highlighting
 filetype on " enables filetype detection
 filetype plugin on
@@ -113,9 +113,6 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
-" ensure visual whitespace is being shown
-autocmd BufEnter * set list
-
 " automatically open and close the popup menu / preview window
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
 " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -123,16 +120,12 @@ autocmd BufEnter * set list
 set complete-=t,i
 
 " other stuff -----------------------------------------------------------------
+
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
 set colorcolumn=80
 
-" set cursorline
-" highlight CursorLine guibg=#FFE0F7
-" highlight CursorColumn guibg=#FFE0F7
-nnoremap <Leader>l :set cursorline!<CR>
-nnoremap <Leader>c :set cursorcolumn!<CR>
-
 " general key mappings --------------------------------------------------------
+
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
 
@@ -149,20 +142,11 @@ nnoremap <A-k> :m-2<CR>==
 inoremap <A-k> <Esc>:m-2<CR>==gi
 vnoremap <A-k> :m-2<CR>gv=gv
 
-" Map Ctrl+Del in insert mode to delete back a word
+" Map Ctrl+Backspace in insert mode to delete back a word
 inoremap <C-BS> <C-w>
 
 " Proper Ctrl+C -> Esc map
 map <C-c> <Esc>
-
-" Tab movements
-nnoremap <F5> :tabm<CR>
-nmap <C-S-PageUp> :tabm tabpagenr()-1<CR>
-nmap <C-S-PageDown> :tabm tabpagenr()+1<CR>
-
-" Mapping to auto-format the entire document and return
-" to original position
-nnoremap <F8> mzgggqG`z
 
 " Remove trailing whitespace
 nmap <Leader>w :%s/\s\+$//<CR>
@@ -173,8 +157,7 @@ nmap <Leader>w :%s/\s\+$//<CR>
 
 " phpfolding ------------------------------------------------------------------
 map <F5> <Esc>:EnableFastPHPFolds<Cr>
-map <F6> <Esc>:EnablePHPFolds<Cr>
-map <F7> <Esc>:DisablePHPFolds<Cr>
+map <F6> <Esc>:DisablePHPFolds<Cr>
 
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
@@ -221,4 +204,4 @@ let g:ctrlp_regexp = 1 " default to regexp search
 let Tlist_Use_Right_Window = 1 " place taglist window on the right
 let Tlist_Display_Prototype = 1 " show prototypes instead of tags
 " mapping to open taglist
-nmap <F6> :TlistToggle<CR>
+nmap <F7> :TlistToggle<CR>
