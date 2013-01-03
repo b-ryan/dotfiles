@@ -18,6 +18,7 @@ alias gist="git status"
 alias dev="git checkout develop"
 alias mas="git checkout master"
 alias c-="git checkout -"
+alias b="git branch"
 pull() { git pull origin $(git br); }
 push() { git push origin $(git br); }
 short() { N=${1:-1}; git log -n $N --first-parent; }
