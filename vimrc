@@ -193,6 +193,7 @@ imap <Tab> <Plug>delimitMateS-Tab
 imap <S-Tab> <Plug>delimitMateJumpMany
 
 " ctrlp ----------------------------------------------------------------------
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|build$',
     \ 'file': '\.swp$',
