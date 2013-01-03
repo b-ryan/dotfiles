@@ -16,7 +16,8 @@ function! delimitMate#ShouldJump(...) "{{{
 	let list = b:_l_delimitMate_right_delims + b:_l_delimitMate_quotes_list
 
 	" Cursor is preceded by only whitespace
-	if match(getline('.')[: col('.')], '^\s*$')
+	let pos = col('.')
+	if pos == 1 || match(getline('.')[: pos - 2], '^\s*$') > -1
 		return 0
 	endif
 
