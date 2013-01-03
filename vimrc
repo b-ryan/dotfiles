@@ -137,8 +137,9 @@ nnoremap <Leader>c :set cursorcolumn!<CR>
 nnoremap Y y$
 
 " Keys for more efficient saving
-nnoremap <F11> :w<CR>
-nnoremap <F12> :wa<CR>
+nmap <F11> :w<CR>
+nmap <F12> :wa<CR>
+imap <F12> <ESC>:wa<CR>
 
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
 " Use Alt-j or Alt-k to move lines up or down, respectively
