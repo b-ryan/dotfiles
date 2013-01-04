@@ -156,6 +156,13 @@ map <C-c> <Esc>
 " Remove trailing whitespace
 nmap <Leader>w :%s/\s\+$//<CR>
 
+" A bit tricky to explain: will put you insert mode on the next line (like
+" doing just 'o', but will also put an extra blank line below this new line.
+nnoremap <Leader>o o<esc>O
+
+" Search for the word under the cursor, but stay on the current instance of it
+nnoremap <Leader>n *N
+
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
