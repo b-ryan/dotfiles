@@ -126,6 +126,10 @@ set colorcolumn=80
 
 " general key mappings --------------------------------------------------------
 
+" Open vimrc / source it
+nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <Leader>sv :source $MYVIMRC<cr>
+
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
 
