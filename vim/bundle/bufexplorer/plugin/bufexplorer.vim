@@ -432,7 +432,7 @@ function! s:BEMapKeys()
     nnoremap <buffer> <silent> <tab> :call <SID>BESelectBuffer("tab")<cr>
   endif
 
-  nnoremap <buffer> <silent> <F1>          :call <SID>BEToggleHelp()<cr>
+  nnoremap <buffer> <silent> ?             :call <SID>BEToggleHelp()<cr>
   nnoremap <buffer> <silent> <2-leftmouse> :call <SID>BESelectBuffer()<cr>
   nnoremap <buffer> <silent> <cr>          :call <SID>BESelectBuffer()<cr>
   nnoremap <buffer> <silent> o             :call <SID>BESelectBuffer()<cr>
@@ -554,7 +554,7 @@ function! s:BECreateHelp()
   if g:bufExplorerDetailedHelp == 1
     call add(header, '" Buffer Explorer ('.g:bufexplorer_version.')')
     call add(header, '" --------------------------')
-    call add(header, '" <F1> : toggle this help')
+    call add(header, '" ? : toggle this help')
     call add(header, '" <enter> or o or Mouse-Double-Click : open buffer under cursor')
     call add(header, '" <shift-enter> or t : open buffer in another tab')
     call add(header, '" d : delete buffer')
@@ -569,7 +569,7 @@ function! s:BECreateHelp()
     call add(header, '" T : toggle if to show only buffers for this tab or not')
     call add(header, '" u : toggle showing unlisted buffers')
   else
-    call add(header, '" Press <F1> for Help')
+    call add(header, '" Press ? for Help')
   endif
 
   if (!exists("b:displayMode") || b:displayMode != "winmanager") || (b:displayMode == "winmanager" && g:bufExplorerDetailedHelp == 1)

@@ -26,8 +26,27 @@ HISTFILESIZE=2000
 # Other options and configurations #
 ####################################
 
-_update_ps1() { export PS1="$(powerline-bash.py --cwd-only $?)"; }
-PROMPT_COMMAND="_update_ps1"
+PS1_git_color() {
+    if git status 2> /dev/null | grep 'Changed' &> /dev/null; then
+        echo -e "\e[1;31m"
+    else
+        echo -e "\e[1;36m"
+    fi
+}
+PS1_git_part() {
+    branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [ "$branch" ]; then
+        status=$(git status -s)
+        numChanged=$(echo $status | grep '^ M' | wc -l)
+        numUntracked=$(echo $status | grep '^??' | wc -l)
+        [ $numChanged -gt 0 ] && changed=" ${numChanged}"
+        [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
+        echo " [$branch$changed$untracked]"
+    else
+        echo ""
+    fi
+}
+export PS1="\[\e[0;32m\]\u@\h\[\$(PS1_git_color)\]\$(PS1_git_part) \[\e[0;34m\]\w \$\[\e[0m\] "
 
 export EDITOR=vim
 

@@ -14,11 +14,11 @@ alias la='ls -A' # show almost all entries (exclude . and ..)
 alias lh='ls -a | egrep "^\."' # ONLY show hidden files
 
 # git aliases
-alias gist="git status"
-alias dev="git checkout develop"
-alias mas="git checkout master"
+alias gist="git status -s"
+alias dev="git checkout develop && git pull origin develop"
+alias mas="git checkout master && git pull origin master"
 alias c-="git checkout -"
-alias b="git branch"
+alias b="git for-each-ref --sort=-committerdate refs/heads/"
 pull() { git pull origin $(git br); }
 push() { git push origin $(git br); }
 short() { N=${1:-1}; git log -n $N --first-parent; }
