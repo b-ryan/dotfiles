@@ -27,7 +27,7 @@ HISTFILESIZE=2000
 ####################################
 
 PS1_git_color() {
-    if git status 2> /dev/null | grep 'Changed' &> /dev/null; then
+    if git status 2> /dev/null | grep 'Change' &> /dev/null; then
         echo -e "\e[1;31m"
     else
         echo -e "\e[1;36m"

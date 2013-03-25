@@ -19,6 +19,7 @@ alias dev="git checkout develop && git pull origin develop"
 alias mas="git checkout master && git pull origin master"
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
+alias giff="git diff --color-words"
 pull() { git pull origin $(git br); }
 push() { git push origin $(git br); }
 short() { N=${1:-1}; git log -n $N --first-parent; }
