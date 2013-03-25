@@ -46,7 +46,7 @@ PS1_git_part() {
         echo ""
     fi
 }
-export PS1="\[\e[0;32m\]\u@\h\[\$(PS1_git_color)\]\$(PS1_git_part) \[\e[0;34m\]\w \$\[\e[0m\] "
+export PS1="\[\e[01;32m\]\u@\h\[\$(PS1_git_color)\]\$(PS1_git_part) \[\e[01;34m\]\w \$\[\e[0m\] "
 
 export EDITOR=vim
 
