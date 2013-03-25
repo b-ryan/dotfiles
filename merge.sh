@@ -1,4 +1,6 @@
 #!/bin/bash
-git checkout work
-git merge master --no-edit
-git checkout -
+for branch in work necromancer; do
+    git checkout $branch
+    git merge master --no-edit
+done
+git checkout master
