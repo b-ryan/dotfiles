@@ -163,6 +163,9 @@ nnoremap <Leader>o o<esc>O
 " Search for the word under the cursor, but stay on the current instance of it
 nnoremap <Leader>n *N
 
+" Set clojure indenting to two spaces
+au BufEnter *.clj setlocal shiftwidth=2
+
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
