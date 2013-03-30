@@ -26,27 +26,44 @@ HISTFILESIZE=2000
 # Other options and configurations #
 ####################################
 
-PS1_git_color() {
-    if git status 2> /dev/null | grep 'Change' &> /dev/null; then
-        echo -e "\e[1;31m"
-    else
-        echo -e "\e[1;36m"
-    fi
-}
-PS1_git_part() {
+ps1_git() {
+    local branch
+    local status
+    local color
+    local numChanged
+    local numUntracked
+    local changed
+    local untracked
+    local gitPart
+
     branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [ "$branch" ]; then
-        status=$(git status -s)
-        numChanged=$(echo $status | grep '^ M' | wc -l)
-        numUntracked=$(echo $status | grep '^??' | wc -l)
-        [ $numChanged -gt 0 ] && changed=" ${numChanged}"
+        status=$(git status --short)
+        if [ $(wc -l <<< "$status") -gt 0 ]; then
+            color="\e[1;31m"; else
+            color="\e[1;36m";
+        fi
+        numChanged=$(grep '^ M' <<< "$status" | wc -l)
+        numUntracked=$(grep '^??' <<< "$status" | wc -l)
+        [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
         [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
-        echo " [$branch$changed$untracked]"
-    else
-        echo ""
+        echo " \[$color\][$branch$changed$untracked]"
     fi
 }
-export PS1="\[\e[01;32m\]\u@\h\[\$(PS1_git_color)\]\$(PS1_git_part) \[\e[01;34m\]\w \$\[\e[0m\] "
+ps1_update() {
+    green="\[\e[01;32m\]"
+    blue="\[\e[01;34m\]"
+    white="\[\e[0m\]"
+    PS1="$green\u@\h $blue\w$(ps1_git)\n$white\\\$ "
+}
+case $TERM in
+    xterm)
+        export PROMPT_COMMAND="ps1_update"
+        ;;
+    *)
+        export PS1="\u@\h \w \$ "
+        ;;
+esac
 
 export EDITOR=vim
 
