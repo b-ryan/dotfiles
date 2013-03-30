@@ -39,7 +39,7 @@ ps1_git() {
     branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [ "$branch" ]; then
         status=$(git status --short)
-        if [ $(wc -l <<< "$status") -gt 0 ]; then
+        if [ "$status" ]; then
             color="\e[1;31m"; else
             color="\e[1;36m";
         fi
