@@ -34,7 +34,6 @@ ps1_git() {
     local numUntracked
     local changed
     local untracked
-    local gitPart
 
     branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [ "$branch" ]; then
@@ -47,14 +46,29 @@ ps1_git() {
         numUntracked=$(grep '^??' <<< "$status" | wc -l)
         [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
         [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
-        echo " \[$color\][$branch$changed$untracked]"
+        echo " \[$color\][git / $branch$changed$untracked]"
+    fi
+}
+ps1_hg() {
+    branch=$(hg branch 2> /dev/null)
+    if [ "$branch" ]; then
+        status=$(hg status)
+        if [ "$status" ]; then
+            color="\e[1;31m"; else
+            color="\e[1;36m";
+        fi
+        numChanged=$(grep '^M' <<< "$status" | wc -l)
+        numUntracked=$(grep '^?' <<< "$status" | wc -l)
+        [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
+        [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
+        echo " \[$color\][hg / $branch$changed$untracked]"
     fi
 }
 ps1_update() {
     green="\[\e[01;32m\]"
     blue="\[\e[01;34m\]"
     white="\[\e[0m\]"
-    PS1="$green\u@\h $blue\w$(ps1_git)\n$white\\\$ "
+    PS1="$green\u@\h $blue\w$(ps1_git)$(ps1_hg)\n$white\\\$ "
 }
 case $TERM in
     xterm)
