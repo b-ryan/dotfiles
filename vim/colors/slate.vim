@@ -12,7 +12,7 @@ endif
 let colors_name = "slate"
 :hi Normal guifg=White guibg=grey15
 :hi Cursor guibg=khaki guifg=slategrey
-:hi VertSplit guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
+:hi VertSplit guibg=#363532 guifg=grey40 gui=none cterm=reverse
 :hi Folded guibg=black guifg=grey40 ctermfg=grey ctermbg=darkgrey
 :hi FoldColumn guibg=black guifg=grey20 ctermfg=4 ctermbg=7
 :hi IncSearch guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
@@ -22,8 +22,8 @@ let colors_name = "slate"
 :hi Question guifg=springgreen ctermfg=green
 :hi Search guibg=peru guifg=wheat cterm=none ctermfg=grey ctermbg=blue
 :hi SpecialKey guifg=yellowgreen ctermfg=darkgreen
-:hi StatusLine guibg=#c2bfa5 guifg=black gui=none cterm=bold,reverse
-:hi StatusLineNC guibg=#c2bfa5 guifg=grey40 gui=none cterm=reverse
+:hi StatusLine guibg=#363532 guifg=white gui=none cterm=bold,reverse
+:hi StatusLineNC guibg=#363532 guifg=grey40 gui=none cterm=reverse
 :hi Title guifg=gold gui=bold cterm=bold ctermfg=yellow
 :hi Statement guifg=CornflowerBlue ctermfg=lightblue
 :hi Visual gui=none guifg=khaki guibg=olivedrab cterm=reverse
@@ -34,7 +34,7 @@ let colors_name = "slate"
 :hi Special guifg=darkkhaki ctermfg=brown
 :hi Identifier guifg=salmon ctermfg=red
 :hi Include guifg=red ctermfg=red
-:hi PreProc guifg=red guibg=white ctermfg=red
+:hi PreProc guifg=red ctermfg=red
 :hi Operator guifg=Red ctermfg=Red
 :hi Define guifg=gold gui=bold ctermfg=yellow
 :hi Type guifg=CornflowerBlue ctermfg=2
@@ -54,3 +54,4 @@ let colors_name = "slate"
 :hi Underlined cterm=underline ctermfg=5
 :hi Error guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
 :hi SpellErrors guifg=White guibg=Red cterm=bold ctermfg=7 ctermbg=1
+:hi ColorColumn guibg=#362323
