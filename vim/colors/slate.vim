@@ -12,18 +12,18 @@ endif
 let colors_name = "slate"
 :hi Normal guifg=White guibg=grey15
 :hi Cursor guibg=khaki guifg=slategrey
-:hi VertSplit guibg=#363532 guifg=grey40 gui=none cterm=reverse
+:hi VertSplit guifg=grey25 gui=none cterm=reverse
 :hi Folded guibg=black guifg=grey40 ctermfg=grey ctermbg=darkgrey
 :hi FoldColumn guibg=black guifg=grey20 ctermfg=4 ctermbg=7
 :hi IncSearch guifg=green guibg=black cterm=none ctermfg=yellow ctermbg=green
 :hi ModeMsg guifg=goldenrod cterm=none ctermfg=brown
 :hi MoreMsg guifg=SeaGreen ctermfg=darkgreen
-:hi NonText guifg=RoyalBlue guibg=grey15 cterm=bold ctermfg=blue
+:hi NonText guifg=grey40 guibg=grey15 cterm=bold ctermfg=blue
 :hi Question guifg=springgreen ctermfg=green
-:hi Search guibg=peru guifg=wheat cterm=none ctermfg=grey ctermbg=blue
+:hi Search guibg=grey40 guifg=white cterm=none ctermfg=grey ctermbg=blue
 :hi SpecialKey guifg=#3B3537 ctermfg=darkgreen
-:hi StatusLine guibg=#363532 guifg=white gui=none cterm=bold,reverse
-:hi StatusLineNC guibg=#363532 guifg=grey40 gui=none cterm=reverse
+:hi StatusLine guibg=grey17 guifg=grey50 gui=none cterm=bold,reverse
+:hi StatusLineNC guibg=grey17 guifg=grey40 gui=none cterm=reverse
 :hi Title guifg=gold gui=bold cterm=bold ctermfg=yellow
 :hi Statement guifg=CornflowerBlue ctermfg=lightblue
 :hi Visual gui=none guifg=khaki guibg=olivedrab cterm=reverse
