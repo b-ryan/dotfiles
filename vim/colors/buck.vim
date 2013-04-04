@@ -1,6 +1,7 @@
 "%% SiSU Vim color file
+" Buck colorscheme, based on the slate colorscheme
+" Maintainer: Buck Ryan <buck.ryan@gmail.com>
 " Slate Maintainer: Ralph Amissah <ralph@amissah.com>
-" (originally looked at desert Hans Fugal <hans@fugal.net> http://hans.fugal.net/vim/colors/desert.vim (2003/05/06)
 :set background=dark
 :highlight clear
 if version > 580
@@ -9,7 +10,7 @@ if version > 580
  syntax reset
  endif
 endif
-let colors_name = "slate"
+let colors_name = "buck"
 " note that gui=none means there is no bold, underline, etc.
 " see :h bold
 :hi  Normal        guibg=grey15     guifg=White                                                                                    
