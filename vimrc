@@ -24,7 +24,6 @@
 "   * clojure         Clojure highlighting, indenting, etc.
 "   * coffee-script   Coffee highlight, indenting, etc.
 "   * CtrlP           Fuzzy Finder
-"   * delimitMate     Auto complete brackets, etc.
 "   * fugitive        Git wrapper
 "   * NERDTree        Provides a way to peruse directories
 "   * OmniCppComplete C++ Omni-Complete
@@ -190,22 +189,13 @@ map <leader>r :NERDTreeFind<CR>
 
 " supertab -------------------------------------------------------------------
 " kick off supertab with space
-" leave tab controls to delimitMate
 let g:SuperTabMappingForward = '<C-Space>'
 let g:SuperTabMappingBackward = '<S-C-Space>'
-" don't map <CR> as it's causing conflicts with delimitMate's expand CR
-let g:SuperTabCrMapping = 0
 
 " OmniCppComplete settings ---------------------------------------------------
 let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
-
-" delimitMate ----------------------------------------------------------------
-let delimitMate_expand_cr=1 " Expand carriage return
-let delimitMate_expand_space=1 " Expand spaces
-imap <Tab> <Plug>delimitMateS-Tab
-imap <S-Tab> <Plug>delimitMateJumpMany
 
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
