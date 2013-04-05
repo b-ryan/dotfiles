@@ -34,6 +34,7 @@
 "   * surround        Surround text with tags, quotes, etc.
 "   * taglist         CTags explorer for viewing all tags in open files
 "   * tcomment        Quickly comment out lines or selections
+"   * UltiSnips
 
 call pathogen#infect()
 
@@ -211,3 +212,17 @@ let Tlist_Use_Right_Window = 1 " place taglist window on the right
 let Tlist_Display_Prototype = 1 " show prototypes instead of tags
 " mapping to open taglist
 nmap <F7> :TlistToggle<CR>
+
+" UltiSnips ------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" dbext
+let g:dbext_default_type = 'MySQL'
+let g:dbext_default_user = 'root'
+let g:dbext_default_passwd = 'password'
+let g:dbext_default_window_use_horiz = 0
+let g:dbext_default_window_width = 175
+autocmd BufEnter queries.mysql nnoremap <buffer> <Enter> :.,.DBExecRangeSQL<CR>
+autocmd BufEnter queries.mysql setlocal expandtab
