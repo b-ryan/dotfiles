@@ -220,12 +220,3 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " dwm.vim --------------------------------------------------------------------
-
-" dbext
-let g:dbext_default_type = 'MySQL'
-let g:dbext_default_user = 'root'
-let g:dbext_default_passwd = 'password'
-let g:dbext_default_window_use_horiz = 0
-let g:dbext_default_window_width = 175
-autocmd BufEnter queries.mysql nnoremap <buffer> <Enter> :.,.DBExecRangeSQL<CR>
-autocmd BufEnter queries.mysql setlocal expandtab
