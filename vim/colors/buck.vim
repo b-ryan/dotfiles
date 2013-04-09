@@ -24,10 +24,10 @@ let colors_name = "buck"
 :hi  NonText       guibg=grey15     guifg=grey40                              ctermfg=blue                   cterm=bold            
 :hi  Question                       guifg=springgreen                         ctermfg=green                                        
 :hi  Search        guibg=grey40     guifg=white           ctermbg=blue        ctermfg=grey                   cterm=none            
-:hi  SpecialKey                     guifg=#3B3537                             ctermfg=darkgreen                                    
+:hi  SpecialKey                     guifg=#3b3537                             ctermfg=darkgreen                                    
 :hi  StatusLine    guibg=grey17     guifg=grey50                                                  gui=none   cterm=bold,reverse    
 :hi  StatusLineNC  guibg=grey17     guifg=grey40                                                  gui=none   cterm=reverse         
-:hi  Title                          guifg=gold                                ctermfg=yellow      gui=bold   cterm=bold            
+:hi  Title                          guifg=#edeb7e                             ctermfg=yellow      gui=bold   cterm=bold            
 :hi  Statement                      guifg=CornflowerBlue                      ctermfg=lightblue                                    
 :hi  Visual        guibg=olivedrab  guifg=khaki                                                   gui=none   cterm=reverse         
 :hi  WarningMsg                     guifg=salmon                              ctermfg=1                                            
@@ -35,11 +35,11 @@ let colors_name = "buck"
 :hi  Comment                        guifg=grey40                              ctermfg=11                     cterm=bold            
 :hi  Constant                       guifg=#ffa0a0                             ctermfg=brown                                        
 :hi  Special                        guifg=darkkhaki                           ctermfg=brown                                        
-:hi  Identifier                     guifg=salmon                              ctermfg=red                                          
+:hi  Identifier                     guifg=#f0909d                             ctermfg=red                                          
 :hi  Include                        guifg=red                                 ctermfg=red                                          
 :hi  PreProc                        guifg=red                                 ctermfg=red                                          
 :hi  Operator                       guifg=Red                                 ctermfg=Red                                          
-:hi  Define                         guifg=gold                                ctermfg=yellow      gui=bold                         
+:hi  Define                         guifg=#edeb7e                             ctermfg=yellow      gui=bold                         
 :hi  Type                           guifg=CornflowerBlue                      ctermfg=2                                            
 :hi  Function                       guifg=navajowhite                         ctermfg=brown                                        
 :hi  Structure                      guifg=green                               ctermfg=green                                        
