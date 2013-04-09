@@ -35,6 +35,7 @@
 "   * taglist         CTags explorer for viewing all tags in open files
 "   * tcomment        Quickly comment out lines or selections
 "   * UltiSnips
+"   * dwm.vim         Window management
 
 call pathogen#infect()
 
@@ -217,6 +218,8 @@ nmap <F7> :TlistToggle<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" dwm.vim --------------------------------------------------------------------
 
 " dbext
 let g:dbext_default_type = 'MySQL'
