@@ -120,10 +120,12 @@ autocmd BufReadPost *
 " set completeopt=menu,menuone,longest,preview
 set complete-=t,i
 
-" other stuff -----------------------------------------------------------------
-
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
 set colorcolumn=80
+
+" split files below and to the right!
+set splitbelow
+set splitright
 
 " general key mappings --------------------------------------------------------
 
