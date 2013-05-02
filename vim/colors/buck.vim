@@ -35,10 +35,10 @@ let colors_name = "buck"
 :hi  Comment                        guifg=grey40                              ctermfg=11                     cterm=bold            
 :hi  Constant                       guifg=#ffa0a0                             ctermfg=brown                                        
 :hi  Special                        guifg=darkkhaki                           ctermfg=brown                                        
-:hi  Identifier                     guifg=#f0909d                             ctermfg=red                                          
+:hi  Identifier                     guifg=#ffc4cc                             ctermfg=red                                          
 :hi  Include                        guifg=red                                 ctermfg=red                                          
 :hi  PreProc                        guifg=red                                 ctermfg=red                                          
-:hi  Operator                       guifg=Red                                 ctermfg=Red                                          
+:hi  Operator                       guifg=#e35265                             ctermfg=Red                                          
 :hi  Define                         guifg=#edeb7e                             ctermfg=yellow      gui=bold                         
 :hi  Type                           guifg=CornflowerBlue                      ctermfg=2                                            
 :hi  Function                       guifg=navajowhite                         ctermfg=brown                                        
