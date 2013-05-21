@@ -42,3 +42,11 @@ alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that fo
 # http://www.centerkey.com/tree/
 alias ls-dirs="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias ruhoh="bundle exec ruhoh"
+
+rmswp() {
+    ext=swp
+    [ $1 ] && ext=$1
+    for x in $(find . -name *.$ext); do
+        rm -f $x
+    done
+}

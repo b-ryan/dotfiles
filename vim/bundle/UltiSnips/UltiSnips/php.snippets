@@ -83,10 +83,6 @@ snippet session "session"
 $_SESSION['${1}']${2}
 endsnippet
 
-snippet t "t"
-$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
-endsnippet
-
 snippet var "var"
 var_export(${1});${2}
 endsnippet
@@ -262,4 +258,12 @@ require 'GlobalUtilityFunctions.php';
 $0
 
 ?>
+endsnippet
+
+snippet t
+$this->
+endsnippet
+
+snippet c
+$container->
 endsnippet
