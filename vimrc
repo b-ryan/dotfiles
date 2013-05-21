@@ -127,6 +127,9 @@ set colorcolumn=80
 set splitbelow
 set splitright
 
+" don't save those annoying swp files
+set noswapfile
+
 " general key mappings --------------------------------------------------------
 
 " Open vimrc / source it
