@@ -114,10 +114,13 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+au FileType python set omnifunc=pythoncomplete#Complete
+
 " automatically open and close the popup menu / preview window
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
 " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " set completeopt=menu,menuone,longest,preview
+set completeopt=preview
 set complete-=t,i
 
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
@@ -126,6 +129,8 @@ set colorcolumn=80
 " split files below and to the right!
 set splitbelow
 set splitright
+
+set noswapfile
 
 " general key mappings --------------------------------------------------------
 
