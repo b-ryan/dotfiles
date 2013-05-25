@@ -174,6 +174,8 @@ nnoremap <Leader>n *N
 
 " Set clojure indenting to two spaces
 au BufEnter *.clj setlocal shiftwidth=2
+au BufEnter *.c setlocal shiftwidth=2
+au BufEnter Makefile setlocal noexpandtab
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
