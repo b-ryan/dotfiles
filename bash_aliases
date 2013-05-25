@@ -19,7 +19,7 @@ alias dev="git checkout develop && git pull origin develop"
 alias mas="git checkout master && git pull origin master"
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
-alias giff="git diff --color-words"
+alias giff="git diff --color-words --ignore-space-change"
 pull() { git pull origin $(git br); }
 push() { git push origin $(git br); }
 short() { N=${1:-1}; git log -n $N --first-parent; }
@@ -42,3 +42,11 @@ alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that fo
 # http://www.centerkey.com/tree/
 alias ls-dirs="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 alias ruhoh="bundle exec ruhoh"
+
+rmswp() {
+    ext=swp
+    [ $1 ] && ext=$1
+    for x in $(find . -name *.$ext); do
+        rm -f $x
+    done
+}
