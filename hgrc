@@ -4,6 +4,7 @@ username=Buck Ryan <buck.ryan@gmail.com>
 [extensions]
 color=
 pager=
+purge=
 
 [pager]
 pager=LESS='FSRX' less

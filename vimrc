@@ -114,10 +114,13 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+au FileType python set omnifunc=pythoncomplete#Complete
+
 " automatically open and close the popup menu / preview window
 " from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
 " au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 " set completeopt=menu,menuone,longest,preview
+set completeopt=preview
 set complete-=t,i
 
 " From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
@@ -126,6 +129,9 @@ set colorcolumn=80
 " split files below and to the right!
 set splitbelow
 set splitright
+
+" don't save those annoying swp files
+set noswapfile
 
 " general key mappings --------------------------------------------------------
 
@@ -168,6 +174,8 @@ nnoremap <Leader>n *N
 
 " Set clojure indenting to two spaces
 au BufEnter *.clj setlocal shiftwidth=2
+au BufEnter *.c setlocal shiftwidth=2
+au BufEnter Makefile setlocal noexpandtab
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
@@ -208,7 +216,7 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$\|build$',
-    \ 'file': '\.swp$',
+    \ 'file': '\.swp$\|\.pyc$',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
 let g:ctrlp_regexp = 1 " default to regexp search

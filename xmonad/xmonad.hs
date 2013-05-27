@@ -49,7 +49,8 @@ main = do
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
-        , focusFollowsMouse = False
+        , normalBorderColor = "black"
+        , focusedBorderColor = "#FAD4F1"
 
         -- BEGIN master-branch-specific config
         , logHook = dynamicLogWithPP $ xmobarPPOptions xmproc
