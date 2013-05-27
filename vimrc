@@ -173,6 +173,9 @@ au BufEnter *.clj setlocal shiftwidth=2
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
 
+"  sql.txt
+let g:ftplugin_sql_omni_key = '<C-q>'
+
 " phpfolding ------------------------------------------------------------------
 map <F5> <Esc>:EnableFastPHPFolds<Cr>
 map <F6> <Esc>:DisablePHPFolds<Cr>
