@@ -14,19 +14,21 @@ alias b    "git for-each-ref --sort=-committerdate refs/heads/"
 alias giff "git diff --color-words --ignore-space-change"
 
 function git_prompt
-    set --local branch (git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    if test -n $branch
-        set --local gitStatus (git status --short)
-        set --local numChanged (echo "$gitStatus" | grep '^ M' | wc -l)
-        set --local numUntracked (echo "$gitStatus" | grep '^??' | wc -l)
-        set --local numStashed (git stash list | grep "on $branch" | wc -l)
-        test $numChanged -gt 0; and set --local changed " ~$numChanged"
-        test $numUntracked -gt 0; and set --local untracked " +$numUntracked"
-        test $numStashed -gt 0; and set --local stashed " {$numStashed}"
+    set branch (git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if test -n "$branch"
+        set gitStatus (git status --short)
+        set numChanged (echo "$gitStatus" | grep '^ M' | wc -l)
+        set numUntracked (echo "$gitStatus" | grep '^??' | wc -l)
+        set numStashed (git stash list | grep "on $branch" | wc -l)
+        test $numChanged   -gt 0; and set changed   " ~$numChanged"
+        test $numUntracked -gt 0; and set untracked " +$numUntracked"
+        test $numStashed   -gt 0; and set stashed   " {$numStashed}"
         echo -n " [$branch$changed$untracked$stashed]"
     end
 end
 
 function fish_prompt
-    printf "%s@%s%s\$ " (whoami) (hostname) (git_prompt)
+    #set --local green '\e[01;32m'
+    set --local green '\e[32m'
+    printf "$green%s@%s%s\$ " (whoami) (hostname) (git_prompt)
 end
