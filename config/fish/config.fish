@@ -28,7 +28,8 @@ function git_prompt
 end
 
 function fish_prompt
-    #set --local green '\e[01;32m'
     set --local green '\e[32m'
-    printf "$green%s@%s%s\$ " (whoami) (hostname) (git_prompt)
+    set --local blue  '\e[34m'
+    set --local white '\e[0m'
+    printf "$green%s@%s $blue%s\n$white\$ " (whoami) (hostname) (git_prompt)
 end
