@@ -67,8 +67,8 @@ ps1_hg() {
     fi
 }
 ps1_update() {
-    green="\[\e[01;32m\]"
-    blue="\[\e[01;34m\]"
+    green="\[\e[0;32m\]"
+    blue="\[\e[0;34m\]"
     white="\[\e[0m\]"
     PS1="$green\u@\h $blue\w$(ps1_git)$(ps1_hg)\n$white\\\$ "
 }

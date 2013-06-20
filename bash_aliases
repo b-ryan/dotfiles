@@ -50,3 +50,5 @@ rmswp() {
         rm -f $x
     done
 }
+
+alias unit='phpunit --bootstrap=test/bootstrap.php'
