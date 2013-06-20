@@ -1,3 +1,9 @@
+set PATH $PATH ~/bin
+
+set --export INSTALL_ENV vm
+set --export EMAIL fryan@rjmetrics.com
+set --export CONFIRM y
+
 alias ls "ls --color=auto"
 
 alias ping "ping -c 4"
@@ -32,4 +38,8 @@ function fish_prompt
     set --local blue  '\e[34m'
     set --local white '\e[0m'
     printf "$green%s@%s $blue%s\n$white\$ " (whoami) (hostname) (git_prompt)
+end
+
+function apropos
+    apropos $argv 2> /dev/null
 end
