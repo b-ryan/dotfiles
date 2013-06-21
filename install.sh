@@ -1,4 +1,7 @@
 #!/bin/bash
+
+install_type=${1:-default}
+
 LINK_FLAGS="--symbolic"
 DIR_LINK_FLAGS="${LINK_FLAGS} --no-dereference"
 
@@ -26,7 +29,7 @@ _create_link() {
 
     [ $link ] || link=~/.$source_rel
     backup $link
-    ln $flags $source_abs $link && echo "created link to '$source_abs'"
+    ln $flags $source_abs $link && echo "$link -> $source_abs"
 }
 symlink() {
     _create_link "$LINK_FLAGS" $1 $2
@@ -46,7 +49,7 @@ symlink vimrc
 symlink gvimrc
 symlink bashrc
 symlink bash_aliases
-symlink gitconfig
+symlink gitconfig.$install_type ~/.gitconfig
 symlink gitignore
 symlink hgrc
 
@@ -55,7 +58,8 @@ for file in $(ls bin); do
 done
 
 symlink xmobarrc
-symlink xmonad/xmonad.hs ~/.xmonad/xmonad.hs
+
+symlink xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
 
 symlink config/pianobar/config ~/.config/pianobar/config
 symlink config/fish/config.fish ~/.config/fish/config.fish
