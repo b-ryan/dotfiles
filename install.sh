@@ -1,5 +1,6 @@
 #!/bin/bash
 
+### can be default, work, or necromancer
 install_type=${1:-default}
 
 LINK_FLAGS="--symbolic"
@@ -49,6 +50,12 @@ symlink vimrc
 symlink gvimrc
 symlink bashrc
 symlink bash_aliases
+
+[[ "$install_type" = "work" ]] && {
+    gitconfig=gitconfig.work 
+} || {
+    gitconfig=gitconfig.default
+}
 symlink gitconfig.$install_type ~/.gitconfig
 symlink gitignore
 symlink hgrc
