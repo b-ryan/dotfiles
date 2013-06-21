@@ -8,10 +8,10 @@ they do not start with a '.'. This is to make them non-hidden files.
 
 Just run
 
-    ./install.sh
+    ./install.sh [install_type]
 
-It will create symlinks for all the dot-files in your home directory (but won't
-overwrite any existing files/links). If you want it to force the links to be
-created, you can run
+install_type  one of default, work, or necromancer
 
-    ./install.sh --force
+It will create symlinks for all the dot-files in your home directory. It will
+overwrte files wherever it tries to install stuff, but will back everything
+up into the .bk directory.
