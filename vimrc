@@ -1,51 +1,11 @@
 " Buck's vimrc
 " ------------
-"
-" Installed plugins:
-"
-"    plugin name      short description
-"    --------------------------------------------------------------------------
-"
-"   Simple plugins (one script in the plugin/ dir)
-"   * a.vim           Easy switching between header and source files
-"   * grep
-"   * MRU             Remembers recently visited files to open quickly
-"   * Rename          Allows renaming of files by doing :Rename <file>
-"   * pathogen        Plugin path manager (for bundling plugins)
-"
-"   Simple ftplugins (one script in the ftplugin/ dir)
-"   * nsh
-"   * php_folding
-"   * xml             Contains function for pretty XML printing
-"   * php             TODO remove
-"
-"   Bundled plugins
-"   * bufexplorer     Buffer explorer
-"   * clojure         Clojure highlighting, indenting, etc.
-"   * coffee-script   Coffee highlight, indenting, etc.
-"   * CtrlP           Fuzzy Finder
-"   * fugitive        Git wrapper
-"   * NERDTree        Provides a way to peruse directories
-"   * OmniCppComplete C++ Omni-Complete
-"   * powerline       Better status bar
-"   * protodef        Creates skeleton C++ source files based on header files
-"   * racket          Highlight, indenting, etc. for Racket language
-"   * supertab
-"   * surround        Surround text with tags, quotes, etc.
-"   * taglist         CTags explorer for viewing all tags in open files
-"   * tcomment        Quickly comment out lines or selections
-"   * UltiSnips
-"   * dwm.vim         Window management
 
 call pathogen#infect()
 
-" change <leader> to a comma
 let mapleader = ","
 
-" basic settings --------------------------------------------------------------
-set nocompatible " not vi-compatible
-set rnu " shows relative line numbers
-set bs=2 " needed on Windows for backspace to work properly
+""" See :help 'option' for details on any option below
 
 " tab settings -------------------------------------------------------------->
 set autoindent " Uses indent from current line as indent for new line
@@ -78,7 +38,26 @@ set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
 nmap <Leader>t :set expandtab!<CR>
 " <---------------------------------------------------------------------------
 
-set laststatus=2 " Ensures that if only 1 window is visible, the status bar will show
+set rnu
+set bs=2
+set laststatus=2
+set hidden
+set list
+set listchars=tab:>\ ,trail:.
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set mouse=a
+set splitbelow
+set splitright
+set noswapfile
+set completeopt=preview
+set complete-=t,i
+set colorcolumn=80
+set showmatch
+set wildmenu
+
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
 set statusline+=[%{strlen(&ft)?&ft:'none'}] " filetype
@@ -89,49 +68,17 @@ set statusline+=line\ %l\ of\ %L " line number
 " for more about customizing the status bar, see
 " http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 
-set hidden " only hide buffers when switching (don't close them which erases undo)
-
-" Visual whitespace
-set list
-set listchars=tab:>\ ,trail:.
 autocmd BufEnter * set list " make sure visual whitespace is always shown
 
-" searching
-set incsearch " incremental search (i.e. search while typing)
-set hlsearch  " highlight searched text
-set ignorecase " ignore case on searches
-set smartcase " override ignorecase when search term has uppercase in it
-
-set mouse=a " enables mouse use in all modes
-
-syntax enable " enables syntax highlighting
-filetype on " enables filetype detection
+filetype on
 filetype plugin on
+syntax enable
 
 " jump to last position on previous close
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-
-au FileType python set omnifunc=pythoncomplete#Complete
-
-" automatically open and close the popup menu / preview window
-" from: http://vim.wikia.com/wiki/C%2B%2B_code_completion
-" au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-" set completeopt=menu,menuone,longest,preview
-set completeopt=preview
-set complete-=t,i
-
-" From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns/235970#235970
-set colorcolumn=80
-
-" split files below and to the right!
-set splitbelow
-set splitright
-
-" don't save those annoying swp files
-set noswapfile
 
 " general key mappings --------------------------------------------------------
 
@@ -145,7 +92,6 @@ nnoremap Y y$
 " Keys for more efficient saving
 nmap <F11> :w<CR>
 nmap <F12> :wa<CR>
-imap <F12> <ESC>:wa<CR>
 
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
 " Use Alt-j or Alt-k to move lines up or down, respectively
@@ -172,21 +118,14 @@ nnoremap <Leader>o o<esc>O
 " Search for the word under the cursor, but stay on the current instance of it
 nnoremap <Leader>n *N
 
-" Set clojure indenting to two spaces
-au BufEnter *.clj setlocal shiftwidth=2
-au BufEnter *.c setlocal shiftwidth=2
-au BufEnter Makefile,*.php setlocal noexpandtab
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd BufEnter *.clj setlocal shiftwidth=2
+autocmd BufEnter *.c setlocal shiftwidth=2
+autocmd BufEnter Makefile,*.php setlocal noexpandtab
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
 " -----------------------------------------------------------------------------
-
-"  sql.txt
-let g:ftplugin_sql_omni_key = '<C-q>'
-
-" phpfolding ------------------------------------------------------------------
-map <F5> <Esc>:EnableFastPHPFolds<Cr>
-map <F6> <Esc>:DisablePHPFolds<Cr>
 
 " Tips for getting header/source switch came from
 " http://vim.wikia.com/wiki/Easily_switch_between_source_and_header_file
@@ -231,5 +170,3 @@ nmap <F7> :TlistToggle<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" dwm.vim --------------------------------------------------------------------
