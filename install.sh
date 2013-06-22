@@ -56,7 +56,7 @@ symlink bash_aliases
 } || {
     gitconfig=gitconfig.default
 }
-symlink gitconfig.$install_type ~/.gitconfig
+symlink $gitconfig ~/.gitconfig
 symlink gitignore
 symlink hgrc
 
