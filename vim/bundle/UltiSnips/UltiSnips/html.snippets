@@ -123,6 +123,12 @@ endsnippet
 #############
 # HTML TAGS #
 #############
+snippet html
+<html>
+	$0
+</html>
+endsnippet
+
 snippet input "Input with Label"
 <label for="${2:${1/[[:alpha:]]+|( )/(?1:_:\L$0)/g}}">$1</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="$5"${6: id="${7:$2}"}`!p x(snip)`>
 
@@ -131,7 +137,6 @@ endsnippet
 snippet input "XHTML   <input>"
 <input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="$3"${4: id="${5:$2}"}`!p x(snip)`>
 endsnippet
-
 
 snippet opt "Option"
 <option${1: value="${2:option}"}>${3:$2}</option>
@@ -144,7 +149,6 @@ snippet select "Select Box"
 	$0
 </select>
 endsnippet
-
 
 snippet textarea "XHTML   <textarea>"
 <textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">$0</textarea>
@@ -159,9 +163,7 @@ snippet base "XHTML <base>"
 endsnippet
 
 snippet body "XHTML <body>"
-<body id="${1:`!p
-snip.rv = snip.fn and 'Hallo' or 'Nothin'
-`}"${2: onload="$3"}>
+<body>
 	$0
 </body>
 endsnippet
@@ -244,11 +246,11 @@ $0
 endsnippet
 
 snippet td "table cell"
-<td>$0</td>
+<td>$1</td>$0
 endsnippet
 
 snippet tr "table row"
-<tr>$0</tr>
+<tr>$1</tr>$0
 endsnippet
 
 snippet title "XHTML <title>"

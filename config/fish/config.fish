@@ -37,7 +37,7 @@ function fish_prompt
     set --local green '\e[32m'
     set --local blue  '\e[34m'
     set --local white '\e[0m'
-    printf "$green%s@%s $blue%s\n$white\$ " (whoami) (hostname) (git_prompt)
+    printf "$green%s@%s $blue%s $white\$ " (whoami) (hostname) (git_prompt)
 end
 
 function apropos
