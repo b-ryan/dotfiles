@@ -70,7 +70,8 @@ ps1_update() {
     green="\[\e[0;32m\]"
     blue="\[\e[0;34m\]"
     white="\[\e[0m\]"
-    PS1="$green\u@\h $blue\w$(ps1_git)$(ps1_hg)$white \\\$ "
+    [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
+    PS1="$env$green\u@\h $blue\w$(ps1_git)$(ps1_hg)$white \\\$ "
 }
 case $TERM in
     xterm)
