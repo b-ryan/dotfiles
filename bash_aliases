@@ -6,6 +6,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias perg='egrep -Ir --exclude=tags --exclude-dir=.git --exclude-dir=build --exclude-dir=Framework'
+gword() {
+    perg "\<$1\>" "${*:2}"
+}
 
 # ls aliases
 alias l='ls -CF' # show in columns and add file indicators
