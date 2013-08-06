@@ -48,7 +48,7 @@ ps1_git() {
         [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
         [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
         [ $numStashed -gt 0 ] && stashed=" {$numStashed}"
-        echo " \[$color\][git / $branch$changed$untracked$stashed]"
+        echo " \[$color\]git:[$branch$changed$untracked$stashed]"
     fi
 }
 ps1_hg() {
@@ -63,7 +63,7 @@ ps1_hg() {
         numUntracked=$(grep '^?' <<< "$status" | wc -l)
         [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
         [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
-        echo " \[$color\][hg / $branch$changed$untracked]"
+        echo " \[$color\]hg:[$branch$changed$untracked]"
     fi
 }
 ps1_update() {

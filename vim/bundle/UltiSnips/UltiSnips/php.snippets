@@ -268,3 +268,13 @@ endsnippet
 snippet c
 $container->
 endsnippet
+
+snippet task
+$taskManager->addTask(dy()
+	->name('$1')
+	->doc('$2')
+	->task(
+		function($argsObj) use ($container, $client, $logger) {
+			$0
+		}));
+endsnippet
