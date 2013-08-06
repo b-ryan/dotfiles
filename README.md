@@ -8,9 +8,9 @@ they do not start with a '.'. This is to make them non-hidden files.
 
 Just run
 
-    ./install.sh [install_type]
-
-install_type  one of default, work, or necromancer
+```bash
+./install.sh [install-type] # install-type can be 'default', 'work', or 'necromancer'
+```
 
 It will create symlinks for all the dot-files in your home directory. It will
 overwrte files wherever it tries to install stuff, but will back everything
