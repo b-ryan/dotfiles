@@ -26,6 +26,12 @@ HISTFILESIZE=2000
 # Other options and configurations #
 ####################################
 
+RED="\e[1;31m"
+GREY="\e[1;36m"
+GREEN="\e[0;32m"
+BLUE="\e[0;34m"
+WHITE="\e[0m"
+
 ps1_git() {
     local branch
     local status
@@ -34,44 +40,60 @@ ps1_git() {
     local numUntracked
     local changed
     local untracked
+    local stashed
 
     branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [ "$branch" ]; then
         status=$(git status --short)
-        if [ "$status" ]; then
-            color="\e[1;31m"; else
-            color="\e[1;36m";
-        fi
+
+        color=$GREY
         numChanged=$(grep '^ M' <<< "$status" | wc -l)
         numUntracked=$(grep '^??' <<< "$status" | wc -l)
         numStashed=$(git stash list | grep "on $branch" | wc -l)
-        [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
-        [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
-        [ $numStashed -gt 0 ] && stashed=" {$numStashed}"
+
+        [ $numChanged -gt 0 ] && {
+            changed=" ~${numChanged}"
+            color=$RED
+        }
+        [ $numUntracked -gt 0 ] && {
+            untracked=" +$numUntracked"
+        }
+        [ $numStashed -gt 0 ] && {
+            stashed=" {$numStashed}"
+        }
         echo " \[$color\]git:[$branch$changed$untracked$stashed]"
     fi
 }
 ps1_hg() {
+    local branch
+    local status
+    local color
+    local numChanged
+    local numUntracked
+    local changed
+    local untracked
+
     branch=$(hg branch 2> /dev/null)
     if [ "$branch" ]; then
         status=$(hg status)
-        if [ "$status" ]; then
-            color="\e[1;31m"; else
-            color="\e[1;36m";
-        fi
+
+        color=$GREY
         numChanged=$(grep '^M' <<< "$status" | wc -l)
         numUntracked=$(grep '^?' <<< "$status" | wc -l)
-        [ $numChanged -gt 0 ]   && changed=" ~${numChanged}"
-        [ $numUntracked -gt 0 ] && untracked=" +$numUntracked"
+
+        [ $numChanged -gt 0 ] && {
+            changed=" ~${numChanged}"
+            color=$RED
+        }
+        [ $numUntracked -gt 0 ] && {
+            untracked=" +$numUntracked"
+        }
         echo " \[$color\]hg:[$branch$changed$untracked]"
     fi
 }
 ps1_update() {
-    green="\[\e[0;32m\]"
-    blue="\[\e[0;34m\]"
-    white="\[\e[0m\]"
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
-    PS1="$env$green\u@\h $blue\w$(ps1_git)$(ps1_hg)$white \\\$ "
+    PS1="$env\[$GREEN\]\u@\h \[$BLUE\]\w$(ps1_git)$(ps1_hg)\[$WHITE\] \\\$ "
 }
 case $TERM in
     xterm)
