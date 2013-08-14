@@ -26,84 +26,6 @@ HISTFILESIZE=2000
 # Other options and configurations #
 ####################################
 
-RED="\e[1;31m"
-GREY="\e[1;36m"
-GREEN="\e[0;32m"
-BLUE="\e[0;34m"
-WHITE="\e[0m"
-
-ps1_git() {
-    local branch
-    local status
-    local color
-    local numChanged
-    local numUntracked
-    local changed
-    local untracked
-    local stashed
-
-    branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    if [ "$branch" ]; then
-        status=$(git status --short)
-
-        color=$GREY
-        numChanged=$(grep '^ M' <<< "$status" | wc -l)
-        numUntracked=$(grep '^??' <<< "$status" | wc -l)
-        numStashed=$(git stash list | grep "on $branch" | wc -l)
-
-        [ $numChanged -gt 0 ] && {
-            changed=" ~${numChanged}"
-            color=$RED
-        }
-        [ $numUntracked -gt 0 ] && {
-            untracked=" +$numUntracked"
-        }
-        [ $numStashed -gt 0 ] && {
-            stashed=" {$numStashed}"
-        }
-        echo " \[$color\]git:[$branch$changed$untracked$stashed]"
-    fi
-}
-ps1_hg() {
-    local branch
-    local status
-    local color
-    local numChanged
-    local numUntracked
-    local changed
-    local untracked
-
-    branch=$(hg branch 2> /dev/null)
-    if [ "$branch" ]; then
-        status=$(hg status)
-
-        color=$GREY
-        numChanged=$(grep '^M' <<< "$status" | wc -l)
-        numUntracked=$(grep '^?' <<< "$status" | wc -l)
-
-        [ $numChanged -gt 0 ] && {
-            changed=" ~${numChanged}"
-            color=$RED
-        }
-        [ $numUntracked -gt 0 ] && {
-            untracked=" +$numUntracked"
-        }
-        echo " \[$color\]hg:[$branch$changed$untracked]"
-    fi
-}
-ps1_update() {
-    [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
-    PS1="$env\[$GREEN\]\u@\h \[$BLUE\]\w$(ps1_git)$(ps1_hg)\[$WHITE\] \\\$ "
-}
-case $TERM in
-    xterm)
-        export PROMPT_COMMAND="ps1_update"
-        ;;
-    *)
-        export PS1="\u@\h \w \$ "
-        ;;
-esac
-
 export EDITOR=vim
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -117,7 +39,7 @@ eval "$(dircolors -b $DIRCOLORS)"
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-# Alias definitions and local configuration options
+[ -f ~/.bash_ps1     ] && . ~/.bash_ps1
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 [ -f ~/.bashrc.local ] && . ~/.bashrc.local
 

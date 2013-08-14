@@ -49,6 +49,7 @@ dirlink vim
 symlink vimrc
 symlink gvimrc
 symlink bashrc
+symlink bash_ps1
 symlink bash_aliases
 
 [[ "$install_type" = "work" ]] && {
