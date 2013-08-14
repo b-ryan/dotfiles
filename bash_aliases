@@ -5,7 +5,17 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias perg='egrep -Ir --exclude=tags --exclude-dir=.git --exclude-dir=build --exclude-dir=Framework'
+
+perg() {
+    egrep -Ir \
+        --exclude=tags \
+        --exclude-dir=.git \
+        --exclude-dir=build \
+        --exclude-dir=Framework \
+        --exclude-dir=vendor \
+        "$@"
+}
+
 gword() {
     perg "\<$1\>" "${*:2}"
 }
