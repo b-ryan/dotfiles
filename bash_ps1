@@ -76,6 +76,6 @@ case $TERM in
         export PROMPT_COMMAND="ps1_update"
         ;;
     *)
-        export PS1="\u@\h \w \$ "
+        export PS1="\u@\H \w \$ "
         ;;
 esac
