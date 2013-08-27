@@ -13,6 +13,7 @@ perg() {
         --exclude-dir=build \
         --exclude-dir=Framework \
         --exclude-dir=vendor \
+        --exclude-dir=venv \
         "$@"
 }
 
