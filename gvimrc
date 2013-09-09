@@ -2,6 +2,7 @@ colorscheme pyte
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 if has("gui_gtk2") " Running on Linux
     set guifont=Inconsolata\ 9
 elseif has("gui_win32") " Running on Windows
