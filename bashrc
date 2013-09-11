@@ -17,7 +17,6 @@ shopt -s lithist
 # History configuration (See bash(1) for more options) #
 ########################################################
 
-# don't put duplicate lines in the history
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -28,16 +27,12 @@ HISTFILESIZE=2000
 
 export EDITOR=vim
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
-
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
 eval "$(dircolors -b $DIRCOLORS)"
 
-# Allow the up/down arrows to search commands backward and forward. See:
-# http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
+# See http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
+bind '"\C-p": history-search-backward'
+bind '"\C-n": history-search-forward'
 
 [ -f ~/.bash_ps1     ] && . ~/.bash_ps1
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases

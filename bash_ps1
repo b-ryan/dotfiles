@@ -68,7 +68,7 @@ ps1_hg() {
 
 ps1_update() {
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
-    PS1="$env\[$GREEN\]\u@\h \[$BLUE\]\w$(ps1_git)$(ps1_hg)\[$WHITE\] \\\$ "
+    PS1="$env\[$GREEN\]\u@\H \[$BLUE\]\w$(ps1_git)$(ps1_hg)\[$WHITE\] \\\$ "
 }
 
 case $TERM in
@@ -76,6 +76,6 @@ case $TERM in
         export PROMPT_COMMAND="ps1_update"
         ;;
     *)
-        export PS1="\u@\h \w \$ "
+        export PS1="\u@\H \w \$ "
         ;;
 esac

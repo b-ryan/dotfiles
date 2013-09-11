@@ -119,9 +119,9 @@ nnoremap <Leader>o o<esc>O
 nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd BufEnter *.clj setlocal shiftwidth=2
-autocmd BufEnter *.c setlocal shiftwidth=2
+autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
+autocmd BufRead *.pp,Vagrantfile set ft=ruby
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
