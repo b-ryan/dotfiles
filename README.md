@@ -15,3 +15,12 @@ Just run
 It will create symlinks for all the dot-files in your home directory. It will
 overwrte files wherever it tries to install stuff, but will back everything
 up into the .bk directory.
+
+## XMonad with Gnome
+
+My XMonad configs are designed to work with GNOME. You only need one
+requirement for it to work:
+
+    sudo apt-get install gnome-panel
+
+Then log out and log back in using the XMonad with GNOME session.

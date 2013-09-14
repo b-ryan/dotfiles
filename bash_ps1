@@ -20,7 +20,7 @@ ps1_git() {
         status=$(git status --short)
 
         color=$GREY
-        numChanged=$(grep '^ M' <<< "$status" | wc -l)
+        numChanged=$(grep '^.M' <<< "$status" | wc -l)
         numUntracked=$(grep '^??' <<< "$status" | wc -l)
         numStashed=$(git stash list | grep "on $branch" | wc -l)
 

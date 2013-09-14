@@ -9,6 +9,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.InsertPosition
 import XMonad.Util.Run(spawnPipe,runProcessWithInput)
 import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Layout
@@ -63,7 +64,7 @@ main = do
     -- xmprocLeft <- spawnPipe "xmobar --screen=0"
     xmprocRight <- spawnPipe "xmobar --screen=1"
     xmonad $ defaultConfig
-        { manageHook = manageDocks <+> manageHook defaultConfig
+        { manageHook = manageDocks <+> insertPosition Below Newer <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
