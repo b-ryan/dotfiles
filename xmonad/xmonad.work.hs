@@ -6,18 +6,21 @@
 -- https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad
 -- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Configuring_xmonad_to_use_xmobar
 
+-- other things to check out:
+--  XMonad.Util.Scratchpad
+
 import XMonad
+import XMonad.Actions.GridSelect
+import XMonad.Actions.SpawnOn(spawnOn)
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.InsertPosition
-import XMonad.Util.Run(spawnPipe,runProcessWithInput)
-import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
-import XMonad.Actions.SpawnOn(spawnOn)
-import XMonad.Actions.GridSelect
+import XMonad.Util.EZConfig(additionalKeysP,removeKeysP)
+import XMonad.Util.Run(spawnPipe,runProcessWithInput)
 import qualified XMonad.StackSet as W
 import System.IO
 
@@ -44,47 +47,44 @@ myLayoutHook = tallNoStruts
            ||| maximized
            ||| fullscreen
 
-myWorkspaces = [ "1:chrome(work)"
-               , "2:chrome(home)"
-               , "3:test space"
-               , "4:"
-               , "5:"
-               , "6:"
-               , "7:"
-               , "8:"
-               , "9:vim"
+-- <<<<< WORK
+myWorkspaces = [ "W"
+               , "O"
+               , "R"
+               , "K"
+               , "S"
+               , "P"
+               , "A"
+               , "C"
+               , "E"
                ]
+-- >>>>>
 
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
+spawnChromium url = spawn $ "chromium-browser '" ++ url ++ "'"
+
 main = do
     dbproc <- spawnPipe "dropbox start"
     runProcessWithInput "xrandr" ["--auto", "--output", "VGA1", "--left-of", "HDMI1"] ""
-    -- xmprocLeft <- spawnPipe "xmobar --screen=0"
     xmprocRight <- spawnPipe "xmobar --screen=1"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> insertPosition Below Newer <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
-
-        -- BEGIN work-branch-specific config
-        -- , logHook = (dynamicLogWithPP $ xmobarPPOptions xmprocLeft)
-        --          >> (dynamicLogWithPP $ xmobarPPOptions xmprocRight)
         , logHook = (dynamicLogWithPP $ xmobarPPOptions xmprocRight)
         , workspaces = myWorkspaces
-        -- END work-branch-specific config
-
         }
+        `removeKeysP`
+        [ "M-q"
+        ]
         `additionalKeysP`
-        [ ("M-S-s", spawn "gksudo shutdown -P now")
-        , ("M-g", goToSelected defaultGSConfig)
-
-        -- BEGIN work branch shortcuts
-        , ("M-s", spawn "gnome-screensaver-command -l")
-        , ("M-v", spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm")
-        , ("M-S-v", spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm gvim")
+        [ ("M-s",             spawn "gnome-screensaver-command -l")
+        , ("M-v",             spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm")
+        , ("M-g",             bringSelected defaultGSConfig)
+        --PIANOBAR
         , ("M-<KP_Enter>",    spawn $ pianobarCmd "start")
         , ("M-<KP_Delete>",   spawn $ pianobarCmd "q")
         , ("M-<KP_Insert>",   spawn $ pianobarCmd "p") -- keypad 0 = pause
@@ -93,6 +93,4 @@ main = do
         , ("M-<KP_Down>",     spawn $ pianobarCmd "-") -- keypad 2 = thumbs down
         , ("M-<KP_Add>",      spawn $ pianobarCmd ")") -- keypad + = increase volume
         , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
-        -- END work branch shortcuts
-
         ]
