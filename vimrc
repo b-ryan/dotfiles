@@ -105,6 +105,8 @@ vnoremap <A-k> :m-2<CR>gv=gv
 " Map Ctrl+Backspace in insert mode to delete back a word
 inoremap <C-BS> <C-w>
 
+inoremap <A-e> ë
+
 " Proper Ctrl+C -> Esc map
 map <C-c> <Esc>
 
