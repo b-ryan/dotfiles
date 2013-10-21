@@ -157,7 +157,7 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|build$',
+    \ 'dir': '\.git$\|\.hg$\|.venv$\|env$\|build$\|.compiled$',
     \ 'file': '\.swp$\|\.pyc$',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
