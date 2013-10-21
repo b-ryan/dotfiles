@@ -124,6 +124,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
+autocmd BufNewFile,BufRead *.edn set filetype=clojure
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
