@@ -29,7 +29,7 @@ yellow = xmobarColor "#F7F383" ""
 xmobarPPOptions :: Handle -> PP
 xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
                                   , ppTitle = xmobarColor "#7DF58F" "" . shorten 25
-                                  , ppCurrent = yellow . (wrap  "**" "**")
+                                  , ppCurrent = yellow . (wrap  "." ".")
                                   , ppVisible = yellow
                                   , ppHidden = xmobarColor "grey" ""
                                   , ppHiddenNoWindows = xmobarColor "#65BBF7" ""
@@ -47,19 +47,6 @@ myLayoutHook = tallNoStruts
            ||| maximized
            ||| fullscreen
 
--- <<<<< WORK
-myWorkspaces = [ "W"
-               , "O"
-               , "R"
-               , "K"
-               , "S"
-               , "P"
-               , "A"
-               , "C"
-               , "E"
-               ]
--- >>>>>
-
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
@@ -75,7 +62,6 @@ main = do
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
         , logHook = (dynamicLogWithPP $ xmobarPPOptions xmprocRight)
-        , workspaces = myWorkspaces
         }
         `removeKeysP`
         [ "M-q"
