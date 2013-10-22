@@ -4,6 +4,7 @@ GREY="\e[1;36m"
 GREEN="\e[0;32m"
 BLUE="\e[0;34m"
 WHITE="\e[0m"
+YELLOW="\e[0;33m"
 
 ps1_git() {
     local branch
@@ -68,7 +69,7 @@ ps1_hg() {
 
 ps1_update() {
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
-    PS1="$env\[$GREEN\]\u@\H \[$BLUE\]\w$(ps1_git)$(ps1_hg)\[$WHITE\] \\\$ "
+    PS1="$env\[$GREEN\]\u@\H \[$BLUE\]\w$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$WHITE\]"
 }
 
 case $TERM in
