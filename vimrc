@@ -125,6 +125,7 @@ autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
