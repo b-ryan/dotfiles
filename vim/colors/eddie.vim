@@ -30,6 +30,7 @@ let s:dark_blue    = "4E778E"
 let s:diff_blue    = "2E4754"
 let s:purple       = "A082BD"
 let s:window       = "616161"
+let s:colorcolumn  = "1B1E1F"
 
 set background=dark
 hi clear
@@ -286,7 +287,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("PMenuSel", s:foreground, s:selection, "reverse")
   end
   if version >= 703
-    call <SID>X("ColorColumn", "", s:line, "none")
+    call <SID>X("ColorColumn", "", s:colorcolumn, "none")
   end
 
   " Standard Highlighting
