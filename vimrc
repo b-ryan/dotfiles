@@ -10,8 +10,8 @@ let mapleader = ","
 " tab settings -------------------------------------------------------------->
 set autoindent " Uses indent from current line as indent for new line
 set expandtab " Inserts spaces instead of actual tabs
-set shiftwidth=4 " The number of columns to use when auto-indenting lines
-set tabstop=4 " Determines the number of columns to use when showing actual
+set shiftwidth=2 " The number of columns to use when auto-indenting lines
+set tabstop=2 " Determines the number of columns to use when showing actual
               " tab characters
 " set softtabstop=4 " Determines the number of columns that will be inserted or
                   " deleted when you hit the tab key. Will use a mixture of
@@ -121,11 +121,12 @@ nnoremap <Leader>o o<esc>O
 nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
+autocmd FileType python setlocal shiftwidth=4
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.ino set filetype=c
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
