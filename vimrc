@@ -122,6 +122,7 @@ nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python setlocal shiftwidth=4
+autocmd FileType clojure setlocal iskeyword+=>
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
