@@ -2,6 +2,7 @@
 -- xmonad
 -- xmonad-contrib
 -- xmobar
+-- dmenu
 
 -- https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad
 -- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Configuring_xmonad_to_use_xmobar
@@ -11,7 +12,6 @@
 
 import XMonad
 import XMonad.Actions.GridSelect
-import XMonad.Actions.SpawnOn(spawnOn)
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
@@ -21,7 +21,6 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Util.EZConfig(additionalKeysP,removeKeysP)
 import XMonad.Util.Run(spawnPipe,runProcessWithInput)
-import qualified XMonad.StackSet as W
 import System.IO
 
 yellow = xmobarColor "#F7F383" ""
@@ -50,10 +49,8 @@ myLayoutHook = tallNoStruts
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
-spawnChromium url = spawn $ "chromium-browser '" ++ url ++ "'"
-
 main = do
-    dbproc <- spawnPipe "dropbox start"
+    -- dbproc <- spawnPipe "dropbox start"
     runProcessWithInput "xrandr" ["--auto", "--output", "VGA1", "--left-of", "HDMI1"] ""
     xmprocRight <- spawnPipe "xmobar --screen=1"
     xmonad $ defaultConfig
