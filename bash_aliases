@@ -62,3 +62,7 @@ rmswp() {
 }
 
 alias unit='phpunit --bootstrap=test/bootstrap.php'
+
+do-ctags() {
+    ctags -R --fields=+S "$@"
+}

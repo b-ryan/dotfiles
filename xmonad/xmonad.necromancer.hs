@@ -64,7 +64,7 @@ main = do
         ]
         `additionalKeysP`
         [ ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
-        , ("M-v",             spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm")
+        , ("M-v",             spawn "gnome-terminal -x ssh -X vmdev")
         , ("M-g",             bringSelected defaultGSConfig)
         --PIANOBAR
         , ("M-S-e", spawn $ pianobarCmd "q") -- quit
