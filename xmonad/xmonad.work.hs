@@ -7,9 +7,6 @@
 -- https://wiki.archlinux.org/index.php/Xmonad#Using_xmobar_with_xmonad
 -- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Configuring_xmonad_to_use_xmobar
 
--- other things to check out:
---  XMonad.Util.Scratchpad
-
 import XMonad
 import XMonad.Actions.GridSelect
 import XMonad.Hooks.DynamicLog
@@ -22,6 +19,9 @@ import XMonad.Layout.Renamed
 import XMonad.Util.EZConfig(additionalKeysP,removeKeysP)
 import XMonad.Util.Run(spawnPipe,runProcessWithInput)
 import System.IO
+
+import qualified XMonad.StackSet as W
+import qualified XMonad.Util.NamedScratchpad as NS
 
 yellow = xmobarColor "#F7F383" ""
 
@@ -48,6 +48,11 @@ myLayoutHook = tallNoStruts
 
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
+
+scratchpads = [ NS.NS "keepassx" "keepassx"
+                  (title =? "/home/francis/Dropbox/passwords.kdb - KeePassX")
+                  (NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+              ]
 
 main = do
     -- dbproc <- spawnPipe "dropbox start"
@@ -76,4 +81,6 @@ main = do
         , ("M-<KP_Down>",     spawn $ pianobarCmd "-") -- keypad 2 = thumbs down
         , ("M-<KP_Add>",      spawn $ pianobarCmd ")") -- keypad + = increase volume
         , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
+        --
+        , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
         ]
