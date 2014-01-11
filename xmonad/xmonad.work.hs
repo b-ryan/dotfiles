@@ -49,10 +49,12 @@ myLayoutHook = tallNoStruts
 pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
-scratchpads = [ NS.NS "keepassx" "keepassx"
-                  (title =? "/home/francis/Dropbox/passwords.kdb - KeePassX")
-                  (NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
               ]
+    where
+
+        findKeepassX = title =? "/home/francis/Dropbox/passwords.kdb - KeePassX"
+        manageKeepassX = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
 main = do
     -- dbproc <- spawnPipe "dropbox start"
