@@ -1,0 +1,8 @@
+set editing-mode vi
+
+$if mode=vi
+
+  set keymap vi-insert
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-l": clear-screen
