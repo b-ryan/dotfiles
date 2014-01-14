@@ -53,7 +53,7 @@ scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
               ]
     where
 
-        findKeepassX = title =? "/home/buck/Dropbox/passwords.kdb - KeePassX"
+        findKeepassX = title =? "passwords - KeePassX"
         manageKeepassX = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
 main = do
