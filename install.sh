@@ -11,7 +11,7 @@ mymkdir() {
 }
 
 backup() {
-    mv $1 $BK_DIR/
+    mv $1 $BK_DIR/ 2> /dev/null
 }
 
 BK_DIR=$(pwd)/.bk/$(date '+%FT%T')
@@ -51,6 +51,7 @@ symlink gvimrc
 symlink bashrc
 symlink bash_ps1
 symlink bash_aliases
+symlink inputrc
 
 [[ "$install_type" = "work" ]] && {
     gitconfig=gitconfig.work 
