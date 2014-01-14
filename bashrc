@@ -8,7 +8,6 @@
 # For an explanation of any of the following options, see
 # http://wiki.bash-hackers.org/internals/shell_options
 
-shopt -s autocd
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s lithist
@@ -30,7 +29,6 @@ export EDITOR=vim
 [ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
 eval "$(dircolors -b $DIRCOLORS)"
 
-# See http://www.reddit.com/r/linux/comments/mi80x/give_me_that_one_command_you_wish_you_knew_years/
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 
