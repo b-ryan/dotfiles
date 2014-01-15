@@ -175,22 +175,27 @@ else {
 }$0
 endsnippet
 
-snippet class "Class declaration template" !b
+snippet php "PHP tag" !b
 <?php
 
-class $1 {
-
-	public function __construct($3) {
-	}$0
-
-}
+$0
 
 ?>
 endsnippet
 
-snippet enum "Enum class declaration template" !b
-<?php
+snippet class "Class declaration template" !b
+class $1 {
 
+	private $logger;
+
+	public function __construct($0) {
+		$this->logger = Logger::getLogger(__class__);
+	}
+
+}
+endsnippet
+
+snippet enum "Enum class declaration template" !b
 class $1 {
 
 	$0
@@ -219,8 +224,6 @@ class $1 {
 	public function getName() { return $this->name; }
 
 }
-
-?>
 endsnippet
 
 snippet ec "Enum const value"
@@ -253,7 +256,7 @@ snippet script
 
 require_once dirname(dirname(__FILE__)) . '/bootstrap.php';
 require_once dirname(dirname(__FILE__)) . '/container.php';
-require 'GlobalUtilityFunctions.php';
+require 'RJMUtilityFunctions.php';
 require 'util/DynamicObject.php';
 
 $0

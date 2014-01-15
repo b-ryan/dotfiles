@@ -66,3 +66,7 @@ alias unit='phpunit --bootstrap=test/bootstrap.php'
 do-ctags() {
     ctags -R --fields=+S "$@"
 }
+
+ant() {
+    /usr/bin/time -o ~/ant-times --append /usr/bin/ant "$@"
+}
