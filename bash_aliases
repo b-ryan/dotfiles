@@ -70,3 +70,7 @@ do-ctags() {
 ant() {
     /usr/bin/time -o ~/ant-times --append /usr/bin/ant "$@"
 }
+
+gvim() {
+    /usr/bin/gvim -f "$@" &
+}
