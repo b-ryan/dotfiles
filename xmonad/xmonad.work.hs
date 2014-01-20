@@ -72,7 +72,7 @@ main = do
         ]
         `additionalKeysP`
         [ ("M-s",             spawn "gnome-screensaver-command -l")
-        , ("M-v",             spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm")
+        , ("M-v",             spawn "gnome-terminal -x ssh -X vm")
         , ("M-g",             bringSelected defaultGSConfig)
         --PIANOBAR
         , ("M-<KP_Enter>",    spawn $ pianobarCmd "start")
