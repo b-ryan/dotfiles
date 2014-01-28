@@ -90,5 +90,5 @@ main = do
         , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
         --
         , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
-        , ("M-t", NS.namedScratchpadAction scratchpads "terminal")
+        , ("M-S-v", NS.namedScratchpadAction scratchpads "terminal")
         ]
