@@ -50,11 +50,16 @@ pianobarCmd :: String -> String
 pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
 
 scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
+              , NS.NS "terminal" spawnTerm  findTerm     manageTerm
               ]
     where
 
         findKeepassX = title =? "passwords - KeePassX"
         manageKeepassX = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+
+        spawnTerm = "gnome-terminal --title scratchterm -x ssh -X vm"
+        findTerm = title =? "scratchterm"
+        manageTerm = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
 main = do
     -- dbproc <- spawnPipe "dropbox start"
@@ -85,4 +90,5 @@ main = do
         , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
         --
         , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
+        , ("M-t", NS.namedScratchpadAction scratchpads "terminal")
         ]
