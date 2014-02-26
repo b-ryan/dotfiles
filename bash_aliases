@@ -7,6 +7,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 perg() {
+    args="$@"
+    if [[ $# -eq 1 ]]; then
+        args=( "$1" . )
+    fi
     egrep -Ir \
         --exclude=tags \
         --exclude-dir=.git \
@@ -14,6 +18,7 @@ perg() {
         --exclude-dir=Framework \
         --exclude-dir=vendor \
         --exclude-dir=venv \
+        --exclude=*min.js \
         "$@"
 }
 
@@ -64,13 +69,15 @@ rmswp() {
 alias unit='phpunit --bootstrap=test/bootstrap.php'
 
 do-ctags() {
-    ctags -R --fields=+S "$@"
+    ctags -R --fields=+S --languages=php "$@"
 }
 
 ant() {
-    /usr/bin/time -o ~/ant-times --append /usr/bin/ant "$@"
+    /usr/bin/time -o ~/ant-times --append /usr/bin/ant -Denv=box-test "$@"
 }
 
 gvim() {
     /usr/bin/gvim -f "$@" &
 }
+
+alias gpg=gpg2
