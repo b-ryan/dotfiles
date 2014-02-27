@@ -35,7 +35,7 @@ ps1_git() {
         [ $numStashed -gt 0 ] && {
             stashed=" {$numStashed}"
         }
-        echo " \[$color\]git:[$branch$changed$untracked$stashed]"
+        echo " \[$WHITE\]⭠ \[$color\]$branch$changed$untracked$stashed"
     fi
 }
 
@@ -68,8 +68,8 @@ ps1_hg() {
 }
 
 ps1_update() {
-    [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV))"
-    PS1="$env\[$GREEN\]\u@\H \[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$WHITE\]"
+    [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV)) "
+    PS1="$env\[$GREEN\]\[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$WHITE\]"
 }
 
 case $TERM in
