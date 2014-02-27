@@ -46,17 +46,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias ping="ping -c 4"
 
-# custom function to create directory and immediately cd into it
-mkcd() { [ -n "$1" ] && mkdir -p "$@" && cd "$1"; }
-
 # Goofing around
 alias dc="echo \"dc? I think you meant cd.  Here, let me take care of that for you.
 Oh I'm wrong?  Just \\\"cd -\\\" and use the real dc (/usr/bin/dc).\" ; cd"
 alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that for you.\"; cd .."
-
-# http://www.centerkey.com/tree/
-alias ls-dirs="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
-alias ruhoh="bundle exec ruhoh"
 
 rmswp() {
     ext=swp
