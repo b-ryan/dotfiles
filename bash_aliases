@@ -73,4 +73,6 @@ gvim() {
     /usr/bin/gvim -f "$@" &
 }
 
+alias g=gvim
+
 alias gpg=gpg2
