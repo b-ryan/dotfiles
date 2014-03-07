@@ -42,3 +42,5 @@ bind '"\C-n": history-search-forward'
 if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar
