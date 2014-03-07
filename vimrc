@@ -52,7 +52,7 @@ set mouse=a
 set splitbelow
 set splitright
 set noswapfile
-set completeopt=preview
+set completeopt=menu,preview
 set complete-=t,i
 set colorcolumn=80
 set showmatch
@@ -70,8 +70,7 @@ set statusline+=line\ %l\ of\ %L " line number
 
 autocmd BufEnter * set list " make sure visual whitespace is always shown
 
-filetype on
-filetype plugin on
+filetype plugin indent on
 syntax enable
 
 " jump to last position on previous close
@@ -150,6 +149,7 @@ map <leader>r :NERDTreeFind<CR>
 
 " supertab -------------------------------------------------------------------
 " kick off supertab with space
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabMappingForward = '<C-Space>'
 let g:SuperTabMappingBackward = '<S-C-Space>'
 
@@ -177,3 +177,13 @@ nmap <F7> :TlistToggle<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" VimClojure -----------------------------------------------------------------
+" notes on setup:
+"http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#ParenRainbow = 1
+let g:vimclojure#NailgunClient = "/home/vagrant/bin/ng"
+let g:vimclojure#WantNailgun = 1
+let g:vimclojure#SplitPos = "bottom"
+let g:vimclojure#SplitSize = 10
