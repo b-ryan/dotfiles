@@ -10,8 +10,8 @@ let mapleader = ","
 " tab settings -------------------------------------------------------------->
 set autoindent " Uses indent from current line as indent for new line
 set expandtab " Inserts spaces instead of actual tabs
-set shiftwidth=2 " The number of columns to use when auto-indenting lines
-set tabstop=2 " Determines the number of columns to use when showing actual
+set shiftwidth=4 " The number of columns to use when auto-indenting lines
+set tabstop=4 " Determines the number of columns to use when showing actual
               " tab characters
 " set softtabstop=4 " Determines the number of columns that will be inserted or
                   " deleted when you hit the tab key. Will use a mixture of
@@ -35,7 +35,7 @@ set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
 
 " mapping to toggle spaces/tabs. This should work fine, but I haven't figured
 " out under what circumstances behaviors will be exactly the same.
-nmap <Leader>t :set expandtab!<CR>
+nmap <Leader>t :setlocal expandtab!<CR>
 " <---------------------------------------------------------------------------
 
 set rnu
@@ -120,8 +120,11 @@ nnoremap <Leader>o o<esc>O
 nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal shiftwidth=4
 autocmd FileType clojure setlocal iskeyword+=>
+autocmd FileType clojure setlocal iskeyword-=/
+autocmd FileType clojure setlocal iskeyword-=,
+autocmd FileType clojure setlocal iskeyword-=.
+autocmd FileType clojure setlocal shiftwidth=2
 autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
 autocmd BufEnter Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
@@ -185,5 +188,5 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#NailgunClient = "/home/vagrant/bin/ng"
 let g:vimclojure#WantNailgun = 1
-let g:vimclojure#SplitPos = "bottom"
-let g:vimclojure#SplitSize = 10
+let g:vimclojure#SplitPos = "right"
+" let g:vimclojure#SplitSize = 10

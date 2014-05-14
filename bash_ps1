@@ -5,6 +5,8 @@ GREEN="\e[0;32m"
 BLUE="\e[0;34m"
 WHITE="\e[0m"
 YELLOW="\e[0;33m"
+BLACK="\e[0;30m"
+PURPLE="\e[0;35m"
 
 ps1_git() {
     local branch
@@ -20,14 +22,14 @@ ps1_git() {
     if [ "$branch" ]; then
         status=$(git status --short)
 
-        color=$GREY
+        color=$GREEN
         numChanged=$(grep '^.M' <<< "$status" | wc -l)
         numUntracked=$(grep '^??' <<< "$status" | wc -l)
         numStashed=$(git stash list | grep "on $branch" | wc -l)
 
         [ $numChanged -gt 0 ] && {
             changed=" ~${numChanged}"
-            color=$RED
+            color=$PURPLE
         }
         [ $numUntracked -gt 0 ] && {
             untracked=" +$numUntracked"
@@ -35,7 +37,7 @@ ps1_git() {
         [ $numStashed -gt 0 ] && {
             stashed=" {$numStashed}"
         }
-        echo " \[$WHITE\]⭠ \[$color\]$branch$changed$untracked$stashed"
+        echo " \[$BLACK\]⭠ \[$color\]$branch$changed$untracked$stashed"
     fi
 }
 
@@ -52,13 +54,13 @@ ps1_hg() {
     if [ "$branch" ]; then
         status=$(hg status)
 
-        color=$GREY
+        color=$GREEN
         numChanged=$(grep '^M' <<< "$status" | wc -l)
         numUntracked=$(grep '^?' <<< "$status" | wc -l)
 
         [ $numChanged -gt 0 ] && {
             changed=" ~${numChanged}"
-            color=$RED
+            color=$PURPLE
         }
         [ $numUntracked -gt 0 ] && {
             untracked=" +$numUntracked"
@@ -69,7 +71,7 @@ ps1_hg() {
 
 ps1_update() {
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV)) "
-    PS1="$env\[$GREEN\]\[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$WHITE\]"
+    PS1="$env\[$GREEN\]\[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$BLACK\]"
 }
 
 case $TERM in

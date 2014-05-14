@@ -6,23 +6,48 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+echo-do() {
+  # Print a command and then run it.
+    local cmd
+
+    echo "$@" 1>&2
+    "$@"
+}
+
 perg() {
-    args="$@"
-    if [[ $# -eq 1 ]]; then
-        args=( "$1" . )
-    fi
-    egrep -Ir \
+  # Wrapper around grep. Excludes a bunch of files and
+  # directories that don't need to be searched.
+  # Also allows you to specify "+" as the last argument
+  # which will cause the grep command to be printed to
+  # the screen before it is executed.
+    local args
+    local pre
+
+    args=( "$@" )
+    pre=""
+
+    [[ "${*:$#}" == "+" ]] && {
+      args=( "${*:1:$#-1}" )
+      pre="echo-do "
+    }
+
+    [[ ${#args[@]} -eq 1 ]] && {
+        args=( "$1" '.' )
+    }
+
+    ${pre}egrep -Ir \
+        --color=auto \
         --exclude=tags \
         --exclude-dir=.git \
         --exclude-dir=build \
         --exclude-dir=Framework \
         --exclude-dir=vendor \
-        --exclude-dir=venv \
         --exclude=*min.js \
-        "$@"
+        "${args[@]}"
 }
+alias gr=perg
 
-gword() {
+gw() {
     perg "\<$1\>" "${*:2}"
 }
 

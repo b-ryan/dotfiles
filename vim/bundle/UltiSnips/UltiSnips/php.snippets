@@ -79,6 +79,23 @@ snippet req "req"
 require_once '${1:file}';${2}
 endsnippet
 
+snippet re "re"
+require_once '`!p
+
+import os
+
+snip.rv = ''
+
+if t[1][-4:] == '.php':
+    for root, dirs, files in os.walk(os.getcwd()):
+        if t[1] in files:
+            idx = root.find('src/')
+            if idx >= 0:
+                snip.rv = root[idx + 4:] + '/'
+
+`${1}';
+endsnippet
+
 snippet session "session"
 $_SESSION['${1}']${2}
 endsnippet
@@ -195,6 +212,22 @@ class $1 {
 }
 endsnippet
 
+snippet testclass "Test class declaration template" !b
+require_once 'RJMAbstractTest.php';
+require_once '`!p
+
+src_file = path.replace('test', 'src').replace('Test', '')
+snip.rv = src_file[src_file.find('src') + 4:]
+
+`';
+
+class `!p snip.rv = fn[:-4]` extends RJMAbstractTest {
+
+	$0
+
+}
+endsnippet
+
 snippet test "Test function" !b
 /**
  * @test
@@ -209,8 +242,8 @@ class $1 {
 
 	$0
 
-	protected static $names = array(
-		);
+	protected static $names = [
+	];
 
 	protected $id;
 	protected $name;
@@ -220,7 +253,7 @@ class $1 {
 		$this->name = self::$names[$id];
 	}
 
-	public static function getById($id) {
+	public static function get($id) {
 		return new $1($id);
 	}
 
