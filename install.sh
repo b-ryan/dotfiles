@@ -52,6 +52,7 @@ symlink bashrc
 symlink bash_ps1
 symlink bash_aliases
 symlink inputrc
+symlink sqliterc
 
 [[ "$install_type" = "work" ]] && {
     gitconfig=gitconfig.work 
