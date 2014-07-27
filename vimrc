@@ -125,8 +125,8 @@ autocmd FileType clojure setlocal iskeyword-=/
 autocmd FileType clojure setlocal iskeyword-=,
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
-autocmd BufEnter *.clj,*.c,*.html,*.js setlocal shiftwidth=2
-autocmd BufEnter Makefile,*.php setlocal noexpandtab
+autocmd BufRead *.clj,*.c,*.html,*.js setlocal shiftwidth=2
+autocmd BufRead Makefile,*.php setlocal noexpandtab
 autocmd BufRead *.pp,Vagrantfile set ft=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
 autocmd BufNewFile,BufRead *.md set filetype=markdown
