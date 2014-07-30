@@ -87,7 +87,7 @@ rmswp() {
 alias unit='phpunit --bootstrap=test/bootstrap.php'
 
 do-ctags() {
-    ctags -R --fields=+S --languages=php "$@"
+    ctags-exuberant -R --fields=+S --languages=php "$@"
 }
 
 ant() {
