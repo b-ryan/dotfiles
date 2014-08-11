@@ -40,6 +40,7 @@ dirlink() {
 }
 
 mymkdir ~/bin
+mymkdir ~/lib
 mymkdir ~/.xmonad
 mymkdir ~/.config/pianobar
 mymkdir ~/.config/fish
@@ -65,6 +66,10 @@ symlink hgrc
 
 for file in $(ls bin); do
     symlink bin/$file ~/bin/$file
+done
+
+for file in $(ls lib); do
+    symlink lib/$file ~/lib/$file
 done
 
 symlink xmobarrc
