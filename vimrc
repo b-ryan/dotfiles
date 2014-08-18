@@ -190,3 +190,7 @@ let g:vimclojure#NailgunClient = "/home/vagrant/bin/ng"
 let g:vimclojure#WantNailgun = 1
 let g:vimclojure#SplitPos = "right"
 " let g:vimclojure#SplitSize = 10
+
+" Syntastic ------------------------------------------------------------------
+let g:syntastic_javascript_checkers = ["jslint"]
+let g:syntastic_json_checkers = ["jsonlint"]
