@@ -46,37 +46,33 @@ mymkdir ~/.config/pianobar
 mymkdir ~/.config/fish
 mkfifo ~/.config/pianobar/ctl 2> /dev/null
 
-dirlink vim
-symlink vimrc
-symlink gvimrc
-symlink bashrc
-symlink bash_ps1
-symlink bash_aliases
-symlink inputrc
-symlink sqliterc
+dirlink home/vim ~/.vim
+symlink home/vimrc ~/.vimrc
+symlink home/gvimrc ~/.gvimrc
+symlink home/bashrc ~/.bashrc
+symlink home/bash_ps1 ~/.bash_ps1
+symlink home/bash_aliases ~/.bash_aliases
+symlink home/inputrc ~/.inputrc
+symlink home/sqliterc ~/.sqliterc
+symlink home/gitignore ~/.gitignore
+symlink home/hgrc ~/.hgrc
+symlink home/xmobarrc ~/.xmobarrc
 
 [[ "$install_type" = "work" ]] && {
-    gitconfig=gitconfig.work 
+    gitconfig=gitconfig.work
 } || {
     gitconfig=gitconfig.default
 }
-symlink $gitconfig ~/.gitconfig
-symlink gitignore
-symlink hgrc
+symlink home/$gitconfig ~/.gitconfig
 
-for file in $(ls bin); do
-    symlink bin/$file ~/bin/$file
+for file in $(ls home/bin); do
+    symlink home/bin/$file ~/bin/$file
 done
 
-for file in $(ls lib); do
-    symlink lib/$file ~/lib/$file
+for file in $(ls home/lib); do
+    symlink home/lib/$file ~/lib/$file
 done
 
-symlink xmobarrc
-
-symlink xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
-
-symlink config/pianobar/config ~/.config/pianobar/config
-symlink config/fish/config.fish ~/.config/fish/config.fish
+symlink home/xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
 
 echo Backed up files to $BK_DIR
