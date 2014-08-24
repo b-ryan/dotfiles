@@ -74,11 +74,4 @@ ps1_update() {
     PS1="$env\[$GREEN\]\[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$BLACK\]"
 }
 
-case $TERM in
-    xterm)
-        export PROMPT_COMMAND="ps1_update"
-        ;;
-    *)
-        export PS1="\u@\H \w \$ "
-        ;;
-esac
+export PROMPT_COMMAND="ps1_update"
