@@ -44,3 +44,15 @@ if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
 fi
 
 export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar
+
+####################################
+# Platform-specific configurations #
+####################################
+
+[[ "$(uname)" = "Darwin" ]] && {
+    ## Mac
+    export PATH=/usr/local/bin:$PATH
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/src
+    . /usr/local/bin/virtualenvwrapper.sh
+}

@@ -23,9 +23,9 @@ ps1_git() {
         status=$(git status --short)
 
         color=$GREEN
-        numChanged=$(grep '^.M' <<< "$status" | wc -l)
-        numUntracked=$(grep '^??' <<< "$status" | wc -l)
-        numStashed=$(git stash list | grep "on $branch" | wc -l)
+        numChanged=$(grep '^.M' <<< "$status" | wc -l | awk '{print $1}')
+        numUntracked=$(grep '^??' <<< "$status" | wc -l | awk '{print $1}')
+        numStashed=$(git stash list | grep "on $branch" | wc -l | awk '{print $1}')
 
         [ $numChanged -gt 0 ] && {
             changed=" ~${numChanged}"
@@ -55,8 +55,8 @@ ps1_hg() {
         status=$(hg status)
 
         color=$GREEN
-        numChanged=$(grep '^M' <<< "$status" | wc -l)
-        numUntracked=$(grep '^?' <<< "$status" | wc -l)
+        numChanged=$(grep '^M' <<< "$status" | wc -l | awk '{print $1}')
+        numUntracked=$(grep '^?' <<< "$status" | wc -l | awk '{print $1}')
 
         [ $numChanged -gt 0 ] && {
             changed=" ~${numChanged}"
