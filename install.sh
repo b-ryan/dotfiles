@@ -3,8 +3,13 @@
 ### can be default, work, or necromancer
 install_type=${1:-default}
 
-LINK_FLAGS="--symbolic"
-DIR_LINK_FLAGS="${LINK_FLAGS} --no-dereference"
+[[ "$(uname)" = "Darwin" ]] && {
+    LINK_FLAGS="-s -f"
+    DIR_LINK_FLAGS="${LINK_FLAGS} -F"
+} || {
+    LINK_FLAGS="--symbolic"
+    DIR_LINK_FLAGS="${LINK_FLAGS} --no-dereference"
+}
 
 mymkdir() {
     mkdir -p $1 2> /dev/null || true
