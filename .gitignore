@@ -2,3 +2,4 @@ tags
 *.VimballRecord
 *.swp
 .bk
+.netrwhist
