@@ -250,7 +250,7 @@ setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti
 setlocal lispwords+=defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy
 setlocal lispwords+=defnk,definterface,defprotocol,deftype,defrecord,reify
 setlocal lispwords+=extend,extend-protocol,extend-type,bound-fn
-setlocal lispwords+=defproject,defroutes,facts,fact
+setlocal lispwords+=defproject,defroutes,facts
 
 " Conditionals and Loops:
 setlocal lispwords+=if,if-not,if-let,when,when-not,when-let,when-first
