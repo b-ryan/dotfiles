@@ -1,0 +1,33 @@
+#!/bin/bash
+doc="A wrapper around tmux.
+
+Usage: t <project>
+
+Will try to attach to a tmux session named <project>. If it cannot,
+then it will start a tmux session from within /opt/code/<project>."
+
+RED='\e[0;31m'
+NC='\e[0m'
+
+project=$1
+path=/opt/code/$project
+
+fatal() {
+    echo -e "${RED}ERROR ${1}${NC}" >&2
+    echo >&2
+    echo "$doc" >&2
+    exit 1
+}
+
+if [[ -z $project ]]; then
+    fatal "No project given"
+fi
+
+if [[ ! -d $path ]]; then
+    fatal "$path does not exist"
+fi
+
+tmux attach -t $project || {
+    cd $path
+    tmux new -s $project
+}
