@@ -90,6 +90,9 @@ nnoremap <Leader>sv :source $MYVIMRC<cr>
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
 
+" Ctrl-6 does not work on Mac
+nnoremap <Leader>6 :e#<CR>
+
 " Keys for more efficient saving
 nmap <F11> :w<CR>
 nmap <F12> :wa<CR>
