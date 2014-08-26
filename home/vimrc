@@ -5,6 +5,8 @@ call pathogen#infect()
 
 let mapleader = ","
 
+colorscheme buck
+
 """ See :help 'option' for details on any option below
 
 " tab settings -------------------------------------------------------------->
