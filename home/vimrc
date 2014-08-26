@@ -126,6 +126,7 @@ nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
+autocmd FileType clojure setlocal iskeyword-=/
 autocmd FileType clojure setlocal iskeyword-=,
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
@@ -193,8 +194,8 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#NailgunClient = "/home/vagrant/bin/ng"
 let g:vimclojure#WantNailgun = 1
-let g:vimclojure#SplitPos = "right"
-" let g:vimclojure#SplitSize = 10
+let g:vimclojure#SplitPos = "top"
+let g:vimclojure#SplitSize = 15
 
 " Syntastic ------------------------------------------------------------------
 let g:syntastic_javascript_checkers = ["jslint"]
