@@ -23,7 +23,7 @@ let colors_name = "buck"
 :hi  MoreMsg                        guifg=SeaGreen                            ctermfg=darkgreen
 :hi  NonText       guibg=grey15     guifg=grey40                              ctermfg=blue                   cterm=bold
 :hi  Question                       guifg=springgreen                         ctermfg=green
-:hi  Search        guibg=grey40     guifg=white           ctermbg=LightCyan   ctermfg=black                  cterm=none
+:hi  Search        guibg=grey40     guifg=white           ctermbg=White       ctermfg=black                  cterm=none
 :hi  SpecialKey                     guifg=#3b3537                             ctermfg=darkgreen
 :hi  StatusLine    guibg=grey17     guifg=grey50                                                  gui=none   cterm=bold,reverse
 :hi  StatusLineNC  guibg=grey17     guifg=grey40                                                  gui=none   cterm=reverse
@@ -58,3 +58,4 @@ let colors_name = "buck"
 :hi  Error         guibg=Red        guifg=White           ctermbg=1           ctermfg=7                      cterm=bold
 :hi  SpellErrors   guibg=Red        guifg=White           ctermbg=1           ctermfg=7                      cterm=bold
 :hi  ColorColumn   guibg=#362323                          ctermbg=White
+:hi  MatchParen    guibg=#362323                          ctermbg=White
