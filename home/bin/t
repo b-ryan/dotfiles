@@ -10,7 +10,7 @@ RED='\e[0;31m'
 NC='\e[0m'
 
 project=$1
-path=/opt/code/$project
+path=~/src/rjm/$project
 
 fatal() {
     echo -e "${RED}ERROR ${1}${NC}" >&2

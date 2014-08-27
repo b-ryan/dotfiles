@@ -26,8 +26,10 @@ HISTFILESIZE=2000
 
 export EDITOR=vim
 
-[ -r ~/.dircolors ] && DIRCOLORS=~/.dircolors
-eval "$(dircolors -b $DIRCOLORS)"
+[ -r ~/.dircolors ] && {
+    DIRCOLORS=~/.dircolors
+    eval "$(dircolors -b $DIRCOLORS)"
+}
 
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
@@ -51,7 +53,7 @@ export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar
 
 [[ "$(uname)" = "Darwin" ]] && {
     ## Mac
-    export PATH=/usr/local/bin:$PATH
+    export PATH=$HOME/bin:/usr/local/bin:$PATH
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/src
     . /usr/local/bin/virtualenvwrapper.sh

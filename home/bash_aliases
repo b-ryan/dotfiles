@@ -1,5 +1,4 @@
 #!/bin/bash
-alias ls='ls --color=auto'
 
 # grep aliases
 alias grep='grep --color=auto'
@@ -52,6 +51,7 @@ gw() {
 }
 
 # ls aliases
+[[ "$(uname)" = "Darwin" ]] || alias ls='ls --color=auto'
 alias l='ls -CF' # show in columns and add file indicators
 alias ll='ls -la' # show all files in long format
 alias la='ls -A' # show almost all entries (exclude . and ..)
