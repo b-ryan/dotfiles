@@ -6,3 +6,6 @@ $if mode=vi
   "\C-p": history-search-backward
   "\C-n": history-search-forward
   "\C-l": clear-screen
+
+set completion-ignore-case on
+TAB: menu-complete
