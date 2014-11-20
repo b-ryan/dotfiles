@@ -19,6 +19,7 @@ let colors_name = "buck"
 :hi  Folded        guibg=black      guifg=grey40          ctermbg=darkgrey    ctermfg=grey
 :hi  FoldColumn    guibg=black      guifg=grey20          ctermbg=7           ctermfg=4
 :hi  IncSearch     guibg=black      guifg=green           ctermbg=7*          ctermfg=black                  cterm=none
+:hi  Search        guibg=grey40     guifg=white           ctermbg=7*          ctermfg=black                  cterm=underline,bold
 :hi  ModeMsg                        guifg=goldenrod                           ctermfg=brown                  cterm=none
 :hi  MoreMsg                        guifg=SeaGreen                            ctermfg=darkgreen
 :hi  NonText       guibg=grey15     guifg=grey40                              ctermfg=blue                   cterm=bold
@@ -34,7 +35,7 @@ let colors_name = "buck"
 :hi  String                         guifg=SkyBlue                             ctermfg=darkcyan
 :hi  Comment                        guifg=grey40                              ctermfg=11                     cterm=bold
 :hi  Constant                       guifg=#ffa0a0                             ctermfg=brown
-:hi  Special                        guifg=darkkhaki                           ctermfg=brown
+:hi  Special                        guifg=darkkhaki       ctermbg=None        ctermfg=brown
 :hi  Identifier                     guifg=#ffc4cc                             ctermfg=red
 :hi  Include                        guifg=red                                 ctermfg=red
 :hi  PreProc                        guifg=red                                 ctermfg=red
@@ -58,4 +59,4 @@ let colors_name = "buck"
 :hi  Error         guibg=Red        guifg=White           ctermbg=1           ctermfg=7                      cterm=bold
 :hi  SpellErrors   guibg=Red        guifg=White           ctermbg=1           ctermfg=7                      cterm=bold
 :hi  ColorColumn   guibg=#362323                          ctermbg=White
-:hi  MatchParen    guibg=#362323                          ctermbg=White
+:hi  MatchParen    guibg=#362323                          ctermbg=None        ctermfg=blue                   cterm=bold

@@ -62,6 +62,7 @@ alias gist="git status -s"
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias giff="git diff --color-words --ignore-space-change"
+alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
 short() { N=${1:-1}; git log -n $N --first-parent; }
 long() { git log --first-parent; }
 
@@ -84,7 +85,7 @@ rmswp() {
     done
 }
 
-alias unit='phpunit --bootstrap=test/bootstrap.php'
+alias unit='phpunit --debug --bootstrap=test/bootstrap.php'
 
 do-ctags() {
     ctags-exuberant -R --fields=+S --languages=php "$@"

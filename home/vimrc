@@ -57,7 +57,6 @@ set noswapfile
 set completeopt=menu,preview
 set complete-=t,i
 set colorcolumn=80
-set showmatch
 set wildmenu
 
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
@@ -80,6 +79,8 @@ autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+autocmd FileType php set keywordprg=pman
 
 " general key mappings --------------------------------------------------------
 
@@ -200,3 +201,9 @@ let g:vimclojure#SplitSize = 70
 " Syntastic ------------------------------------------------------------------
 let g:syntastic_javascript_checkers = ["jslint"]
 let g:syntastic_json_checkers = ["jsonlint"]
+let g:syntastic_php_checkers = ["php"] " don't use phpcs (which does style checking)
+
+" Functions ------------------------------------------------------------------
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

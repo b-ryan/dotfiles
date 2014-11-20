@@ -49,6 +49,9 @@ fi
 
 export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar
 
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+
 ####################################
 # Platform-specific configurations #
 ####################################
