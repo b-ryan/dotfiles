@@ -7,5 +7,5 @@ $if mode=vi
   "\C-n": history-search-forward
   "\C-l": clear-screen
 
-set completion-ignore-case on
-TAB: menu-complete
+# set completion-ignore-case on
+# TAB: menu-complete
