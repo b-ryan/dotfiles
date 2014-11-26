@@ -68,7 +68,6 @@ main = do
         }
         `removeKeysP`
         [ "M-q"
-        , ("M-v",             spawn "gnome-terminal -x ssh -X rjmdash@fryan-vm")
         ]
         `additionalKeysP`
         [ ("M-s", spawn "dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
