@@ -64,13 +64,17 @@ scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
 main = do
     -- dbproc <- spawnPipe "dropbox start"
     runProcessWithInput "xrandr" ["--auto", "--output", "VGA1", "--left-of", "HDMI1"] ""
-    xmprocRight <- spawnPipe "xmobar --screen=1"
+
+    xmobarMiddle <- spawnPipe "xmobar --screen=1"
+    xmobarRight <- spawnPipe "xmobar --screen=2"
+
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> insertPosition Below Newer <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
-        , logHook = (dynamicLogWithPP $ xmobarPPOptions xmprocRight)
+        , logHook = (dynamicLogWithPP $ xmobarPPOptions xmobarMiddle)
+                 >> (dynamicLogWithPP $ xmobarPPOptions xmobarRight)
         }
         `removeKeysP`
         [ "M-q"
