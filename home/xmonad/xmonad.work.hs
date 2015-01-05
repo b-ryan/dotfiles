@@ -20,7 +20,7 @@ import XMonad.Util.Run(spawnPipe,runProcessWithInput)
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.NamedScratchpad as NS
 
-import MyXmobars (xmobarPPOptions, myLogHook)
+import MyXmobars (myLogHook)
 
 tallLayout = Tall 1 (3/100) (1/2)
 
@@ -61,9 +61,7 @@ main = do
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
-        , logHook = myLogHook [ xmobarPPOptions xmobarMiddle
-                              , xmobarPPOptions xmobarRight
-                              ]
+        , logHook = myLogHook
         }
         `removeKeysP`
         [ "M-q"
