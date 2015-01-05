@@ -47,6 +47,7 @@ dirlink() {
 mymkdir ~/bin
 mymkdir ~/lib
 mymkdir ~/.xmonad
+mymkdir ~/.xmonad/lib
 mymkdir ~/.config/pianobar
 mymkdir ~/.config/fish
 mkfifo ~/.config/pianobar/ctl 2> /dev/null
@@ -80,5 +81,6 @@ for file in $(ls home/lib); do
 done
 
 symlink home/xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
+symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 
 echo Backed up files to $BK_DIR

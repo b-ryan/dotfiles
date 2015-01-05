@@ -8,44 +8,19 @@
 -- http://www.haskell.org/haskellwiki/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Configuring_xmonad_to_use_xmobar
 
 import XMonad
-import XMonad.Actions.GridSelect
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.InsertPosition
-import XMonad.Hooks.ManageDocks
-import XMonad.Layout
-import XMonad.Layout.Fullscreen
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Renamed
+import XMonad.Actions.GridSelect (defaultGSConfig, bringSelected)
+import XMonad.Hooks.InsertPosition (insertPosition, Focus(Newer), Position(Below))
+import XMonad.Hooks.ManageDocks (avoidStruts, manageDocks)
+import XMonad.Layout.Fullscreen (fullscreenFull)
+import XMonad.Layout.NoBorders (noBorders)
+import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Util.EZConfig(additionalKeysP,removeKeysP)
 import XMonad.Util.Run(spawnPipe,runProcessWithInput)
-import Control.Monad (zipWithM_)
-import System.IO
 
 import qualified XMonad.StackSet as W
 import qualified XMonad.Util.NamedScratchpad as NS
 
--- for the stuff
-import qualified XMonad.StackSet as S
-import Data.List (intercalate, sortBy)
-import Data.Maybe (isJust, catMaybes)
-import Codec.Binary.UTF8.String (encodeString)
-import XMonad.Util.NamedWindows (getName)
-import Data.Ord (comparing)
-import XMonad.Hooks.UrgencyHook (readUrgents)
-
-yellow = xmobarColor "#F7F383" ""
-blue = xmobarColor "#65BBF7" ""
-dark_blue = xmobarColor "#1187D9" ""
-grey = xmobarColor "grey" ""
-
-xmobarPPOptions :: Handle -> PP
-xmobarPPOptions handle = xmobarPP { ppOutput = hPutStrLn handle
-                                  , ppTitle = xmobarColor "#7DF58F" "" . shorten 25
-                                  , ppCurrent = yellow . (wrap  "." ".")
-                                  , ppVisible = dark_blue
-                                  , ppHidden = grey
-                                  , ppHiddenNoWindows = blue
-                                  }
+import MyXmobars (xmobarPPOptions, myLogHook)
 
 tallLayout = Tall 1 (3/100) (1/2)
 
@@ -110,62 +85,3 @@ main = do
         , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
         , ("M-S-v", NS.namedScratchpadAction scratchpads "terminal")
         ]
-
--- The following from:
--- from https://github.com/manzyuk/dotfiles/blob/master/.xmonad/xmonad.hs
-
-myLogHook pps = do
-  screens <- (sortBy (comparing S.screen) . S.screens) `fmap` gets windowset
-  zipWithM_ dynamicLogWithPP' (tail screens) pps
-
--- Extract the focused window from the stack of windows on the given screen.
--- Return Just that window, or Nothing for an empty stack.
-focusedWindow = maybe Nothing (return . S.focus) . S.stack . S.workspace
-
--- The functions dynamicLogWithPP', dynamicLogString', and pprWindowSet' below
--- are similar to their undashed versions, with the difference being that the
--- latter operate on the current screen, whereas the former take the screen to
--- operate on as the first argument.
-
-dynamicLogWithPP' screen pp = dynamicLogString' screen pp >>= io . ppOutput pp
-
-dynamicLogString' screen pp = do
-
-  winset <- gets windowset
-  urgents <- readUrgents
-  sort' <- ppSort pp
-
-  -- layout description
-  let ld = description . S.layout . S.workspace $ screen
-
-  -- workspace list
-  let ws = pprWindowSet' screen sort' urgents pp winset
-
-  -- window title
-  wt <- maybe (return "") (fmap show . getName) $ focusedWindow screen
-
-  -- run extra loggers, ignoring any that generate errors.
-  extras <- mapM (`catchX` return Nothing) $ ppExtras pp
-
-  return $ encodeString . sepBy (ppSep pp) . ppOrder pp $
-             [ ws
-             , ppLayout pp ld
-             , ppTitle  pp wt
-             ]
-             ++ catMaybes extras
-
-
-pprWindowSet' screen sort' urgents pp s = sepBy (ppWsSep pp) . map fmt . sort' $ S.workspaces s
-    where this     = S.tag . S.workspace $ screen
-          visibles = map (S.tag . S.workspace) (S.current s : S.visible s)
-
-          fmt w = printer pp (S.tag w)
-              where printer | S.tag w == this                                               = ppCurrent
-                            | S.tag w `elem` visibles                                       = ppVisible
-                            | any (\x -> maybe False (== S.tag w) (S.findTag x s)) urgents  = \ppC -> ppUrgent ppC . ppHidden ppC
-                            | isJust (S.stack w)                                            = ppHidden
-                            | otherwise                                                     = ppHiddenNoWindows
-
-
-sepBy :: String -> [String] -> String
-sepBy sep = intercalate sep . filter (not . null)
