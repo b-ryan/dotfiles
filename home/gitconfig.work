@@ -40,3 +40,6 @@ excludesfile = ~/.gitignore
 
 [push]
 default = upstream
+
+[pager]
+stash = false

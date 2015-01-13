@@ -39,5 +39,7 @@ if [ ! $lein_classpath ]; then
         "classpath, expecting clojure jars to be available"
 fi
 
+fuser -k 2113/tcp
+
 stderr java -server -cp "$ng_classpath" vimclojure.nailgun.NGServer
 java -server -cp "$ng_classpath" vimclojure.nailgun.NGServer
