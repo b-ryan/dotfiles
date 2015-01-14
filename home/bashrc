@@ -63,3 +63,6 @@ export LESSOPEN='|~/.lessfilter %s'
     export PROJECT_HOME=$HOME/src
     . /usr/local/bin/virtualenvwrapper.sh
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
