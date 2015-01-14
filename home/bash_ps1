@@ -37,7 +37,7 @@ ps1_git() {
         [ $numStashed -gt 0 ] && {
             stashed=" {$numStashed}"
         }
-        echo " \[$BLACK\]⭠ \[$color\]$branch$changed$untracked$stashed"
+        echo " \[$BLACK\] \[$color\]$branch$changed$untracked$stashed"
     fi
 }
 

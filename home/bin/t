@@ -24,10 +24,10 @@ if [[ -z $project ]]; then
 fi
 
 if [[ ! -d $path ]]; then
-    fatal "$path does not exist"
+    git clone git@github.com:RJMetrics/$project.git $path
 fi
 
-tmux attach -t $project || {
+tmux attach -t "$project/" || {
     cd $path
-    tmux new -s $project
+    tmux new -s "$project/"
 }

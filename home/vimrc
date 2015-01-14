@@ -50,7 +50,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-set mouse=a
+set mouse=
 set splitbelow
 set splitright
 set noswapfile

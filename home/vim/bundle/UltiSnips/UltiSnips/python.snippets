@@ -445,11 +445,12 @@ snippet ar "Assert raises" b
 self.assertRaises(${1:exception}, ${2:func}${3/.+/, /}${3:arguments})
 endsnippet
 
+snippet iunit "import unittest" b
+import unittest
+endsnippet
 
 snippet testcase "pyunit testcase" b
 class Test${1:Class}(${2:unittest.TestCase}):
-	"""${3:Test case docstring}"""
-
 	def setUp(self):
 		${4:pass}
 
