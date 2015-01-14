@@ -193,7 +193,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "http://naleid.com/blog/2011/12/19/getting-a-clojure-repl-in-vim-with-vimclojure-nailgun-and-leiningen/
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
-let g:vimclojure#NailgunClient = "/home/vagrant/bin/ng"
+let g:vimclojure#NailgunClient = expand("~/bin/ng")
 let g:vimclojure#WantNailgun = 1
 let g:vimclojure#SplitPos = "right"
 let g:vimclojure#SplitSize = 70
