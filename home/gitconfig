@@ -1,6 +1,6 @@
 [user]
 name = Buck Ryan
-email = buck.ryan@gmail.com
+# email should be set with the GIT_COMMITTER_EMAIL instead of in here
 
 [color]
 branch = auto
@@ -40,3 +40,9 @@ excludesfile = ~/.gitignore
 
 [push]
 default = upstream
+
+[pager]
+stash = false
+
+[init]
+templatedir = ~/.git_template

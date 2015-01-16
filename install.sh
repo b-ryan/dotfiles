@@ -61,16 +61,10 @@ symlink home/bash_aliases ~/.bash_aliases
 symlink home/bash_profile  ~/.bash_profile
 symlink home/inputrc ~/.inputrc
 symlink home/sqliterc ~/.sqliterc
+symlink home/gitconfig ~/.gitconfig
 symlink home/gitignore ~/.gitignore
 symlink home/hgrc ~/.hgrc
 symlink home/xmobarrc ~/.xmobarrc
-
-[[ "$install_type" = "work" ]] && {
-    gitconfig=gitconfig.work
-} || {
-    gitconfig=gitconfig.default
-}
-symlink home/$gitconfig ~/.gitconfig
 
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file
