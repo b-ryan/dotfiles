@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RED='\e[0;31m'
+BLUE='\e[0;34m'
+NC='\e[0m'
+
 ### can be default, work, or necromancer
 install_type=${1:-default}
 
@@ -78,3 +82,15 @@ symlink home/xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
 symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 
 echo Backed up files to $BK_DIR
+
+warn_if_not_set() {
+    local var="$1"
+    if [[ ! "${!var}" ]]; then
+        echo >&2 -e "${RED}Warning: ${BLUE}${var}${NC} should be set"
+    fi
+}
+
+warn_if_not_set GIT_AUTHOR_NAME
+warn_if_not_set GIT_AUTHOR_EMAIL
+warn_if_not_set GIT_COMMITTER_NAME
+warn_if_not_set GIT_COMMITTER_EMAIL
