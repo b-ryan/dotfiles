@@ -27,7 +27,13 @@ if [[ ! -d $path ]]; then
     git clone git@github.com:RJMetrics/$project.git $path
 fi
 
-tmux attach -t "$project/" || {
+tmux_name="${project}_EOF"
+
+tmux attach -t "$tmux_name" || {
     cd $path
-    tmux new -s "$project/"
+    tmux new-session    -s "$tmux_name"     -d
+    tmux split-window   -t "$tmux_name:0"   -h
+    tmux select-pane    -t "$tmux_name:0.0"
+    tmux respawn-pane   -t "$tmux_name:0.0" -k 'vim'
+    tmux attach-session -t "$tmux_name"
 }
