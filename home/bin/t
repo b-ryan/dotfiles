@@ -27,7 +27,7 @@ if [[ ! -d $path ]]; then
     git clone git@github.com:RJMetrics/$project.git $path
 fi
 
-tmux_name="${project}_EOF"
+tmux_name="${project}/"
 
 tmux attach -t "$tmux_name" || {
     cd $path
