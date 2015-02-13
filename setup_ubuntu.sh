@@ -8,7 +8,8 @@ sudo apt-get install \
     python-pip \
     python-virtualenv \
     virtualenvwrapper \
-    openjdk-7-jre
+    openjdk-7-jre \
+    postgresql-client
 sudo apt-get install hal || {
     echo "hal install failed, you may need to first:
         sudo add-apt-repository ppa:mjblenner/ppa-hal
