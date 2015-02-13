@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# thanks to
+# http://www.chrisamiller.com/blog/posts/remapping-your-macbooks-keyboard-in-ubuntu-1204
+
+
+# What's going on in here...
+# The first section (clear control, etc.) unassigns whatever keys are
+# used as to the Ctrl, Alt, and Super functions. Meaning if you just had those
+# clear statements, you would not be able to Ctrl+C anymore. (tested to
+# confirm).
+
+# The next section defines the keys on the left and right sides. Each key
+# has a numerical code attached to it, so basically:
+#
+#   64  -> The left "alt / option" key
+#   133 -> The left "command" key
+#   134 -> The right "command" key
+#   108 -> The right "alt / option" key
+#
+# Note that these values refer to the physical keys on the keyboard. Meaning
+# the codes are always sent when you press those keys, regardless of what
+# the OS uses them for. So each "keycode X = ..." statement assigns a function
+# to that key.
+
+# The final section rebinds Ctrl, Alt, and Super.
+# is the left key 
+
+arg=$1
+
+FIX_MAC="
+! clean most of the modifiers
+clear control
+clear mod4
+clear mod1
+
+! -----------------
+! left side
+! ----------------
+! keycode 64 is the left alt key
+keycode 64 = Super_L
+! key code 133 is the left command key
+keycode 133 = Alt_L Meta_L
+
+! ------------------
+! right side
+! -------------------
+! key code 134 is the right command key
+keycode 134 = Alt_R Meta_R
+! keycode 108 is the right alt key
+keycode 108 = Control_R
+
+add mod4 = Super_L
+add mod1 = Alt_L Meta_L
+add mod1 = Alt_R Meta_R
+add control = Control_L
+add control = Control_R
+"
+
+REVERT_FIX="
+! clean most of the modifiers
+clear control
+clear mod4
+clear mod1
+
+! -----------------
+! left side
+! ----------------
+! keycode 64 is the left alt key
+keycode 64 = Alt_L Meta_L
+! key code 133 is the left command key
+keycode 133 = Super_L
+
+! ------------------
+! right side
+! -------------------
+! key code 134 is the right command key
+keycode 134 = Control_R
+! keycode 108 is the right alt key
+keycode 108 = Alt_R Meta_R
+
+add mod4 = Super_L
+add mod1 = Alt_L Meta_L
+add mod1 = Alt_R Meta_R
+add control = Control_L
+add control = Control_R
+"
+
+case $arg in
+    fix_mac)
+        xmodmap <(echo "$FIX_MAC")
+        ;;
+    revert_fix)
+        xmodmap <(echo "$REVERT_FIX")
+        ;;
+    *)
+        echo "Usage: $0 [fix_mac|revert_fix]"
+        ;;
+esac
