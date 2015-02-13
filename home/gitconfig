@@ -1,6 +1,6 @@
 [user]
-name = Buck Ryan
-email = buck.ryan@gmail.com
+# name should be set with GIT_AUTHOR_NAME
+# email should be set with GIT_AUTHOR_EMAIL
 
 [color]
 branch = auto
@@ -40,3 +40,9 @@ excludesfile = ~/.gitignore
 
 [push]
 default = upstream
+
+[pager]
+stash = false
+
+[init]
+templatedir = ~/.git_template

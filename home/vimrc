@@ -127,7 +127,7 @@ nnoremap <Leader>n *N
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
-autocmd FileType clojure setlocal iskeyword-=/
+" autocmd FileType clojure setlocal iskeyword-=/
 autocmd FileType clojure setlocal iskeyword-=,
 autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
