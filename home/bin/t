@@ -25,8 +25,7 @@ If /opt/code/<project> does not exist, then this script will clone it from
 RED='\e[0;31m'
 NC='\e[0m'
 
-project=$1
-path=/opt/code/$project
+SCRATCH_NAME='-scratch-'
 
 fatal() {
     echo -e "${RED}ERROR ${1}${NC}" >&2
@@ -35,12 +34,22 @@ fatal() {
     exit 1
 }
 
+project=$1
+
 if [[ -z $project ]]; then
     fatal "No project given"
 fi
 
-if [[ ! -d $path ]]; then
-    git clone git@github.com:RJMetrics/$project.git $path
+if [[ $project = $SCRATCH_NAME ]]; then
+    path=$HOME
+    spawn_vim=false
+else
+    path=/opt/code/$project
+    spawn_vim=true
+
+    if [[ ! -d $path ]]; then
+        git clone git@github.com:RJMetrics/$project.git $path
+    fi
 fi
 
 tmux_name="${project}/"
@@ -48,8 +57,12 @@ tmux_name="${project}/"
 tmux attach -t "$tmux_name" || {
     cd $path
     tmux new-session    -s "$tmux_name"     -d
-    tmux split-window   -t "$tmux_name:0"   -h
-    tmux select-pane    -t "$tmux_name:0.0"
-    tmux respawn-pane   -t "$tmux_name:0.0" -k 'vim'
+
+    if [[ $spawn_vim = true ]]; then
+        tmux split-window   -t "$tmux_name:0"   -h
+        tmux select-pane    -t "$tmux_name:0.0"
+        tmux respawn-pane   -t "$tmux_name:0.0" -k 'vim'
+    fi
+
     tmux attach-session -t "$tmux_name"
 }
