@@ -3,10 +3,10 @@ NO_COLOR="\e[0m"
 RED="\e[1;31m"
 GREY="\e[1;36m"
 GREEN="\e[0;32m"
-BLUE="\e[0;34m"
+BLUE="\e[1;34m"
 YELLOW="\e[0;33m"
 BLACK="\e[0;30m"
-PURPLE="\e[0;35m"
+PURPLE="\e[1;35m"
 
 ps1_git() {
     local branch
