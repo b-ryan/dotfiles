@@ -58,6 +58,7 @@ set completeopt=menu,preview
 set complete-=t,i
 set colorcolumn=80
 set wildmenu
+set cursorline
 
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
