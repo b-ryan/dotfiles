@@ -71,7 +71,7 @@ ps1_hg() {
 
 ps1_update() {
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV)) "
-    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREEN\] $(hostname)$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
+    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
 }
 
 export PROMPT_COMMAND="ps1_update"
