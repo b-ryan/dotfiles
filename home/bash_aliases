@@ -102,3 +102,8 @@ gvim() {
 alias g=gvim
 
 alias gpg=gpg2
+alias e="install_env.sh box fryan@rjmetrics.com Y"
+
+curl() {
+    /usr/bin/curl "$@"; echo
+}

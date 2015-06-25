@@ -1,12 +1,12 @@
 #!/bin/bash
+NO_COLOR="\e[0m"
 RED="\e[1;31m"
 GREY="\e[1;36m"
-GREEN="\e[0;32m"
-BLUE="\e[0;34m"
-WHITE="\e[0m"
+GREEN="\e[1;32m"
+BLUE="\e[1;34m"
 YELLOW="\e[0;33m"
 BLACK="\e[0;30m"
-PURPLE="\e[0;35m"
+PURPLE="\e[1;35m"
 
 ps1_git() {
     local branch
@@ -37,7 +37,7 @@ ps1_git() {
         [ $numStashed -gt 0 ] && {
             stashed=" {$numStashed}"
         }
-        echo " \[$BLACK\]⭠ \[$color\]$branch$changed$untracked$stashed"
+        echo " \[$BLACK\] \[$color\]$branch$changed$untracked$stashed"
     fi
 }
 
@@ -71,7 +71,7 @@ ps1_hg() {
 
 ps1_update() {
     [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV)) "
-    PS1="$env\[$GREEN\]\[$BLUE\]$PWD$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$BLACK\]"
+    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
 }
 
 export PROMPT_COMMAND="ps1_update"
