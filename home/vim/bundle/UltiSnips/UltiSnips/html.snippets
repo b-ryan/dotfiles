@@ -130,8 +130,8 @@ snippet html
 endsnippet
 
 snippet input "Input with Label"
-<label for="${2:${1/[[:alpha:]]+|( )/(?1:_:\L$0)/g}}">$1</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="$5"${6: id="${7:$2}"}`!p x(snip)`>
-
+<label for="${2:${1/[[:alpha:]]+|( )/(?1:_:\L$0)/g}}">$1</label>
+<input type="${3:text}" name="${4:$2}"`!p x(snip)`>
 endsnippet
 
 snippet input "XHTML   <input>"
@@ -169,19 +169,19 @@ snippet body "XHTML <body>"
 endsnippet
 
 snippet div "XHTML <div>"
-<div${1: id="${2:name}"}>
+<div${1: class="${2:name}"}>
 	$0
 </div>
 endsnippet
 
 snippet form "XHTML <form>"
-<form action="${1:`!p
-snip.rv = (snip.basename or 'unnamed') + '_submit'
-`}" method="${2:get}" accept-charset="utf-8">
+<form${1: class="${2:name}"}>
 	$0
-
-	<p><input type="submit" value="Continue →"`!p x(snip)`></p>
 </form>
+endsnippet
+
+snippet label "<form>"
+<label${1: class="${2:name}"}${3: for="${4:name}"}>$0</label>
 endsnippet
 
 snippet h1 "XHTML <h1>"
