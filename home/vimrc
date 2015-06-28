@@ -5,7 +5,7 @@ call pathogen#infect()
 
 let mapleader = ","
 
-colorscheme buck
+colorscheme zenburn
 
 """ See :help 'option' for details on any option below
 
