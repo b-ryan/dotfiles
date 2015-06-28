@@ -8,6 +8,16 @@ YELLOW="\e[0;33m"
 BLACK="\e[0;30m"
 PURPLE="\e[1;35m"
 
+is_subdir() {
+    local path="$1"
+    local parent="$2"
+    python <<EOF
+import os, sys
+rel = os.path.relpath("${path}", "${parent}")
+sys.exit(int(rel.startswith(os.pardir)))
+EOF
+}
+
 ps1_git() {
     local branch
     local status
@@ -37,7 +47,7 @@ ps1_git() {
         [ $numStashed -gt 0 ] && {
             stashed=" {$numStashed}"
         }
-        echo " \[$BLACK\] \[$color\]$branch$changed$untracked$stashed"
+        echo " \[$BLACK\]\[$color\]$branch$changed$untracked$stashed"
     fi
 }
 
@@ -69,9 +79,36 @@ ps1_hg() {
     fi
 }
 
+ps1_dropbox() {
+    echo " \[$PURPLE\]Dropbox: $(dropbox status)"
+}
+
 ps1_update() {
-    [[ "$VIRTUAL_ENV" ]] && local env="($(basename $VIRTUAL_ENV)) "
-    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)$(ps1_git)$(ps1_hg)\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
+    local env
+    local repo
+    local dropbox
+
+    [[ "$VIRTUAL_ENV" ]] && {
+        env="($(basename $VIRTUAL_ENV)) "
+    }
+
+    [[ -d .git ]] && {
+        repo=$(ps1_git)
+    }
+
+    [[ -d .hg ]] && {
+        repo=$(ps1_hg)
+    }
+
+    is_subdir "$PWD" "$HOME/Dropbox" && {
+        dropbox=$(ps1_dropbox)
+    }
+
+    [[ "$PDW" =~ "$HOME/Dropbox" ]] && {
+        echo hi
+    }
+
+    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)${dropbox}${repo}\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
 }
 
 export PROMPT_COMMAND="ps1_update"
