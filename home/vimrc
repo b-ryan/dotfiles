@@ -58,7 +58,7 @@ set completeopt=menu,preview
 set complete-=t,i
 set colorcolumn=80
 set wildmenu
-set cursorline
+" set cursorline
 
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
@@ -205,6 +205,6 @@ let g:syntastic_json_checkers = ["jsonlint"]
 let g:syntastic_php_checkers = ["php"] " don't use phpcs (which does style checking)
 
 " Functions ------------------------------------------------------------------
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
