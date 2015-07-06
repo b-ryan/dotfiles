@@ -85,20 +85,16 @@ ps1_dropbox() {
 
 ps1_update() {
     local env
-    local repo
+    local git
+    local hg
     local dropbox
 
     [[ "$VIRTUAL_ENV" ]] && {
         env="($(basename $VIRTUAL_ENV)) "
     }
 
-    [[ -d .git ]] && {
-        repo=$(ps1_git)
-    }
-
-    [[ -d .hg ]] && {
-        repo=$(ps1_hg)
-    }
+    git=$(ps1_git)
+    hg=$(ps1_hg)
 
     is_subdir "$PWD" "$HOME/Dropbox" && {
         dropbox=$(ps1_dropbox)
@@ -108,7 +104,8 @@ ps1_update() {
         echo hi
     }
 
-    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)${dropbox}${repo}\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
+    PS1="$env\[$BLUE\]$PWD \[$NO_COLOR\]on\[$GREY\] $(hostname)"
+    PS1="${PS1}${dropbox}${git}${hg}\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
 }
 
 export PROMPT_COMMAND="ps1_update"
