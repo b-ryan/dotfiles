@@ -26,7 +26,7 @@ let colors_name = "buck"
 
 " Ones I care about the most
 " SpecialKey is for visual whitespace
-:hi  SpecialKey                        ctermfg=black       cterm=none
+:hi  SpecialKey                        ctermfg=black       cterm=bold
 :hi  Cursor        ctermbg=white       ctermfg=white
 :hi  IncSearch     ctermbg=gray        ctermfg=black       cterm=none
 :hi  Search        ctermbg=gray        ctermfg=black       cterm=underline,bold
