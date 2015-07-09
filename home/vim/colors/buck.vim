@@ -25,6 +25,7 @@ let colors_name = "buck"
 " :hi  Include                           ctermfg=red         cterm=none
 
 " Ones I care about the most
+
 " SpecialKey is for visual whitespace
 :hi  SpecialKey                        ctermfg=black       cterm=bold
 :hi  Cursor        ctermbg=white       ctermfg=white
@@ -34,7 +35,16 @@ let colors_name = "buck"
 :hi  Comment                           ctermfg=black       cterm=bold
 :hi  Identifier                        ctermfg=lightcyan   cterm=none
 :hi  Operator                          ctermfg=lightcyan   cterm=none
-:hi  phpRegion     ctermbg=None        ctermfg=white       cterm=none
+
+" language-specific
+
+:hi  phpRegion                      ctermbg=None        ctermfg=white       cterm=none
+:hi  rubyString                     ctermbg=None        ctermfg=red         cterm=none
+:hi  rubyInterpolation              ctermbg=None        ctermfg=red         cterm=bold
+:hi  rubyInterpolationDelimiter     ctermbg=None        ctermfg=red         cterm=bold
+
+" don't know what Special is - it was used for quotations and such in Ruby
+:hi  Special       ctermbg=None        ctermfg=none       cterm=none
 
 " Others
 :hi  VertSplit                                             cterm=reverse
@@ -45,7 +55,6 @@ let colors_name = "buck"
 :hi  NonText                           ctermfg=blue        cterm=bold
 :hi  Question                          ctermfg=green
 :hi  Search        ctermbg=White       ctermfg=black       cterm=none
-:hi  Special       ctermbg=None        ctermfg=black       cterm=bold
 :hi  StatusLine                                            cterm=bold,reverse
 :hi  StatusLineNC                                          cterm=reverse
 :hi  Title                             ctermfg=yellow      cterm=bold
