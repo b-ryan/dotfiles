@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 doc="t: A tmux wrapper.
 
 Usage: t <project>
