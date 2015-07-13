@@ -35,10 +35,12 @@ let colors_name = "buck"
 :hi  Comment                           ctermfg=black       cterm=bold
 :hi  Identifier                        ctermfg=lightcyan   cterm=none
 :hi  Operator                          ctermfg=lightcyan   cterm=none
+:hi  String                            ctermbg=None        ctermfg=darkcyan    cterm=bold
 
 " language-specific
 
 :hi  phpRegion                      ctermbg=None        ctermfg=white       cterm=none
+:hi  phpIdentifier                  ctermfg=darkcyan
 :hi  rubyString                     ctermbg=None        ctermfg=red         cterm=none
 :hi  rubyInterpolation              ctermbg=None        ctermfg=red         cterm=bold
 :hi  rubyInterpolationDelimiter     ctermbg=None        ctermfg=red         cterm=bold
@@ -61,7 +63,6 @@ let colors_name = "buck"
 :hi  Statement                         ctermfg=lightblue
 :hi  Visual                                                cterm=reverse
 :hi  WarningMsg                        ctermfg=darkblue
-:hi  String                            ctermfg=darkcyan
 :hi  PreProc                           ctermfg=magenta     cterm=none
 :hi  Define                            ctermfg=yellow
 :hi  Type                              ctermfg=2
