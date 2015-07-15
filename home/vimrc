@@ -198,7 +198,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 let g:vimclojure#NailgunClient = expand("~/bin/ng")
-let g:vimclojure#WantNailgun = 1
+let g:vimclojure#WantNailgun = 0
 let g:vimclojure#SplitPos = "right"
 let g:vimclojure#SplitSize = 70
 
