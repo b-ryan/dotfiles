@@ -168,12 +168,6 @@ snippet body "XHTML <body>"
 </body>
 endsnippet
 
-snippet div "XHTML <div>"
-<div${1: class="${2:name}"}>
-	$0
-</div>
-endsnippet
-
 snippet form "XHTML <form>"
 <form${1: class="${2:name}"}>
 	$0
@@ -182,10 +176,6 @@ endsnippet
 
 snippet label "<form>"
 <label${1: class="${2:name}"}${3: for="${4:name}"}>$0</label>
-endsnippet
-
-snippet h1 "XHTML <h1>"
-<h1>${1}</h1>
 endsnippet
 
 snippet head "XHTML <head>"
@@ -298,3 +288,29 @@ snippet html5 "HTML5 Template"
 </html>
 endsnippet
 # vim:ft=snippets:
+
+snippet div "XHTML <div>"
+<div${1: class="${2:name}"}>
+	$3
+</div>$0
+endsnippet
+
+snippet span
+<span${1: class="${2:name}"}>$1</span>$0
+endsnippet
+
+snippet h1
+<h1>$1</h1>$0
+endsnippet
+
+snippet h2
+<h2>$1</h2>$0
+endsnippet
+
+snippet h3
+<h3>$1</h3>$0
+endsnippet
+
+snippet button
+<button>$1</button>$0
+endsnippet
