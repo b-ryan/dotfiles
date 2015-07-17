@@ -131,7 +131,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
 " autocmd FileType clojure setlocal iskeyword-=/
 autocmd FileType clojure setlocal iskeyword-=,
-autocmd FileType clojure setlocal iskeyword-=.
+" autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
 autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json setlocal shiftwidth=2
 autocmd BufNewFile,BufEnter Makefile,*.php setlocal noexpandtab

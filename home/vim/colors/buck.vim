@@ -44,6 +44,7 @@ let colors_name = "buck"
 :hi  rubyString                     ctermbg=None        ctermfg=red         cterm=none
 :hi  rubyInterpolation              ctermbg=None        ctermfg=red         cterm=bold
 :hi  rubyInterpolationDelimiter     ctermbg=None        ctermfg=red         cterm=bold
+:hi  clojureSpecial                 ctermbg=None        ctermfg=yellow      cterm=bold
 
 " don't know what Special is - it was used for quotations and such in Ruby
 :hi  Special       ctermbg=None        ctermfg=none       cterm=none
