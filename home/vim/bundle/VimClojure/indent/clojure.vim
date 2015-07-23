@@ -261,6 +261,9 @@ setlocal lispwords+=do,try,catch,locking,with-in-str,with-out-str,with-open
 setlocal lispwords+=dosync,with-local-vars,doseq,dorun,doall,future
 setlocal lispwords+=with-bindings
 
+" flambo
+setlocal lispwords+=defsparkfn,f/defsparkfn,f/fn
+
 " Namespaces:
 setlocal lispwords+=ns,clojure.core/ns
 

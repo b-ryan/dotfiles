@@ -213,3 +213,8 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 cmap w!! w !sudo tee > /dev/null %
+
+function! SyntasticLeinClasspath()
+    silent !clear
+    let g:syntastic_java_javac_classpath = system("lein classpath")
+endfunction
