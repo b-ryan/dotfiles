@@ -108,4 +108,8 @@ ps1_update() {
     PS1="${PS1}${dropbox}${git}${hg}\n  \[$BLUE\]\\\$ \[$NO_COLOR\]"
 }
 
-export PROMPT_COMMAND="ps1_update"
+_update_ps1() {
+    PS1="$(powerline-shell.py)"
+}
+
+PROMPT_COMMAND=_update_ps1
