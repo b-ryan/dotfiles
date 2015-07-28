@@ -22,3 +22,5 @@ sudo apt-get install hal || {
         chmod +x ~/bin/lein && \
         lein
 }
+sudo npm install -g jsonlint
+sudo npm install -g jslint
