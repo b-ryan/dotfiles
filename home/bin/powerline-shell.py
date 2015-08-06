@@ -542,7 +542,7 @@ add_jobs_segment()
 
 def add_root_indicator_segment():
     root_indicators = {
-        'bash': ' \\$ ',
+        'bash': ' \n\\$ ',
         'zsh': ' \\$ ',
         'bare': ' $ ',
     }
