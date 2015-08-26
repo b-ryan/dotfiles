@@ -109,7 +109,7 @@ ps1_update() {
 }
 
 _update_ps1() {
-    PS1="$(powerline-shell.py)"
+    PS1="$(powerline-shell.py --cwd-mode plain)"
 }
 
 if [ "$TERM" != "linux" ]; then

@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
 import argparse
 import os
 import sys
 
 def warn(msg):
-    print '[powerline-bash] ', msg
+    print('[powerline-bash] ', msg)
 
 class Powerline:
     symbols = {
@@ -61,7 +62,7 @@ class Powerline:
         return self.color('48', code)
 
     def append(self, content, fg, bg, separator=None, separator_fg=None):
-        self.segments.append((content, fg, bg, 
+        self.segments.append((content, fg, bg,
             separator if separator is not None else self.separator,
             separator_fg if separator_fg is not None else bg))
 
@@ -88,28 +89,36 @@ def get_valid_cwd():
         We return the original cwd because the shell still considers that to be
         the working directory, so returning our guess will confuse people
     """
+    # Prefer the PWD environment variable. Python's os.getcwd function follows
+    # symbolic links, which is undesirable. But if PWD is not set then fall
+    # back to this func
     try:
-        cwd = os.getcwd()
+        cwd = os.getenv('PWD') or os.getcwd()
     except:
-        cwd = os.getenv('PWD')  # This is where the OS thinks we are
-        parts = cwd.split(os.sep)
-        up = cwd
-        while parts and not os.path.exists(up):
-            parts.pop()
-            up = os.sep.join(parts)
-        try:
-            os.chdir(up)
-        except:
-            warn("Your current directory is invalid.")
-            sys.exit(1)
-        warn("Your current directory is invalid. Lowest valid directory: " + up)
+        warn("Your current directory is invalid. If you open a ticket at " +
+            "https://github.com/milkbikis/powerline-shell/issues/new " +
+            "we would love to help fix the issue.")
+        sys.stdout.write("> ")
+        sys.exit(1)
+
+    parts = cwd.split(os.sep)
+    up = cwd
+    while parts and not os.path.exists(up):
+        parts.pop()
+        up = os.sep.join(parts)
+    if cwd != up:
+        warn("Your current directory is invalid. Lowest valid directory: "
+            + up)
     return cwd
 
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()
+    arg_parser.add_argument('--cwd-mode', action='store',
+            help='How to display the current directory', default='fancy',
+            choices=['fancy', 'plain', 'dironly'])
     arg_parser.add_argument('--cwd-only', action='store_true',
-            help='Only show the current directory')
+            help='Deprecated. Use --cwd-mode=dironly')
     arg_parser.add_argument('--cwd-max-depth', action='store', type=int,
             default=5, help='Maximum number of directories to show in path')
     arg_parser.add_argument('--colorize-hostname', action='store_true',
@@ -305,39 +314,50 @@ add_ssh_segment()
 
 import os
 
-def get_short_path(cwd):
+
+def replace_home_dir(cwd):
     home = os.getenv('HOME')
+    if cwd.startswith(home):
+        return '~' + cwd[len(home):]
+    return cwd
+
+
+def split_path_into_names(cwd):
     names = cwd.split(os.sep)
-    if names[0] == '': names = names[1:]
-    path = ''
-    for i in range(len(names)):
-        path += os.sep + names[i]
-        if os.path.samefile(path, home):
-            return ['~'] + names[i+1:]
+
+    if names[0] == '':
+        names = names[1:]
+
     if not names[0]:
         return ['/']
+
     return names
 
+
 def add_cwd_segment():
-    cwd = powerline.cwd or os.getenv('PWD')
-    names = get_short_path(cwd.decode('utf-8'))
+    cwd = (powerline.cwd or os.getenv('PWD')).decode('utf-8')
+    cwd = replace_home_dir(cwd)
+    names = split_path_into_names(cwd)
 
     max_depth = powerline.args.cwd_max_depth
     if len(names) > max_depth:
         names = names[:2] + [u'\u2026'] + names[2 - max_depth:]
 
-    if not powerline.args.cwd_only:
-        for n in names[:-1]:
-            if n == '~' and Color.HOME_SPECIAL_DISPLAY:
-                powerline.append(' %s ' % n, Color.HOME_FG, Color.HOME_BG)
-            else:
-                powerline.append(' %s ' % n, Color.PATH_FG, Color.PATH_BG,
-                    powerline.separator_thin, Color.SEPARATOR_FG)
-
-    if names[-1] == '~' and Color.HOME_SPECIAL_DISPLAY:
-        powerline.append(' %s ' % names[-1], Color.HOME_FG, Color.HOME_BG)
+    if powerline.args.cwd_mode == 'plain':
+        powerline.append(' %s ' % (cwd,), Color.CWD_FG, Color.PATH_BG)
     else:
-        powerline.append(' %s ' % names[-1], Color.CWD_FG, Color.PATH_BG)
+        if not (powerline.args.cwd_mode == 'dironly' or powerline.args.cwd_only):
+            for n in names[:-1]:
+                if n == '~' and Color.HOME_SPECIAL_DISPLAY:
+                    powerline.append(' %s ' % n, Color.HOME_FG, Color.HOME_BG)
+                else:
+                    powerline.append(' %s ' % n, Color.PATH_FG, Color.PATH_BG,
+                        powerline.separator_thin, Color.SEPARATOR_FG)
+
+        if names[-1] == '~' and Color.HOME_SPECIAL_DISPLAY:
+            powerline.append(' %s ' % names[-1], Color.HOME_FG, Color.HOME_BG)
+        else:
+            powerline.append(' %s ' % names[-1], Color.CWD_FG, Color.PATH_BG)
 
 add_cwd_segment()
 
@@ -375,8 +395,7 @@ def get_git_status():
         if diverged_status:
             origin_position = " %d%c %d%c" % (int(diverged_status[0][0]), u'\u21E1', int(diverged_status[0][1]), u'\u21E3')
 
-        if line.find('nothing to commit') >= 0 or \
-           line.find('nothing added to commit but untracked files') >= 0:
+        if line.find('nothing to commit') >= 0:
             has_pending_commits = False
         if line.find('Untracked files') >= 0:
             has_untracked_files = True
@@ -543,8 +562,8 @@ add_jobs_segment()
 
 def add_root_indicator_segment():
     root_indicators = {
-        'bash': ' \n\\$ ',
-        'zsh': ' \\$ ',
+        'bash': ' \\$ ',
+        'zsh': ' %# ',
         'bare': ' $ ',
     }
     bg = Color.CMD_PASSED_BG
