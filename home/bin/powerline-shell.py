@@ -395,7 +395,7 @@ def get_git_status():
         if diverged_status:
             origin_position = " %d%c %d%c" % (int(diverged_status[0][0]), u'\u21E1', int(diverged_status[0][1]), u'\u21E3')
 
-        if line.find('nothing to commit') >= 0:
+        if line.startswith('nothing to commit') or line.startswith('nothing added to commit but untracked'):
             has_pending_commits = False
         if line.find('Untracked files') >= 0:
             has_untracked_files = True
