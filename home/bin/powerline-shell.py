@@ -243,6 +243,8 @@ class Color(DefaultColor):
 
 import os
 
+powerline.append(r'\!', Color.HOSTNAME_FG, Color.HOSTNAME_BG)
+
 def add_virtual_env_segment():
     env = os.getenv('VIRTUAL_ENV')
     if env is None:
