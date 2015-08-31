@@ -25,7 +25,7 @@ class Powerline:
         },
         'flat': {
             'lock': u'\uE0A2',
-            'network': '',
+            'network': 'SSH',
             'separator': '',
             'separator_thin': ''
         },
