@@ -24,7 +24,7 @@ class Powerline:
             'separator_thin': u'\uE0B1'
         },
         'flat': {
-            'lock': '',
+            'lock': u'\uE0A2',
             'network': '',
             'separator': '',
             'separator_thin': ''
