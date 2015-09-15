@@ -82,9 +82,7 @@ alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that fo
 rmswp() {
     ext=swp
     [ $1 ] && ext=$1
-    for x in $(find . -name *.$ext); do
-        rm -f $x
-    done
+    find . -name \*.$ext -exec rm {} \;
 }
 
 alias unit='phpunit --debug --bootstrap=test/bootstrap.php'
@@ -93,15 +91,9 @@ do-ctags() {
     ctags-exuberant -R --fields=+S --languages=php "$@"
 }
 
-ant() {
-    /usr/bin/time -o ~/ant-times --append /usr/bin/ant -Denv=box-test "$@"
-}
-
 gvim() {
     /usr/bin/gvim -f "$@" &
 }
-
-alias g=gvim
 
 alias gpg=gpg2
 alias e="install_env.sh box fryan@rjmetrics.com Y"
