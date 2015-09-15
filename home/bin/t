@@ -28,8 +28,6 @@ If /opt/code/<project> does not exist, then this script will clone it from
 RED='\e[0;31m'
 NC='\e[0m'
 
-SCRATCH_NAME='-scratch-'
-
 fatal() {
     echo -e "${RED}ERROR ${1}${NC}" >&2
     echo >&2
@@ -43,7 +41,7 @@ if [[ -z $project ]]; then
     fatal "No project given"
 fi
 
-if [[ $project = $SCRATCH_NAME ]]; then
+if [[ ${project:0:1} = "-" ]]; then
     path=$HOME
     spawn_vim=false
 else
