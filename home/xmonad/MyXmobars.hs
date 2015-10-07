@@ -28,7 +28,7 @@ module MyXmobars where
                                          }
 
     -- The following from:
-    -- from https://github.com/manzyuk/dotfiles/blob/master/.xmonad/xmonad.hs
+    -- https://github.com/manzyuk/dotfiles/blob/master/.xmonad/xmonad.hs
 
     myLogHook pps = do
       screens <- (sortBy (comparing S.screen) . S.screens) `fmap` gets windowset

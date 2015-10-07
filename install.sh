@@ -4,9 +4,6 @@ RED='\e[0;31m'
 BLUE='\e[0;34m'
 NC='\e[0m'
 
-### can be default, work, or necromancer
-install_type=${1:-default}
-
 [[ "$(uname)" = "Darwin" ]] && {
     LINK_FLAGS="-s -f"
     DIR_LINK_FLAGS="${LINK_FLAGS} -F"
@@ -68,6 +65,8 @@ symlink home/sqliterc ~/.sqliterc
 symlink home/gitconfig ~/.gitconfig
 symlink home/gitignore ~/.gitignore
 symlink home/hgrc ~/.hgrc
+symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
+symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 symlink home/xmobarrc ~/.xmobarrc
 
 for file in $(ls home/bin); do
@@ -77,8 +76,5 @@ done
 for file in $(ls home/lib); do
     symlink home/lib/$file ~/lib/$file
 done
-
-symlink home/xmonad/xmonad.$install_type.hs ~/.xmonad/xmonad.hs
-symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 
 echo Backed up files to $BK_DIR
