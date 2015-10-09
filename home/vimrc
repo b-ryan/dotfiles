@@ -155,6 +155,7 @@ nnoremap <F4> :A<CR>
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
                 \   '\.swo$']
 let NERDTreeShowHidden=1 " show hidden files
+let NERDTreeChDirMode=2
 " mapping to open NERDTree
 nnoremap <F5> :NERDTreeToggle<CR>
 " find the current file in NerdTree
