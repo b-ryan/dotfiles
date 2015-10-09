@@ -64,6 +64,14 @@ alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias giff="git diff --color-words --ignore-space-change"
 alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
 alias prune="git remote prune origin"
+alias merged="git branch --merged"
+
+dmerged() {
+    for branch in $(merged | grep -v '^\*'); do
+        git branch -d $branch
+    done
+    prune
+}
 
 short() { N=${1:-1}; git log -n $N --first-parent; }
 long() { git log --first-parent; }
