@@ -127,6 +127,9 @@ nnoremap <Leader>o o<esc>O
 " Search for the word under the cursor, but stay on the current instance of it
 nnoremap <Leader>n *N
 
+" Clear search highlighting
+nnoremap <Leader>, :noh
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
 " autocmd FileType clojure setlocal iskeyword-=/
