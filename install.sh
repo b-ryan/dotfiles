@@ -60,6 +60,7 @@ symlink home/bashrc ~/.bashrc
 symlink home/bash_ps1 ~/.bash_ps1
 symlink home/bash_aliases ~/.bash_aliases
 symlink home/bash_profile  ~/.bash_profile
+symlink home/bash_completion ~/.bash_completion
 symlink home/inputrc ~/.inputrc
 symlink home/sqliterc ~/.sqliterc
 symlink home/gitconfig ~/.gitconfig
