@@ -1,3 +1,5 @@
+#!/bin/bash
+
 _dropbox() {
     COMPREPLY=()
     prev="${COMP_WORDS[COMP_CWORD-1]}"
@@ -21,3 +23,23 @@ _dropbox() {
     fi
 }
 complete -F _dropbox dropbox
+
+_pip() {
+    local curr="${COMP_WORDS[COMP_CWORD]}"
+    local commands="install uninstall freeze list show search zip unzip bundle help"
+
+    COMPREPLY=()
+    [[ $COMP_CWORD -eq 1 ]] && {
+        COMPREPLY=( $(compgen -W "${commands}" -- "${curr}") )
+    } || {
+        COMPREPLY=( $(compgen -f -- "${curr}") )
+    }
+}
+complete -F _pip pip
+
+_t() {
+  local options=$(ls /opt/code)
+  local current="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=( $(compgen -W "${options}" -- "${current}") )
+}
+complete -F _t t
