@@ -13,6 +13,7 @@ PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s lithist
+shopt -s autocd
 
 ########################################################
 # History configuration (See bash(1) for more options) #
