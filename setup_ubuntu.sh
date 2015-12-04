@@ -24,3 +24,9 @@ sudo apt-get install hal || {
 }
 sudo npm install -g jsonlint
 sudo npm install -g jslint
+
+if [[ ! -d ~/bin/go ]]; then
+    wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
+    tar -C ~/bin/ -xzf go1.5.2.linux-amd64.tar.gz
+    rm go1.5.2.linux-amd64.tar.gz
+fi
