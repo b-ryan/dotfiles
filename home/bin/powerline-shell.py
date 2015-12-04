@@ -447,6 +447,12 @@ def parse_git_stats(status):
     return stats
 
 
+def git_is_dirty(stats):
+    copied = stats.copy()
+    copied.pop('untracked')
+    return (True if sum(copied.values()) > 0 else False)
+
+
 def _n_or_empty(_dict, _key):
     return _dict[_key] if int(_dict[_key]) > 1 else u''
 
@@ -463,7 +469,6 @@ def add_git_segment():
 
     branch_info = parse_git_branch_info(status)
     stats = parse_git_stats(status)
-    dirty = (True if sum(stats.values()) > 0 else False)
 
     if branch_info:
         branch = branch_info['local']
@@ -472,7 +477,7 @@ def add_git_segment():
 
     bg = Color.REPO_CLEAN_BG
     fg = Color.REPO_CLEAN_FG
-    if dirty:
+    if git_is_dirty(stats):
         bg = Color.REPO_DIRTY_BG
         fg = Color.REPO_DIRTY_FG
 
