@@ -60,6 +60,7 @@ set colorcolumn=80
 set wildmenu
 set formatoptions+=j
 " set cursorline
+set cursorcolumn
 
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
@@ -136,7 +137,7 @@ autocmd FileType clojure setlocal iskeyword+=>
 autocmd FileType clojure setlocal iskeyword-=,
 " autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
-autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb setlocal shiftwidth=2
+autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars setlocal shiftwidth=2
 autocmd BufNewFile,BufEnter Makefile,*.php setlocal noexpandtab
 
 autocmd BufNewFile,BufRead *.pp,Vagrantfile set filetype=ruby
