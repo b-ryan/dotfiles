@@ -1,15 +1,16 @@
 #!/bin/bash
 sudo apt-get install \
-    xmonad \
-    xmobar \
     dmenu \
     flashplugin-installer \
-    tmux \
+    openjdk-7-jre \
+    postgresql-client \
     python-pip \
     python-virtualenv \
+    task \
+    tmux \
     virtualenvwrapper \
-    openjdk-7-jre \
-    postgresql-client
+    xmobar \
+    xmonad
 
 sudo apt-get install hal || {
     echo "hal install failed, you may need to first:
