@@ -54,21 +54,23 @@ mymkdir ~/.config/fish
 mkfifo ~/.config/pianobar/ctl 2> /dev/null
 
 dirlink home/vim ~/.vim
-symlink home/vimrc ~/.vimrc
-symlink home/gvimrc ~/.gvimrc
-symlink home/bashrc ~/.bashrc
-symlink home/bash_ps1 ~/.bash_ps1
+
 symlink home/bash_aliases ~/.bash_aliases
-symlink home/bash_profile  ~/.bash_profile
 symlink home/bash_completion ~/.bash_completion
-symlink home/inputrc ~/.inputrc
-symlink home/sqliterc ~/.sqliterc
+symlink home/bash_profile  ~/.bash_profile
+symlink home/bash_ps1 ~/.bash_ps1
+symlink home/bashrc ~/.bashrc
 symlink home/gitconfig ~/.gitconfig
 symlink home/gitignore ~/.gitignore
+symlink home/gvimrc ~/.gvimrc
 symlink home/hgrc ~/.hgrc
-symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
-symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
+symlink home/inputrc ~/.inputrc
+symlink home/sqliterc ~/.sqliterc
+symlink home/taskrc ~/.taskrc
+symlink home/vimrc ~/.vimrc
 symlink home/xmobarrc ~/.xmobarrc
+symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
+symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file

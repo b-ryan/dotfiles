@@ -3,10 +3,12 @@
 
 PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin
 
-GOROOT=$HOME/bin/go
-PATH+=:$GOROOT/bin
+GOROOT=$HOME/goroot/go
+GOPATH=$HOME/gopath
+PATH+=:$GOROOT/bin:$GOPATH/bin
 
 export GOROOT
+export GOPATH
 export PATH
 
 #################

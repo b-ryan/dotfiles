@@ -1,21 +1,24 @@
 #!/bin/bash
 sudo apt-get install \
-    xmonad \
-    xmobar \
     dmenu \
     flashplugin-installer \
-    tmux \
+    openjdk-7-jre \
+    postgresql-client \
     python-pip \
     python-virtualenv \
+    task \
+    tmux \
     virtualenvwrapper \
-    openjdk-7-jre \
-    postgresql-client
+    xmobar \
+    xmonad
+
 sudo apt-get install hal || {
     echo "hal install failed, you may need to first:
         sudo add-apt-repository ppa:mjblenner/ppa-hal
         sudo apt-get update"
     exit 1
 }
+
 [[ -f ~/bin/lein ]] || {
     wget --output-document=~/bin/lein \
         https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && \
@@ -25,8 +28,10 @@ sudo apt-get install hal || {
 sudo npm install -g jsonlint
 sudo npm install -g jslint
 
-if [[ ! -d ~/bin/go ]]; then
+if [[ ! -d ~/goroot ]]; then
     wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
-    tar -C ~/bin/ -xzf go1.5.2.linux-amd64.tar.gz
+    mkdir ~/goroot
+    tar -C ~/goroot -xzf go1.5.2.linux-amd64.tar.gz
     rm go1.5.2.linux-amd64.tar.gz
+    mkdir ~/gopath
 fi
