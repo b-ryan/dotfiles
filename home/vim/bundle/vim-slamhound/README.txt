@@ -1,0 +1,1 @@
+doc/vim-slamhound.txt
