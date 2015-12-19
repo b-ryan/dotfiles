@@ -86,6 +86,9 @@ autocmd BufReadPost *
 
 autocmd FileType php set keywordprg=pman
 
+" Start in insert mode when using the command window. See :help q:
+autocmd CmdwinEnter [/?]  startinsert
+
 " general key mappings --------------------------------------------------------
 
 " Open vimrc / source it
