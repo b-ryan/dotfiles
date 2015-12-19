@@ -46,11 +46,13 @@ dirlink() {
 }
 
 mymkdir ~/bin
+mymkdir ~/.config/fish
+mymkdir ~/.config/pianobar
+mymkdir ~/.lein
 mymkdir ~/lib
 mymkdir ~/.xmonad
 mymkdir ~/.xmonad/lib
-mymkdir ~/.config/pianobar
-mymkdir ~/.config/fish
+
 mkfifo ~/.config/pianobar/ctl 2> /dev/null
 
 dirlink home/vim ~/.vim
@@ -65,6 +67,7 @@ symlink home/gitignore ~/.gitignore
 symlink home/gvimrc ~/.gvimrc
 symlink home/hgrc ~/.hgrc
 symlink home/inputrc ~/.inputrc
+symlink home/lein/profiles.clj ~/.lein/profiles.clj
 symlink home/sqliterc ~/.sqliterc
 symlink home/taskrc ~/.taskrc
 symlink home/vimrc ~/.vimrc
