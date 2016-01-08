@@ -148,15 +148,19 @@ $0
 endsnippet
 
 snippet class "Class declaration template" !b
-class $1 {
+class `!p
+import os
+snip.rv = os.path.basename(path)[:-4]
+` {
 
-	private $logger;
-
-	public function __construct($0) {
-		$this->logger = Logger::getLogger(__class__);
-	}
+	$0
 
 }
+endsnippet
+
+snippet cons "Constructor" !b
+public function __construct($1) {$2
+}$0
 endsnippet
 
 snippet testclass "Test class declaration template" !b
