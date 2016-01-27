@@ -46,7 +46,7 @@ if [[ ${project:0:1} = "-" ]]; then
     spawn_vim=false
 else
     path=/opt/code/$project
-    spawn_vim=true
+    spawn_vim=false
 
     if [[ ! -d $path ]]; then
         git clone git@github.com:RJMetrics/$project.git $path
