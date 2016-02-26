@@ -62,6 +62,7 @@ set formatoptions+=j
 " set cursorline
 set cursorcolumn
 set nojoinspaces
+set modeline
 
 set statusline=%f\ %m%r " filename, modified flag, and readonly flag
 set statusline+=%= " left/right separator
