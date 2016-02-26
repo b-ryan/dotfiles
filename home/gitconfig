@@ -37,6 +37,7 @@ path = /usr/bin/meld
 
 [core]
 excludesfile = ~/.gitignore
+	commentchar = @
 
 [push]
 default = upstream

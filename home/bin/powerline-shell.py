@@ -269,7 +269,7 @@ def add_hostname_segment():
         powerline.append(host_prompt, Color.HOSTNAME_FG, Color.HOSTNAME_BG)
 
 
-add_hostname_segment()
+# add_hostname_segment()
 
 
 import os
