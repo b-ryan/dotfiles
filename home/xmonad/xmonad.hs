@@ -57,7 +57,8 @@ main = do
     xmobarRight <- spawnPipe "xmobar --screen=2"
 
     xmonad $ defaultConfig
-        { manageHook = manageDocks <+> insertPosition Below Newer <+> manageHook defaultConfig
+        { modMask = mod4Mask
+        , manageHook = manageDocks <+> insertPosition Below Newer <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
