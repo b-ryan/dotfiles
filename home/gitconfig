@@ -37,10 +37,10 @@ path = /usr/bin/meld
 
 [core]
 excludesfile = ~/.gitignore
-	commentchar = @
+; commentchar = @
 
 [push]
-default = upstream
+default = simple
 
 [pager]
 stash = false
