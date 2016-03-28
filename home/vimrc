@@ -60,7 +60,7 @@ set colorcolumn=80
 set wildmenu
 set formatoptions+=j
 " set cursorline
-set cursorcolumn
+" set cursorcolumn
 set nojoinspaces
 set modeline
 
