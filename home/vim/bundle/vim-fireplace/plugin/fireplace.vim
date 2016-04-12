@@ -588,6 +588,19 @@ function! s:buf() abort
   endif
 endfunction
 
+function! s:repl_ns() abort
+  let buf = a:0 ? a:1 : s:buf()
+  if fnamemodify(bufname(buf), ':e') ==# 'cljs'
+    return 'cljs.repl'
+  endif
+    return 'clojure.repl'
+  endif
+endfunction
+
+function! s:slash() abort
+  return exists('+shellslash') && !&shellslash ? '\' : '/'
+endfunction
+
 function! s:includes_file(file, path) abort
   let file = substitute(a:file, '\C^zipfile:\(.*\)::', '\1/', '')
   let file = substitute(file, '\C^fugitive:[\/][\/]\(.*\)\.git[\/][\/][^\/]\+[\/]', '\1', '')
@@ -711,7 +724,7 @@ function! fireplace#findresource(resource, ...) abort
       if fnamemodify(dir, ':e') ==# 'jar' && index(fireplace#jar_contents(dir), resource . suffix) >= 0
         return 'zipfile:' . dir . '::' . resource . suffix
       elseif filereadable(dir . '/' . resource . suffix)
-        return dir . (exists('+shellslash') && !&shellslash ? '\' : '/') . resource . suffix
+        return dir . s:slash() . resource . suffix
       endif
     endfor
   endfor
@@ -1311,8 +1324,17 @@ function! fireplace#source(symbol) abort
   let file = ''
   if !empty(get(info, 'resource'))
     let file = fireplace#findresource(info.resource)
-  elseif get(info, 'file') =~# '^/\|^\w:\\' && filereadable(info.file)
-    let file = info.file
+  else
+    let fpath = ''
+    if get(info, 'file') =~# '^/\|^\w:\\'
+      let file = info.file
+    elseif get(info, 'file') =~# '^file:'
+      let file = substitute(strpart(info.file,5), '/', s:slash(), 'g')
+    end
+
+    if !empty(fpath) && filereadable(fpath)
+      let file = fpath
+    end
   endif
 
   if !empty(file) && !empty(get(info, 'line'))
@@ -1554,7 +1576,7 @@ augroup END
 
 function! s:Lookup(ns, macro, arg) abort
   try
-    let response = s:eval('('.a:ns.'/'.a:macro.' '.a:arg.')', {'session': 0})
+    let response = s:eval('('.a:ns.'/'.a:macro.' '.a:arg.')')
     call s:output_response(response)
   catch /^Clojure:/
   catch /.*/
@@ -1606,10 +1628,10 @@ nnoremap <Plug>FireplaceK :<C-R>=<SID>K()<CR><CR>
 nnoremap <Plug>FireplaceSource :Source <C-R><C-W><CR>
 
 function! s:set_up_doc() abort
-  command! -buffer -nargs=1 FindDoc :exe s:Lookup('clojure.repl', 'find-doc', printf('#"%s"', <q-args>))
+  command! -buffer -nargs=1 FindDoc :exe s:Lookup(s:repl_ns(), 'find-doc', printf('#"%s"', <q-args>))
   command! -buffer -bar -nargs=1 Javadoc :exe s:Lookup('clojure.java.javadoc', 'javadoc', <q-args>)
   command! -buffer -bar -nargs=1 -complete=customlist,fireplace#eval_complete Doc     :exe s:Doc(<q-args>)
-  command! -buffer -bar -nargs=1 -complete=customlist,fireplace#eval_complete Source  :exe s:Lookup('clojure.repl', 'source', <q-args>)
+  command! -buffer -bar -nargs=1 -complete=customlist,fireplace#eval_complete Source  :exe s:Lookup(s:repl_ns(), 'source', <q-args>)
   setlocal keywordprg=:Doc
 
   if get(g:, 'fireplace_no_maps') | return | endif
@@ -1652,7 +1674,7 @@ function! fireplace#capture_test_run(expr, ...) abort
     call setqflist(fireplace#quickfix_for(get(response, 'stacktrace', [])))
     return s:output_response(response)
   endif
-  for line in split(response.out, "\n")
+  for line in split(response.out, "\r\\=\n")
     if line =~# '\t.*\t.*\t'
       let entry = {'text': line}
       let [resource, lnum, type, name] = split(line, "\t", 1)
