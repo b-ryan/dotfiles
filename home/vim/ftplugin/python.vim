@@ -1,1 +1,1 @@
-set keywordprg=pydoc
+setlocal keywordprg=pydoc
