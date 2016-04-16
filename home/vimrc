@@ -136,6 +136,9 @@ nnoremap <Leader>n *N
 " Clear search highlighting
 nnoremap <Leader>, :noh
 
+" Execute the current line with bash
+nnoremap <Leader>x :.w !bash<CR>
+
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
 " autocmd FileType clojure setlocal iskeyword-=/
