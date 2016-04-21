@@ -35,3 +35,10 @@ if [[ ! -d ~/goroot ]]; then
     rm go1.5.2.linux-amd64.tar.gz
     mkdir ~/gopath
 fi
+
+(
+    cd /tmp
+    wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+    mv jq-linux64 ~/bin/jq
+    chmod +x ~/bin/jq
+)
