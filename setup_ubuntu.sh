@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install \
+sudo apt-get -y install \
     dmenu \
     flashplugin-installer \
     openjdk-7-jre \
@@ -12,7 +12,7 @@ sudo apt-get install \
     xmobar \
     xmonad
 
-sudo apt-get install hal || {
+sudo apt-get -y install hal || {
     echo "hal install failed, you may need to first:
         sudo add-apt-repository ppa:mjblenner/ppa-hal
         sudo apt-get update"
