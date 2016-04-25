@@ -3,9 +3,13 @@
 
 call pathogen#infect()
 
+filetype plugin indent on
+syntax enable
+
 let mapleader = ","
 
-colorscheme apprentice
+colorscheme solarized
+set background=dark
 
 """ See :help 'option' for details on any option below
 
@@ -75,9 +79,6 @@ set statusline+=line\ %l\ of\ %L " line number
 " http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 
 autocmd BufEnter * set list " make sure visual whitespace is always shown
-
-filetype plugin indent on
-syntax enable
 
 " jump to last position on previous close
 autocmd BufReadPost *
@@ -221,9 +222,14 @@ let g:vimclojure#SplitSize = 70
 let g:syntastic_javascript_checkers = ["jslint"]
 let g:syntastic_json_checkers = ["jsonlint"]
 let g:syntastic_php_checkers = ["php"] " don't use phpcs (which does style checking)
+let g:syntastic_python_python_exec = "/usr/bin/python3"
 
 " Fireplace ------------------------------------------------------------------
 nmap <LocalLeader>e :Eval<CR>
+
+" SLIME ----------------------------------------------------------------------
+let g:slime_target = "tmux"
+let g:slime_python_ipython = 1
 
 " Functions ------------------------------------------------------------------
 map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

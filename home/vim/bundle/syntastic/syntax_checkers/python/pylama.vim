@@ -15,6 +15,10 @@ if exists('g:loaded_syntastic_python_pylama_checker')
 endif
 let g:loaded_syntastic_python_pylama_checker = 1
 
+if !exists('g:syntastic_python_pylama_sort')
+    let g:syntastic_python_pylama_sort = 1
+endif
+
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -23,7 +27,12 @@ function! SyntaxCheckers_python_pylama_GetHighlightRegex(item)
 endfunction
 
 function! SyntaxCheckers_python_pylama_GetLocList() dict
-    let makeprg = self.makeprgBuild({ 'args_after': '-f pep8' })
+    if !exists('s:pylama_new')
+        let s:pylama_new = syntastic#util#versionIsAtLeast(self.getVersion(), [4])
+    endif
+
+    let makeprg = self.makeprgBuild({
+        \ 'args_after': '-f pep8' . (s:pylama_new ? ' --force' : '') })
 
     " TODO: "WARNING:pylama:..." messages are probably a logging bug
     let errorformat =
@@ -40,7 +49,7 @@ function! SyntaxCheckers_python_pylama_GetLocList() dict
     " adjust for weirdness in each checker
     for e in loclist
         let e['type'] = e['text'] =~? '\m^[RCW]' ? 'W' : 'E'
-        if e['text'] =~# '\v\[%(mccabe|pep257|pylint)\]$'
+        if e['text'] =~# '\v\[%(isort|mccabe|pep257|pylint)\]$'
             if has_key(e, 'col')
                 let e['col'] += 1
             endif
@@ -50,12 +59,10 @@ function! SyntaxCheckers_python_pylama_GetLocList() dict
                 let e['vcol'] = 0
             endif
         endif
-        if e['text'] =~# '\v\[%(mccabe|pep257|pep8)\]$'
+        if e['text'] =~# '\v\[%(isort|mccabe|pep257|pep8)\]$'
             let e['subtype'] = 'Style'
         endif
     endfor
-
-    call self.setWantSort(1)
 
     return loclist
 endfunction
@@ -69,4 +76,4 @@ call g:SyntasticRegistry.CreateAndRegisterChecker({
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
-" vim: set et sts=4 sw=4:
+" vim: set sw=4 sts=4 et fdm=marker:
