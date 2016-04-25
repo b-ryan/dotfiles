@@ -118,7 +118,6 @@ class RepoStats:
     @property
     def dirty(self):
         qualifiers = [
-            self.untracked,
             self.not_staged,
             self.staged,
             self.conflicted,
