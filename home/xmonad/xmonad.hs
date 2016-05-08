@@ -45,7 +45,7 @@ scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
         findKeepassX = title =? "passwords - KeePassX"
         manageKeepassX = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
-        spawnTerm = "gnome-terminal --title scratchterm -x ssh -X vm"
+        spawnTerm = "gnome-terminal --title scratchterm -x task_list"
         findTerm = title =? "scratchterm"
         manageTerm = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
