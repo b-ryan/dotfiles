@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install \
+sudo apt-get -y install \
     vim-gnome \
     exuberant-ctags
 

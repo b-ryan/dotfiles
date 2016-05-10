@@ -146,7 +146,8 @@ autocmd FileType clojure setlocal iskeyword+=>
 autocmd FileType clojure setlocal iskeyword-=,
 " autocmd FileType clojure setlocal iskeyword-=.
 autocmd FileType clojure setlocal shiftwidth=2
-autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars setlocal shiftwidth=2
+autocmd FileType clojure setlocal lispwords+=facts,fact
+autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars,*.yml setlocal shiftwidth=2
 autocmd BufNewFile,BufEnter Makefile,*.php setlocal noexpandtab
 
 autocmd BufNewFile,BufRead *.pp,Vagrantfile set filetype=ruby
@@ -190,7 +191,7 @@ let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target',
+    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*',
     \ 'file': '\.swp$\|\.pyc$\|resources.*compiled',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
