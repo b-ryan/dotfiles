@@ -47,13 +47,10 @@ dirlink() {
 
 mymkdir ~/bin
 mymkdir ~/.config/fish
-mymkdir ~/.config/pianobar
 mymkdir ~/.lein
 mymkdir ~/lib
 mymkdir ~/.xmonad
 mymkdir ~/.xmonad/lib
-
-mkfifo ~/.config/pianobar/ctl 2> /dev/null
 
 dirlink home/vim ~/.vim
 

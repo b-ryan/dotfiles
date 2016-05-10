@@ -34,9 +34,6 @@ myLayoutHook = tallNoStruts
            ||| maximized
            ||| fullscreen
 
-pianobarCmd :: String -> String
-pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
-
 scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
               , NS.NS "terminal" spawnTerm  findTerm     manageTerm
               ]
@@ -73,15 +70,6 @@ main = do
         [ ("M-s",             spawn "gnome-screensaver-command -l")
         , ("M-v",             spawn "gnome-terminal -x ssh -X vm")
         , ("M-g",             bringSelected defaultGSConfig)
-        --PIANOBAR
-        , ("M-<KP_Enter>",    spawn $ pianobarCmd "start")
-        , ("M-<KP_Delete>",   spawn $ pianobarCmd "q")
-        , ("M-<KP_Insert>",   spawn $ pianobarCmd "p") -- keypad 0 = pause
-        , ("M-<KP_Right>",    spawn $ pianobarCmd "n") -- keypad 6 = next
-        , ("M-<KP_Up>",       spawn $ pianobarCmd "+") -- keypad 8 = thumbs up
-        , ("M-<KP_Down>",     spawn $ pianobarCmd "-") -- keypad 2 = thumbs down
-        , ("M-<KP_Add>",      spawn $ pianobarCmd ")") -- keypad + = increase volume
-        , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
         --
         , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
         , ("M-S-v", NS.namedScratchpadAction scratchpads "terminal")
