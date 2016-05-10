@@ -53,7 +53,7 @@ main = do
     -- dbproc <- spawnPipe "dropbox start"
     runProcessWithInput "xrandr" ["--auto", "--output", "VGA1", "--left-of", "HDMI1"] ""
 
-    xmobarMiddle <- spawnPipe "xmobar --screen=1"
+    xmobarLeft <- spawnPipe "xmobar --screen=1"
     xmobarRight <- spawnPipe "xmobar --screen=2"
 
     xmonad $ defaultConfig
@@ -62,7 +62,7 @@ main = do
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
-        , logHook = myLogHook [ xmobarPPOptions xmobarMiddle
+        , logHook = myLogHook [ xmobarPPOptions xmobarLeft
                               , xmobarPPOptions xmobarRight
                               ]
         }
