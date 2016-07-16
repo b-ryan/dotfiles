@@ -34,9 +34,6 @@ myLayoutHook = tallNoStruts
            ||| maximized
            ||| fullscreen
 
-pianobarCmd :: String -> String
-pianobarCmd cmd = "pianobar-ctl '" ++ cmd ++ "'"
-
 scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
               , NS.NS "terminal" spawnTerm  findTerm     manageTerm
               ]
@@ -45,7 +42,7 @@ scratchpads = [ NS.NS "keepassx" "keepassx" findKeepassX manageKeepassX
         findKeepassX = title =? "passwords - KeePassX"
         manageKeepassX = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
-        spawnTerm = "gnome-terminal --title scratchterm -x task_list"
+        spawnTerm = "gnome-terminal --title scratchterm -x task-list"
         findTerm = title =? "scratchterm"
         manageTerm = NS.customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 
@@ -53,7 +50,7 @@ main = do
     -- dbproc <- spawnPipe "dropbox start"
     runProcessWithInput "xrandr" ["--auto", "--output", "VGA1", "--left-of", "HDMI1"] ""
 
-    xmobarMiddle <- spawnPipe "xmobar --screen=1"
+    xmobarLeft <- spawnPipe "xmobar --screen=1"
     xmobarRight <- spawnPipe "xmobar --screen=2"
 
     xmonad $ defaultConfig
@@ -62,7 +59,7 @@ main = do
         , layoutHook = myLayoutHook
         , normalBorderColor = "black"
         , focusedBorderColor = "#FAD4F1"
-        , logHook = myLogHook [ xmobarPPOptions xmobarMiddle
+        , logHook = myLogHook [ xmobarPPOptions xmobarLeft
                               , xmobarPPOptions xmobarRight
                               ]
         }
@@ -73,15 +70,6 @@ main = do
         [ ("M-s",             spawn "gnome-screensaver-command -l")
         , ("M-v",             spawn "gnome-terminal -x ssh -X vm")
         , ("M-g",             bringSelected defaultGSConfig)
-        --PIANOBAR
-        , ("M-<KP_Enter>",    spawn $ pianobarCmd "start")
-        , ("M-<KP_Delete>",   spawn $ pianobarCmd "q")
-        , ("M-<KP_Insert>",   spawn $ pianobarCmd "p") -- keypad 0 = pause
-        , ("M-<KP_Right>",    spawn $ pianobarCmd "n") -- keypad 6 = next
-        , ("M-<KP_Up>",       spawn $ pianobarCmd "+") -- keypad 8 = thumbs up
-        , ("M-<KP_Down>",     spawn $ pianobarCmd "-") -- keypad 2 = thumbs down
-        , ("M-<KP_Add>",      spawn $ pianobarCmd ")") -- keypad + = increase volume
-        , ("M-<KP_Subtract>", spawn $ pianobarCmd "(") -- keypad - = decrease volume
         --
         , ("M-c", NS.namedScratchpadAction scratchpads "keepassx")
         , ("M-S-v", NS.namedScratchpadAction scratchpads "terminal")

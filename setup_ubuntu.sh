@@ -1,6 +1,7 @@
 #!/bin/bash
 sudo apt-get -y install \
     dmenu \
+    exuberant-ctags \
     flashplugin-installer \
     openjdk-7-jre \
     postgresql-client \

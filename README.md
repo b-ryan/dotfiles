@@ -24,3 +24,17 @@ requirement for it to work:
     sudo apt-get install gnome-panel
 
 Then log out and log back in using the XMonad with GNOME session.
+
+## How To
+
+* Launch System Properties from the command line:
+
+  ```
+  unity-control-center
+  ```
+
+* Turn off built-in display on laptop
+
+  ```
+  xrandr --output eDP1 --off
+  ```
