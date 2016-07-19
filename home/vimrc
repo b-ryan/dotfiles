@@ -8,7 +8,7 @@ syntax enable
 
 let mapleader = ","
 
-colorscheme solarized
+colorscheme pyte
 set background=dark
 
 """ See :help 'option' for details on any option below
