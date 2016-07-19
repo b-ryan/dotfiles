@@ -211,9 +211,17 @@ snippet style "XHTML <style>"
 endsnippet
 
 snippet table "XHTML <table>"
-<table border="${1:0}"${2: cellspacing="${3:5}" cellpadding="${4:5}"}>
-	<tr><th>${5:Header}</th></tr>
-	<tr><td>${0:Data}</td></tr>
+<table>
+	<thead>
+		<tr>
+			<th>${1:Header}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>${2:Data}</td>
+		</tr>
+	</tbody>
 </table>
 endsnippet
 

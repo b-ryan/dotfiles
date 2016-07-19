@@ -63,6 +63,7 @@ alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias giff="git diff --color-words --ignore-space-change"
 alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
+alias p="git push"
 alias prune="git remote prune origin"
 alias merged="git branch --merged"
 

@@ -461,4 +461,15 @@ class Test${1:Class}(${2:unittest.TestCase}):
 		${7:pass}
 endsnippet
 
+#################
+#  flask stuff  #
+#################
+
+snippet model "new model class" b
+class ${1:Class}(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    $0
+endsnippet
+
+
 # vim:ft=snippets:
