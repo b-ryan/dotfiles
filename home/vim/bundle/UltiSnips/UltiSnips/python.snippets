@@ -10,7 +10,7 @@ $0
 endsnippet
 
 snippet ifmain "ifmain" b
-if __name__ == '__main__':
+if __name__ == "__main__":
 	${1:main()}$0
 endsnippet
 
@@ -460,5 +460,16 @@ class Test${1:Class}(${2:unittest.TestCase}):
 	def test_${6:name}(self):
 		${7:pass}
 endsnippet
+
+#################
+#  flask stuff  #
+#################
+
+snippet model "new model class" b
+class ${1:Class}(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    $0
+endsnippet
+
 
 # vim:ft=snippets:
