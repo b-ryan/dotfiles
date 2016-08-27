@@ -41,7 +41,7 @@ Then log out and log back in using the XMonad with GNOME session.
 
 ## Haskell Support
 
-Follow directions in [here](lhttp://www.stephendiehl.com/posts/vim_2016.html)
+Follow directions in [here](http://www.stephendiehl.com/posts/vim_2016.html)
 to install:
 
 * stack
