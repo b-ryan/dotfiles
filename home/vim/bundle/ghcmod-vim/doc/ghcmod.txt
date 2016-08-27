@@ -1,0 +1,246 @@
+*ghcmod.txt* Happy Haskell programming on Vim, powered by ghc-mod
+
+Author: eagletmt <eagletmt@gmail.com>
+Repository: https://github.com/eagletmt/ghcmod-vim
+
+CONTENTS                                                     *ghcmod-contents*
+
+Features		|ghcmod-features|
+Requirements		|ghcmod-requirements|
+Details			|ghcmod-details|
+Global variables	|ghcmod-global-variables|
+Customize		|ghcmod-customize|
+License			|ghcmod-license|
+
+==============================================================================
+FEATURES                                                    *ghcmod-features*
+
+- Displaying the type of sub-expressions (ghc-mod type)
+- Displaying the info for identifiers (ghc-mod info)
+- Displaying error/warning messages and their locations (ghc-mod check and
+  ghc-mod lint)
+- Displaying the expansion of splices (ghc-mod expand)
+- Insert split function cases (ghc-mod split)
+
+Completions are supported by another plugin. See neco-ghc
+<https://github.com/eagletmt/neco-ghc>.
+
+==============================================================================
+REQUIREMENTS                                             *ghcmod-requirements*
+
+- vimproc <https://github.com/Shougo/vimproc>
+- ghc-mod <https://github.com/kazu-yamamoto/ghc-mod>
+
+You can install ghc-mod via cabal-install.
+>
+	cabal install ghc-mod
+<
+
+==============================================================================
+DETAILS                                                       *ghcmod-details*
+
+If you'd like to give GHC options, set |g:ghcmod_ghc_options|.
+
+:GhcModType[!]                                                   *:GhcModType*
+	The sub-expression under the cursor is highlighted and its type is
+	echoed. If you type |:GhcModType| multiple times, the sub-expression
+	changes.
+
+	Sub-expressions are highlighted as |hl-Search| by default. You can
+	customize it by setting |g:ghcmod_type_highlight|.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModTypeInsert[!]                                       *:GhcModTypeInsert*
+	Insert a type signature under the cursor.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModSplitFunCase[!]                                   *:GhcModSplitFunCase*
+	Insert split function cases for the variable under the cursor.
+	Example:
+
+	    f :: [a] -> a
+	    f x = _body
+
+	When invoked with the cursor placed on x the following will be
+	inserted:
+
+	    f :: [a] -> a
+	    f [] = _body
+	    f (x:xs) = _ body
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModSigCodegen[!]                                       *:GhcModSigCodegen*
+	Insert initial code from the given signature.
+
+	Example:
+
+	    func :: [a] -> Maybe b -> (a -> b) -> (a,b)
+
+	When invoked with the cursor placed on func the following will be
+	inserted:
+
+	    func x y z f = _func_body
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModInfo[!] [{identifier}]                                    *:GhcModInfo*
+	Information about {identifier} is echoed. If {identifier} isn't given,
+	the word under the cursor is used.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+	Information about {identifier} is echoed.
+
+:GhcModInfoPreview[!] [{identifier}]                      *:GhcModInfoPreview*
+	Information about the {identifier} is displayed in the preview window.
+	If {identifier} isn't given, the word under the cursor is used. Info
+	accumulates until the preview window is closed or renamed, for example
+	by a different command.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModInfoPreview[!] {identifier}
+	Information about {identifier} is displayed in the preview window.
+	Info accumulates until the preview window is closed or renamed,
+	for example by a different command.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModTypeClear                                            *:GhcModTypeClear*
+	Clear the highlight created by |:GhcModType|.
+
+:GhcModCheck[!]                                                 *:GhcModCheck*
+	Display compiler errors/warnings in |quickfix|.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModLint[!]                                                   *:GhcModLint*
+	Display hlint suggestions in |quickfix|. If you'd like to pass options
+	to hlint, set |g:ghcmod_hlint_options|.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModCheckAsync[!]                                       *:GhcModCheckAsync*
+	Asynchronous variant of |:GhcModCheck|. This would be useful when
+	you'd like to run check and/or lint automatically (especially on
+	|BufWritePost|).  See |ghcmod-customize| wiki page for more detail.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModLintAsync[!]                                         *:GhcModLintAsync*
+	Asynchronous variant of |:GhcModLint|.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModCheckAndLintAsync                            *:GhcModCheckAndLintAsync*
+	Perform |:GhcModCheck| and |:GhcModLint| asynchronously.
+
+:GhcModExpand[!]                                               *:GhcModExpand*
+	Display the expansion of splices in |quickfix|.
+
+	When the current buffer is modified, this command is disabled unless
+	"!" is given.
+
+:GhcModDiagnostics                                        *:GhcModDiagnostics*
+	Show diagnostics.
+
+==============================================================================
+GLOBAL VARIABLES                                     *ghcmod-global-variables*
+
+g:ghcmod_ghc_options                                    *g:ghcmod_ghc_options*
+	Pass these options to GHC. By default, ghcmod doesn't pass any GHC
+	options. When ghcmod finds a Cabal directory structure, ghcmod
+	automatically append suitable options for it.
+
+	Example: passing -idir1 and -idir2 to GHC
+>
+	let g:ghcmod_ghc_options = ['-idir1', '-idir2']
+<
+
+b:ghcmod_ghc_options                                    *b:ghcmod_ghc_options*
+	Buffer-local version of |g:ghcmod_ghc_options|. When both
+	|b:ghcmod_ghc_options| and |g:ghcmod_ghc_options| are defined,
+	|b:ghcmod_ghc_options| is given preference and |g:ghcmod_ghc_options|
+	is ignored.
+
+	Example: adding ~/.xmonad/lib when editing XMonad configs.
+>
+	autocmd BufRead,BufNewFile ~/.xmonad/* call s:add_xmonad_path()
+	function! s:add_xmonad_path()
+	  if !exists('b:ghcmod_ghc_options')
+	    let b:ghcmod_ghc_options = []
+	  endif
+	  call add(b:ghcmod_ghc_options, '-i' . expand('~/.xmonad/lib'))
+	endfunction
+<
+
+g:ghcmod_hlint_options                                *g:ghcmod_hlint_options*
+	Pass these options to hlint. By default, ghcmod doesn't pass any GHC
+	options.
+
+	Example: passing --ignore=Redundant $ to hlint
+>
+	let g:ghcmod_hlint_options = ['--ignore=Redundant $']
+<
+
+g:ghcmod_type_highlight                              *g:ghcmod_type_highlight*
+	The highlight group used in |:GhcModType|. By default, Search group is
+	used. See |:highlight| for details on highlighting.
+
+	Example: highlighting sub-expressions with yellow background
+>
+	let ghcmodType ctermbg=yellow
+	let g:ghcmod_type_highlight = 'ghcmodType'
+<
+g:ghcmod_use_basedir                                    *g:ghcmod_use_basedir*
+	The directory to execute ghc-mod from.
+
+	If you do not set it, ghc-mod is executed from project base directory,
+	e.g. from directory where cabal file is placed. This can have an
+	effect particularly on template Haskell splices that expect to find
+	certain files in certain places.
+
+g:ghcmod_max_preview_size                          *g:ghcmod_max_preview_size*
+	The maximum size in lines of that the preview window will grow to
+	while under the control of ghcmod. Useful for preventing huge lists
+	from taking up the screen, for example with
+>
+	:GhcModInfoPreview Eq
+<
+g:ghcmod_open_quickfix_function              *g:ghcmod_open_quickfix_function*
+	The function name used for showing the |quickfix| list.
+	If undefined or empty, the quickfix list is shown by |:cwindow|.
+
+	Example: show quickfix by ctrlp.vim
+	<https://github.com/kien/ctrlp.vim>.
+>
+	let g:ghcmod_open_quickfix_function = 'GhcModQuickFixByCtrlP'
+	function! GhcModQuickFixByCtrlP()
+	  CtrlPQuickfix
+	endfunction
+<
+==============================================================================
+CUSTOMIZE                                                   *ghcmod-customize*
+
+See wiki page <https://github.com/eagletmt/ghcmod-vim/wiki/Customize>.
+
+==============================================================================
+LICENSE                                                       *ghcmod-license*
+
+BSD3 License, the same license as ghc-mod.
+
+vim:tw=78:ts=8:noet:ft=help:norl:
