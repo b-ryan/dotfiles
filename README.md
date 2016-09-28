@@ -38,3 +38,14 @@ Then log out and log back in using the XMonad with GNOME session.
   ```
   xrandr --output eDP1 --off
   ```
+
+## Haskell Support
+
+Follow directions in [here](http://www.stephendiehl.com/posts/vim_2016.html)
+to install:
+
+* stack
+* ghc
+* hlint
+* ghc-mod
+* hasktags

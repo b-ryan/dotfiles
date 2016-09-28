@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin
+PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin:~/.local/bin
 
 GOROOT=$HOME/goroot/go
 GOPATH=$HOME/gopath

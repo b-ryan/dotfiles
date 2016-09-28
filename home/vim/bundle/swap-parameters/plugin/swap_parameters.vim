@@ -78,7 +78,7 @@
 " already installed.
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has('python')
+if !has('python') && !has('python3')
     s:ErrMsg( "Error: Required vim compiled with +python" )
     finish
 endif

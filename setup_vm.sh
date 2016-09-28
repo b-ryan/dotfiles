@@ -5,5 +5,7 @@ sudo apt-get -y install \
 
 sudo pear install doc.php.net/pman
 
+# Linters
 sudo npm install -g jsonlint
 sudo npm install -g jslint
+sudo gem install mdl
