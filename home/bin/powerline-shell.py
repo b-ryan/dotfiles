@@ -1,11 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
 import argparse
 import os
 import sys
+import logging
 
+logging.basicConfig(level=logging.WARN)
 py3 = sys.version_info.major == 3
 
 
