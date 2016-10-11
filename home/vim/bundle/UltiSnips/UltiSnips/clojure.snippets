@@ -8,12 +8,19 @@ snip.rv = ''
 # ultisnips sets the current path as the 'path' variable
 start = path.rfind("src") + 4
 end = path.rfind(".")
-snip.rv = path[start:end].replace("/", ".")
+snip.rv = path[start:end].replace("/", ".").replace("_", "-")
 
-`
-  (:require $1))
+`)
 
 $0
+endsnippet
+
+snippet req "require form"
+(:require $0)
+endsnippet
+
+snippet imp "import form"
+(:import $0)
 endsnippet
 
 snippet com "a comment"
