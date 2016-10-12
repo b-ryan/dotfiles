@@ -123,6 +123,7 @@ inoremap <A-e> ë
 
 " Proper Ctrl+C -> Esc map
 map <C-c> <Esc>
+imap <C-c> <Esc>
 
 " Remove trailing whitespace
 nmap <Leader>w :%s/\s\+$//<CR>
@@ -168,7 +169,7 @@ nnoremap <F4> :A<CR>
 
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
-                \   '\.swo$']
+                \   '\.swo$', '\.sass-cache', '\.egg-info', '^node_modules$', '^dist$']
 let NERDTreeShowHidden=1 " show hidden files
 let NERDTreeChDirMode=2 " change directory whenever NERDTree does
 let NERDTreeShowLineNumbers=1
