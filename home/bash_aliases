@@ -131,4 +131,10 @@ ta() {
         tmux attach
     fi
 }
-alias tn="tmux new-session -s"
+tn() {
+    if (( $# > 0 )); then
+        tmux new-session -s "$@"
+    else
+        tmux new-session
+    fi
+}
