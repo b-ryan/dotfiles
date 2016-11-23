@@ -122,3 +122,13 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[1;32m") \
             man "$@"
 }
+
+alias tl="tmux list-sessions"
+ta() {
+    if (( $# > 0 )); then
+        tmux attach -t "$@"
+    else
+        tmux attach
+    fi
+}
+alias tn="tmux new-session -s"

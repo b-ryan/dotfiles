@@ -28,7 +28,7 @@ shopt -s autocd
 ########################################################
 
 HISTCONTROL=ignoredups:ignorespace
-HISTSIZE=1000
+HISTSIZE=
 HISTFILESIZE=2000
 
 ####################################
