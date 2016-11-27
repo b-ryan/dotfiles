@@ -565,4 +565,28 @@ snippet ###
 =end
 endsnippet
 
+
+
+snippet template "chef template"
+template ${1:path} do
+  source $2
+  owner 'root'
+  group 'root'
+  mode '0755'
+  variables ({
+  })
+end
+endsnippet
+
+
+snippet file "chef file"
+cookbook_file ${1:path} do
+  source $2
+  owner 'root'
+  group 'root'
+  mode '755'
+end
+endsnippet
+
+
 # vim: set ts=2 sw=2 expandtab:
