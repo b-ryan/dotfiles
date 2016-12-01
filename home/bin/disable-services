@@ -29,3 +29,6 @@ for service in "${services[@]}"; do
     sudo service $service stop
     sudo update-rc.d $service disable
 done
+
+sudo supervisorctl stop data-warehouse-service
+sudo supervisorctl remove data-warehouse-service
