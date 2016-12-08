@@ -9,7 +9,29 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'L9'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tComment'
+Plugin 'SirVer/ultisnips'
+Plugin 'kien/ctrlp.vim'
+Plugin 'swap parameters'
+
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+
+Plugin 'vim-syntastic/syntastic'
+Plugin 'guns/vim-slamhound'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+
+Plugin 'hashivim/vim-terraform'
+
+Plugin 'tmhedberg/matchit'
+Plugin 'gregsexton/MatchTag'
 
 call vundle#end()
 
