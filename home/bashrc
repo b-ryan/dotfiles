@@ -22,6 +22,7 @@ shopt -s checkwinsize
 shopt -s histappend
 shopt -s lithist
 shopt -s autocd
+shopt -s extglob
 
 ########################################################
 # History configuration (See bash(1) for more options) #
