@@ -138,3 +138,12 @@ tn() {
         tmux new-session
     fi
 }
+
+
+# task warrior
+alias ht="task add priority:H"
+alias mt="task add priority:M"
+alias lt="task add priority:L"
+alias tt="task add"
+alias tl="task list"
+alias tm="task modify"
