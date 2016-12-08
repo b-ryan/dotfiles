@@ -1,0 +1,171 @@
+snippet req "req"
+require_once '${1:file}';${2}
+endsnippet
+
+snippet re "re"
+require_once '`!p
+
+import os
+
+snip.rv = ''
+
+if t[1][-4:] == '.php':
+    for root, dirs, files in os.walk(os.getcwd()):
+        if t[1] in files:
+            idx = root.find('src/')
+            if idx >= 0:
+                snip.rv = root[idx + 4:] + '/'
+
+`${1}';
+endsnippet
+
+snippet getter "PHP Class Getter" !b
+public function get${1/\w+\s*/\u$0/}() {
+	return $this->$1;$2
+}$4
+endsnippet
+
+snippet setter "PHP Class Setter" !b
+public function set${1/\w+\s*/\u$0/}($$1) {
+	$this->$1 = $$1;$2
+}$0
+endsnippet
+
+snippet gs "PHP Class Getter Setter" !b
+protected $$1
+
+public function get${1/\w+\s*/\u$0/}() {
+	return $this->$1;$2
+}
+
+public function set${1/\w+\s*/\u$0/}($$1) {
+	$this->$1 = $$1;$3
+	${4:return $this;}
+}$0
+endsnippet
+
+snippet php "PHP tag" !b
+<?php
+
+$0
+
+?>
+endsnippet
+
+snippet class "Class declaration template" !b
+class `!p
+import os
+snip.rv = os.path.basename(path)[:-4]
+` {
+
+	$0
+
+}
+endsnippet
+
+snippet cons "Constructor" !b
+public function __construct($1) {$2
+}$0
+endsnippet
+
+snippet testclass "Test class declaration template" !b
+require_once 'RJMAbstractTest.php';
+require_once '`!p
+
+src_file = path.replace('test', 'src').replace('Test', '')
+snip.rv = src_file[src_file.find('src') + 4:]
+
+`';
+
+class `!p snip.rv = fn[:-4]` extends RJMAbstractTest {
+
+	$0
+
+}
+endsnippet
+
+snippet test "Test function" !b
+/**
+ * @test
+ */
+public function $1() {
+	$0
+}
+endsnippet
+
+snippet enum "Enum class declaration template" !b
+class $1 {
+
+	$0
+
+	protected static $names = [
+	];
+
+	protected $id;
+	protected $name;
+
+	private function __construct($id) {
+		$this->id = $id;
+		$this->name = self::$names[$id];
+	}
+
+	public static function get($id) {
+		return new $1($id);
+	}
+
+	public static function getByName($name) {
+		$lookup = array_flip(self::$names);
+		return self::getById($lookup[$name]);
+	}
+
+	public function getId() { return $this->id; }
+	public function getName() { return $this->name; }
+
+}
+endsnippet
+
+snippet ec "Enum const value"
+const $1 = $2;
+	self::$1 => "$3",
+endsnippet
+
+snippet script
+require_once dirname(__FILE__) . '/../bootstrap.php';
+require_once dirname(__FILE__) . '/../container.php';
+
+$0
+endsnippet
+
+snippet t
+$this->
+endsnippet
+
+snippet c
+$container->
+endsnippet
+
+snippet task
+$taskManager->addTask(dy()
+	->name('$1')
+	->doc('$2')
+	->task(
+		function($argsObj) use ($container, $client, $logger) {
+			$0
+		}));
+endsnippet
+
+snippet -> "function call"
+$$1->$2($3)$0
+endsnippet
+
+snippet tdebug "this->logger->debug call"
+$this->logger->debug("$1");$0
+endsnippet
+
+snippet tinfo "this->logger->info call"
+$this->logger->info("$1");$0
+endsnippet
+
+snippet terror "this->logger->error call"
+$this->logger->error("$1");$0
+endsnippet

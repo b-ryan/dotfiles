@@ -1,0 +1,7 @@
+# vim:ft=snippets:
+
+snippet model "new model class" b
+class ${1:Class}(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    $0
+endsnippet
