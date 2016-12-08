@@ -11,12 +11,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'L9'
+Plugin 'tComment'
+
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tComment'
 Plugin 'SirVer/ultisnips'
 Plugin 'kien/ctrlp.vim'
-Plugin 'swap parameters'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
@@ -32,6 +32,7 @@ Plugin 'hashivim/vim-terraform'
 
 Plugin 'tmhedberg/matchit'
 Plugin 'gregsexton/MatchTag'
+Plugin 'machakann/vim-swap'
 
 call vundle#end()
 
