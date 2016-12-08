@@ -1,0 +1,34 @@
+#!/bin/bash
+services=(
+    connections-service
+    core-services-web
+    dashboard-service
+    dbreplicators-service
+    dbreplicators-workers
+    import-api
+    import-api-consumer
+    kafka
+    loader-bq
+    loader-pg
+    notification-service
+    pipeline-batchery
+    pipeline-gate
+    pipeline-loaderx
+    pipeline-streamery
+    pipeline-tracer
+    rjql-service
+    rjql-workers
+    schema-service
+    sourcerer-service
+    sourcerer-workers
+    stats-service
+    webhooks-service
+    zookeeper
+)
+for service in "${services[@]}"; do
+    sudo service $service stop
+    sudo update-rc.d $service disable
+done
+
+sudo supervisorctl stop data-warehouse-service
+sudo supervisorctl remove data-warehouse-service
