@@ -2,6 +2,7 @@
                   [lein-ancient "0.6.8"]
                   [lein-cljfmt  "0.5.1"]
                   [lein-try "0.4.3"]
+                  [lein-virgil "0.1.0"]
                   [jonase/eastwood "0.2.3"]]
         :dependencies [[org.clojure/tools.trace "0.7.9"]
                        [slamhound "1.5.5"]
