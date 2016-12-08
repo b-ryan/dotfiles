@@ -49,3 +49,12 @@ to install:
 * hlint
 * ghc-mod
 * hasktags
+
+## Compiling Vim
+
+```
+git clone https://github.com/vim/vim
+cd vim/src
+./configure --enable-python3interp=yes --enable-rubyinterp=yes
+sudo make install
+```
