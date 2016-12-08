@@ -14,6 +14,7 @@ Plugin 'tComment'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'tpope/vim-fugitive'
