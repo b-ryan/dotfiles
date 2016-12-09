@@ -183,6 +183,7 @@ autocmd FileType clojure setlocal shiftwidth=2
 autocmd FileType clojure setlocal lispwords+=facts,fact
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType markdown setlocal spell
 autocmd BufNewFile,BufEnter *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars,*.yml setlocal shiftwidth=2
 autocmd BufNewFile,BufEnter Makefile,*.php setlocal noexpandtab
 
