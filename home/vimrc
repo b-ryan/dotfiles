@@ -318,8 +318,13 @@ let g:tagbar_type_haskell = {
 let g:clj_fmt_autosave = 0
 
 
-function ClojureClasspath()
+function! ClojureClasspath()
     let l:classpath = system("lein classpath")
     let g:syntastic_java_javac_classpath = l:classpath
     let g:JavaComplete_LibsPath = l:classpath
+endfunction
+
+function! NreplConnect()
+    let l:port = readfile(".nrepl-port")[0]
+    execute ":Connect nrepl://localhost:" . l:port . " " . getcwd()
 endfunction
