@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eu
+project="$1"
+path="$2"
+ssh core -t "
+    if [[ ! -d $path ]]; then
+        git clone git@github.com:RJMetrics/$project.git $path
+    fi
+    cd $path
+    bash
+"
