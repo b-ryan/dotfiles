@@ -1,0 +1,13 @@
+#!/bin/bash
+prev_results=
+while true; do
+    clear
+    task list
+    echo
+    if [[ -n $prev_results ]]; then
+        echo "$prev_results"
+    fi
+    echo -n "> "
+    read cmd
+    prev_results="$(task $cmd 2>&1)"
+done
