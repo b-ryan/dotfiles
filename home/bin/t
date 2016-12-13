@@ -43,10 +43,26 @@ fi
 
 tmux_name="${project}/"
 
-tmux new-session -s "keepalive" -d || true
-
-tmux attach -t "$tmux_name" || {
-    tmux set-option  -t "$tmux_name" -g default-command "~/bin/t-new $project"
-    tmux new-session -s "$tmux_name" -d
-    tmux attach-session -t "$tmux_name"
+spawn_remote() {
+    local tmux_name="$1"
+    local path="$2"
+    if [[ ! -d $path ]]; then
+        git clone git@github.com:RJMetrics/$project.git "$path"
+    fi
+    cd "$path"
+    tmux new-session -s "$tmux_name" -A
 }
+
+if [[ ${project:0:1} = "-" ]]; then
+    case "$project" in
+        -boxcutter)
+            cd ~/src/RJMetrics/boxcutter
+            ;;
+    esac
+    tmux new-session -s "$tmux_name" -A
+else
+    ssh -t core "
+        $(declare -f)
+        spawn_remote \"$tmux_name\" /opt/code/$project
+    "
+fi
