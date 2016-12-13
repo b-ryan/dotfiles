@@ -41,18 +41,12 @@ if [[ -z $project ]]; then
     fatal "No project given"
 fi
 
-if [[ ${project:0:1} = "-" ]]; then
-    path=$HOME
-    spawn_vim=false
-else
-    path=/opt/code/$project
-    spawn_vim=false
-fi
-
 tmux_name="${project}/"
 
+tmux new-session -s "keepalive" -d || true
+
 tmux attach -t "$tmux_name" || {
-    tmux set-option  -t "$tmux_name" -g default-command "~/bin/t-new $project $path"
+    tmux set-option  -t "$tmux_name" -g default-command "~/bin/t-new $project"
     tmux new-session -s "$tmux_name" -d
     tmux attach-session -t "$tmux_name"
 }
