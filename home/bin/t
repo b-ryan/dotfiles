@@ -41,29 +41,28 @@ if [[ -z $project ]]; then
     fatal "No project given"
 fi
 
-if [[ ${project:0:1} = "-" ]]; then
-    path=$HOME
-    spawn_vim=false
-else
-    path=/opt/code/$project
-    spawn_vim=false
-
-    if [[ ! -d $path ]]; then
-        git clone git@github.com:RJMetrics/$project.git $path
-    fi
-fi
-
 tmux_name="${project}/"
 
-tmux attach -t "$tmux_name" || {
-    cd $path
-    tmux new-session    -s "$tmux_name"     -d
-
-    if [[ $spawn_vim = true ]]; then
-        tmux split-window   -t "$tmux_name:0"   -h
-        tmux select-pane    -t "$tmux_name:0.0"
-        tmux respawn-pane   -t "$tmux_name:0.0" -k 'vim'
+spawn_remote() {
+    local tmux_name="$1"
+    local path="$2"
+    if [[ ! -d $path ]]; then
+        git clone git@github.com:RJMetrics/$project.git "$path"
     fi
-
-    tmux attach-session -t "$tmux_name"
+    cd "$path"
+    tmux new-session -s "$tmux_name" -A
 }
+
+if [[ ${project:0:1} = "-" ]]; then
+    case "$project" in
+        -boxcutter)
+            cd ~/src/RJMetrics/boxcutter
+            ;;
+    esac
+    tmux new-session -s "$tmux_name" -A
+else
+    ssh -t core "
+        $(declare -f)
+        spawn_remote \"$tmux_name\" /opt/code/$project
+    "
+fi
