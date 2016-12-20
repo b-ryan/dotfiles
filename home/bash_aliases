@@ -141,6 +141,13 @@ tn() {
 
 
 # task warrior
+task() {
+    if [[ -d .task ]]; then
+        TASKDATA=.task /usr/bin/task "$@"
+    else
+        /usr/bin/task "$@"
+    fi
+}
 alias ht="task add priority:H"
 alias mt="task add priority:M"
 alias lt="task add priority:L"
