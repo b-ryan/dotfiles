@@ -32,6 +32,8 @@ sudo npm install -g jsonlint
 sudo npm install -g jslint
 sudo gem install mdl
 
+sudo gem install tmuxinator
+
 if [[ ! -d ~/goroot ]]; then
     wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
     mkdir ~/goroot
