@@ -1,0 +1,12 @@
+snippet output "output"
+output "$1" {
+	value = "$2"
+}
+endsnippet
+
+snippet var "variable"
+variable "$1" {
+	description = "$2"
+	${3:default = "$4"}
+}
+endsnippet
