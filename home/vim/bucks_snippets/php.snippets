@@ -169,3 +169,39 @@ endsnippet
 snippet terror "this->logger->error call"
 $this->logger->error("$1");$0
 endsnippet
+
+snippet pub "Public function" !b
+public function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
+
+snippet pro "Protected function" !b
+protected function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
+
+snippet pri "Private function" !b
+private function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
+
+snippet pubs "Public static function" !b
+public static function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
+
+snippet pros "Protected static function" !b
+protected static function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
+
+snippet pris "Private static function" !b
+private static function ${1:name}(${2:$param}) {
+	${VISUAL}${3:return null;}
+}$0
+endsnippet
