@@ -43,3 +43,5 @@ _t() {
   COMPREPLY=( $(compgen -W "${options}" -- "${current}") )
 }
 complete -F _t t
+
+source ~/bin/tmuxinator.bash
