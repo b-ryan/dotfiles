@@ -17,5 +17,11 @@ for service in "${services[@]}"; do
     sudo update-rc.d $service disable  &>/dev/null
 done
 
-sudo supervisorctl stop data-warehouse-service
-sudo supervisorctl remove data-warehouse-service
+services=(
+    data-warehouse-service
+    ma-etl-service
+)
+for service in "${services[@]}"; do
+    sudo supervisorctl stop $service
+    sudo supervisorctl remove $service
+done
