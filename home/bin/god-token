@@ -1,0 +1,2 @@
+#!/bin/bash
+mysql rjmadmin -Nse "select access_token from rjmadmin.tokens where scope = 'god'" 2>/dev/null
