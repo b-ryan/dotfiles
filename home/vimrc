@@ -33,6 +33,8 @@ Plugin 'tmhedberg/matchit'
 Plugin 'gregsexton/MatchTag'
 Plugin 'machakann/vim-swap'
 
+Plugin 'haproxy'
+
 call vundle#end()
 
 
