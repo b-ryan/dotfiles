@@ -15,6 +15,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'gregf/ultisnips-chef'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'tpope/vim-fugitive'
@@ -132,6 +133,9 @@ autocmd CmdwinEnter [/?]  startinsert
 nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <Leader>sv :source $MYVIMRC<cr>
 
+nnoremap <Leader>p :set paste<cr>
+nnoremap <Leader>P :set nopaste<cr>
+
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
 
@@ -245,7 +249,7 @@ let Tlist_Display_Prototype = 1 " show prototypes instead of tags
 nmap <F7> :TlistToggle<CR>
 
 " UltiSnips ------------------------------------------------------------------
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bucks_snippets"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bucks_snippets", "bundle/ultisnips-chef/UltiSnips"]
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
