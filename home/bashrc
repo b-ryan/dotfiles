@@ -30,7 +30,7 @@ shopt -s extglob
 
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=
-HISTFILESIZE=2000
+HISTFILESIZE=
 
 ####################################
 # Other options and configurations #
