@@ -35,6 +35,7 @@ Plugin 'gregsexton/MatchTag'
 Plugin 'machakann/vim-swap'
 
 Plugin 'haproxy'
+Plugin 'vim-coffee-script'
 
 call vundle#end()
 
