@@ -153,3 +153,5 @@ alias lt="task add priority:L"
 alias tt="task add"
 alias tl="task list"
 alias tm="task modify"
+
+alias PR="hub pull-request"
