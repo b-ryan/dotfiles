@@ -37,6 +37,9 @@ Plugin 'machakann/vim-swap'
 Plugin 'haproxy'
 Plugin 'vim-coffee-script'
 
+Plugin 'Yggdroot/indentLine'
+Plugin 'AndrewRadev/sideways.vim'
+
 call vundle#end()
 
 
@@ -321,6 +324,9 @@ let g:tagbar_type_haskell = {
         \ 'type'   : 't'
     \ }
 \ }
+
+" indentLine -----------------------------------------------------------------
+let g:indentLine_enabled = 0
 
 " cljfmt ---------------------------------------------------------------------
 let g:clj_fmt_autosave = 0
