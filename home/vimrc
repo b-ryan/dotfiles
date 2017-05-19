@@ -133,10 +133,6 @@ autocmd CmdwinEnter [/?]  startinsert
 
 " general key mappings --------------------------------------------------------
 
-" Open vimrc / source it
-nnoremap <Leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <Leader>sv :source $MYVIMRC<cr>
-
 nnoremap <Leader>p :set paste<cr>
 nnoremap <Leader>P :set nopaste<cr>
 
@@ -147,7 +143,7 @@ nnoremap Y y$
 nnoremap <Leader>6 :e#<CR>
 
 " Keys for more efficient saving
-nmap <F11> :w<CR>
+nmap <F11> :wqa<CR>
 nmap <F12> :wa<CR>
 
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -158,9 +154,6 @@ vnoremap <A-j> :m'>+<CR>gv=gv
 nnoremap <A-k> :m-2<CR>==
 inoremap <A-k> <Esc>:m-2<CR>==gi
 vnoremap <A-k> :m-2<CR>gv=gv
-
-" Map Ctrl+Backspace in insert mode to delete back a word
-inoremap <C-BS> <C-w>
 
 inoremap <A-e> ë
 
@@ -183,6 +176,11 @@ nnoremap <Leader>, :noh
 
 " Execute the current line with bash
 nnoremap <Leader>x :.w !bash<CR>
+
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-l> <C-w><C-l>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
