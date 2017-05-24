@@ -67,6 +67,7 @@ symlink home/inputrc ~/.inputrc
 symlink home/lein/profiles.clj ~/.lein/profiles.clj
 symlink home/sqliterc ~/.sqliterc
 symlink home/taskrc ~/.taskrc
+symlink home/tmux.conf ~/.tmux.conf
 symlink home/vimrc ~/.vimrc
 symlink home/xmobarrc ~/.xmobarrc
 symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs

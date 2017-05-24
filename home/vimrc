@@ -39,6 +39,7 @@ Plugin 'vim-coffee-script'
 
 Plugin 'Yggdroot/indentLine'
 Plugin 'AndrewRadev/sideways.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 
@@ -176,11 +177,6 @@ nnoremap <Leader>, :noh
 
 " Execute the current line with bash
 nnoremap <Leader>x :.w !bash<CR>
-
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-l> <C-w><C-l>
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
@@ -328,6 +324,14 @@ let g:indentLine_enabled = 0
 
 " cljfmt ---------------------------------------------------------------------
 let g:clj_fmt_autosave = 0
+
+" vim-tmux-navigator ---------------------------------------------------------
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-;> :TmuxNavigatePrevious<cr>
 
 
 function! ClojureClasspath()
