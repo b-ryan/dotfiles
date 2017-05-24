@@ -331,16 +331,11 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-;> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 
 function! ClojureClasspath()
     let l:classpath = system("lein classpath")
     let g:syntastic_java_javac_classpath = l:classpath
     let g:JavaComplete_LibsPath = l:classpath
-endfunction
-
-function! NreplConnect()
-    let l:port = readfile(".nrepl-port")[0]
-    execute ":Connect nrepl://localhost:" . l:port . " " . getcwd()
 endfunction
