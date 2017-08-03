@@ -34,13 +34,13 @@ sudo gem install mdl
 
 sudo gem install tmuxinator
 
-if [[ ! -d ~/goroot ]]; then
-    wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
-    mkdir ~/goroot
-    tar -C ~/goroot -xzf go1.5.2.linux-amd64.tar.gz
-    rm go1.5.2.linux-amd64.tar.gz
-    mkdir ~/gopath
-fi
+# if [[ ! -d ~/goroot ]]; then
+#     wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
+#     mkdir ~/goroot
+#     tar -C ~/goroot -xzf go1.5.2.linux-amd64.tar.gz
+#     rm go1.5.2.linux-amd64.tar.gz
+#     mkdir ~/gopath
+# fi
 
 (
     cd /tmp
