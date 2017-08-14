@@ -127,14 +127,14 @@ ta() {
     if (( $# > 0 )); then
         tmux attach -t "$@"
     else
-        tmux attach
+        tmux attach -t "${PWD##*/}" || tmux attach
     fi
 }
 tn() {
     if (( $# > 0 )); then
         tmux new-session -s "$@"
     else
-        tmux new-session
+        tmux new-session -s "${PWD##*/}"
     fi
 }
 
@@ -155,3 +155,6 @@ alias tl="task list"
 alias tm="task modify"
 
 alias PR="hub pull-request"
+
+alias workonthis='workon "${PWD##*/}"'
+alias mkthis='mkvirtualenv -p $(which python3) "${PWD##*/}"'
