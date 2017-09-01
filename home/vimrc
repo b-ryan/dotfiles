@@ -116,6 +116,7 @@ set statusline+=[%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=[%{&ff}] " file format (ie. line endings)
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}] " encoding
 set statusline+=\ \|\ " a separator
+set statusline+=col\ %c\  " column number
 set statusline+=line\ %l\ of\ %L " line number
 " for more about customizing the status bar, see
 " http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html

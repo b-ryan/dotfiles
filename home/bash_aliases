@@ -158,3 +158,5 @@ alias PR="hub pull-request"
 
 alias workonthis='workon "${PWD##*/}"'
 alias mkthis='mkvirtualenv -p $(which python3) "${PWD##*/}"'
+
+alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
