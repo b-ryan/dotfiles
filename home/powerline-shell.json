@@ -1,0 +1,17 @@
+{
+  "segments": [
+    "virtual_env",
+    "time",
+    "hostname",
+    "cwd",
+    "git",
+    "jobs",
+    "set_term_title",
+    "newline",
+    "root"
+  ],
+  "mode": "flat",
+  "cwd": {
+    "mode": "plain"
+  }
+}
