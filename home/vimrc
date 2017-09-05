@@ -40,7 +40,7 @@ Plugin 'vim-coffee-script'
 Plugin 'Yggdroot/indentLine'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'Auto-Pairs'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 
@@ -132,6 +132,8 @@ autocmd FileType php set keywordprg=pman
 
 " Start in insert mode when using the command window. See :help q:
 autocmd CmdwinEnter [/?]  startinsert
+
+autocmd BufWritePost *.py silent! !ctags -R --languages=python
 
 " general key mappings --------------------------------------------------------
 

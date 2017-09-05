@@ -1,7 +1,8 @@
 #!/bin/bash
 
 _update_ps1() {
-    PS1="$(powerline-shell.py --cwd-mode plain --mode flat $?)"
+    # PS1="$(powerline-shell.py --cwd-mode plain --mode flat $?)"
+    PS1="$(powerline-shell $?)"
 }
 
 if [ "$TERM" != "linux" ]; then
