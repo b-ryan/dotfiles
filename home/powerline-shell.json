@@ -3,6 +3,7 @@
     "virtual_env",
     "time",
     "hostname",
+    "ssh",
     "cwd",
     "git",
     "jobs",
