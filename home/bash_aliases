@@ -160,3 +160,11 @@ alias workonthis='workon "${PWD##*/}"'
 alias mkthis='mkvirtualenv -p $(which python3) "${PWD##*/}"'
 
 alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
+
+ggrepsed() {
+    local grep="$1"
+    local replace="$2"
+    local inplace="${3:-}"
+    local opts="${4:-g}"
+    git grep -l "$grep" | xargs sed "$inplace" "s/$grep/$replace/$opts"
+}
