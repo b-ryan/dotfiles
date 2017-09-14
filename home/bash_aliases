@@ -160,6 +160,8 @@ alias workonthis='workon "${PWD##*/}"'
 alias mkthis='mkvirtualenv -p $(which python3) "${PWD##*/}"'
 
 alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
+alias stitch-orchestrator='/home/buck/.virtualenvs/orchestrator/bin/stitch-orchestrator'
+alias tap-xero='/home/buck/.virtualenvs/tap-xero/bin/tap-xero'
 
 ggrepsed() {
     local grep="$1"

@@ -14,5 +14,6 @@
   "mode": "flat",
   "cwd": {
     "mode": "plain"
-  }
+  },
+  "theme": "washed"
 }
