@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eu
+filename="$1"
+if [[ $(head -c 2 "$filename") != "#!" ]]; then
+    echo '#!/usr/bin/env python' | cat - "$filename" \
+        > /tmp/x-python-tmp && mv /tmp/x-python-tmp "$filename"
+fi
+chmod +x "$filename"
