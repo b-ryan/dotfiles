@@ -90,3 +90,6 @@ export LEIN_GPG=gpg2
     export PROJECT_HOME=$HOME/src
     . /usr/local/bin/virtualenvwrapper.sh
 }
+
+homeip=$(cat ~/Dropbox/homeip)
+sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config
