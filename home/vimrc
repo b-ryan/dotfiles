@@ -135,7 +135,7 @@ autocmd FileType php set keywordprg=pman
 " Start in insert mode when using the command window. See :help q:
 autocmd CmdwinEnter [/?]  startinsert
 
-autocmd BufWritePost *.py silent! !ctags -R --languages=python
+autocmd BufWritePost *.py silent! !bash ./.build-tags
 
 " general key mappings --------------------------------------------------------
 
