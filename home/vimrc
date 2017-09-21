@@ -41,6 +41,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'taglist.vim'
 
 call vundle#end()
 
