@@ -65,6 +65,7 @@ symlink home/gvimrc ~/.gvimrc
 symlink home/hgrc ~/.hgrc
 symlink home/inputrc ~/.inputrc
 symlink home/lein/profiles.clj ~/.lein/profiles.clj
+symlink home/pylintrc ~/.pylintrc
 symlink home/sqliterc ~/.sqliterc
 symlink home/taskrc ~/.taskrc
 symlink home/tmux.conf ~/.tmux.conf
