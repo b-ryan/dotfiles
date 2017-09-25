@@ -42,7 +42,7 @@ Plugin 'AndrewRadev/sideways.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'taglist.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -155,12 +155,15 @@ nmap <F12> :wa<CR>
 
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
 " Use Alt-j or Alt-k to move lines up or down, respectively
-nnoremap <A-j> :m+<CR>==
-inoremap <A-j> <Esc>:m+<CR>==gi
-vnoremap <A-j> :m'>+<CR>gv=gv
-nnoremap <A-k> :m-2<CR>==
-inoremap <A-k> <Esc>:m-2<CR>==gi
-vnoremap <A-k> :m-2<CR>gv=gv
+" The "execute" lines based on: https://stackoverflow.com/a/27206531/683436
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+nnoremap <M-j> :m+<CR>==
+inoremap <M-j> <Esc>:m+<CR>==gi
+vnoremap <M-j> :m'>+<CR>gv=gv
+nnoremap <M-k> :m-2<CR>==
+inoremap <M-k> <Esc>:m-2<CR>==gi
+vnoremap <M-k> :m-2<CR>gv=gv
 
 inoremap <A-e> ë
 
@@ -224,17 +227,6 @@ nnoremap <F5> :NERDTreeToggle<CR>
 " find the current file in NerdTree
 map <leader>r :NERDTreeFind<CR>
 
-" supertab -------------------------------------------------------------------
-" kick off supertab with space
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
-let g:SuperTabMappingForward = '<C-Space>'
-let g:SuperTabMappingBackward = '<S-C-Space>'
-
-" OmniCppComplete settings ---------------------------------------------------
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::o
-
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
@@ -245,16 +237,19 @@ let g:ctrlp_by_filename = 1 " default to filename search instead of full path
 let g:ctrlp_regexp = 1 " default to regexp search
 let g:ctrlp_working_path_mode = 0
 
+" surround -------------------------------------------------------------------
+let g:surround_no_mappings = 1
+
 " taglist --------------------------------------------------------------------
-let Tlist_Use_Right_Window = 1 " place taglist window on the right
-let Tlist_Display_Prototype = 1 " show prototypes instead of tags
+" let Tlist_Use_Right_Window = 1 " place taglist window on the right
+" let Tlist_Display_Prototype = 1 " show prototypes instead of tags
 " mapping to open taglist
 nmap <F7> :TlistToggle<CR>
 
 " UltiSnips ------------------------------------------------------------------
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bucks_snippets", "bundle/ultisnips-chef/UltiSnips"]
-let g:UltiSnipsExpandTrigger = "<c-e>"
-let g:UltiSnipsJumpForwardTrigger = "<c-e>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " VimClojure -----------------------------------------------------------------
@@ -272,9 +267,9 @@ let g:vimclojure#SplitSize = 70
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 let g:syntastic_mode_map = {
-    \ "mode": "active",
+    \ "mode": "passive",
     \ "active_filetypes": [],
-    \ "passive_filetypes": ["python"] }
+    \ "passive_filetypes": [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
