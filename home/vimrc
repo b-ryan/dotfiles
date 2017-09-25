@@ -252,7 +252,7 @@ let g:ctrlp_regexp = 1 " default to regexp search
 let g:ctrlp_working_path_mode = 0
 
 " surround -------------------------------------------------------------------
-let g:surround_no_mappings = 1
+" let g:surround_no_mappings = 1
 
 " taglist --------------------------------------------------------------------
 " let Tlist_Use_Right_Window = 1 " place taglist window on the right
