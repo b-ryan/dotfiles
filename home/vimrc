@@ -258,8 +258,8 @@ nmap <F7> :TlistToggle<CR>
 
 " UltiSnips ------------------------------------------------------------------
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bucks_snippets", "bundle/ultisnips-chef/UltiSnips"]
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsExpandTrigger = "<c-g>"
+let g:UltiSnipsJumpForwardTrigger = "<c-g>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " VimClojure -----------------------------------------------------------------
