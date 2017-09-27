@@ -157,7 +157,13 @@ alias tm="task modify"
 alias PR="hub pull-request"
 
 alias workonthis='workon "${PWD##*/}"'
-alias mkthis='mkvirtualenv -p $(which python3) "${PWD##*/}" && if [[ -f setup.py ]]; then python setup.py develop; fi'
+mkthis() {
+    mkvirtualenv -p $(which python3) "${PWD##*/}" && {
+        if [[ -f setup.py ]]; then python setup.py develop; fi
+        if [[ -f requirements.txt ]]; then pip install -r requirements.txt; fi
+        if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
+    }
+}
 alias rmthis='rmvirtualenv "${PWD##*/}"'
 alias refreshenv='deactivate && rmthis && mkthis'
 
