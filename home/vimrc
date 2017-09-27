@@ -43,6 +43,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'taglist.vim'
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 
@@ -187,7 +188,6 @@ nnoremap <Leader>, :noh
 " Execute the current line with bash
 nnoremap <Leader>x :.w !bash<CR>
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType clojure setlocal iskeyword+=>
 " autocmd FileType clojure setlocal iskeyword-=/
 autocmd FileType clojure setlocal iskeyword-=,
@@ -215,10 +215,6 @@ autocmd BufLeave * setlocal nocursorline
 let &t_SI = "\<Esc>]12;orange\x7"
 " use a red cursor otherwise
 let &t_EI = "\<Esc>]12;red\x7"
-silent !echo -ne "\033]12;red\007"
-" reset cursor when vim exits
-autocmd VimLeave * silent !echo -ne "\033]112\007"
-" use \003]12;gray\007 for gnome-terminal
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
@@ -252,7 +248,7 @@ let g:ctrlp_regexp = 1 " default to regexp search
 let g:ctrlp_working_path_mode = 0
 
 " surround -------------------------------------------------------------------
-" let g:surround_no_mappings = 1
+let g:surround_no_insert_mappings = 1
 
 " taglist --------------------------------------------------------------------
 " let Tlist_Use_Right_Window = 1 " place taglist window on the right
@@ -262,8 +258,8 @@ nmap <F7> :TlistToggle<CR>
 
 " UltiSnips ------------------------------------------------------------------
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bucks_snippets", "bundle/ultisnips-chef/UltiSnips"]
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsExpandTrigger = "<c-g>"
+let g:UltiSnipsJumpForwardTrigger = "<c-g>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 
 " VimClojure -----------------------------------------------------------------
@@ -364,3 +360,6 @@ function! ClojureClasspath()
     let g:syntastic_java_javac_classpath = l:classpath
     let g:JavaComplete_LibsPath = l:classpath
 endfunction
+
+" jedi -----------------------------------------------------------------------
+let g:jedi#rename_command = ""

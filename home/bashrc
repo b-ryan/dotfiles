@@ -93,3 +93,8 @@ export LEIN_GPG=gpg2
 
 homeip=$(cat ~/Dropbox/homeip)
 sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config
+
+venv="${PWD##*/}"
+if [[ -n $TMUX && -d ~/.virtualenvs/$venv ]]; then
+    workonthis
+fi

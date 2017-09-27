@@ -8,3 +8,6 @@ _update_ps1() {
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND=_update_ps1
 fi
+
+
+echo -ne "\033]12;red\007"
