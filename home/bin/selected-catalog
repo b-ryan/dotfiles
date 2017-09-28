@@ -1,0 +1,3 @@
+#!/bin/bash
+set -eu
+$1 -c config.json -d | jq '.streams[].schema.selected = true'
