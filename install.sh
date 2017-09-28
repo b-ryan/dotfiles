@@ -51,6 +51,7 @@ mymkdir ~/.lein
 mymkdir ~/lib
 mymkdir ~/.xmonad
 mymkdir ~/.xmonad/lib
+mymkdir ~/.tmuxinator
 
 dirlink home/vim ~/.vim
 
@@ -81,6 +82,10 @@ done
 
 for file in $(ls home/lib); do
     symlink home/lib/$file ~/lib/$file
+done
+
+for file in $(ls home/tmuxinator); do
+    symlink home/tmuxinator/$file ~/.tmuxinator/$file
 done
 
 echo Backed up files to $BK_DIR
