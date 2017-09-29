@@ -94,18 +94,6 @@ rmswp() {
     find . -name \*.$ext -exec rm {} \;
 }
 
-alias unit='phpunit --debug --bootstrap=test/bootstrap.php'
-
-do-ctags() {
-    ctags-exuberant -R --fields=+S --languages=php "$@"
-}
-
-gvim() {
-    /usr/bin/gvim -f "$@" &
-}
-
-alias e="install_env.sh box fryan@rjmetrics.com Y"
-
 curl() {
     /usr/bin/curl "$@"; echo
 }
@@ -138,22 +126,6 @@ tn() {
     fi
 }
 
-
-# task warrior
-task() {
-    if [[ -d .task ]]; then
-        TASKDATA=.task /usr/bin/task "$@"
-    else
-        /usr/bin/task "$@"
-    fi
-}
-alias ht="task add priority:H"
-alias mt="task add priority:M"
-alias lt="task add priority:L"
-alias tt="task add"
-alias tl="task list"
-alias tm="task modify"
-
 alias PR="hub pull-request"
 
 alias workonthis='workon "${PWD##*/}"'
@@ -164,8 +136,8 @@ mkthis() {
         if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
     }
 }
-alias rmthis='rmvirtualenv "${PWD##*/}"'
-alias refreshenv='deactivate && rmthis && mkthis'
+alias rmthis='deactivate && rmvirtualenv "${PWD##*/}"'
+alias refreshenv='rmthis && mkthis'
 
 alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
 alias stitch-orchestrator='/home/buck/.virtualenvs/orchestrator/bin/stitch-orchestrator'
