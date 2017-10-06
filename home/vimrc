@@ -126,6 +126,8 @@ set statusline+=line\ %l\ of\ %L " line number
 
 autocmd BufEnter * set list " make sure visual whitespace is always shown
 
+set history=2000
+
 " jump to last position on previous close
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -342,6 +344,8 @@ let g:tagbar_type_haskell = {
 
 " indentLine -----------------------------------------------------------------
 let g:indentLine_fileType = ['json']
+let g:indentLine_char = '⎸'
+let g:indentLine_concealcursor = ""
 
 " cljfmt ---------------------------------------------------------------------
 let g:clj_fmt_autosave = 0
