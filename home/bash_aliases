@@ -135,6 +135,7 @@ mkthis() {
         if [[ -f requirements.txt ]]; then pip install -r requirements.txt; fi
         if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
     }
+    pip install ipython jedi pylint
 }
 alias rmthis='deactivate && rmvirtualenv "${PWD##*/}"'
 alias refreshenv='rmthis && mkthis'
