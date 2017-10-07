@@ -2,6 +2,7 @@
   "segments": [
     "virtual_env",
     "time",
+    "battery",
     "hostname",
     "ssh",
     "cwd",
