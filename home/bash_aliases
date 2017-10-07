@@ -135,13 +135,16 @@ mkthis() {
         if [[ -f requirements.txt ]]; then pip install -r requirements.txt; fi
         if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
     }
+    pip install ipython jedi pylint
 }
 alias rmthis='deactivate && rmvirtualenv "${PWD##*/}"'
 alias refreshenv='rmthis && mkthis'
 
 alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
-alias stitch-orchestrator='/home/buck/.virtualenvs/orchestrator/bin/stitch-orchestrator'
+alias stitch-orchestrator='/home/buck/.virtualenvs/stitch-orchestrator/bin/stitch-orchestrator'
 alias tap-xero='/home/buck/.virtualenvs/tap-xero/bin/tap-xero'
+alias singer-infer-schema='/home/buck/.virtualenvs/singer-tools/bin/singer-infer-schema'
+alias singer-check-tap='/home/buck/.virtualenvs/singer-tools/bin/singer-check-tap'
 
 ggrepsed() {
     local grep="$1"

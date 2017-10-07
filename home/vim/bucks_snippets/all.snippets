@@ -12,3 +12,17 @@ Implementation Notes
 
 $0
 endsnippet
+
+snippet dir "current working directory"
+`!p
+import os
+snip.rv = os.path.basename(os.getcwd())
+`
+endsnippet
+
+snippet pwd "full path of current directory"
+`!p
+import os
+snip.rv = os.getcwd()
+`
+endsnippet

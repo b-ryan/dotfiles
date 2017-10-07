@@ -5,3 +5,21 @@ class ${1:Class}(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     $0
 endsnippet
+
+snippet def "function"
+def $1($2):
+	${3:pass}
+$0
+endsnippet
+
+snippet no "named dict / named object"
+"$1": {$2},$0
+endsnippet
+
+snippet na "named list / named array"
+"$1": [$2],$0
+endsnippet
+
+snippet s "string to string"
+"$1": "$2",
+endsnippet

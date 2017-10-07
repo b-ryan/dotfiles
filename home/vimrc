@@ -54,7 +54,7 @@ syntax enable
 let mapleader = ","
 
 colorscheme default
-set background=dark
+set background=light
 
 """ See :help 'option' for details on any option below
 
@@ -125,6 +125,8 @@ set statusline+=line\ %l\ of\ %L " line number
 " http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 
 autocmd BufEnter * set list " make sure visual whitespace is always shown
+
+set history=2000
 
 " jump to last position on previous close
 autocmd BufReadPost *
@@ -341,7 +343,9 @@ let g:tagbar_type_haskell = {
 \ }
 
 " indentLine -----------------------------------------------------------------
-let g:indentLine_enabled = 0
+let g:indentLine_fileType = ['json']
+let g:indentLine_char = '⎸'
+let g:indentLine_concealcursor = ""
 
 " cljfmt ---------------------------------------------------------------------
 let g:clj_fmt_autosave = 0
