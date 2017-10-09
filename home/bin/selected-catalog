@@ -1,3 +1,9 @@
 #!/bin/bash
 set -eu
-$1 -c config.json -d | jq '.streams[].schema.selected = true'
+stream="${2:-}"
+if [[ -n $stream ]]; then
+    filter="| select(.tap_stream_id == \"$stream\")"
+else
+    filter=""
+fi
+$1 -c config.json -d | jq ".streams[]$filter.schema.selected = true"
