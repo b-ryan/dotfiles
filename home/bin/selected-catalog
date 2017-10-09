@@ -2,8 +2,9 @@
 set -eu
 stream="${2:-}"
 if [[ -n $stream ]]; then
-    filter="| select(.tap_stream_id == \"$stream\")"
+    # $1 -c config.json -d | jq ".streams | map(.schema.selected = true)"
+    filter="select(.tap_stream_id == \"$stream\")"
 else
     filter=""
 fi
-$1 -c config.json -d | jq ".streams[]$filter.schema.selected = true"
+$1 -c config.json -d | jq ".streams | map($filter.schema.selected = true)"
