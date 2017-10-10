@@ -137,7 +137,10 @@ mkthis() {
     }
     pip install ipython jedi pylint
 }
-alias rmthis='deactivate && rmvirtualenv "${PWD##*/}"'
+rmthis() {
+    deactivate
+    rmvirtualenv "${PWD##*/}"
+}
 alias refreshenv='rmthis && mkthis'
 
 alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
