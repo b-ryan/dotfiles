@@ -148,6 +148,7 @@ alias stitch-orchestrator='/home/buck/.virtualenvs/stitch-orchestrator/bin/stitc
 alias tap-xero='/home/buck/.virtualenvs/tap-xero/bin/tap-xero'
 alias singer-infer-schema='/home/buck/.virtualenvs/singer-tools/bin/singer-infer-schema'
 alias singer-check-tap='/home/buck/.virtualenvs/singer-tools/bin/singer-check-tap'
+alias singer-diff-jsonl='/home/buck/.virtualenvs/singer-tools/bin/diff-jsonl'
 
 ggrepsed() {
     local grep="$1"
