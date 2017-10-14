@@ -2,13 +2,11 @@
   "segments": [
     "virtual_env",
     "time",
-    "battery",
     "ssh",
     "cwd",
     "git",
     "jobs",
     "set_term_title",
-    "uptime",
     "newline",
     "root"
   ],
