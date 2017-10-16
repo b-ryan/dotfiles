@@ -1,6 +1,7 @@
 {
   "segments": [
     "virtual_env",
+    "aws_profile",
     "time",
     "ssh",
     "cwd",
