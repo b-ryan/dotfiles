@@ -159,3 +159,5 @@ ggrepsed() {
 }
 
 alias mux=tmuxinator
+
+alias docker="sudo docker"
