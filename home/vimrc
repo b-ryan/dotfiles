@@ -222,7 +222,7 @@ let NERDTreeShowBookmarks=1
 " mapping to open NERDTree
 nnoremap <F5> :NERDTreeToggle<CR>
 " find the current file in NerdTree
-map <leader>f :NERDTreeFind<CR>
+map <leader>r :NERDTreeFind<CR>
 
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
@@ -341,7 +341,7 @@ nnoremap <silent> <c-n> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 " more tmux integration
-nmap <leader>r :!tmux send-keys -t :0.1 C-p C-j <CR><CR>
+nmap <leader>. :!tmux send-keys -t :0.1 C-p C-j <CR><CR>
 
 function! ClojureClasspath()
     let l:classpath = system("lein classpath")
