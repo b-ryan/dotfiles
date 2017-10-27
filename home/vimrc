@@ -83,10 +83,6 @@ set smarttab " Uses the value of shiftwidth when inserting or deleting tabs
 " hitting tab will insert 4 columns for you (the value of softtabstop).
 " However, since this isn't enough to be a tab character, it will use spaces
 " to achieve those 4 columns.
-
-" mapping to toggle spaces/tabs. This should work fine, but I haven't figured
-" out under what circumstances behaviors will be exactly the same.
-nmap <Leader>t :setlocal expandtab!<CR>
 " <---------------------------------------------------------------------------
 
 set rnu
@@ -145,12 +141,10 @@ autocmd BufWritePost *.py silent! !~/bin/build-tags
 
 nnoremap <Leader>p :set paste<cr>
 nnoremap <Leader>P :set nopaste<cr>
+nmap <leader>l :e#<cr>
 
 " Change 'Y' to copy to end of line to be similar to D and C
 nnoremap Y y$
-
-" Ctrl-6 does not work on Mac
-nnoremap <Leader>6 :e#<CR>
 
 " Keys for more efficient saving
 nmap <F11> :wqa<CR>
@@ -180,15 +174,6 @@ nmap <Leader>w :%s/\s\+$//<CR>
 " A bit tricky to explain: will put you insert mode on the next line (like
 " doing just 'o', but will also put an extra blank line below this new line.
 nnoremap <Leader>o o<esc>O
-
-" Search for the word under the cursor, but stay on the current instance of it
-nnoremap <Leader>n *N
-
-" Clear search highlighting
-nnoremap <Leader>, :noh
-
-" Execute the current line with bash
-nnoremap <Leader>x :.w !bash<CR>
 
 autocmd FileType clojure setlocal iskeyword+=>
 " autocmd FileType clojure setlocal iskeyword-=/
@@ -290,9 +275,6 @@ let g:syntastic_json_checkers = ["jsonlint"]
 let g:syntastic_php_checkers = ["php"] " don't use phpcs (which does style checking)
 let g:syntastic_python_python_exec = "/usr/bin/python3"
 
-" Fireplace ------------------------------------------------------------------
-" nmap <LocalLeader>e :Eval<CR>
-
 " SLIME ----------------------------------------------------------------------
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
@@ -355,9 +337,11 @@ let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-n> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
+" more tmux integration
+nmap <leader>. :!tmux send-keys -t :0.1 C-p C-j <CR><CR>
 
 function! ClojureClasspath()
     let l:classpath = system("lein classpath")
