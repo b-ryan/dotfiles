@@ -1,7 +1,7 @@
-# ~/.tmuxinator/tunnels-site.yml
+# ~/.tmuxinator/trhino-site.yml
 
-name: tunnels-site
-root: ~/src/startup/tunnels-site
+name: trhino-site
+root: ~/src/startup/trhino-site
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,7 +28,7 @@ root: ~/src/startup/tunnels-site
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t tunnels-site
+# post: tmux -CC attach -t trhino-site
 
 windows:
   - editor:

@@ -1,7 +1,7 @@
-# ~/.tmuxinator/dbrhino-connect.yml
+# ~/.tmuxinator/trhino-connect.yml
 
-name: dbrhino-connect
-root: ~/src/startup/dbrhino-connect
+name: trhino-connect
+root: ~/src/startup/trhino-connect
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,7 +28,7 @@ root: ~/src/startup/dbrhino-connect
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t dbrhino-connect
+# post: tmux -CC attach -t trhino-connect
 
 windows:
   - editor:
