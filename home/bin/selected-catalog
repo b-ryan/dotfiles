@@ -7,10 +7,14 @@ from collections import OrderedDict
 
 tap = sys.argv[1]
 chosen_streams = sys.argv[2:]
+negative = (chosen_streams and chosen_streams[0] == "-")
 output = subprocess.check_output([tap, "-c", "config.json", "-d"])
 schema = json.loads(output.decode("utf-8"), object_pairs_hook=OrderedDict)
 streams = schema["streams"]
 for s in streams:
-    if not chosen_streams or s["tap_stream_id"] in chosen_streams:
-        s["schema"]["selected"] = True
+    tsi = s["tap_stream_id"]
+    s["schema"]["selected"] = (
+        not chosen_streams
+        or (tsi in chosen_streams) != negative
+    )
 json.dump(schema, fp=sys.stdout, indent=2)

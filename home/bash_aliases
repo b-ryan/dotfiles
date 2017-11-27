@@ -83,11 +83,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias ping="ping -c 4"
 
-# Goofing around
-alias dc="echo \"dc? I think you meant cd.  Here, let me take care of that for you.
-Oh I'm wrong?  Just \\\"cd -\\\" and use the real dc (/usr/bin/dc).\" ; cd"
-alias cd..="echo \"I think you meant 'cd ..'.  Here, let me take care of that for you.\"; cd .."
-
 rmswp() {
     ext=swp
     [ $1 ] && ext=$1
@@ -159,3 +154,5 @@ ggrepsed() {
 }
 
 alias mux=tmuxinator
+
+alias dc=docker-compose
