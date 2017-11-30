@@ -44,6 +44,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'taglist.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 call vundle#end()
 
