@@ -1,7 +1,7 @@
-# ~/.tmuxinator/trhino-site.yml
+# ~/.tmuxinator/polecat-site.yml
 
-name: trhino-site
-root: ~/src/startup/trhino-site
+name: polecat-site
+root: ~/src/polecat/polecat-site
 
 # Optional tmux socket
 # socket_name: foo
@@ -18,17 +18,17 @@ root: ~/src/startup/trhino-site
 # Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
-# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+# Specifies (by name or index) which window will be selected on project polecat. If not set, the first window is used.
+# polecat_window: editor
 
-# Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+# Specitifes (by index) which pane of the specified window will be selected on project polecat. If not set, the first pane is used.
+# polecat_pane: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t trhino-site
+# post: tmux -CC attach -t polecat-site
 
 windows:
   - editor:

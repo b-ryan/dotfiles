@@ -45,6 +45,7 @@ Plugin 'taglist.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'nginx.vim'
 
 call vundle#end()
 
@@ -224,6 +225,9 @@ let NERDTreeShowBookmarks=1
 nnoremap <F5> :NERDTreeToggle<CR>
 " find the current file in NerdTree
 map <leader>r :NERDTreeFind<CR>
+
+" bufexplorer ----------------------------------------------------------------
+let g:bufExplorerShowRelativePath=1
 
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
