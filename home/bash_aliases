@@ -156,3 +156,7 @@ ggrepsed() {
 alias mux=tmuxinator
 
 alias dc=docker-compose
+
+polecat-reverse() {
+    ssh -T -R $1:4000:$2:$3 anon@ssh.polecat.io
+}

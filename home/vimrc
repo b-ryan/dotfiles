@@ -187,7 +187,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
-autocmd BufNewFile,BufRead *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars,*.yaml setlocal shiftwidth=2
+autocmd BufNewFile,BufRead *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars setlocal shiftwidth=2
 autocmd BufNewFile,BufRead Makefile,*.php setlocal noexpandtab
 autocmd BufNewFile,BufRead *.pp,Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
