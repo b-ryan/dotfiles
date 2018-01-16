@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-clear
-while true; do
-    task long
-    sleep 4
-    clear
-done

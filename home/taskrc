@@ -11,7 +11,13 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/Dropbox/task
+# data.location=~/Dropbox/task
+taskd.certificate=~/.task/buck.cert.pem
+taskd.key=~/.task/buck.key.pem
+taskd.ca=~/.task/ca.cert.pem
+taskd.server=home.buckryan.com:53589
+taskd.credentials=buck/buck/f865996d-bb71-4604-a9e7-ba723e7d2c1d
+
 
 # Color theme (uncomment one to use)
 #include /usr/share/task/light-16.theme
