@@ -59,6 +59,7 @@ alias lh='ls -a | egrep "^\."' # ONLY show hidden files
 
 # git aliases
 alias gist="git status --short" # use --short, not --porcelain. porcelain doesn't do coloring
+alias g="git status --short" # use --short, not --porcelain. porcelain doesn't do coloring
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias giff="git diff --color-words --ignore-space-change"
@@ -159,4 +160,12 @@ alias dc=docker-compose
 
 polecat-reverse() {
     ssh -T -R $1:4000:$2:$3 anon@ssh.polecat.io
+}
+
+t() {
+    if (( $# == 0 )); then
+        task list
+    else
+        task "$@"
+    fi
 }
