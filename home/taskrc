@@ -31,5 +31,8 @@ include /usr/share/task/light-256.theme
 #include /usr/share/task/dark-yellow-green.theme
 #include /usr/share/task/dark-gray-256.theme
 
-context.work=tags.hasnt:personal
+context.work=tags.hasnt:personal pro.isnt:ideas
 context.dbt=pro:dbt
+context.stitch=pro:stitch
+context.dbrhino=pro:dbrhino
+context.polecat=pro:polecat

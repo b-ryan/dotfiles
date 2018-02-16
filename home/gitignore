@@ -2,3 +2,4 @@
 *.swo
 Replication/src/scripts/test.php
 .build-tags
+/.tmux-session-*

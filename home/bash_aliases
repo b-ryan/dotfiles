@@ -118,7 +118,11 @@ tn() {
     if (( $# > 0 )); then
         tmux new-session -s "$@"
     else
-        tmux new-session -s "${PWD##*/}"
+        if [[ -f .tmux-session-name ]]; then
+            tmux new-session -s "$(cat .tmux-session-name)"
+        else
+            tmux new-session -s "${PWD##*/}"
+        fi
     fi
 }
 

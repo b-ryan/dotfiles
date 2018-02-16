@@ -4,9 +4,8 @@
 PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin:~/.local/bin
 
 export PATH=$PATH:/usr/local/go/bin
-# GOROOT=$HOME/goroot/go
-# GOPATH=$HOME/gopath
-# PATH+=:$GOROOT/bin:$GOPATH/bin
+GOPATH=$HOME/go
+PATH+=:$GOPATH/bin
 
 export GOROOT
 export GOPATH
@@ -39,10 +38,10 @@ HISTFILESIZE=
 
 export EDITOR=vim
 
-[ -r ~/.dircolors ] && {
+if [[ -r ~/.dircolors ]]; then
     DIRCOLORS=~/.dircolors
     eval "$(dircolors -b $DIRCOLORS)"
-}
+fi
 
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
@@ -95,7 +94,21 @@ export LEIN_GPG=gpg2
 homeip=$(cat ~/Dropbox/homeip)
 sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config
 
-venv="${PWD##*/}"
-if [[ -n $TMUX && -d ~/.virtualenvs/$venv ]]; then
-    workonthis
+
+################################
+#  TMUX SESSION CONFIGURATION  #
+################################
+
+if [[ -n $TMUX ]]; then
+    if [[ -f .tmux-session-name ]]; then
+        tmux_session_name=$(cat .tmux-session-name)
+    else
+        tmux_session_name="${PWD##*/}"
+    fi
+    if [[ -d ~/.virtualenvs/"$tmux_session_name" ]]; then
+        workonthis
+    fi
+    if [[ -f ~/.tmux-shells/"$tmux_session_name" ]]; then
+        source ~/.tmux-shells/"$tmux_session_name"
+    fi
 fi

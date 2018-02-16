@@ -29,6 +29,7 @@ Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 Plugin 'hashivim/vim-terraform'
+Plugin 'juliosueiras/vim-terraform-completion'
 
 Plugin 'tmhedberg/matchit'
 Plugin 'gregsexton/MatchTag'
@@ -46,6 +47,10 @@ Plugin 'taglist.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'nginx.vim'
+" Plugin 'blindFS/vim-taskwarrior'
+
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -122,7 +127,7 @@ set statusline+=line\ %l\ of\ %L " line number
 " for more about customizing the status bar, see
 " http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 
-autocmd BufEnter * set list " make sure visual whitespace is always shown
+" autocmd BufEnter * set list " make sure visual whitespace is always shown
 
 set history=2000
 
@@ -188,7 +193,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 autocmd BufNewFile,BufRead *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars setlocal shiftwidth=2
-autocmd BufNewFile,BufRead Makefile,*.php setlocal noexpandtab
+autocmd BufNewFile,BufRead Makefile,*.php,*.go setlocal noexpandtab
 autocmd BufNewFile,BufRead *.pp,Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
 autocmd BufNewFile,BufRead *.md set filetype=markdown

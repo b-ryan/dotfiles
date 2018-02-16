@@ -13,7 +13,8 @@
   ],
   "mode": "flat",
   "cwd": {
-    "mode": "plain"
+    "mode": "plain",
+    "max_depth": 4
   },
   "theme": "solarized_dark"
 }

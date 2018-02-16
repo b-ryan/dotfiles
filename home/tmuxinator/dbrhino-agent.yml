@@ -1,7 +1,7 @@
 # ~/.tmuxinator/dbrhino-agent.yml
 
 name: dbrhino-agent
-root: ~/src/startup/dbrhino-agent
+root: ~/go/src/github.com/dbrhino/dbrhino-agent
 
 # Optional tmux socket
 # socket_name: foo
