@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
 " Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-speeddating'
 
 Plugin 'vim-syntastic/syntastic'
 Plugin 'guns/vim-slamhound'
@@ -51,6 +52,9 @@ Plugin 'nginx.vim'
 
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'fatih/vim-go'
+Plugin 'posva/vim-vue'
+
+Plugin 'jceb/vim-orgmode'
 
 call vundle#end()
 
@@ -192,7 +196,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
-autocmd BufNewFile,BufRead *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars setlocal shiftwidth=2
+autocmd BufNewFile,BufRead *.clj,*.c,*.html,*.js,*.coffee,*.json,*.rb,*.tf,*.tfvars,*.vue setlocal shiftwidth=2
 autocmd BufNewFile,BufRead Makefile,*.php,*.go setlocal noexpandtab
 autocmd BufNewFile,BufRead *.pp,Vagrantfile set filetype=ruby
 autocmd BufNewFile,BufRead *.edn set filetype=clojure

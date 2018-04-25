@@ -1,7 +1,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=~/bin:$PATH:node_modules/.bin:/usr/local/heroku/bin:~/.local/bin
+PATH=~/bin:$PATH
+PATH+=:node_modules/.bin
+PATH+=:/usr/local/heroku/bin
+PATH+=:~/.local/bin
+PATH+=:~/Applications/nodejs/node-v8.9.4-linux-x64/bin
+PATH+=:~/Applications/yarn/yarn-v1.6.0/bin
 
 export PATH=$PATH:/usr/local/go/bin
 GOPATH=$HOME/go

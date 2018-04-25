@@ -1,0 +1,4 @@
+if (( $# == 1 )); then
+    cd "$1"
+fi
+du -hsx * | sort -rh | head -10
