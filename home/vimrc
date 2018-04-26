@@ -64,7 +64,7 @@ syntax enable
 
 let mapleader = ","
 
-colorscheme default
+colorscheme eddie
 set background=light
 
 """ See :help 'option' for details on any option below
@@ -205,7 +205,8 @@ autocmd BufNewFile,BufRead *.ino set filetype=c
 autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd BufEnter * setlocal cursorline
 autocmd BufLeave * setlocal nocursorline
-
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
 
 " -----------------------------------------------------------------------------
 " from https://stackoverflow.com/a/25327689/683436
@@ -213,6 +214,11 @@ autocmd BufLeave * setlocal nocursorline
 let &t_SI = "\<Esc>]12;orange\x7"
 " use a red cursor otherwise
 let &t_EI = "\<Esc>]12;red\x7"
+
+" from https://stackoverflow.com/a/42118416/683436
+" Change cursor in insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " -----------------------------------------------------------------------------
 " Plugin settings and mappings
