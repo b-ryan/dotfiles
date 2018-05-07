@@ -47,6 +47,7 @@ dirlink() {
 
 mymkdir ~/bin
 mymkdir ~/.config/fish
+mymkdir ~/.config/powerline-shell
 mymkdir ~/.lein
 mymkdir ~/lib
 mymkdir ~/.xmonad
@@ -74,7 +75,7 @@ symlink home/vimrc ~/.vimrc
 symlink home/xmobarrc ~/.xmobarrc
 symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
-symlink home/powerline-shell.json ~/.powerline-shell.json
+symlink home/config/powerline-shell/config.json ~/.config/powerline-shell/config.json
 
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file

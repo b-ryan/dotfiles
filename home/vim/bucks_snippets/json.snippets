@@ -66,6 +66,15 @@ snippet objprop "JSON schema object property"
 }
 endsnippet
 
+snippet arrprop "JSON schema array property"
+"${1:name}": {
+	"type": "array",
+	"items": {
+		$0
+	}
+}
+endsnippet
+
 snippet add "additionalProperties field"
 "additionalProperties": ${1:false}
 endsnippet

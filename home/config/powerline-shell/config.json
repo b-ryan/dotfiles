@@ -9,6 +9,7 @@
     "git_stash",
     "jobs",
     "set_term_title",
+    "svn",
     "newline",
     "root"
   ],
@@ -16,6 +17,8 @@
   "cwd": {
     "mode": "plain",
     "max_depth": 3
+  },
+  "time": {
   },
   "theme": "gruvbox"
 }
