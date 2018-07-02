@@ -1,9 +1,9 @@
 # vim:ft=snippets:
 
 snippet model "new model class" b
-class ${1:Class}(db.Model):
-    id = db.Column(db.Integer(), primary_key=True)
+class ${1:Class}(SurrogatePK, StandardMixin, db.Model):
     $0
+	__tablename__ = "$1"
 endsnippet
 
 snippet def "function"
@@ -22,4 +22,13 @@ endsnippet
 
 snippet s "string to string"
 "$1": "$2",
+endsnippet
+
+snippet step "yoyo migration step"
+step(
+	"""
+	$0
+	""", """
+	"""
+)
 endsnippet

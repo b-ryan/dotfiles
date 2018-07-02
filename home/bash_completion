@@ -66,3 +66,4 @@ _tmuxinator() {
 }
 
 complete -F _tmuxinator tmuxinator mux
+complete -C /home/buck/bin/vault vault

@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=~/bin:$PATH
+PATH=./bin:~/bin:$PATH
 PATH+=:node_modules/.bin
 PATH+=:/usr/local/heroku/bin
 PATH+=:~/.local/bin
@@ -28,6 +28,7 @@ shopt -s histappend
 shopt -s lithist
 shopt -s autocd
 shopt -s extglob
+shopt -s dotglob
 
 ########################################################
 # History configuration (See bash(1) for more options) #
@@ -96,7 +97,7 @@ export LEIN_GPG=gpg2
     . /usr/local/bin/virtualenvwrapper.sh
 }
 
-homeip=$(cat ~/Dropbox/homeip)
+homeip=$(cat ~/Dropbox/.data/homeip)
 sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config
 
 

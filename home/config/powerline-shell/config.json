@@ -1,6 +1,13 @@
 {
   "segments": [
     "virtual_env",
+    {
+      "type": "stdout",
+      "command": [
+        "kubectl", "config", "current-context"
+      ],
+      "bg_color": 24
+    },
     "aws_profile",
     "time",
     "ssh",
@@ -17,8 +24,6 @@
   "cwd": {
     "mode": "plain",
     "max_depth": 3
-  },
-  "time": {
   },
   "theme": "gruvbox"
 }

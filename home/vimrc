@@ -9,7 +9,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'L9'
-Plugin 'tComment'
+" Plugin 'tComment'
+Plugin 'tpope/vim-commentary'
 
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
@@ -31,6 +32,8 @@ Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 Plugin 'hashivim/vim-terraform'
 Plugin 'juliosueiras/vim-terraform-completion'
+" Plugin 'b4b4r07/vim-hcl'
+" Plugin 'fatih/vim-hclfmt'
 
 Plugin 'tmhedberg/matchit'
 Plugin 'gregsexton/MatchTag'
@@ -158,7 +161,6 @@ nmap <leader>l :e#<cr>
 nnoremap Y y$
 
 " Keys for more efficient saving
-nmap <F11> :wqa<CR>
 nmap <F12> :wa<CR>
 
 " line movement mappings from http://vim.wikia.com/wiki/Moving_lines_up_or_down
@@ -247,7 +249,7 @@ let g:bufExplorerShowRelativePath=1
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks',
+    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks\|venv',
     \ 'file': '\.swp$\|\.pyc$\|resources.*compiled',
     \ }
 let g:ctrlp_by_filename = 1 " default to filename search instead of full path
@@ -372,3 +374,9 @@ endfunction
 
 " jedi -----------------------------------------------------------------------
 let g:jedi#rename_command = ""
+
+" terraform ------------------------------------------------------------------
+let g:terraform_fold_sections = 1
+let g:terraform_remap_spacebar = 1
+let g:terraform_fmt_on_save = 1
+autocmd FileType terraform setlocal commentstring=#%s
