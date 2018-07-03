@@ -52,15 +52,19 @@ fi
 bind '"\C-p": history-search-backward'
 bind '"\C-n": history-search-forward'
 
-[ -f ~/.bash_ps1     ] && . ~/.bash_ps1
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-[ -f ~/.bashrc.local ] && . ~/.bashrc.local
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+fi
+
+for fname in ~/.bash.d/*; do
+    source "$fname"
+done
+
+if [[ -f ~/.bashrc.local ]]; then
+    source ~/.bashrc.local
 fi
 
 export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar

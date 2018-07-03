@@ -55,6 +55,7 @@ mymkdir ~/.xmonad/lib
 mymkdir ~/.tmuxinator
 
 dirlink home/vim ~/.vim
+dirlink home/bash.d ~/.bash.d
 
 symlink home/bash_aliases ~/.bash_aliases
 symlink home/bash_completion ~/.bash_completion
