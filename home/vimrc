@@ -58,6 +58,7 @@ Plugin 'fatih/vim-go'
 Plugin 'posva/vim-vue'
 
 Plugin 'jceb/vim-orgmode'
+Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
 

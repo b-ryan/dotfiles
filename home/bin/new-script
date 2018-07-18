@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eu -o pipefail
+fname="$1"
+cat > "$fname" <<EOF
+#!/bin/bash
+set -eu -o pipefail
+EOF
+chmod +x "$fname"

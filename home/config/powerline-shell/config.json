@@ -9,7 +9,6 @@
       "bg_color": 24
     },
     "aws_profile",
-    "time",
     "ssh",
     "cwd",
     "git",
@@ -23,7 +22,7 @@
   "mode": "flat",
   "cwd": {
     "mode": "plain",
-    "max_depth": 3
+    "max_depth": 1
   },
   "theme": "gruvbox"
 }

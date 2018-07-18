@@ -36,3 +36,4 @@ context.dbt=pro:dbt
 context.stitch=pro:stitch
 context.dbrhino=pro:dbrhino
 context.polecat=pro:polecat
+context.crossbeam=pro:crossbeam or pro:genome or pro:partnerbase

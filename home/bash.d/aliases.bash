@@ -177,3 +177,6 @@ t() {
         task "$@"
     fi
 }
+
+alias aws-kubectl="kubectl --context aws"
+complete -o default -F __start_kubectl aws-kubectl
