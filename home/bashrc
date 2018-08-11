@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=./bin:~/bin:$PATH
+# PATH=~/bin:$PATH
 PATH+=:node_modules/.bin
 PATH+=:/usr/local/heroku/bin
 PATH+=:~/.local/bin
@@ -88,18 +88,6 @@ export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 export AWS_DEFAULT_REGION=us-east-1
 
 export LEIN_GPG=gpg2
-
-####################################
-# Platform-specific configurations #
-####################################
-
-[[ "$(uname)" = "Darwin" ]] && {
-    ## Mac
-    export PATH=$HOME/bin:/usr/local/bin:$PATH
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/src
-    . /usr/local/bin/virtualenvwrapper.sh
-}
 
 homeip=$(cat ~/Dropbox/.data/homeip)
 sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config

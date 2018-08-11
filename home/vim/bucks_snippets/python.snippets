@@ -3,7 +3,9 @@
 snippet model "new model class" b
 class ${1:Class}(SurrogatePK, StandardMixin, db.Model):
     $0
-	__tablename__ = "$1"
+	__tablename__ = "`!p
+snip.rv = t[1].lower() + "s"
+`"
 endsnippet
 
 snippet def "function"

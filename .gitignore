@@ -4,5 +4,6 @@ tags
 .bk
 .netrwhist
 tags-ja
+home/vim/plugged
 home/vim/bundle/*
 !home/vim/bundle/Vundle.vim

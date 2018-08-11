@@ -69,7 +69,7 @@ alias prune="git remote prune origin"
 alias merged="git branch --merged"
 
 dmerged() {
-    for branch in $(merged | grep -v '^\*'); do
+    for branch in $(merged | grep -v '^\*' | grep -v 'develop\|master'); do
         git branch -d $branch
     done
     prune
@@ -179,4 +179,5 @@ t() {
 }
 
 alias aws-kubectl="kubectl --context aws"
-complete -o default -F __start_kubectl aws-kubectl
+
+alias vim="nvim"
