@@ -78,6 +78,9 @@ symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
 symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 symlink home/config/powerline-shell/config.json ~/.config/powerline-shell/config.json
 
+ln -sf ~/.vim/vimrc ~/.vimrc
+ln -snf ~/.vim ~/.config/nvim
+
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file
 done

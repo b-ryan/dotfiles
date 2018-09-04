@@ -44,6 +44,7 @@ Plug 'vim-scripts/nginx.vim'
 Plug 'fatih/vim-go'
 Plug 'posva/vim-vue'
 Plug 'isRuslan/vim-es6'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 " Language augmentation packages ---------------------
 
@@ -253,6 +254,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 " neomake --------------------------------------------------------------------
 call neomake#configure#automake('w')
 let g:neomake_open_list = 2
+let g:neomake_python_pep8_exe = 'python3'
+" let g:neomake_python_enabled_makers = ['pep8', 'pylint']
 
 " Tagbar ---------------------------------------------------------------------
 let g:tagbar_type_haskell = {
