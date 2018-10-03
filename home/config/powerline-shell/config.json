@@ -1,13 +1,6 @@
 {
   "segments": [
     "virtual_env",
-    {
-      "type": "stdout",
-      "command": [
-        "kubectl", "config", "current-context"
-      ],
-      "bg_color": 24
-    },
     "aws_profile",
     "ssh",
     "cwd",

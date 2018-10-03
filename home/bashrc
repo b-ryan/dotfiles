@@ -1,12 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# PATH=~/bin:$PATH
+PATH=~/bin:$PATH
+PATH+=:~/Applications/node-v8.12.0-linux-x64/bin
 PATH+=:node_modules/.bin
-PATH+=:/usr/local/heroku/bin
-PATH+=:~/.local/bin
-PATH+=:~/Applications/nodejs/node-v8.9.4-linux-x64/bin
-PATH+=:~/Applications/yarn/yarn-v1.6.0/bin
+PATH+=:~/.local/bin  # this is where user-local python stuff goes
+PATH+=:~/.gem/ruby/2.5.0/bin
 
 export PATH=$PATH:/usr/local/go/bin
 GOPATH=$HOME/go

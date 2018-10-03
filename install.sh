@@ -16,10 +16,6 @@ mymkdir() {
     mkdir -p $1 2> /dev/null || true
 }
 
-backup() {
-    mv $1 $BK_DIR/ 2> /dev/null
-}
-
 BK_DIR=$(pwd)/.bk/$(date '+%FT%T')
 mymkdir $BK_DIR
 
@@ -35,7 +31,6 @@ _create_link() {
     local link=$3
 
     [ $link ] || link=~/.$source_rel
-    backup $link
     ln $flags $source_abs $link && echo "$link -> $source_abs"
 }
 symlink() {
@@ -46,51 +41,29 @@ dirlink() {
 }
 
 mymkdir ~/bin
-mymkdir ~/.config/fish
 mymkdir ~/.config/powerline-shell
-mymkdir ~/.lein
-mymkdir ~/lib
-mymkdir ~/.xmonad
-mymkdir ~/.xmonad/lib
 mymkdir ~/.tmuxinator
 
-dirlink home/vim ~/.vim
 dirlink home/bash.d ~/.bash.d
+dirlink home/vim ~/.vim
+dirlink home/vim ~/.config/nvim
 
-symlink home/bash_aliases ~/.bash_aliases
-symlink home/bash_completion ~/.bash_completion
-symlink home/bash_profile  ~/.bash_profile
-symlink home/bash_ps1 ~/.bash_ps1
 symlink home/bashrc ~/.bashrc
 symlink home/gitconfig ~/.gitconfig
 symlink home/gitignore ~/.gitignore
 symlink home/gvimrc ~/.gvimrc
 symlink home/hgrc ~/.hgrc
 symlink home/inputrc ~/.inputrc
-symlink home/lein/profiles.clj ~/.lein/profiles.clj
 symlink home/pylintrc ~/.pylintrc
 symlink home/sqliterc ~/.sqliterc
 symlink home/taskrc ~/.taskrc
 symlink home/tmux.conf ~/.tmux.conf
-symlink home/vimrc ~/.vimrc
-symlink home/xmobarrc ~/.xmobarrc
-symlink home/xmonad/MyXmobars.hs ~/.xmonad/lib/MyXmobars.hs
-symlink home/xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 symlink home/config/powerline-shell/config.json ~/.config/powerline-shell/config.json
-
-ln -sf ~/.vim/vimrc ~/.vimrc
-ln -snf ~/.vim ~/.config/nvim
 
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file
 done
 
-for file in $(ls home/lib); do
-    symlink home/lib/$file ~/lib/$file
-done
-
 for file in $(ls home/tmuxinator); do
     symlink home/tmuxinator/$file ~/.tmuxinator/$file
 done
-
-echo Backed up files to $BK_DIR

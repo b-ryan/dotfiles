@@ -90,10 +90,6 @@ rmswp() {
     find . -name \*.$ext -exec rm {} \;
 }
 
-curl() {
-    /usr/bin/curl "$@"; echo
-}
-
 man() {
     env \
         LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -130,10 +126,13 @@ alias PR="hub pull-request"
 
 alias workonthis='workon "${PWD##*/}"'
 mkthis() {
-    mkvirtualenv -p $(which python3) "${PWD##*/}" && {
+    python3 -m venv venv && {
+        source venv/bin/activate
         if [[ -f setup.py ]]; then python setup.py develop; fi
         if [[ -f requirements.txt ]]; then pip install -r requirements.txt; fi
         if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
+    } || {
+        return 1
     }
     pip install ipython jedi pylint
 }
