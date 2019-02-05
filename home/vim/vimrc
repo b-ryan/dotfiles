@@ -49,6 +49,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 " Language augmentation packages ---------------------
 
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -196,6 +197,7 @@ autocmd BufEnter * setlocal cursorline
 autocmd BufLeave * setlocal nocursorline
 autocmd InsertEnter * set nocursorline
 autocmd InsertLeave * set cursorline
+autocmd BufWritePre * :%s/\s\+$//e
 
 " -----------------------------------------------------------------------------
 " from https://stackoverflow.com/a/25327689/683436
