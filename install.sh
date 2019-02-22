@@ -42,7 +42,6 @@ dirlink() {
 
 mymkdir ~/bin
 mymkdir ~/.config/powerline-shell
-mymkdir ~/.tmuxinator
 
 dirlink home/bash.d ~/.bash.d
 dirlink home/vim ~/.vim
@@ -62,8 +61,4 @@ symlink home/config/powerline-shell/config.json ~/.config/powerline-shell/config
 
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file
-done
-
-for file in $(ls home/tmuxinator); do
-    symlink home/tmuxinator/$file ~/.tmuxinator/$file
 done
