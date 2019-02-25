@@ -59,6 +59,11 @@ symlink home/taskrc ~/.taskrc
 symlink home/tmux.conf ~/.tmux.conf
 symlink home/config/powerline-shell/config.json ~/.config/powerline-shell/config.json
 
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 for file in $(ls home/bin); do
     symlink home/bin/$file ~/bin/$file
 done
