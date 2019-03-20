@@ -8,7 +8,7 @@ NC='\e[0m'
     LINK_FLAGS="-s -f"
     DIR_LINK_FLAGS="${LINK_FLAGS} -F"
 } || {
-    LINK_FLAGS="--symbolic"
+    LINK_FLAGS="--symbolic --force"
     DIR_LINK_FLAGS="${LINK_FLAGS} --no-dereference"
 }
 

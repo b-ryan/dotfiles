@@ -228,6 +228,8 @@ let NERDTreeShowBookmarks=1
 nnoremap <F5> :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<CR>
 
+let g:ftplugin_sql_omni_key = '<C-j>'
+
 " bufexplorer ----------------------------------------------------------------
 let g:bufExplorerShowRelativePath=1
 
