@@ -53,6 +53,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-salve'
 Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'guns/vim-slamhound', { 'for': 'clojure' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
