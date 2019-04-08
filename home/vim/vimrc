@@ -49,8 +49,9 @@ Plug 'leafgarland/typescript-vim'
 
 " Language augmentation packages ---------------------
 
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-salve'
+Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
@@ -325,3 +326,5 @@ let g:terraform_fold_sections = 1
 let g:terraform_remap_spacebar = 1
 let g:terraform_fmt_on_save = 1
 autocmd FileType terraform setlocal commentstring=#%s
+
+let g:clj_fmt_autosave = 0
