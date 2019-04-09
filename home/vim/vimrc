@@ -222,7 +222,8 @@ let &t_EI = "\e[2 q"
 
 " NERDTree settings and mappings
 let NERDTreeIgnore=['\.swp$', '\.orig$', '\.pyc$', '\.class$', '__pycache__',
-                \   '\.swo$', '\.sass-cache', '\.egg-info', '^node_modules$', '^dist$']
+                \   '\.swo$', '\.sass-cache', '\.egg-info', '^node_modules$', '^dist$',
+                \   '\local-m2']
 let NERDTreeShowHidden=1 " show hidden files
 let NERDTreeChDirMode=2 " change directory whenever NERDTree does
 let NERDTreeShowLineNumbers=1
@@ -238,7 +239,7 @@ let g:bufExplorerShowRelativePath=1
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks\|venv',
+    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks\|venv\|local-m2',
     \ 'file': '\.swp$\|\.pyc$\|resources.*compiled',
     \ }
 " let g:ctrlp_by_filename = 1 " default to filename search instead of full path
