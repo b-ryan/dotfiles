@@ -1,17 +1,27 @@
 snippet ns "namespace form"
-(ns `!p
+`!p
 
 import os
 
 snip.rv = ''
 
+start = 0
+requires = []
 # ultisnips sets the current path as the 'path' variable
-start = path.rfind("src") + 4
-end = path.rfind(".")
-snip.rv = path[start:end].replace("/", ".").replace("_", "-")
+if path.find("src") >= 0:
+    start = path.rfind("src/") + len("src/")
+elif path.find("test") >= 0:
+    start = path.rfind("test/") + len("test/")
+    requires = ["[clojure.test :refer [deftest testing is use-fixtures]]"]
+end = path.find(".")
 
-`)
-
+snip.rv = """(ns {}
+  (:require {}))
+""".format(
+    path[start:end].replace("/", ".").replace("_", "-"),
+    "\n           ".join(requires),
+)
+`
 $0
 endsnippet
 
