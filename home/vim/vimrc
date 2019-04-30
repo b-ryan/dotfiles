@@ -22,6 +22,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " Git wrapper plugin
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " extended % matching for HTML, LaTeX, and many other languages
 " Plug 'tmhedberg/matchit'
 " Vim's MatchParen for HTML tags
@@ -62,6 +63,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'iamcco/markdown-preview.vim'
+Plug 'mpyatishev/vim-sqlformat'
 
 call plug#end()
 
