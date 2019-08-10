@@ -44,7 +44,6 @@ perg() {
         --exclude=*min.js \
         "${args[@]}"
 }
-alias gr=perg
 
 gw() {
     perg "\<$1\>" "${*:2}"

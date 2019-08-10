@@ -2,7 +2,7 @@
 [ -z "$PS1" ] && return
 
 PATH=~/bin:$PATH
-PATH+=:~/Applications/node-v8.12.0-linux-x64/bin
+PATH+=:~/Applications/node-v10.15.2-linux-x64/bin
 PATH+=:node_modules/.bin
 PATH+=:~/.local/bin  # this is where user-local python stuff goes
 PATH+=:~/.gem/ruby/2.5.0/bin
