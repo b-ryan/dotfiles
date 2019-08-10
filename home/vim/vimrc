@@ -22,6 +22,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " Git wrapper plugin
 Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 " extended % matching for HTML, LaTeX, and many other languages
 " Plug 'tmhedberg/matchit'
@@ -65,6 +66,11 @@ Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim
 Plug 'iamcco/markdown-preview.vim'
 Plug 'mpyatishev/vim-sqlformat'
 
+" Colorschemes -------------------------------
+
+Plug 'TroyFletcher/vim-colors-synthwave'
+Plug 'luochen1990/rainbow'
+
 call plug#end()
 
 
@@ -73,7 +79,7 @@ syntax enable
 
 let mapleader = ","
 
-colorscheme xoria256
+colorscheme synthwave
 " set background=light
 
 " tab settings -------------------------------------------------------------->
@@ -332,3 +338,6 @@ let g:terraform_fmt_on_save = 1
 autocmd FileType terraform setlocal commentstring=#%s
 
 let g:clj_fmt_autosave = 0
+
+
+let g:rainbow_active = 1
