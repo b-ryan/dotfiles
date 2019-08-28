@@ -37,7 +37,10 @@ Plug 'christoomey/vim-tmux-navigator'
 " insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/taglist.vim'
-
+" Temporarily make the current window full screen
+Plug 'troydm/zoomwintab.vim'
+" Colorize hex codes and ansi escape sequences
+Plug 'chrisbra/Colorizer'
 
 " Base language packages ------------------------
 
@@ -52,7 +55,7 @@ Plug 'leafgarland/typescript-vim'
 " Language augmentation packages ---------------------
 
 Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-salve'
+" Plug 'tpope/vim-salve'
 Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'guns/vim-slamhound', { 'for': 'clojure' }
@@ -68,8 +71,9 @@ Plug 'mpyatishev/vim-sqlformat'
 
 " Colorschemes -------------------------------
 
-Plug 'TroyFletcher/vim-colors-synthwave'
+Plug 'b-ryan/vim-colors-synthwave'
 Plug 'luochen1990/rainbow'
+Plug 'srcery-colors/srcery-vim'
 
 call plug#end()
 
@@ -341,3 +345,6 @@ let g:clj_fmt_autosave = 0
 
 
 let g:rainbow_active = 1
+
+" vim-fireplace - run test under expression
+nmap cps :.RunTests<cr>
