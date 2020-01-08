@@ -1,1 +1,0 @@
-. <(gr completion)
