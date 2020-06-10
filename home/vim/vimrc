@@ -27,7 +27,7 @@ Plug 'airblade/vim-gitgutter'
 " extended % matching for HTML, LaTeX, and many other languages
 " Plug 'tmhedberg/matchit'
 " Vim's MatchParen for HTML tags
-Plug 'gregsexton/MatchTag'
+" Plug 'gregsexton/MatchTag'
 " Easily re-order plugin arguments
 Plug 'machakann/vim-swap'
 " display the indention levels with thin vertical lines
@@ -42,6 +42,12 @@ Plug 'troydm/zoomwintab.vim'
 " Colorize hex codes and ansi escape sequences
 Plug 'chrisbra/Colorizer'
 
+" Autocompletion triggering
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  let g:deoplete#enable_at_startup = 1
+endif
+
 " Base language packages ------------------------
 
 Plug 'vim-scripts/haproxy'
@@ -51,23 +57,39 @@ Plug 'posva/vim-vue'
 Plug 'isRuslan/vim-es6'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'leafgarland/typescript-vim'
+Plug 'cespare/vim-toml'
+Plug 'neowit/vim-force.com'
 
 " Language augmentation packages ---------------------
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  clojure                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Plug 'tpope/vim-fireplace'
+" Plug 'Olical/conjure', {'tag': 'v3.0.0'}
+" Plug 'liquidz/vim-iced', {'for': 'clojure'}
 " Plug 'tpope/vim-salve'
 Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'guns/vim-slamhound', { 'for': 'clojure' }
+" Plug 'snoe/clj-refactor.nvim'
+Plug '~/src/clj-refactor.nvim'
+Plug '~/src/node-client/examples'
+" Plug 'guns/vim-slamhound', { 'for': 'clojure' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   others                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'iamcco/markdown-preview.vim'
-Plug 'mpyatishev/vim-sqlformat'
+" Plug 'mpyatishev/vim-sqlformat'
 
 " Colorschemes -------------------------------
 
@@ -83,7 +105,7 @@ syntax enable
 
 let mapleader = ","
 
-colorscheme synthwave
+colorscheme srcery
 " set background=light
 
 " tab settings -------------------------------------------------------------->
@@ -152,6 +174,7 @@ set statusline+=line\ %l\ of\ %L " line number
 
 " autocmd BufEnter * set list " make sure visual whitespace is always shown
 
+set conceallevel=0
 set history=2000
 
 " jump to last position on previous close
@@ -209,10 +232,11 @@ autocmd BufNewFile,BufRead *.edn set filetype=clojure
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.ino set filetype=c
 autocmd BufNewFile,BufRead *.json set filetype=json
-autocmd BufEnter * setlocal cursorline
-autocmd BufLeave * setlocal nocursorline
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
+autocmd BufNewFile,BufRead *.sibilant set filetype=lisp
+" autocmd BufEnter * setlocal cursorline
+" autocmd BufLeave * setlocal nocursorline
+" autocmd InsertEnter * set nocursorline
+" autocmd InsertLeave * set cursorline
 autocmd BufWritePre * :%s/\s\+$//e
 
 " -----------------------------------------------------------------------------
@@ -251,7 +275,7 @@ let g:bufExplorerShowRelativePath=1
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks\|venv\|local-m2',
+    \ 'dir': '\.git$\|\.hg$\|\.venv$\|build$\|\.compiled$\|\.awesomo$\|node_modules$\|bower.*$\|\.cljs_rhino_repl\|target\|\.pelican\.*\|berks-cookbooks\|venv\|local-m2\|mdapi_output_dir',
     \ 'file': '\.swp$\|\.pyc$\|resources.*compiled',
     \ }
 " let g:ctrlp_by_filename = 1 " default to filename search instead of full path
@@ -315,6 +339,7 @@ let g:tagbar_type_haskell = {
 let g:indentLine_fileType = ['json']
 let g:indentLine_char = '⎸'
 let g:indentLine_concealcursor = ""
+let g:indentLine_conceallevel=0
 
 " vim-tmux-navigator ---------------------------------------------------------
 let g:tmux_navigator_no_mappings = 1

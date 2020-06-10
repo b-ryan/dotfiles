@@ -7,46 +7,8 @@ alias egrep='egrep --color=auto'
 
 echo-do() {
   # Print a command and then run it.
-    local cmd
-
     echo "$@" 1>&2
     "$@"
-}
-
-perg() {
-  # Wrapper around grep. Excludes a bunch of files and
-  # directories that don't need to be searched.
-  # Also allows you to specify "+" as the last argument
-  # which will cause the grep command to be printed to
-  # the screen before it is executed.
-    local args
-    local pre
-
-    args=( "$@" )
-    pre=""
-
-    [[ "${*:$#}" == "+" ]] && {
-      args=( "${*:1:$#-1}" )
-      pre="echo-do "
-    }
-
-    [[ ${#args[@]} -eq 1 ]] && {
-        args=( "$1" '.' )
-    }
-
-    ${pre}egrep -Ir \
-        --color=auto \
-        --exclude=tags \
-        --exclude-dir=.git \
-        --exclude-dir=build \
-        --exclude-dir=Framework \
-        --exclude-dir=vendor \
-        --exclude=*min.js \
-        "${args[@]}"
-}
-
-gw() {
-    perg "\<$1\>" "${*:2}"
 }
 
 # ls aliases
@@ -177,5 +139,3 @@ t() {
 }
 
 alias aws-kubectl="kubectl --context aws"
-
-alias vim="nvim"

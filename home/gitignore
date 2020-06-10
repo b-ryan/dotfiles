@@ -3,3 +3,6 @@
 Replication/src/scripts/test.php
 .build-tags
 /.tmux-session-*
+f.edn
+f.sql
+f

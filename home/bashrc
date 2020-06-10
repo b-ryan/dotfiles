@@ -2,10 +2,12 @@
 [ -z "$PS1" ] && return
 
 PATH=~/bin:$PATH
-PATH+=:~/Applications/node-v10.15.2-linux-x64/bin
+# PATH+=:~/Applications/node-v12.16.2-linux-x64/bin
+# PATH+=:~/Applications/node-v10.15.2-linux-x64/bin
 PATH+=:node_modules/.bin
 PATH+=:~/.local/bin  # this is where user-local python stuff goes
 PATH+=:~/.gem/ruby/2.5.0/bin
+PATH+=:~/Applications/nvim-linux64/bin
 
 export PATH=$PATH:/usr/local/go/bin
 GOPATH=$HOME/go
@@ -88,10 +90,6 @@ export AWS_DEFAULT_REGION=us-east-1
 
 export LEIN_GPG=gpg2
 
-homeip=$(cat ~/Dropbox/.data/homeip)
-sed -i "/^Host desktop-wan$/{n;s/.*/    Hostname $homeip/}" ~/.ssh/config
-
-
 ################################
 #  TMUX SESSION CONFIGURATION  #
 ################################
@@ -109,3 +107,7 @@ if [[ -n $TMUX ]]; then
         source ~/.tmux-shells/"$tmux_session_name"
     fi
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -59,3 +59,14 @@ snippet test "clojure.test deftest"
   (testing "$2"
     (is (= 2 3))))
 endsnippet
+
+snippet xform "transducer function"
+(defn $1
+  []
+  (fn [xf]
+    (fn
+      ([] (xf))
+      ([result] (xf result))
+      ([result input]
+       (xf result input)))))
+endsnippet
