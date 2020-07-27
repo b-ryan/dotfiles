@@ -22,7 +22,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 " Git wrapper plugin
 Plug 'tpope/vim-fugitive'
+" GitLab integration for the :GBrowse command
 Plug 'shumphrey/fugitive-gitlab.vim'
+" GitHub integration for the :GBrowse command
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 " extended % matching for HTML, LaTeX, and many other languages
 " Plug 'tmhedberg/matchit'
@@ -66,15 +69,15 @@ Plug 'neowit/vim-force.com'
 "                                  clojure                                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'tpope/vim-fireplace'
-" Plug 'Olical/conjure', {'tag': 'v3.0.0'}
+" Plug 'tpope/vim-fireplace'
+Plug 'Olical/conjure', {'tag': 'v3.0.0'}
 " Plug 'liquidz/vim-iced', {'for': 'clojure'}
 " Plug 'tpope/vim-salve'
 Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'snoe/clj-refactor.nvim'
 Plug '~/src/clj-refactor.nvim'
-Plug '~/src/node-client/examples'
+" Plug '~/src/node-client/examples'
 " Plug 'guns/vim-slamhound', { 'for': 'clojure' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
 Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
@@ -104,6 +107,7 @@ filetype plugin indent on
 syntax enable
 
 let mapleader = ","
+let maplocalleader = "-"
 
 colorscheme srcery
 " set background=light
@@ -361,7 +365,7 @@ endfunction
 let g:jedi#rename_command = ""
 
 " terraform ------------------------------------------------------------------
-let g:terraform_fold_sections = 1
+" let g:terraform_fold_sections = 1
 let g:terraform_remap_spacebar = 1
 let g:terraform_fmt_on_save = 1
 autocmd FileType terraform setlocal commentstring=#%s

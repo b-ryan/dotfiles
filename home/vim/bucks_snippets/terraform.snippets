@@ -5,6 +5,16 @@ output "$1" {
 endsnippet
 
 snippet var "variable"
+variable "$1" {}
+endsnippet
+
+snippet vard "variable with default"
+variable "$1" {
+	${2:default = "$3"}
+}
+endsnippet
+
+snippet vardd "variable with default and description"
 variable "$1" {
 	description = "$2"
 	${3:default = "$4"}
