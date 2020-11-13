@@ -98,9 +98,6 @@ if [[ -n $TMUX ]]; then
     else
         tmux_session_name="${PWD##*/}"
     fi
-    if [[ -d ~/.virtualenvs/"$tmux_session_name" ]]; then
-        workonthis
-    fi
     if [[ -f ~/.tmux-shells/"$tmux_session_name" ]]; then
         source ~/.tmux-shells/"$tmux_session_name"
     fi

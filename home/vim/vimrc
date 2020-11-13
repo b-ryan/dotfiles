@@ -13,7 +13,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'neomake/neomake'
 " Be able to repeat (using .) plugin operations
@@ -26,24 +26,24 @@ Plug 'tpope/vim-fugitive'
 Plug 'shumphrey/fugitive-gitlab.vim'
 " GitHub integration for the :GBrowse command
 Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 " extended % matching for HTML, LaTeX, and many other languages
 " Plug 'tmhedberg/matchit'
 " Vim's MatchParen for HTML tags
 " Plug 'gregsexton/MatchTag'
 " Easily re-order plugin arguments
-Plug 'machakann/vim-swap'
+" Plug 'machakann/vim-swap'
 " display the indention levels with thin vertical lines
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 " Seamless navigation between tmux panes and vim splits
 Plug 'christoomey/vim-tmux-navigator'
 " insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
-Plug 'vim-scripts/taglist.vim'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'vim-scripts/taglist.vim'
 " Temporarily make the current window full screen
 Plug 'troydm/zoomwintab.vim'
 " Colorize hex codes and ansi escape sequences
-Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/Colorizer'
 
 " Autocompletion triggering
 if has('nvim')
@@ -70,17 +70,17 @@ Plug 'neowit/vim-force.com'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plug 'tpope/vim-fireplace'
-Plug 'Olical/conjure', {'tag': 'v3.0.0'}
-" Plug 'liquidz/vim-iced', {'for': 'clojure'}
+" Plug 'Olical/conjure', {'tag': 'v4.3.1'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
 " Plug 'tpope/vim-salve'
-Plug 'venantius/vim-cljfmt'
+" Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'snoe/clj-refactor.nvim'
-Plug '~/src/clj-refactor.nvim'
+" Plug '~/src/clj-refactor.nvim'
 " Plug '~/src/node-client/examples'
 " Plug 'guns/vim-slamhound', { 'for': 'clojure' }
 Plug 'guns/vim-sexp', { 'for': 'clojure' }
-Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
+" Plug 'tpope/vim-sexp-mappings-for-regular-people', { 'for': 'clojure' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   others                                   "
@@ -91,12 +91,12 @@ Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'iamcco/markdown-preview.vim'
-" Plug 'mpyatishev/vim-sqlformat'
+" Plug 'iamcco/markdown-preview.vim'
+Plug 'mpyatishev/vim-sqlformat'
 
 " Colorschemes -------------------------------
 
-Plug 'b-ryan/vim-colors-synthwave'
+" Plug 'b-ryan/vim-colors-synthwave'
 Plug 'luochen1990/rainbow'
 Plug 'srcery-colors/srcery-vim'
 
@@ -364,6 +364,11 @@ endfunction
 " jedi -----------------------------------------------------------------------
 let g:jedi#rename_command = ""
 
+" vim-iced -------------------------------------------------------------------
+let g:iced#buffer#stdout#mods = "vertical"
+let g:iced_enable_auto_indent = v:false
+let g:iced_formatter = "zprint"
+
 " terraform ------------------------------------------------------------------
 " let g:terraform_fold_sections = 1
 let g:terraform_remap_spacebar = 1
@@ -377,3 +382,8 @@ let g:rainbow_active = 1
 
 " vim-fireplace - run test under expression
 nmap cps :.RunTests<cr>
+
+let g:iced_enable_default_key_mappings = v:true
+let g:iced#nrepl#skip_evaluation_when_buffer_size_is_exceeded = v:true
+
+nmap <buffer> <Leader>e! <Plug>(iced_eval_and_replace)<Plug>(sexp_outer_list)``

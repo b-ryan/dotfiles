@@ -26,6 +26,7 @@ alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias giff="git diff --color-words --ignore-space-change"
 alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
 alias p="git push"
+alias d="git diff"
 alias prune="git remote prune origin"
 alias merged="git branch --merged"
 
@@ -103,13 +104,6 @@ rmthis() {
 }
 alias refreshenv='rmthis && mkthis'
 
-alias target-stitch='/home/buck/.virtualenvs/target-stitch/bin/target-stitch'
-alias stitch-orchestrator='/home/buck/.virtualenvs/stitch-orchestrator/bin/stitch-orchestrator'
-alias tap-xero='/home/buck/.virtualenvs/tap-xero/bin/tap-xero'
-alias singer-infer-schema='/home/buck/.virtualenvs/singer-tools/bin/singer-infer-schema'
-alias singer-check-tap='/home/buck/.virtualenvs/singer-tools/bin/singer-check-tap'
-alias singer-diff-jsonl='/home/buck/.virtualenvs/singer-tools/bin/diff-jsonl'
-
 ggrepsed() {
     local grep="$1"
     local replace="$2"
@@ -142,4 +136,4 @@ alias aws-kubectl="kubectl --context aws"
 
 alias awk1="awk '{print \$1}'"
 
-function join_by { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+alias agenda='gcalcli agenda --details end 00:00 17:00'
