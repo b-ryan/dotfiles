@@ -3,6 +3,7 @@
 Replication/src/scripts/test.php
 .build-tags
 /.tmux-session-*
-f.edn
-f.sql
-f
+f/
+src/muncher/nrepl.clj
+iced.patch
+.creds.edn

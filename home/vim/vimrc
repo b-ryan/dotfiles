@@ -71,7 +71,7 @@ Plug 'neowit/vim-force.com'
 
 " Plug 'tpope/vim-fireplace'
 " Plug 'Olical/conjure', {'tag': 'v4.3.1'}
-Plug 'liquidz/vim-iced', {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure', 'tag': '2.7.6'}
 " Plug 'tpope/vim-salve'
 " Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -386,4 +386,31 @@ nmap cps :.RunTests<cr>
 let g:iced_enable_default_key_mappings = v:true
 let g:iced#nrepl#skip_evaluation_when_buffer_size_is_exceeded = v:true
 
-nmap <buffer> <Leader>e! <Plug>(iced_eval_and_replace)<Plug>(sexp_outer_list)``
+" nmap <buffer> <Leader>e! <Plug>(iced_eval_and_replace)<Plug>(sexp_outer_list)``
+
+
+
+
+
+aug MyClojureSetting
+  au!
+  au FileType clojure nmap <buffer> <Leader>epe
+      \ <Plug>(iced_eval_and_print)<Plug>(sexp_outer_list)``
+  au FileType clojure nmap <buffer> <Leader>ept
+      \ <Plug>(iced_eval_and_print)<Plug>(sexp_outer_top_list)``
+
+  au FileType clojure nmap <buffer> <Leader>eae
+      \ <Plug>(iced_eval_and_tap)<Plug>(sexp_outer_list)``
+  au FileType clojure nmap <buffer> <Leader>eat
+      \ <Plug>(iced_eval_and_tap)<Plug>(sexp_outer_top_list)``
+
+  au FileType clojure nmap <buffer> <Leader>ere
+      \ <Plug>(iced_eval_and_replace)<Plug>(sexp_outer_list)``
+  au FileType clojure nmap <buffer> <Leader>ert
+      \ <Plug>(iced_eval_and_replace)<Plug>(sexp_outer_top_list)``
+
+  au FileType clojure nmap <buffer> <Leader>ece
+      \ <Plug>(iced_eval_and_comment)<Plug>(sexp_outer_list)``
+  au FileType clojure nmap <buffer> <Leader>ect
+      \ <Plug>(iced_eval_and_comment)<Plug>(sexp_outer_top_list)``
+aug END

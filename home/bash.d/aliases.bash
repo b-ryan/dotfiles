@@ -20,28 +20,21 @@ alias lh='ls -a | egrep "^\."' # ONLY show hidden files
 
 # git aliases
 alias gist="git status --short" # use --short, not --porcelain. porcelain doesn't do coloring
-alias g="git status --short" # use --short, not --porcelain. porcelain doesn't do coloring
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
-alias giff="git diff --color-words --ignore-space-change"
 alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
-alias p="git push"
-alias d="git diff"
-alias prune="git remote prune origin"
-alias merged="git branch --merged"
+alias p="git pull && dmerged"
+alias d="git diff --color-words --ignore-space-change"
 
 dmerged() {
-    for branch in $(merged | grep -v '^\*' | grep -v 'develop\|master'); do
+    for branch in $(git branch --merged | grep -v '^\*' | grep -v 'develop\|master'); do
         git branch -d $branch
     done
-    prune
+    git remote prune origin
 }
 
-short() { N=${1:-1}; git log -n $N --first-parent; }
-long() { git log --first-parent; }
-
 # Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
+#   sleep 10; lmk
 alias lmk='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias ping="ping -c 4"
