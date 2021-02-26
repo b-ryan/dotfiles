@@ -60,13 +60,13 @@ if [ -z "$BASH_COMPLETION" ] && [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-for fname in ~/.bash.d/*; do
-    source "$fname"
-done
-
 if [[ -f ~/.bashrc.local ]]; then
     source ~/.bashrc.local
 fi
+
+for fname in ~/.bash.d/*; do
+    source "$fname"
+done
 
 export VIMCLOJURE_SERVER_JAR=~/lib/vimclojure/server-2.3.6.jar
 
