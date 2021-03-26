@@ -94,11 +94,14 @@ Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim
 " Plug 'iamcco/markdown-preview.vim'
 Plug 'mpyatishev/vim-sqlformat'
 
-" Colorschemes -------------------------------
+" Colorschemes (themes) -------------------------------
 
 " Plug 'b-ryan/vim-colors-synthwave'
 Plug 'luochen1990/rainbow'
 Plug 'srcery-colors/srcery-vim'
+Plug 'NieTiger/halcyon-neovim'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'nielsmadan/harlequin'
 
 call plug#end()
 
@@ -109,7 +112,11 @@ syntax enable
 let mapleader = ","
 let maplocalleader = "-"
 
-colorscheme srcery
+let g:afterglow_blackout=1
+colorscheme afterglow
+" colorscheme harlequin
+set termguicolors
+
 " set background=light
 
 " tab settings -------------------------------------------------------------->
@@ -180,6 +187,10 @@ set statusline+=line\ %l\ of\ %L " line number
 
 set conceallevel=0
 set history=2000
+
+
+let g:python_host_prog='/home/buck/.pyenv/versions/neovim-py2/bin/python'
+let g:python3_host_prog='/home/buck/.pyenv/versions/neovim/bin/python'
 
 " jump to last position on previous close
 autocmd BufReadPost *
@@ -414,3 +425,6 @@ aug MyClojureSetting
   au FileType clojure nmap <buffer> <Leader>ect
       \ <Plug>(iced_eval_and_comment)<Plug>(sexp_outer_top_list)``
 aug END
+
+
+map gF :e <cfile><CR>

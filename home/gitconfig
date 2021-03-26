@@ -30,6 +30,7 @@ br = rev-parse --abbrev-ref HEAD
 ci = commit -a
 empty = commit --allow-empty -m empty
 foo = commit -m foo
+head = rev-parse HEAD
 
 [difftool "meld"]
 path = /usr/bin/meld

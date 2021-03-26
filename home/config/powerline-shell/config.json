@@ -1,7 +1,6 @@
 {
   "segments": [
     "virtual_env",
-    "aws_profile",
     "ssh",
     "cwd",
     "git",
@@ -15,7 +14,7 @@
   "mode": "flat",
   "cwd": {
     "mode": "plain",
-    "max_depth": 4
+    "max_depth": 2
   },
   "theme": "gruvbox"
 }
