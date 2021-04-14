@@ -72,7 +72,7 @@ tn() {
         if [[ -f .tmux-session-name ]]; then
             tmux new-session -s "$(cat .tmux-session-name)"
         else
-            tmux new-session -s "${PWD##*/}"
+            tmux new-session -s $(sed 's/\./-/g' <<< "${PWD##*/}")
         fi
     fi
 }
