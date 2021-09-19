@@ -32,6 +32,8 @@ empty = commit --allow-empty -m empty
 foo = commit -m foo
 head = rev-parse HEAD
 pul = pull
+pushh = push
+puush = push
 
 [difftool "meld"]
 path = /usr/bin/meld

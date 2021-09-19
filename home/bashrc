@@ -8,6 +8,7 @@ PATH+=:node_modules/.bin
 PATH+=:~/.local/bin  # this is where user-local python stuff goes
 PATH+=:~/.gem/ruby/2.5.0/bin
 PATH+=:~/Applications/nvim-linux64/bin
+PATH+=:~/.vim/plugged/vim-iced/bin
 
 export PATH=$PATH:/usr/local/go/bin
 GOPATH=$HOME/go

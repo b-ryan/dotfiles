@@ -189,8 +189,8 @@ set conceallevel=0
 set history=2000
 
 
-let g:python_host_prog='/home/buck/.pyenv/versions/neovim-py2/bin/python'
-let g:python3_host_prog='/home/buck/.pyenv/versions/neovim/bin/python'
+let g:python_host_prog='~/.pyenv/versions/neovim-py2/bin/python'
+let g:python3_host_prog='~/.pyenv/versions/neovim/bin/python'
 
 " jump to last position on previous close
 autocmd BufReadPost *
