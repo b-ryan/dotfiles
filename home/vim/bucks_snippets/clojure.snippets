@@ -6,8 +6,8 @@ import os
 snip.rv = ''
 
 start = 0
-requires = []
 # ultisnips sets the current path as the 'path' variable
+requires = []
 if path.find("src") >= 0:
     start = path.rfind("src/") + len("src/")
 elif path.find("test") >= 0:
@@ -15,11 +15,16 @@ elif path.find("test") >= 0:
     requires = ["[clojure.test :refer [deftest testing is use-fixtures]]"]
 end = path.find(".")
 
-snip.rv = """(ns {}
-  (:require {}))
+reqstr = ""
+if requires:
+    reqstr = "\n (:require {})".format(
+        "\n           ".join(requires),
+    )
+
+snip.rv = """(ns {}{})
 """.format(
     path[start:end].replace("/", ".").replace("_", "-"),
-    "\n           ".join(requires),
+    reqstr,
 )
 `
 $0
@@ -69,4 +74,16 @@ snippet xform "transducer function"
       ([result] (xf result))
       ([result input]
        (xf result input)))))
+endsnippet
+
+snippet proto "protocol"
+(defprotocol $1
+  $0)
+endsnippet
+
+snippet comp "component"
+(defrecord $0 [options]
+component/Lifecycle
+  (start [this] this)
+  (stop [this] this))
 endsnippet

@@ -62,6 +62,8 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'cespare/vim-toml'
 Plug 'neowit/vim-force.com'
+Plug 'mogelbrod/vim-jsonpath'
+" Plug 'inkarkat/vim-mark'
 
 " Language augmentation packages ---------------------
 
@@ -102,6 +104,7 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'NieTiger/halcyon-neovim'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'nielsmadan/harlequin'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -379,6 +382,9 @@ let g:jedi#rename_command = ""
 let g:iced#buffer#stdout#mods = "vertical"
 let g:iced_enable_auto_indent = v:false
 let g:iced_formatter = "zprint"
+let g:iced_enable_clj_kondo_analysis = v:true
+let g:iced_enable_clj_kondo_local_analysis = v:true
+" let g:iced#debug = 1
 
 " terraform ------------------------------------------------------------------
 " let g:terraform_fold_sections = 1
@@ -428,3 +434,7 @@ aug END
 
 
 map gF :e <cfile><CR>
+
+
+
+nmap <leader>gg :Git grep <c-r>=expand("<cword>")<cr>

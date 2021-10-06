@@ -19,12 +19,13 @@ alias la='ls -A' # show almost all entries (exclude . and ..)
 alias lh='ls -a | egrep "^\."' # ONLY show hidden files
 
 # git aliases
-alias gist="git status --short" # use --short, not --porcelain. porcelain doesn't do coloring
+alias gist='git status --short .' # use --short, not --porcelain. porcelain doesn't do coloring
 alias c-="git checkout -"
 alias b="git for-each-ref --sort=-committerdate refs/heads/"
 alias yep="git push -u origin \$(git branch | grep '\*' | awk '{print \$2}')"
 alias p="git pull && dmerged"
 alias d="git diff --color-words --ignore-space-change"
+alias amd="git commit --amend"
 
 dmerged() {
     for branch in $(git branch --merged | grep -v '^\*' | grep -v 'develop\|master'); do
@@ -77,26 +78,6 @@ tn() {
     fi
 }
 
-alias PR="hub pull-request"
-
-alias workonthis='workon "${PWD##*/}"'
-mkthis() {
-    python3 -m venv venv && {
-        source venv/bin/activate
-        if [[ -f setup.py ]]; then python setup.py develop; fi
-        if [[ -f requirements.txt ]]; then pip install -r requirements.txt; fi
-        if [[ -f requirements-dev.txt ]]; then pip install -r requirements-dev.txt; fi
-    } || {
-        return 1
-    }
-    pip install ipython jedi pylint
-}
-rmthis() {
-    deactivate
-    rmvirtualenv "${PWD##*/}"
-}
-alias refreshenv='rmthis && mkthis'
-
 ggrepsed() {
     local grep="$1"
     local replace="$2"
@@ -125,8 +106,12 @@ t() {
     fi
 }
 
-alias aws-kubectl="kubectl --context aws"
-
 alias awk1="awk '{print \$1}'"
+complete -F _complete_alias awk1
 
 alias agenda='gcalcli agenda --details end 00:00 17:00'
+
+alias ks='kubectl --context=eks-staging -n staging'
+alias kp='kubectl --context=eks-q2-2020 -n prod'
+complete -F _complete_alias ks
+complete -F _complete_alias kp

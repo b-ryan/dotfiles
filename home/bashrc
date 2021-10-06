@@ -65,6 +65,10 @@ if [[ -f ~/.bashrc.local ]]; then
     source ~/.bashrc.local
 fi
 
+if [[ -f ~/.bash_completion.d/complete_alias ]]; then
+    source ~/.bash_completion.d/complete_alias
+fi
+
 for fname in ~/.bash.d/*; do
     source "$fname"
 done

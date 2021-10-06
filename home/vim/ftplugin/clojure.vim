@@ -30,3 +30,6 @@ endfunction
 function! Indent()
   call Preserve('normal gg=G')
 endfunction
+
+
+nmap <Leader>cc <Plug>(iced_connect)
