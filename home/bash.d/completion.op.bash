@@ -1,0 +1,1 @@
+source <(op completion bash)
