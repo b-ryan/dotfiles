@@ -64,6 +64,7 @@ Plug 'cespare/vim-toml'
 Plug 'neowit/vim-force.com'
 Plug 'mogelbrod/vim-jsonpath'
 " Plug 'inkarkat/vim-mark'
+Plug 'chrisbra/csv.vim'
 
 " Language augmentation packages ---------------------
 
@@ -289,6 +290,7 @@ let g:ftplugin_sql_omni_key = '<C-j>'
 
 " bufexplorer ----------------------------------------------------------------
 let g:bufExplorerShowRelativePath=1
+let g:bufExplorerSplitOutPathName=0
 
 " ctrlp ----------------------------------------------------------------------
 let g:ctrlp_cmd = 'CtrlPLastMode'

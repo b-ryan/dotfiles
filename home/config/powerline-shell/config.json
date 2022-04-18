@@ -1,6 +1,8 @@
 {
   "segments": [
     "virtual_env",
+    "aws_profile",
+    "battery",
     "ssh",
     "cwd",
     "git",

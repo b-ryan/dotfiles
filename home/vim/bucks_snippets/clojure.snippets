@@ -82,8 +82,7 @@ snippet proto "protocol"
 endsnippet
 
 snippet comp "component"
-(defrecord $0 [options]
-component/Lifecycle
-  (start [this] this)
-  (stop [this] this))
+(defn create
+  [this]
+  (with-meta this {\`component/start identity \`component/stop identity}))
 endsnippet
