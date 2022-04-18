@@ -15,8 +15,7 @@
   ],
   "mode": "flat",
   "cwd": {
-    "mode": "plain",
-    "max_depth": 2
+    "mode": "plain"
   },
   "theme": "gruvbox"
 }

@@ -1,4 +1,4 @@
 if (( $# == 1 )); then
     cd "$1"
 fi
-ls --almost-all | xargs du -hsx | sort -rh | head -30
+ls --almost-all --quoting-style=shell-always | xargs du -hsx | sort -rh | head -30
