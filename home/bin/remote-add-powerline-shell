@@ -1,5 +1,0 @@
-#!/bin/bash
-set -eu
-user="$1"
-git remote add "$user" https://github.com/"$user"/powerline-shell
-git fetch "$user"

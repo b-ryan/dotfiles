@@ -1,9 +1,0 @@
-*.swp
-*.swo
-Replication/src/scripts/test.php
-.build-tags
-/.tmux-session-*
-f/
-src/muncher/nrepl.clj
-iced.patch
-.creds.edn
