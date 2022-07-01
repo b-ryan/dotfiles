@@ -1,1 +1,1 @@
-/home/donkey/.vim/plugged/gocode/vim/autoload/gocomplete.vim
+/home/buck/.vim/plugged/gocode/vim/autoload/gocomplete.vim
