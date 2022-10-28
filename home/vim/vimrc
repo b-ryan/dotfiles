@@ -73,8 +73,8 @@ Plug 'chrisbra/csv.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plug 'tpope/vim-fireplace'
-" Plug 'Olical/conjure', {'tag': 'v4.3.1'}
-Plug 'liquidz/vim-iced', {'for': 'clojure', 'tag': '2.7.6'}
+" Plug 'Olical/conjure'
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
 " Plug 'tpope/vim-salve'
 " Plug 'venantius/vim-cljfmt'
 " Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -386,6 +386,7 @@ let g:iced_enable_auto_indent = v:false
 let g:iced_formatter = "zprint"
 let g:iced_enable_clj_kondo_analysis = v:true
 let g:iced_enable_clj_kondo_local_analysis = v:true
+" let g:iced#navigate#prefer_local_jump = v:true
 " let g:iced#debug = 1
 
 " terraform ------------------------------------------------------------------

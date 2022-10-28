@@ -86,3 +86,9 @@ snippet comp "component"
   [this]
   (with-meta this {\`component/start identity \`component/stop identity}))
 endsnippet
+
+
+snippet testns "adds a comment for easily testing the ns"
+(comment (clojure.test/test-ns *ns*))
+(comment (prn *e))
+endsnippet
